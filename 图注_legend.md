@@ -91,6 +91,9 @@
 > O/E 比跨度约 2.2 倍。**说明漂移是"场景属性"，而非某一评分的缺陷。**
 
 ---
+
+> **Sorting and colour.** Centres are sorted independently within each panel; the same x position does not denote the same centre across panels. Point colour simply re-encodes the calibration offset already shown on the y-axis and carries no additional information. Vertical bars are 95% confidence intervals for the offset by the delta method.
+
 # Figure 3
 
 ### English legend
@@ -239,6 +242,9 @@
 > **6.2% / 17.0% / 21.4% / 22.3%**——即最多五分之一的中心。
 
 ---
+
+> **Centres contributing at each threshold.** The number of hospitals contributing to each threshold varies, because a hospital contributes only when it flags at least ten patients. At the higher thresholds the flagged subgroup is small in many centres, so the observed mortality among flagged patients is imprecise and the 10th-to-90th percentile range widens accordingly.
+
 # Figure 6
 
 ### English legend
@@ -304,6 +310,9 @@
 ---
 
 > **Panel titles.** The right-hand panel shows transfer of the shrinkage parameters to MIMIC-IV treated as a **single new centre**. It is **not** multicentre external validation of the strategy, which can only be evaluated within eICU (left panel).
+
+> **The dip at m = 50.** The small decrease in the external success rate between 25 and 50 local patients reflects Monte-Carlo variation across the 200 resampling attempts, not a systematic effect; the monotonic trend across sample sizes should be read across the panel rather than between adjacent points.
+
 # 待补图（投稿前需完成）
 
 | 编号（暂定） | 内容 | 状态 |

@@ -52,7 +52,8 @@ for s in ["S0", "S1", "S3"]:
             ls=st["ls"], label=st["lab"], zorder=4 if s == "S3" else 3)
 d0 = S_int[(S_int["strat"] == "S0") & (S_int["m"] == 0)]["ok11"].iloc[0]
 ax.axhline(d0, color=GRAY, lw=1.0, ls=":")
-ax.text(206, d0 + 1.6, f"{d0:.0f}%", fontsize=7.4, color=GRAY, ha="right")
+ax.text(206, d0 + 1.8, f"{d0:.0f}%", fontsize=7.6, color=DARK, ha="right",
+            bbox=dict(fc="white", ec="none", pad=2.0))
 ax.set_title("Internal cross-fitting\n(103 eICU centres)", fontsize=10.0, fontweight="bold", pad=8)
 ax.set_xlim(-10, 212); ax.set_ylim(0, 100)
 ax.legend(fontsize=7.6, frameon=False, loc="lower right")
@@ -69,7 +70,8 @@ for s in ["S0", "S1", "S3"]:
             ls=st["ls"], zorder=4 if s == "S3" else 3)
 d0 = S_ext[(S_ext["strat"] == "S0") & (S_ext["m"] == 0)]["ok11"].iloc[0]
 ax.axhline(d0, color=GRAY, lw=1.0, ls=":")
-ax.text(300, d0 + 2.5, f"no recalibration: {d0:.0f}%", fontsize=7.4, color=GRAY, ha="left")
+ax.text(300, d0 + 2.5, f"no recalibration: {d0:.0f}%", fontsize=7.6, color=DARK, ha="left",
+            bbox=dict(fc="white", ec="none", pad=2.0))
 ax.annotate(f"S3 at $m$=25 ({EXT_S3_M25:.1f}%)\n≈ S1 at $m$ ≈ {EXT_EQ_M}",
             xy=(25, EXT_S3_M25), xytext=(95, 26), fontsize=7.8, color=TEAL, fontweight="bold",
             arrowprops=dict(arrowstyle="->", color=TEAL, lw=1.0))
