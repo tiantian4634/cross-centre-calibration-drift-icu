@@ -64,7 +64,7 @@ for col_x, head, steps in [(0.3, "eICU-CRD  \u2010  estimation cohort", EICU),
                                          arrowstyle="-|>", mutation_scale=13,
                                          color=EDGE, lw=1.05))
 
-fig.savefig(os.path.join(FG, "图1_两库筛选流程图.png"), dpi=600, bbox_inches="tight")
-fig.savefig(os.path.join(FG, "图1_两库筛选流程图.pdf"), bbox_inches="tight")
+fig.savefig(os.path.join(FG, "Fig1_两库筛选流程图.png"), dpi=600, bbox_inches="tight")
+fig.savefig(os.path.join(FG, "Fig1_两库筛选流程图.pdf"), bbox_inches="tight")
 plt.close(fig)
-print("[saved] 图1_两库筛选流程图")
+print("[saved] Fig1_两库筛选流程图")

@@ -72,10 +72,10 @@ ax.set_ylabel("Recalibration attempts landing\nwithin ±10%  (%)", fontsize=9.0)
 ax.set_xlim(-8, 212); ax.set_ylim(5, 62)
 ax.spines[["top", "right"]].set_visible(False)
 fig.tight_layout()
-fig.savefig(os.path.join(FG, "图10_分层收缩重校准.png"), dpi=600, bbox_inches="tight")
-fig.savefig(os.path.join(FG, "图10_分层收缩重校准.pdf"), bbox_inches="tight")
+fig.savefig(os.path.join(FG, "Fig6_分层收缩重校准.png"), dpi=600, bbox_inches="tight")
+fig.savefig(os.path.join(FG, "Fig6_分层收缩重校准.pdf"), bbox_inches="tight")
 plt.close(fig)
-print("[saved] 图10_分层收缩重校准")
+print("[saved] Fig6_分层收缩重校准")
 
 # 顺带打印 lambda 统计
 R = pd.read_csv(os.path.join(ST, "shrinkage_raw.csv"))

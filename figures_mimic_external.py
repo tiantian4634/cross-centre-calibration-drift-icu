@@ -82,10 +82,10 @@ for a_ in axes:
     a_.spines[["top", "right"]].set_visible(False)
 axes[0].set_ylabel("Recalibration attempts landing\nwithin ±10%  (%)", fontsize=9.0)
 fig.tight_layout()
-fig.savefig(os.path.join(FG, "图11_收缩方案的内外部验证.png"), dpi=600, bbox_inches="tight")
-fig.savefig(os.path.join(FG, "图11_收缩方案的内外部验证.pdf"), bbox_inches="tight")
+fig.savefig(os.path.join(FG, "Fig7_收缩方案的内外部验证.png"), dpi=600, bbox_inches="tight")
+fig.savefig(os.path.join(FG, "Fig7_收缩方案的内外部验证.pdf"), bbox_inches="tight")
 plt.close(fig)
-print("[saved] 图11_收缩方案的内外部验证")
+print("[saved] Fig7_收缩方案的内外部验证")
 
 # 关键对照表
 print("\n=== 关键对照：EB 用 m 例 ≈ 朴素用多少例？===")

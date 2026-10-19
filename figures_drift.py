@@ -57,7 +57,7 @@ for i, name in enumerate(["SOFA", "OASIS", "SAPS-II"]):
         ax.set_ylabel("Calibration-in-the-large offset $a_h$\n"
                       "(> 0 = more deaths than predicted)", fontsize=8.6)
     ax.spines[["top", "right"]].set_visible(False)
-save(fig, "图3_三评分校准漂移对比")
+save(fig, "Fig2_三评分校准漂移对比")
 
 # ══════════════════ 图4 判别稳 · 校准漂 ══════════════════
 d = H[H["score"] == "SOFA"].copy()
@@ -88,7 +88,7 @@ axr.set_xlabel("n", fontsize=8); axr.tick_params(labelleft=False, labelsize=7.5)
 for s in ["top", "right"]:
     axt.spines[s].set_visible(False); axr.spines[s].set_visible(False)
 ax.set_xlim(0.62, 0.84); ax.set_ylim(0.55, 1.72)
-save(fig, "图4_判别稳与校准漂")
+save(fig, "Fig3_判别稳与校准漂")
 
 # ══════════════════ 图5 病例组合阶梯 ══════════════════
 L = R["ladder"]
@@ -112,7 +112,7 @@ ax.set_ylabel("Between-centre heterogeneity $I^2$ (%)", fontsize=9.4)
 ax.set_ylim(0, 92)
 ax.spines[["top", "right"]].set_visible(False)
 fig.subplots_adjust(left=0.115, right=0.98, top=0.96, bottom=0.165)
-save(fig, "图5_病例组合阶梯")
+save(fig, "SuppFigS1_病例组合阶梯")
 
 # ══════════════════ 图6 MIMIC 定位 ══════════════════
 d = H[H["score"] == "SOFA"]
@@ -133,5 +133,5 @@ ax.text(0.995, 0.90, f"103 eICU centres  ·  AUC {R['mimic']['auc_eicu']:.3f} (e
 ax.set_yticks([]); ax.set_ylim(-0.35, 0.95)
 ax.set_xlabel("Calibration-in-the-large offset $a_h$  (> 0 = more deaths than predicted)", fontsize=9.2)
 ax.spines[["top", "right", "left"]].set_visible(False)
-save(fig, "图6_MIMIC在多中心分布中的位置")
+save(fig, "SuppFigS2_MIMIC在多中心分布中的位置")
 print("\n[done] 图件 ->", FG)

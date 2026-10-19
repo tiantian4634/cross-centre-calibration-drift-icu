@@ -49,7 +49,7 @@ ax.set_xlim(lo, hi); ax.set_ylim(lo, hi); ax.set_aspect("equal")
 ax.spines[["top", "right"]].set_visible(False)
 cb = fig.colorbar(sc, ax=ax, pad=0.02); cb.set_label("$\\Delta a$  (2015 − 2014)", fontsize=8)
 cb.ax.tick_params(labelsize=7)
-save(fig, "图8_同一中心两年校准偏移的稳定性")
+save(fig, "SuppFigS3_同一中心两年校准偏移的稳定性")
 
 # ═══════════ 图9 规模分层 ═══════════
 G = R["G"]
@@ -98,5 +98,5 @@ ax.set_ylabel("Observed mortality among\nthose flagged  (%)", fontsize=9.0)
 ax.set_ylim(-16, 112)
 ax.spines[["top", "right"]].set_visible(False)
 fig.subplots_adjust(left=0.085, right=0.965, top=0.965, bottom=0.145, wspace=0.42)
-save(fig, "图9_规模分层与临床影响")
+save(fig, "Fig5_规模分层与临床影响")
 print("[done]")
