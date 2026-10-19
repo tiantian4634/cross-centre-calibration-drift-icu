@@ -161,6 +161,33 @@ GitHub → 头像 → Settings → Developer settings → Personal access tokens
 
 ## C. 在 Zenodo 上拿 DOI（10 分钟）
 
+### 🔴 第零步：确认你在**真实** Zenodo，不是沙箱
+
+**Zenodo 有一个界面完全一样的测试环境 `sandbox.zenodo.org`，两者数据完全独立。**
+
+踩过一次的实录：2026-10-19 首次操作进了沙箱，拿到 `10.5072/zenodo.622445`，
+显示 "Published" 徽章，**看起来完全成功，但这个 DOI 在 DataCite 登记数为 0、`doi.org` 解析不了**，
+投期刊会被编辑直接退回。
+
+**判断标准（三条任一即可）**：
+
+| # | 检查 | 真实 Zenodo | 沙箱 |
+|---|---|---|---|
+| 1 | **地址栏** | `zenodo.org/account/settings/...` | `sandbox.zenodo.org/...` |
+| 2 | **DOI 徽章前缀** | **`10.5281/zenodo.`** | `10.5072/zenodo.` |
+| 3 | 把 DOI 粘到新标签页 | 正常打开记录页 | 打不开 |
+
+**第 2 条最可靠**：`10.5281` = 真实（DataCite 登记 13,389,802 条），
+`10.5072` = 沙箱（DataCite 登记 **0** 条）。
+
+**从国内访问没问题**——实测 `https://zenodo.org` 直连 HTTP 200。看到 403 只是
+缺少浏览器头，不是封锁。**不要因为进不去就改用沙箱。**
+
+**真实站设置入口**：登录 `https://zenodo.org` → 右上角头像 → GitHub，
+或直接访问 <https://zenodo.org/account/settings/applications>。
+
+**若误操作进了沙箱**：不用清理。沙箱与真实站互不影响，去真实站重做即可。
+
 ### C1. 关联 GitHub
 
 1. 注册/登录 <https://zenodo.org>（建议绑定 ORCID）
