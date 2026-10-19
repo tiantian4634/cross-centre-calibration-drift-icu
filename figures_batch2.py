@@ -71,23 +71,22 @@ fig, axes = plt.subplots(1, 2, figsize=(10.0, 4.3))
 ax = axes[0]
 xs = np.arange(3)
 i2 = [G[l]["I2"] for l in labs]; t2 = [G[l]["tau2"] for l in labs]
-b = ax.bar(xs - 0.19, i2, width=0.36, color=BLUE, edgecolor=DARK, lw=0.7, zorder=3, label="$I^2$ (%)")
-for xx, v in zip(xs - 0.19, i2):
-    ax.text(xx, v + 1.6, f"{r1(v)}%", ha="center", fontsize=8.4, fontweight="bold", color=DARK)
+b = ax.bar(xs, i2, width=0.50, color=BLUE, edgecolor=DARK, lw=0.7, zorder=3, label="$I^2$ (%)")
+for xx, v, t in zip(xs, i2, t2):
+    ax.text(xx, v + 3.4, "$I^2$ = %s%%" % r1(v), ha="center", fontsize=9.0,
+            fontweight="bold", color=DARK)
+    # τ² 改为柱顶数值标注，去掉右轴（双轴易使读者混淆哪条轴对应哪组数据）
+    ax.text(xx, v + 0.9, "$\\tau^2$ = %.3f" % t, ha="center", fontsize=8.0,
+            color=ORG, fontweight="bold")
 ax.axhline(50, color=RED, lw=1.0, ls="--")
-ax.text(0.02, 52.5, "50% threshold for substantial heterogeneity", color=RED, fontsize=7.2, ha="left")
-ax.set_ylabel("$I^2$  (%)", fontsize=9.2); ax.set_ylim(0, 108)
-ax.set_xticks(xs); ax.set_xticklabels([f"{l} centre\nmedian n = {G[l]['n_med']:.0f}" for l in
-                                       ["Small", "Medium", "Large"]], fontsize=8.4)
-ax2 = ax.twinx()
-ax2.plot(xs, t2, marker="o", color=ORG, lw=1.8, ms=6, zorder=4, label="$\\tau^2$")
-for xx, v in zip(xs, t2):
-    ax2.text(xx, v + 0.007, f"{v:.3f}", ha="center", fontsize=8.2, color=ORG, fontweight="bold")
-ax2.set_ylabel("$\\tau^2$  (between-centre variance)", fontsize=9.2, color=ORG)
-ax2.tick_params(axis="y", colors=ORG, labelsize=8); ax2.set_ylim(0, 0.18)
-h1, l1 = ax.get_legend_handles_labels(); h2, l2 = ax2.get_legend_handles_labels()
-ax.legend(h1 + h2, l1 + l2, fontsize=8, loc="upper left", frameon=False)
-ax.spines[["top"]].set_visible(False); ax2.spines[["top"]].set_visible(False)
+ax.text(-0.45, 51.5, "$I^2$ = 50% (substantial heterogeneity)", color=RED,
+        fontsize=7.4, ha="left", va="bottom")
+ax.set_ylabel("$I^2$  (%)", fontsize=9.2); ax.set_ylim(0, 100)
+ax.set_xticks(xs)
+ax.set_xticklabels(["%s (k=%d)\nmedian n = %.0f"
+                    % (l, int(G[l].get("k", 0)), G[l]["n_med"]) for l in labs], fontsize=8.4)
+ax.legend(fontsize=8, loc="upper left", frameon=False)
+ax.spines[["top"]].set_visible(False)
 
 ax = axes[1]
 HL = R["H"]

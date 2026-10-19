@@ -42,30 +42,46 @@ EICU = [
     ("Centres with \u2265 100 patients and \u2265 10 deaths\n\u2192 k = 103 centres used for the\nbetween-centre analyses", "#FEF9E7"),
 ]
 
-fig, ax = plt.subplots(figsize=(11.6, 9.2))
-ax.set_xlim(0, 20); ax.set_ylim(0, 25.0); ax.axis("off")
+fig, ax = plt.subplots(figsize=(13.6, 9.2))
+ax.set_xlim(0, 27.6); ax.set_ylim(0, 25.0); ax.axis("off")
+
+MAIN_W, EXC_W, EXC_OFF = 8.0, 4.9, 8.5      # 主链宽 / 排除框宽 / 排除框右偏
 
 
-def box(x, y, w, h, text, fc):
+def box(x, y, w, h, text, fc, fs=8.0, ec=EDGE):
     ax.add_patch(FancyBboxPatch((x, y), w, h,
                                 boxstyle="round,pad=0.010,rounding_size=0.18",
-                                fc=(fc or "#FFFFFF"), ec=EDGE, lw=1.05))
+                                fc=(fc or "#FFFFFF"), ec=ec, lw=1.05))
     ax.text(x + w / 2, y + h / 2, text, ha="center", va="center",
-            fontsize=8.0, color=TXT, linespacing=1.45)
+            fontsize=fs, color=TXT, linespacing=1.45)
 
 
-for col_x, head, steps in [(0.3, "eICU-CRD  \u2010  estimation cohort", EICU),
-                           (10.5, "MIMIC-IV  \u2010  external application", MIMIC)]:
-    ax.text(col_x + 4.5, 24.15, head, ha="center", va="center",
+for col_x, head, steps in [(0.2, "eICU-CRD  \u2010  estimation cohort", EICU),
+                           (14.3, "MIMIC-IV  \u2010  external application", MIMIC)]:
+    ax.text(col_x + MAIN_W / 2, 24.15, head, ha="center", va="center",
             fontsize=12.5, fontweight="bold", color=TXT)
     ys = np.linspace(21.6, 1.2, len(steps))
     hh = 1.55 if len(steps) == 10 else 1.85
+    last_incl = None                                   # 最近一个"纳入"框（主链节点）
     for i, ((txt, fc), yy) in enumerate(zip(steps, ys)):
-        box(col_x, yy, 9.0, hh, txt, fc)
-        if i > 0:
-            ax.add_patch(FancyArrowPatch((col_x + 4.5, ys[i - 1]), (col_x + 4.5, yy + hh),
-                                         arrowstyle="-|>", mutation_scale=13,
-                                         color=EDGE, lw=1.05))
+        excluded = txt.startswith("Excluded")
+        if excluded:
+            # CONSORT 式：排除项外挂至主链右侧，斜向箭头指出，不进入主链
+            ex_x = col_x + EXC_OFF
+            box(ex_x, yy + 0.14, EXC_W, hh - 0.28, txt, fc, fs=7.4, ec="#B03A2E")
+            if last_incl is not None:
+                ax.add_patch(FancyArrowPatch(
+                    (col_x + MAIN_W * 0.72, last_incl), (ex_x, yy + hh / 2),
+                    arrowstyle="-|>", mutation_scale=12, color="#B03A2E", lw=1.0,
+                    connectionstyle="arc3,rad=0.10", shrinkA=1, shrinkB=1))
+        else:
+            box(col_x, yy, MAIN_W, hh, txt, fc)
+            if last_incl is not None:
+                ax.add_patch(FancyArrowPatch((col_x + MAIN_W / 2, last_incl),
+                                             (col_x + MAIN_W / 2, yy + hh),
+                                             arrowstyle="-|>", mutation_scale=13,
+                                             color=EDGE, lw=1.05))
+            last_incl = yy
 
 fig.savefig(os.path.join(FG, "Fig1_两库筛选流程图.png"), dpi=600, bbox_inches="tight")
 fig.savefig(os.path.join(FG, "Fig1_两库筛选流程图.pdf"), bbox_inches="tight")
