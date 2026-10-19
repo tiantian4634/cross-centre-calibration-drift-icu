@@ -1,0 +1,20 @@
+{
+  "steps": {
+    "all_icustays": 94458,
+    "s1_first_icu_stay": 65366,
+    "s2_age_ge65_anchor_only": 33671,
+    "s2_age_ge65": 35499,
+    "s3_los_ge24h": 28607,
+    "s4_micu_sicu": 8629,
+    "s5_excl_death_within24h_of_icu": 35,
+    "s6_excl_keyvars_all_missing": 15,
+    "s7_final_cohort": 8579
+  },
+  "outcome": {
+    "n_final": 8579,
+    "hospital_deaths": 1654,
+    "icu_deaths": 1014,
+    "death_28d": 2318,
+    "emergency_admission": 5667
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "steps": {
+    "all_patient_rows": 200859,
+    "s1_first_icu_stay": 139367,
+    "s2_age_ge65": 71734,
+    "s3_los_ge24h_raw": 71734,
+    "s3_los_ge24h": 50138,
+    "s4_micu_medsurg": 31307,
+    "s5_excl_death_within24h_of_icu": 7,
+    "s6_excl_missing_hospital_outcome": 363,
+    "s7_excl_keyvars_all_missing": 141,
+    "s8_final_cohort": 30796
+  },
+  "outcome": {
+    "n_final": 30796,
+    "hospital_deaths": 3901,
+    "icu_deaths": 2325,
+    "female": 15251,
+    "excl_missing_outcome_status": 363,
+    "excl_death_within24h_of_icu": 7
+  }
+}

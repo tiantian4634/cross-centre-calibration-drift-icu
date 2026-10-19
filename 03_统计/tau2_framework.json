@@ -1,0 +1,25 @@
+{
+  "DL": {
+    "tau2": 0.13121,
+    "I2": 75.35,
+    "abar": 0.03
+  },
+  "PM": {
+    "tau2": 0.12614,
+    "I2": 75.35,
+    "abar": 0.0304
+  },
+  "REML": {
+    "tau2": 0.12992,
+    "I2": 75.35,
+    "abar": 0.0301
+  },
+  "Multilevel": {
+    "tau2": 0.06479,
+    "I2": 75.35,
+    "abar": 0.0745
+  },
+  "spread_pct": 3.91,
+  "rel_multilevel_pct": -50.13,
+  "criterion_ok": false
+}
