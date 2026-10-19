@@ -1,0 +1,55 @@
+# ⚠️ 投稿前必填：把 author 段的占位信息替换为你的真实姓名与 ORCID。
+#    Zenodo 会用本文件预填归档记录的元数据；留空会导致引用里出现 GitHub 用户名。
+
+cff-version: 1.2.0
+message: "If you use this software or the accompanying results, please cite the manuscript below."
+title: "Cross-centre calibration drift of acute severity scores"
+abstract: >-
+  Companion code, prespecified analysis plans and figures for a retrospective
+  multicentre study of calibration drift in acute severity scoring. Working in 103
+  intensive-care units from the eICU Collaborative Research Database, the study
+  shows that a SOFA-based model's discrimination is stable across centres (AUC
+  0.649-0.812) while calibration is not (observed-to-expected mortality ratio
+  0.69-1.54; I-squared 75%), that the variation is not explained by measured
+  case-mix and grows rather than shrinks with centre size, that it is unstable
+  year to year, and that naive centre-by-centre recalibration is not the remedy
+  it is usually assumed to be. Empirical-Bayes shrinkage of each centre's
+  calibration offset toward the pooled mean reverses this, at a local sample size
+  of 25, with shrinkage parameters that transfer to MIMIC-IV without refitting.
+
+type: software
+
+license: MIT
+
+# ── 作者：替换为真实信息 ──────────────────────────────────────────────
+authors:
+  - given-names: "⟨FIRST⟩"
+    family-names: "⟨LAST⟩"
+    affiliation: "Zhejiang Chinese Medical University"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"
+
+repository-code: "https://github.com/⟨YOUR-USERNAME⟩/⟨REPO-NAME⟩"
+
+# ── 关联的论文（投稿后补全卷期页码）─────────────────────────────────
+preferred-citation:
+  type: article
+  title: >-
+    Discrimination transports, calibration does not: cross-centre and temporal
+    drift in acute severity scoring across 187 ICUs, and the sample size needed
+    to recalibrate
+  journal: "⟨JOURNAL⟩"
+  year: 2027
+  authors:
+    - family-names: "⟨LAST⟩"
+      given-names: "⟨FIRST⟩"
+  # doi: "10.XXXX/xxxxx"
+
+keywords:
+  - intensive care
+  - calibration
+  - external validation
+  - data drift
+  - severity score
+  - empirical Bayes
+  - eICU
+  - MIMIC-IV
