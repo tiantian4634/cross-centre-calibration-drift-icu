@@ -1,5 +1,5 @@
-# ⚠️ 投稿前必填：把 author 段的占位信息替换为你的真实姓名与 ORCID。
-#    Zenodo 会用本文件预填归档记录的元数据；留空会导致引用里出现 GitHub 用户名。
+# Zenodo 读取本文件预填归档记录的元数据（作者、标题、许可）。
+# 改动本文件后需在 GitHub 上重新打 tag 才会生效。
 
 cff-version: 1.2.0
 message: "If you use this software or the accompanying results, please cite the manuscript below."
@@ -21,27 +21,27 @@ type: software
 
 license: MIT
 
-# ── 作者：替换为真实信息 ──────────────────────────────────────────────
+# ── 作者 ─────────────────────────────────────────────────────────────
 authors:
-  - given-names: "⟨FIRST⟩"
-    family-names: "⟨LAST⟩"
-    affiliation: "Zhejiang Chinese Medical University"
-    # orcid: "https://orcid.org/0000-0000-0000-0000"
+  - given-names: "Tiantian"
+    family-names: "Zhang"
+    affiliation: "Zhejiang Chinese Medical University; Xianju People's Hospital"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"   # 有 ORCID 就取消注释
 
-repository-code: "https://github.com/⟨YOUR-USERNAME⟩/⟨REPO-NAME⟩"
+repository-code: "https://github.com/tiantian4634/cross-centre-calibration-drift-icu"
 
-# ── 关联的论文（投稿后补全卷期页码）─────────────────────────────────
+# ── 关联的论文（确定目标期刊后补全 journal / 卷期页码 / doi）──────────
 preferred-citation:
   type: article
   title: >-
     Discrimination transports, calibration does not: cross-centre and temporal
     drift in acute severity scoring across 187 ICUs, and the sample size needed
     to recalibrate
-  journal: "⟨JOURNAL⟩"
+  journal: "to be specified"
   year: 2027
   authors:
-    - family-names: "⟨LAST⟩"
-      given-names: "⟨FIRST⟩"
+    - family-names: "Zhang"
+      given-names: "Tiantian"
   # doi: "10.XXXX/xxxxx"
 
 keywords:
