@@ -20,7 +20,9 @@
 | `CITATION.cff`（Zenodo 读它预填作者） | ✅ 已填：Zhang Tiantian / Xianju People's Hospital / ORCID 0009-0000-2350-8008 |
 | `requirements.txt`（版本已锁） | ✅ 已建 |
 | 纳入文件 90 个 / 工作区 6.45 MB | ✅ 远低于 GitHub 限制 |
+| **国内网络（git 走代理 20809）** | ✅ 已配 `http.proxy`，推送实测成功 |
 | 国内网络 git 调优（HTTP/1.1 等） | ✅ 已设全局配置 |
+| 推送辅助脚本 | ✅ `推送前最终核查.py`（DUA 合规全绿）、`推送重试.py`（诊断+重推） |
 
 > 推送前可用 `python 推送前最终核查.py` 复跑一次全绿检查（PhysioNet DUA 合规）。
 
@@ -69,10 +71,40 @@ git push -u origin main
 
 **已推送成功**，本地与远程 HEAD 一致（`5123c3b2`），分支 `main` 跟踪 `origin/main`。
 
-#### ⚠️ 国内网络必须的调优（换机器或重装 git 后需重设）
+#### ⚠️ 国内网络：**必须走代理**（本次实测结论）
 
-从国内直连 GitHub 时，git 默认的 HTTP/2 常被干扰，报
-`Failed to connect to github.com:443 ... Could not connect to server`。已设的全局配置：
+**实测数据（2026-10-19，浙江移动）**：
+
+| 连接方式 | 结果 |
+|---|---|
+| 直连 TCP `github.com:443` | 0/8 失败 / 8/8 成功（半小时内翻转，**极不可靠**） |
+| 直连 HTTPS 单请求 | 18–22 秒（正常应 <1s） |
+| 直连 `git push` | **失败**：`Failed to connect to github.com:443 after 21150 ms` |
+| **走代理后 `ls-remote`** | **3.0 秒成功** |
+| **走代理后 `git push`** | **第 1 次即成功** |
+
+**步骤：先开代理软件 → 再配 git → 再推送。**
+
+```powershell
+# 1) 确认代理端口（本机为 mihomo/Clash，口 20808 是 SOCKS、20809 才是 HTTP）
+$ie=(Get-ItemProperty 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings')
+$ie.ProxyServer      # → 127.0.0.1:20809
+
+# 2) 配置 git 走该端口（只认 HTTP 代理）
+git config --global http.proxy http://127.0.0.1:20809
+```
+
+**关键坑**：Clash/mihomo 通常开两个口——**20809 是 HTTP 口（git 用这个），
+20808 是 SOCKS 口（git 用不了，配了会报 `Failed to connect`）**。配错了现象和没配一模一样，
+很容易误判成"还是不通"。
+
+**检测代理在不在跑**：
+```powershell
+Get-NetTCPConnection -LocalPort 20809 -State Listen -ErrorAction SilentlyContinue
+# 有输出 = 在跑
+```
+
+#### 其余 git 网络调优
 
 ```powershell
 git config --global http.version HTTP/1.1        # 关键，HTTP/2 经国内链路常被掐
@@ -82,7 +114,15 @@ git config --global http.lowSpeedTime 999999     # 超长容忍
 git config --global core.compression 0           # 避免压缩层问题
 ```
 
-设完先 `git ls-remote --heads origin` 探一次（实测 3.9 秒成功）再推。
+#### 🔒 注意：git 代理配置是**永久**的
+
+`http.proxy` 一旦设了，**以后每次 git 操作都要先开代理**，否则会立刻失败
+（git 去连一个不存在的 `127.0.0.1:20809`）。
+
+- **保留**（推荐，已保留）：开代理软件才能推代码/拉代码
+- **取消**：`git config --global --unset http.proxy`
+
+**取消方法必须记住**，否则以后换机器或代理卸载后会莫名连不上。
 
 #### ⚠️ PowerShell 会误报失败
 
