@@ -147,8 +147,10 @@ ax.annotate(f"MIMIC-IV (single centre, BIDMC)\n$a$ = {aM:+.3f}  ·  {pct:.0f}th 
             f"observed {100*R['mimic']['obs']:.1f}% vs predicted {100*R['mimic']['exp']:.1f}%  (O/E {R['mimic']['OE']:.2f})",
             xy=(aM, 0.22), xytext=(aM + 0.20, -0.14), fontsize=8, color="#8E4B10",
             arrowprops=dict(arrowstyle="->", color="#8E4B10", lw=1.0))
-ax.text(0.995, 0.90, f"103 eICU centres  ·  AUC {R['mimic']['auc_eicu']:.3f} (eICU) vs {R['mimic']['auc_mimic']:.3f} (MIMIC)",
-        transform=ax.transAxes, ha="right", fontsize=7.6, color=GRAY)
+ax.text(0.998, 0.945, "103 eICU centres  ·  AUC %.3f (eICU) vs %.3f (MIMIC)"
+            % (R["mimic"]["auc_eicu"], R["mimic"]["auc_mimic"]),
+            transform=ax.transAxes, ha="right", fontsize=7.6, color="#5B6672",
+            bbox=dict(fc="white", ec="none", pad=2.2), zorder=6)
 ax.set_yticks([]); ax.set_ylim(-0.35, 0.95)
 ax.set_xlabel("Calibration-in-the-large offset $a_h$  (> 0 = more deaths than predicted)", fontsize=9.2)
 ax.spines[["top", "right", "left"]].set_visible(False)
