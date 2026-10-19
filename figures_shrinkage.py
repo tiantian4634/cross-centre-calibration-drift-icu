@@ -29,7 +29,8 @@ if not (EB_M25 < BASE0):
         "结论不再成立，须改写标注文字")
 print(f"[图10 数据核对] S0 基线={BASE0:.4f}  S3@m25={EB_M25:.4f}  (EB < S0 ✔)")
 
-BLUE, RED, GRAY, DARK, ORG, TEAL = "#2C6E9B", "#C0392B", "#9AA5B1", "#1B2631", "#E67E22", "#1E8449"
+# Okabe–Ito 色盲安全配色：S3 用紫、S2 用深橙，避免红绿对（deuteranopia 下最难区分）
+BLUE, RED, GRAY, DARK, ORG, TEAL = "#0072B2", "#E69F00", "#9AA5B1", "#1B2631", "#D55E00", "#CC79A7"
 plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 9, "axes.unicode_minus": False,
                      "axes.linewidth": 0.8})
 

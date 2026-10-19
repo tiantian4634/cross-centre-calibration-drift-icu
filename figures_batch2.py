@@ -35,22 +35,29 @@ hi = max(F["a14"].max(), F["a15"].max()) + 0.15
 ax.plot([lo, hi], [lo, hi], color=DARK, lw=1.1, ls="--", zorder=2,
         label="perfect year-to-year stability")
 ax.axhline(0, color=GRAY, lw=0.7); ax.axvline(0, color=GRAY, lw=0.7)
+# 最小二乘拟合线：斜率 < 1 且整体位于对角线下方，把「系统性下移」这一正文论点可视化
+sl, ic = np.polyfit(F["a14"], F["a15"], 1)
+xs = np.array([lo, hi])
+ax.plot(xs, sl * xs + ic, color=RED, lw=1.5, zorder=4,
+        label=f"least-squares fit (slope {sl:.2f})")
 sc = ax.scatter(F["a14"], F["a15"], s=30, c=np.clip(F["da"], -0.9, 0.9), cmap="RdBu_r",
-                vmin=-0.9, vmax=0.9, edgecolor="#33414D", lw=0.55, alpha=0.93, zorder=3)
+                vmin=-0.9, vmax=0.9, edgecolor="#33414D", lw=0.55, alpha=0.80, zorder=3)
 ax.set_xlabel("Calibration offset, 2014  ($a_h^{2014}$)", fontsize=9.4)
 ax.set_ylabel("Calibration offset, 2015  ($a_h^{2015}$)", fontsize=9.4)
 ax.text(0.025, 0.975,
-        f"Pearson $r$ = {rf['r']:+.2f}\n$r^2$ = {rf['r']**2*100:.0f}%\n"
-        f"k = {rf['k']} centres\n"
-        f"median $|\\Delta a|$ = {rf['da_med']:.2f}\n"
-        f"temporal share of\nbetween-centre variance\n= {rf['temporal_share_pct']:.0f}%",
-        transform=ax.transAxes, fontsize=8.2, va="top", color=DARK,
-        bbox=dict(fc="white", ec="#D5D8DC", lw=0.5, pad=4.5))
-ax.text(0.975, 0.035, "colour = change from 2014 → 2015", transform=ax.transAxes,
-        ha="right", fontsize=7.2, color=GRAY)
+        "Pearson $r$ = %.2f\n$r^2$ = %.2f\n"
+        "k = %d centres\n"
+        "median $|\\Delta a|$ = %.2f\n"
+        "fit slope = %.2f\n"
+        "temporal share of\nbetween-centre variance\n= %.0f%%"
+        % (rf["r"], rf["r"] ** 2, rf["k"], rf["da_med"], sl, rf["temporal_share_pct"]),
+        transform=ax.transAxes, fontsize=8.0, va="top", color=DARK,
+        bbox=dict(fc="white", ec="#D5D8DC", lw=0.5, pad=4.0))
+ax.legend(fontsize=7.4, frameon=False, loc="lower right")
 ax.set_xlim(lo, hi); ax.set_ylim(lo, hi); ax.set_aspect("equal")
 ax.spines[["top", "right"]].set_visible(False)
-cb = fig.colorbar(sc, ax=ax, pad=0.02); cb.set_label("$\\Delta a$  (2015 − 2014)", fontsize=8)
+cb = fig.colorbar(sc, ax=ax, pad=0.02)
+cb.set_label("$\\Delta a$  (2015 − 2014)", fontsize=8)
 cb.ax.tick_params(labelsize=7)
 save(fig, "SuppFigS3_同一中心两年校准偏移的稳定性")
 
@@ -93,7 +100,8 @@ for i, (pt, v) in enumerate(zip(pts, ppv)):
     ax.annotate(f"{v[0]:.0f}–{v[2]:.0f}%", (i, v[2]), textcoords="offset points",
                 xytext=(6, -2), fontsize=7.2, color=BLUE)
 ax.axhline(100 * 0.1267, color=RED, lw=1.0, ls="--")
-ax.text(-0.05, 100 * 0.1267 + 1.8, "cohort mortality 12.7%", color=RED, fontsize=7.2, ha="left")
+ax.text(0.5, 100 * 0.1267 + 2.0, "cohort mortality 12.7%", color=RED, fontsize=7.2, ha="center",
+        bbox=dict(fc="white", ec="none", pad=1.6))
 ax.set_xticks(np.arange(len(pts)))
 ax.set_xticklabels([f"{p:.2f}" for p in pts], fontsize=8.6)
 ax.set_xlabel("Decision threshold  $p_t$", fontsize=9.2)

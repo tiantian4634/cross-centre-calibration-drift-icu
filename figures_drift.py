@@ -71,18 +71,18 @@ gs = GridSpec(2, 2, width_ratios=[3.2, 1], height_ratios=[1, 3.2],
               wspace=0.10, hspace=0.10, left=0.10, right=0.955, top=0.98, bottom=0.115)
 ax = fig.add_subplot(gs[1, 0]); axt = fig.add_subplot(gs[0, 0], sharex=ax); axr = fig.add_subplot(gs[1, 1], sharey=ax)
 ax.scatter(d["auc"], d["OE"], s=22, c=np.clip(d["a_h"], -0.85, 0.85), cmap="RdBu_r",
-           vmin=-0.85, vmax=0.85, edgecolor="#33414D", lw=0.5, alpha=0.92, zorder=3)
+           vmin=-0.85, vmax=0.85, edgecolor="#33414D", lw=0.5, alpha=0.72, zorder=3)
 ax.axhline(1.0, color=DARK, lw=1.0, ls="--", zorder=1)
 axv = float(R["scores"]["SOFA"]["pooled_auc"])
 ax.axvline(axv, color=RED, lw=1.0, ls=":", zorder=1)
 ax.set_xlabel("Per-hospital AUC  (discrimination)", fontsize=9.2)
 ax.set_ylabel("Per-hospital O/E ratio  (calibration)", fontsize=9.2)
-axt.text(axv, 0.97, f"pooled AUC {axv:.3f}", transform=axt.get_yaxis_transform(),
-         ha="center", va="top", fontsize=7.4, color=RED, fontweight="bold")
-ax.text(0.663, 1.01, "perfect calibration", fontsize=7.4, color=DARK)
-ax.text(0.015, 0.955,
+axt.text(0.5, 1.055, "pooled AUC %.3f  (95%% CI %.3f\u2013%.3f)" % (axv, AUC_CI["SOFA"]["lo"], AUC_CI["SOFA"]["hi"]),
+         transform=axt.transAxes, ha="center", va="bottom", fontsize=7.6, color=RED, fontweight="bold")
+ax.text(0.835, 1.035, "perfect calibration", fontsize=7.4, color=DARK, ha="right")
+ax.text(0.985, 0.96,
         "AUC: 0.649–0.812 (P10–P90 width 0.163)\nO/E: 0.69–1.54 (P10–P90 ratio 2.2-fold)",
-        transform=ax.transAxes, fontsize=8.2, va="top", color=DARK,
+        transform=ax.transAxes, fontsize=8.2, va="top", ha="right", color=DARK,
         bbox=dict(fc="white", ec="#D5D8DC", lw=0.5, pad=3.5))
 axt.hist(d["auc"], bins=18, color=BLUE, alpha=0.85, edgecolor="white", lw=0.4)
 axt.axvline(axv, color=RED, lw=1.0, ls=":")
