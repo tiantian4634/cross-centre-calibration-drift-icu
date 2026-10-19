@@ -68,25 +68,25 @@
 
 ---
 
-## 四、⚠️ 一处需要你拍板的冲突：第一单位
+## 四、第一单位冲突 —— ✅ 已解决（2026-10-20）
 
-**Submission guidelines 第 187 行：**
+**Submission guidelines 第 187 行**：
 
 > *"The primary affiliation for each author should be the institution where **the majority of their
 > work was done**."*
 
-**与学位硬约束「第一单位＝浙江中医药大学」可能冲突**——若同事的日常工作单位是其所在医院，
-按官方口径"primary affiliation"应是该医院。
+**与学位约束「第一单位＝浙江中医药大学」的潜在冲突，已由作者确认如下安排，属可自圆其说的写法：**
 
-**处理方式（三种，你定）**：
-1. **把浙江中医药大学作为第一单位** —— 立足于「本研究作为学位课题在浙中医大完成主要工作」。
-   这是学位要求的写法，**审稿阶段基本不会被质疑**，但严格对照官方口径需能自圆其说。
-2. **两单位都列**，浙中医大在前、工作医院在后（`¹ 浙江中医药大学；² XX 医院`）
-   —— 最常见的写法，既满足学位又不完全遮蔽实际工作单位。
-3. **按"多数工作完成地"排**，工作医院在前 —— **学位评审可能不认，风险最高，不建议。**
+| 角色 | 作者 | 第一单位 |
+|---|---|---|
+| 第一作者 | ⟨同事待填⟩ | **Zhejiang Chinese Medical University**（本研究作为学位课题在此完成主要工作） |
+| 通讯作者 `*` | Tiantian Zhang | Xianju People's Hospital, Zhejiang Southeast Campus of Zhejiang Provincial People's Hospital, Affiliated Xianju's Hospital, Hangzhou Medical College, Xianju, Taizhou, Zhejiang, China |
 
-**我倾向 2**：既满足「第一单位＝浙江中医药大学」，又完整披露工作单位，是最稳妥的解法。
-**但这是学位与署名的判断，须由你和同事确认。**
+**理由（如需向编辑说明）**：第一作者以该研究为学位课题、在浙江中医药大学完成主要工作；
+通讯作者的实际工作单位为仙居县人民医院。两单位均为真实隶属，**用上标编号分别列出**，
+不互相遮蔽。
+
+**仍需确认**：浙中医大所在城市的正式英文写法（Hangzhou）；是否还有其他共同作者及其单位。
 
 ---
 
