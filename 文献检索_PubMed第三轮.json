@@ -1,0 +1,650 @@
+[
+  {
+    "q": "T1 eICU 数据库中的校准 / 模型性能",
+    "pmid": "38827113",
+    "doi": "",
+    "title": "Aiming for Relevance",
+    "journal": "AMIA Jt Summits Transl Sci Proc",
+    "date": "2024",
+    "authors": "Eini-Porat B, Eytan D, et al."
+  },
+  {
+    "q": "T1 eICU 数据库中的校准 / 模型性能",
+    "pmid": "41888397",
+    "doi": "10.1038/s41746-026-02565-x",
+    "title": "Machine learning predicts sepsis deterioration trajectories",
+    "journal": "NPJ Digit Med",
+    "date": "2026 Mar 26",
+    "authors": "Zhang R, Long F, et al."
+  },
+  {
+    "q": "T1 eICU 数据库中的校准 / 模型性能",
+    "pmid": "40418571",
+    "doi": "10.2196/66733",
+    "title": "Supervised Machine Learning Models for Predicting Sepsis-Associated Liver Injury in Patients With Sepsis: Development and Validation Study Based on a Multicenter Cohort Study",
+    "journal": "J Med Internet Res",
+    "date": "2025 May 26",
+    "authors": "Lei J, Zhai J, et al."
+  },
+  {
+    "q": "T1 eICU 数据库中的校准 / 模型性能",
+    "pmid": "40699572",
+    "doi": "10.1001/jamanetworkopen.2025.22866",
+    "title": "Operationalization of Artificial Intelligence Applications in the Intensive Care Unit: A Systematic Review",
+    "journal": "JAMA Netw Open",
+    "date": "2025 Jul 1",
+    "authors": "Berkhout WEM, van Wijngaarden JJ, et al."
+  },
+  {
+    "q": "T1 eICU 数据库中的校准 / 模型性能",
+    "pmid": "37001474",
+    "doi": "10.1016/j.ijmedinf.2023.105049",
+    "title": "Machine learning prediction models and nomogram to predict the risk of in-hospital death for severe DKA: A clinical study based on MIMIC-IV, eICU databases, and a college hospital ICU",
+    "journal": "Int J Med Inform",
+    "date": "2023 Jun",
+    "authors": "Xie W, Li Y, et al."
+  },
+  {
+    "q": "T1 eICU 数据库中的校准 / 模型性能",
+    "pmid": "38882552",
+    "doi": "10.1093/burnst/tkae016",
+    "title": "Serial platelet count as a dynamic prediction marker of hospital mortality among septic patients",
+    "journal": "Burns Trauma",
+    "date": "2024",
+    "authors": "Ye Q, Wang X, et al."
+  },
+  {
+    "q": "T1 eICU 数据库中的校准 / 模型性能",
+    "pmid": "37542106",
+    "doi": "10.1038/s41598-023-38650-4",
+    "title": "Development of a machine learning-based prediction model for sepsis-associated delirium in the intensive care unit",
+    "journal": "Sci Rep",
+    "date": "2023 Aug 4",
+    "authors": "Zhang Y, Hu J, et al."
+  },
+  {
+    "q": "T1 eICU 数据库中的校准 / 模型性能",
+    "pmid": "36312291",
+    "doi": "10.3389/fcvm.2022.994359",
+    "title": "Interpretable machine learning for 28-day all-cause in-hospital mortality prediction in critically ill patients with heart failure combined with hypertension: A retrospective cohort study based on medical information mart for intensive care database-IV and eICU databases",
+    "journal": "Front Cardiovasc Med",
+    "date": "2022",
+    "authors": "Peng S, Huang J, et al."
+  },
+  {
+    "q": "T1 eICU 数据库中的校准 / 模型性能",
+    "pmid": "39288404",
+    "doi": "10.2196/62890",
+    "title": "Early Prediction of Cardiac Arrest in the Intensive Care Unit Using Explainable Machine Learning: Retrospective Study",
+    "journal": "J Med Internet Res",
+    "date": "2024 Sep 17",
+    "authors": "Kim YK, Seo WD, et al."
+  },
+  {
+    "q": "T1 eICU 数据库中的校准 / 模型性能",
+    "pmid": "40896465",
+    "doi": "10.1016/j.eclinm.2025.103438",
+    "title": "Development and validation of an interpretable multi-task model to predict outcomes in patients with rhabdomyolysis: a multicenter retrospective cohort study",
+    "journal": "EClinicalMedicine",
+    "date": "2025 Sep",
+    "authors": "Liu C, Shi J, et al."
+  },
+  {
+    "q": "T1 eICU 数据库中的校准 / 模型性能",
+    "pmid": "40420108",
+    "doi": "10.1186/s13054-025-05457-w",
+    "title": "ORAKLE: Optimal Risk prediction for mAke30 in patients with sepsis associated AKI using deep LEarning",
+    "journal": "Crit Care",
+    "date": "2025 May 26",
+    "authors": "Oh W, Veshtaj M, et al."
+  },
+  {
+    "q": "T1 eICU 数据库中的校准 / 模型性能",
+    "pmid": "40537091",
+    "doi": "10.2196/67258",
+    "title": "Development of a Machine Learning-Based Predictive Model for Postoperative Delirium in Older Adult Intensive Care Unit Patients: Retrospective Study",
+    "journal": "J Med Internet Res",
+    "date": "2025 Jun 19",
+    "authors": "Li H, Zang Q, et al."
+  },
+  {
+    "q": "T2 校准的方法学奠基（Van Calster 等经典）",
+    "pmid": "31842878",
+    "doi": "10.1186/s12916-019-1466-7",
+    "title": "Calibration: the Achilles heel of predictive analytics",
+    "journal": "BMC Med",
+    "date": "2019 Dec 16",
+    "authors": "Van Calster B, McLernon DJ, et al."
+  },
+  {
+    "q": "T2 校准的方法学奠基（Van Calster 等经典）",
+    "pmid": "32265220",
+    "doi": "10.1136/bmj.m1328",
+    "title": "Prediction models for diagnosis and prognosis of covid-19: systematic review and critical appraisal",
+    "journal": "BMJ",
+    "date": "2020 Apr 7",
+    "authors": "Wynants L, Van Calster B, et al."
+  },
+  {
+    "q": "T2 校准的方法学奠基（Van Calster 等经典）",
+    "pmid": "38527923",
+    "doi": "10.1016/j.bja.2024.02.018",
+    "title": "Preoperative risk prediction models for acute kidney injury after noncardiac surgery: an independent external validation cohort study",
+    "journal": "Br J Anaesth",
+    "date": "2024 Sep",
+    "authors": "Zhuo XY, Lei SH, et al."
+  },
+  {
+    "q": "T2 校准的方法学奠基（Van Calster 等经典）",
+    "pmid": "34214166",
+    "doi": "10.1093/cid/ciab598",
+    "title": "A Clinical Prediction Model for Unsuccessful Pulmonary Tuberculosis Treatment Outcomes",
+    "journal": "Clin Infect Dis",
+    "date": "2022 Mar 23",
+    "authors": "Peetluk LS, Rebeiro PF, et al."
+  },
+  {
+    "q": "T2 校准的方法学奠基（Van Calster 等经典）",
+    "pmid": "37440675",
+    "doi": "10.25302/03.2023.ME.160635555-C19",
+    "title": "",
+    "journal": "",
+    "date": "2023 Mar",
+    "authors": "Kent DM, Zanos T, et al."
+  },
+  {
+    "q": "T2 校准的方法学奠基（Van Calster 等经典）",
+    "pmid": "37072778",
+    "doi": "10.1186/s12916-023-02860-4",
+    "title": "Clinical prediction models for serious infections in children: external validation in ambulatory care",
+    "journal": "BMC Med",
+    "date": "2023 Apr 18",
+    "authors": "Bos DAG, De Burghgraeve T, et al."
+  },
+  {
+    "q": "T2 校准的方法学奠基（Van Calster 等经典）",
+    "pmid": "36695624",
+    "doi": "10.1016/j.ajt.2022.11.012",
+    "title": "Miscalibration of lung allocation models leads to inaccurate waitlist mortality predictions",
+    "journal": "Am J Transplant",
+    "date": "2023 Jan",
+    "authors": "Dalton JE, Lehr CJ, et al."
+  },
+  {
+    "q": "T2 校准的方法学奠基（Van Calster 等经典）",
+    "pmid": "33394013",
+    "doi": "10.1093/humrep/deaa326",
+    "title": "Chance of live birth: a nationwide, registry-based cohort study",
+    "journal": "Hum Reprod",
+    "date": "2021 Mar 18",
+    "authors": "Kolte AM, Westergaard D, et al."
+  },
+  {
+    "q": "T2 校准的方法学奠基（Van Calster 等经典）",
+    "pmid": "35157984",
+    "doi": "10.1016/j.jpainsymman.2022.02.004",
+    "title": "HAprog: A New Prognostic Application to Assist Oncologists in Routine Care",
+    "journal": "J Pain Symptom Manage",
+    "date": "2022 Jun",
+    "authors": "Preto DD, Paiva BSR, et al."
+  },
+  {
+    "q": "T2 校准的方法学奠基（Van Calster 等经典）",
+    "pmid": "41426998",
+    "doi": "10.3389/fneur.2025.1673842",
+    "title": "A clinical predictive model for hearing recovery after middle ear cholesteatoma surgery based on machine learning",
+    "journal": "Front Neurol",
+    "date": "2025",
+    "authors": "Zhao Y, Ye S"
+  },
+  {
+    "q": "T2 校准的方法学奠基（Van Calster 等经典）",
+    "pmid": "36510134",
+    "doi": "10.1186/s12874-022-01801-8",
+    "title": "Methodological guidance for the evaluation and updating of clinical prediction models: a systematic review",
+    "journal": "BMC Med Res Methodol",
+    "date": "2022 Dec 12",
+    "authors": "Binuya MAE, Engelhardt EG, et al."
+  },
+  {
+    "q": "T2 校准的方法学奠基（Van Calster 等经典）",
+    "pmid": "39334348",
+    "doi": "10.1186/s41512-024-00177-1",
+    "title": "Understanding overfitting in random forest for probability estimation: a visualization and simulation study",
+    "journal": "Diagn Progn Res",
+    "date": "2024 Sep 27",
+    "authors": "Barreñada L, Dhiman P, et al."
+  },
+  {
+    "q": "T3 ICU 内死亡模型的院间表现与基准比较",
+    "pmid": "38197931",
+    "doi": "10.1007/s00134-023-07295-2",
+    "title": "ICU-acquired infections in immunocompromised patients",
+    "journal": "Intensive Care Med",
+    "date": "2024 Mar",
+    "authors": "Kreitmann L, Helms J, et al."
+  },
+  {
+    "q": "T3 ICU 内死亡模型的院间表现与基准比较",
+    "pmid": "30470513",
+    "doi": "10.1016/j.annemergmed.2018.09.022",
+    "title": "Triage Performance in Emergency Medicine: A Systematic Review",
+    "journal": "Ann Emerg Med",
+    "date": "2019 Jul",
+    "authors": "Hinson JS, Martinez DA, et al."
+  },
+  {
+    "q": "T3 ICU 内死亡模型的院间表现与基准比较",
+    "pmid": "32022730",
+    "doi": "10.1097/ACO.0000000000000834",
+    "title": "ICU management based on big data",
+    "journal": "Curr Opin Anaesthesiol",
+    "date": "2020 Apr",
+    "authors": "Falini S, Angelotti G, et al."
+  },
+  {
+    "q": "T3 ICU 内死亡模型的院间表现与基准比较",
+    "pmid": "31526754",
+    "doi": "10.1016/S1474-4422(19)30232-7",
+    "title": "Case-mix, care pathways, and outcomes in patients with traumatic brain injury in CENTER-TBI: a European prospective, multicentre, longitudinal, cohort study",
+    "journal": "Lancet Neurol",
+    "date": "2019 Oct",
+    "authors": "Steyerberg EW, Wiegers E, et al."
+  },
+  {
+    "q": "T3 ICU 内死亡模型的院间表现与基准比较",
+    "pmid": "38046879",
+    "doi": "10.51893/2020.4.OA5",
+    "title": "Low volume ECMO results study",
+    "journal": "Crit Care Resusc",
+    "date": "2020 Dec",
+    "authors": "Joyce CJ, Cook DA, et al."
+  },
+  {
+    "q": "T3 ICU 内死亡模型的院间表现与基准比较",
+    "pmid": "41963122",
+    "doi": "10.1016/j.idc.2026.02.005",
+    "title": "Ventilator-Associated Events: Surveillance and Prevention",
+    "journal": "Infect Dis Clin North Am",
+    "date": "2026 Sep",
+    "authors": "Zanella MC, Rhee C, et al."
+  },
+  {
+    "q": "T3 ICU 内死亡模型的院间表现与基准比较",
+    "pmid": "39928543",
+    "doi": "10.1097/CCM.0000000000006588",
+    "title": "Prediction of Intensive Care Length of Stay for Surviving and Nonsurviving Patients Using Deep Learning",
+    "journal": "Crit Care Med",
+    "date": "2025 Apr 1",
+    "authors": "Brochini L, Liu X, et al."
+  },
+  {
+    "q": "T3 ICU 内死亡模型的院间表现与基准比较",
+    "pmid": "33384505",
+    "doi": "10.5005/jp-journals-10071-23647",
+    "title": "Does Pediatric Index of Mortality \"Score\" in Colombia?",
+    "journal": "Indian J Crit Care Med",
+    "date": "2020 Nov",
+    "authors": "Rahiman S"
+  },
+  {
+    "q": "T3 ICU 内死亡模型的院间表现与基准比较",
+    "pmid": "40978335",
+    "doi": "10.21037/hbsn-24-349",
+    "title": "Enhanced recovery after liver transplantation-a prospective analysis focusing on quality assessment",
+    "journal": "Hepatobiliary Surg Nutr",
+    "date": "2025 Jun 1",
+    "authors": "Yuan X, Qin J, et al."
+  },
+  {
+    "q": "T3 ICU 内死亡模型的院间表现与基准比较",
+    "pmid": "34356015",
+    "doi": "",
+    "title": "Treatment limitations in intensive care units",
+    "journal": "Dan Med J",
+    "date": "2021 Jul 13",
+    "authors": "Christensen L, Jensen H, et al."
+  },
+  {
+    "q": "T3 ICU 内死亡模型的院间表现与基准比较",
+    "pmid": "33111704",
+    "doi": "10.1684/vir.2020.0860",
+    "title": "[Herpes simplex virus pneumonia]",
+    "journal": "Virologie (Montrouge)",
+    "date": "2020 Oct 1",
+    "authors": "Luyt CE"
+  },
+  {
+    "q": "T3 ICU 内死亡模型的院间表现与基准比较",
+    "pmid": "31280308",
+    "doi": "10.1093/ejcts/ezz198",
+    "title": "Prediction of complications after paediatric cardiac surgery",
+    "journal": "Eur J Cardiothorac Surg",
+    "date": "2020 Feb 1",
+    "authors": "Zeng X, An J, et al."
+  },
+  {
+    "q": "T4 聚类/多中心数据下模型验证与推断（TRIPOD-Cluster 生态）",
+    "pmid": "35348381",
+    "doi": "10.1148/radiol.211785",
+    "title": "Artificial Intelligence in Fracture Detection: A Systematic Review and Meta-Analysis",
+    "journal": "Radiology",
+    "date": "2022 Jul",
+    "authors": "Kuo RYL, Harrison C, et al."
+  },
+  {
+    "q": "T4 聚类/多中心数据下模型验证与推断（TRIPOD-Cluster 生态）",
+    "pmid": "38752951",
+    "doi": "10.1016/j.jcmg.2024.03.015",
+    "title": "Artificial Intelligence-Enabled Quantitative Coronary Plaque and Hemodynamic Analysis for Predicting Acute Coronary Syndrome",
+    "journal": "JACC Cardiovasc Imaging",
+    "date": "2024 Sep",
+    "authors": "Koo BK, Yang S, et al."
+  },
+  {
+    "q": "T4 聚类/多中心数据下模型验证与推断（TRIPOD-Cluster 生态）",
+    "pmid": "37452732",
+    "doi": "10.1093/eurheartj/ehad417",
+    "title": "Diagnostic management of acute pulmonary embolism: a prediction model based on a patient data meta-analysis",
+    "journal": "Eur Heart J",
+    "date": "2023 Aug 22",
+    "authors": "van Es N, Takada T, et al."
+  },
+  {
+    "q": "T4 聚类/多中心数据下模型验证与推断（TRIPOD-Cluster 生态）",
+    "pmid": "36750236",
+    "doi": "10.1136/bmj-2022-071058",
+    "title": "Transparent reporting of multivariable prediction models developed or validated using clustered data (TRIPOD-Cluster): explanation and elaboration",
+    "journal": "BMJ",
+    "date": "2023 Feb 7",
+    "authors": "Debray TPA, Collins GS, et al."
+  },
+  {
+    "q": "T4 聚类/多中心数据下模型验证与推断（TRIPOD-Cluster 生态）",
+    "pmid": "39707165",
+    "doi": "10.1093/humupd/dmae032",
+    "title": "Development and validation of a gonadotropin dose selection model for optimized ovarian stimulation in IVF/ICSI: an individual participant data meta-analysis",
+    "journal": "Hum Reprod Update",
+    "date": "2025 Mar 1",
+    "authors": "Schouten N, Wang R, et al."
+  },
+  {
+    "q": "T4 聚类/多中心数据下模型验证与推断（TRIPOD-Cluster 生态）",
+    "pmid": "41386335",
+    "doi": "10.1016/j.virs.2025.12.008",
+    "title": "Predicting mortality risk of severe fever with thrombocytopenia syndrome: A multi-center retrospective cohort study",
+    "journal": "Virol Sin",
+    "date": "2025 Dec",
+    "authors": "Hong XG, Ge HH, et al."
+  },
+  {
+    "q": "T4 聚类/多中心数据下模型验证与推断（TRIPOD-Cluster 生态）",
+    "pmid": "38879613",
+    "doi": "10.1007/s00198-024-07148-8",
+    "title": "Development and validation of a prediction model for falls among older people using community-based data",
+    "journal": "Osteoporos Int",
+    "date": "2024 Oct",
+    "authors": "Hayashi C, Okano T, et al."
+  },
+  {
+    "q": "T4 聚类/多中心数据下模型验证与推断（TRIPOD-Cluster 生态）",
+    "pmid": "38870749",
+    "doi": "10.1016/j.phymed.2024.155781",
+    "title": "Therapeutic effect and mechanisms of traditional Chinese medicine compound (Qilong capsule) in the treatment of ischemic stroke",
+    "journal": "Phytomedicine",
+    "date": "2024 Sep",
+    "authors": "Lyu J, Liu Y, et al."
+  },
+  {
+    "q": "T4 聚类/多中心数据下模型验证与推断（TRIPOD-Cluster 生态）",
+    "pmid": "41473957",
+    "doi": "10.1161/CIRCINTERVENTIONS.125.015398",
+    "title": "Prediction of Heart Failure Hospitalization or Death After TAVR",
+    "journal": "Circ Cardiovasc Interv",
+    "date": "2026 Feb",
+    "authors": "El-Sabawi B, Manandhar P, et al."
+  },
+  {
+    "q": "T4 聚类/多中心数据下模型验证与推断（TRIPOD-Cluster 生态）",
+    "pmid": "37732019",
+    "doi": "10.1016/j.pmedr.2023.102366",
+    "title": "The use of individual and multilevel data in the development of a risk prediction model to predict patients' likelihood of completing colorectal cancer screening",
+    "journal": "Prev Med Rep",
+    "date": "2023 Dec",
+    "authors": "Petrik AF, Johnson ES, et al."
+  },
+  {
+    "q": "T4 聚类/多中心数据下模型验证与推断（TRIPOD-Cluster 生态）",
+    "pmid": "34989801",
+    "doi": "10.1093/cid/ciac003",
+    "title": "Whole-Blood 3-Gene Signature as a Decision Aid for Rifapentine-based Tuberculosis Preventive Therapy",
+    "journal": "Clin Infect Dis",
+    "date": "2022 Sep 14",
+    "authors": "Huang HL, Lee JY, et al."
+  },
+  {
+    "q": "T4 聚类/多中心数据下模型验证与推断（TRIPOD-Cluster 生态）",
+    "pmid": "36378208",
+    "doi": "10.1001/jama.2022.19701",
+    "title": "Development of a Prediction Model for Ascending Aortic Diameter Among Asymptomatic Individuals",
+    "journal": "JAMA",
+    "date": "2022 Nov 15",
+    "authors": "Pirruccello JP, Lin H, et al."
+  },
+  {
+    "q": "T5 收缩/先验信息用于小中心估计（临床场景）",
+    "pmid": "30523332",
+    "doi": "10.1038/s41580-018-0085-z",
+    "title": "Dynamics and functions of lipid droplets",
+    "journal": "Nat Rev Mol Cell Biol",
+    "date": "2019 Mar",
+    "authors": "Olzmann JA, Carvalho P"
+  },
+  {
+    "q": "T5 收缩/先验信息用于小中心估计（临床场景）",
+    "pmid": "30753825",
+    "doi": "10.1016/j.ccell.2019.01.003",
+    "title": "Distinct Immune Cell Populations Define Response to Anti-PD-1 Monotherapy and Anti-PD-1/Anti-CTLA-4 Combined Therapy",
+    "journal": "Cancer Cell",
+    "date": "2019 Feb 11",
+    "authors": "Gide TN, Quek C, et al."
+  },
+  {
+    "q": "T5 收缩/先验信息用于小中心估计（临床场景）",
+    "pmid": "37433281",
+    "doi": "10.1016/j.ccell.2023.06.006",
+    "title": "Tumor monocyte content predicts immunochemotherapy outcomes in esophageal adenocarcinoma",
+    "journal": "Cancer Cell",
+    "date": "2023 Jul 10",
+    "authors": "Carroll TM, Chadwick JA, et al."
+  },
+  {
+    "q": "T5 收缩/先验信息用于小中心估计（临床场景）",
+    "pmid": "41781297",
+    "doi": "10.1016/j.beem.2026.102083",
+    "title": "Surgery for prolactinoma",
+    "journal": "Best Pract Res Clin Endocrinol Metab",
+    "date": "2026 Mar",
+    "authors": "Castle-Kirszbaum M, McCormack A"
+  },
+  {
+    "q": "T5 收缩/先验信息用于小中心估计（临床场景）",
+    "pmid": "32179951",
+    "doi": "10.1007/s00063-020-00667-2",
+    "title": "[Hypernatremia]",
+    "journal": "Med Klin Intensivmed Notfmed",
+    "date": "2020 Apr",
+    "authors": "Broll M, John S"
+  },
+  {
+    "q": "T5 收缩/先验信息用于小中心估计（临床场景）",
+    "pmid": "41537569",
+    "doi": "10.1093/carcin/bgag001",
+    "title": "Plasma proteomic profiling identified prognostic indicators with therapeutic potential for colorectal cancer",
+    "journal": "Carcinogenesis",
+    "date": "2025 Dec 26",
+    "authors": "Xie X, Zhou J, et al."
+  },
+  {
+    "q": "T5 收缩/先验信息用于小中心估计（临床场景）",
+    "pmid": "38332741",
+    "doi": "10.1002/adma.202312440",
+    "title": "An Antioxidative and Active Shrinkage Hydrogel Integratedly Promotes Re-Epithelization and Skin Constriction for Enhancing Wound Closure",
+    "journal": "Adv Mater",
+    "date": "2024 May",
+    "authors": "Sun J, Jia W, et al."
+  },
+  {
+    "q": "T5 收缩/先验信息用于小中心估计（临床场景）",
+    "pmid": "41197383",
+    "doi": "10.1016/j.lungcan.2025.108811",
+    "title": "Plasma proteomics profiling identifies predictive biomarkers for immunotherapy response in small-cell lung cancer",
+    "journal": "Lung Cancer",
+    "date": "2025 Dec",
+    "authors": "Jie GL, Zhong JX, et al."
+  },
+  {
+    "q": "T5 收缩/先验信息用于小中心估计（临床场景）",
+    "pmid": "42602977",
+    "doi": "10.1016/j.isci.2026.117031",
+    "title": "Plasma metabolomic signatures of migraine in 479,760 adults",
+    "journal": "iScience",
+    "date": "2026 Aug 21",
+    "authors": "Hong Y, Chen F, et al."
+  },
+  {
+    "q": "T5 收缩/先验信息用于小中心估计（临床场景）",
+    "pmid": "39548495",
+    "doi": "10.1186/s12933-024-02503-9",
+    "title": "Machine learning for predicting in-hospital mortality in elderly patients with heart failure combined with hypertension: a multicenter retrospective study",
+    "journal": "Cardiovasc Diabetol",
+    "date": "2024 Nov 15",
+    "authors": "Liu X, Xie Z, et al."
+  },
+  {
+    "q": "T5 收缩/先验信息用于小中心估计（临床场景）",
+    "pmid": "37696627",
+    "doi": "10.1136/bmjopen-2023-072112",
+    "title": "A nomogram for predicting hospital mortality of critical ill patients with sepsis and cancer: a retrospective cohort study based on MIMIC-IV and eICU-CRD",
+    "journal": "BMJ Open",
+    "date": "2023 Sep 11",
+    "authors": "Yuan ZN, Xue YJ, et al."
+  },
+  {
+    "q": "T5 收缩/先验信息用于小中心估计（临床场景）",
+    "pmid": "38411507",
+    "doi": "10.1093/bjsopen/zrad166",
+    "title": "Tailored risk assessment and forecasting in intermittent claudication",
+    "journal": "BJS Open",
+    "date": "2024 Jan 3",
+    "authors": "Ravindhran B, Prosser J, et al."
+  },
+  {
+    "q": "T6 预测模型的可迁移性与部署后性能监测",
+    "pmid": "38824959",
+    "doi": "10.1038/s41591-024-03087-3",
+    "title": "Cell-free DNA for the detection of kidney allograft rejection",
+    "journal": "Nat Med",
+    "date": "2024 Aug",
+    "authors": "Aubert O, Ursule-Dufait C, et al."
+  },
+  {
+    "q": "T6 预测模型的可迁移性与部署后性能监测",
+    "pmid": "39252507",
+    "doi": "10.3310/DABW4814",
+    "title": "Development and validation of prediction models for fetal growth restriction and birthweight: an individual participant data meta-analysis",
+    "journal": "Health Technol Assess",
+    "date": "2024 Aug",
+    "authors": "Allotey J, Archer L, et al."
+  },
+  {
+    "q": "T6 预测模型的可迁移性与部署后性能监测",
+    "pmid": "40554862",
+    "doi": "10.1016/j.bpobgyn.2025.102627",
+    "title": "Routine mid-gestational prediction of later preeclampsia",
+    "journal": "Best Pract Res Clin Obstet Gynaecol",
+    "date": "2025 Jul",
+    "authors": "Kempener B, Janssen E, et al."
+  },
+  {
+    "q": "T6 预测模型的可迁移性与部署后性能监测",
+    "pmid": "41057779",
+    "doi": "10.1186/s12884-025-08221-8",
+    "title": "A prediction model of preterm birth in singleton pregnancy after assisted reproduction therapy",
+    "journal": "BMC Pregnancy Childbirth",
+    "date": "2025 Oct 7",
+    "authors": "Wang Z, Mo H, et al."
+  },
+  {
+    "q": "T6 预测模型的可迁移性与部署后性能监测",
+    "pmid": "41367538",
+    "doi": "10.21037/tp-2025-567",
+    "title": "Nocturnal hypertension predicts left ventricular hypertrophy in children with primary hypertension",
+    "journal": "Transl Pediatr",
+    "date": "2025 Nov 30",
+    "authors": "Wang J, Zhang J, et al."
+  },
+  {
+    "q": "T6 预测模型的可迁移性与部署后性能监测",
+    "pmid": "42251331",
+    "doi": "10.1186/s12933-026-03235-8",
+    "title": "Associations of cumulative exposure and dynamic trajectories of the combined atherogenic and frailty index with incident cardiometabolic multimorbidity: a longitudinal analysis based on the China Health and Retirement Longitudinal Study (CHARLS)",
+    "journal": "Cardiovasc Diabetol",
+    "date": "2026 Jun 6",
+    "authors": "Feng X, Deng B, et al."
+  },
+  {
+    "q": "T6 预测模型的可迁移性与部署后性能监测",
+    "pmid": "41402919",
+    "doi": "10.1186/s40001-025-03594-0",
+    "title": "A nomogram for assessing the risk of MAFLD based on the albumin-to-gamma-glutamyl transferase ratio",
+    "journal": "Eur J Med Res",
+    "date": "2025 Dec 16",
+    "authors": "Meng S, Li L, et al."
+  },
+  {
+    "q": "T6 预测模型的可迁移性与部署后性能监测",
+    "pmid": "41473957",
+    "doi": "10.1161/CIRCINTERVENTIONS.125.015398",
+    "title": "Prediction of Heart Failure Hospitalization or Death After TAVR",
+    "journal": "Circ Cardiovasc Interv",
+    "date": "2026 Feb",
+    "authors": "El-Sabawi B, Manandhar P, et al."
+  },
+  {
+    "q": "T6 预测模型的可迁移性与部署后性能监测",
+    "pmid": "34727282",
+    "doi": "10.1007/s10620-021-07236-3",
+    "title": "Nomogram for the Prediction of 30-Day Readmission in Acute Pancreatitis",
+    "journal": "Dig Dis Sci",
+    "date": "2022 Aug",
+    "authors": "Ding L, Zheng P, et al."
+  },
+  {
+    "q": "T6 预测模型的可迁移性与部署后性能监测",
+    "pmid": "41209656",
+    "doi": "10.1016/j.eclinm.2025.103574",
+    "title": "Real-time risk prediction model for sepsis in patients with acute gastrointestinal bleeding: development and multicenter validation of a dynamic monitoring tool",
+    "journal": "EClinicalMedicine",
+    "date": "2025 Dec",
+    "authors": "Jiang G, Sun S, et al."
+  },
+  {
+    "q": "T6 预测模型的可迁移性与部署后性能监测",
+    "pmid": "42278712",
+    "doi": "10.3390/healthcare14111459",
+    "title": "Beyond Model Development in Healthcare AI: Post-Development Robustness, Post-Deployment Monitoring, and Lifecycle Governance-A Scoping Review of Reviews",
+    "journal": "Healthcare (Basel)",
+    "date": "2026 May 25",
+    "authors": "El Arab RA, Mustafa MH, et al."
+  },
+  {
+    "q": "T6 预测模型的可迁移性与部署后性能监测",
+    "pmid": "38817280",
+    "doi": "10.4240/wjgs.v16.i5.1344",
+    "title": "Prognostic prediction model of colorectal cancer based on preoperative serum tumor markers",
+    "journal": "World J Gastrointest Surg",
+    "date": "2024 May 27",
+    "authors": "Diao YH, Rao SQ, et al."
+  }
+]

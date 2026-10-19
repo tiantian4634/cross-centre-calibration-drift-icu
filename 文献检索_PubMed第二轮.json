@@ -1,0 +1,1082 @@
+[
+  {
+    "q": "R1 精确短语 calibration drift",
+    "pmid": "41094986",
+    "doi": "10.3390/s25196164",
+    "title": "Radon Exposure Assessment: IoT-Embedded Sensors",
+    "journal": "Sensors (Basel)",
+    "date": "2025 Oct 5",
+    "authors": "Rathebe PC, Kholopo M"
+  },
+  {
+    "q": "R1 精确短语 calibration drift",
+    "pmid": "37588581",
+    "doi": "10.1016/j.bjao.2022.100027",
+    "title": "Risk scores in anaesthesia: the future is hard to predict",
+    "journal": "BJA Open",
+    "date": "2022 Sep",
+    "authors": "Drayton DJ, Ayres M, et al."
+  },
+  {
+    "q": "R1 精确短语 calibration drift",
+    "pmid": "41228841",
+    "doi": "10.3390/s25216618",
+    "title": "Autonomous Hazardous Gas Detection Systems: A Systematic Review",
+    "journal": "Sensors (Basel)",
+    "date": "2025 Oct 28",
+    "authors": "Chew BK, Mahmud A, et al."
+  },
+  {
+    "q": "R1 精确短语 calibration drift",
+    "pmid": "41031642",
+    "doi": "10.1039/d5ay00961h",
+    "title": "Wearable sensors for monitoring workplace chemical exposures in occupational health management",
+    "journal": "Anal Methods",
+    "date": "2025 Oct 9",
+    "authors": "Liu H, Wang Z, et al."
+  },
+  {
+    "q": "R1 精确短语 calibration drift",
+    "pmid": "33157313",
+    "doi": "10.1016/j.jbi.2020.103611",
+    "title": "Detection of calibration drift in clinical prediction models to inform model updating",
+    "journal": "J Biomed Inform",
+    "date": "2020 Dec",
+    "authors": "Davis SE, Greevy RA Jr, et al."
+  },
+  {
+    "q": "R1 精确短语 calibration drift",
+    "pmid": "39217355",
+    "doi": "10.1186/s12938-024-01280-6",
+    "title": "Deep learning for the harmonization of structural MRI scans: a survey",
+    "journal": "Biomed Eng Online",
+    "date": "2024 Aug 31",
+    "authors": "Abbasi S, Lan H, et al."
+  },
+  {
+    "q": "R1 精确短语 calibration drift",
+    "pmid": "42702551",
+    "doi": "10.1002/asia.70975",
+    "title": "Near-Field Communication-Enabled Wearable Chemical Sensors for Bioanalytical Monitoring",
+    "journal": "Chem Asian J",
+    "date": "2026 Sep",
+    "authors": "Che H, Gao S, et al."
+  },
+  {
+    "q": "R1 精确短语 calibration drift",
+    "pmid": "32810233",
+    "doi": "10.1093/ejcts/ezaa229",
+    "title": "Can machine learning improve mortality prediction following cardiac surgery?",
+    "journal": "Eur J Cardiothorac Surg",
+    "date": "2020 Dec 1",
+    "authors": "Benedetto U, Sinha S, et al."
+  },
+  {
+    "q": "R1 精确短语 calibration drift",
+    "pmid": "39015791",
+    "doi": "10.3389/fmed.2024.1356087",
+    "title": "System for continuous metabolic monitoring of mechanically ventilated patients",
+    "journal": "Front Med (Lausanne)",
+    "date": "2024",
+    "authors": "Shaw G, Vicario F, et al."
+  },
+  {
+    "q": "R1 精确短语 calibration drift",
+    "pmid": "42741234",
+    "doi": "10.1039/d6ra06259h",
+    "title": "Advances in salivary cortisol monitoring for healthcare applications",
+    "journal": "RSC Adv",
+    "date": "2026 Sep 30",
+    "authors": "Kok GWX, Ortega E, et al."
+  },
+  {
+    "q": "R1 精确短语 calibration drift",
+    "pmid": "41516445",
+    "doi": "10.3390/s26010010",
+    "title": "Optical Fiber pH and Dissolved Oxygen Sensors for Bioreactor Monitoring: A Review",
+    "journal": "Sensors (Basel)",
+    "date": "2025 Dec 19",
+    "authors": "Cui G, Wu R, et al."
+  },
+  {
+    "q": "R1 精确短语 calibration drift",
+    "pmid": "35241261",
+    "doi": "10.1016/j.artmed.2022.102256",
+    "title": "A novel lifelong machine learning-based method to eliminate calibration drift in clinical prediction models",
+    "journal": "Artif Intell Med",
+    "date": "2022 Mar",
+    "authors": "Chi S, Tian Y, et al."
+  },
+  {
+    "q": "R1 精确短语 calibration drift",
+    "pmid": "40461827",
+    "doi": "10.3758/s13428-025-02677-4",
+    "title": "EMTeC: A corpus of eye movements on machine-generated texts",
+    "journal": "Behav Res Methods",
+    "date": "2025 Jun 3",
+    "authors": "Bolliger LS, Haller P, et al."
+  },
+  {
+    "q": "R1 精确短语 calibration drift",
+    "pmid": "42400900",
+    "doi": "10.1097/MCC.0000000000001411",
+    "title": "How to establish and run a national ICU benchmarking registry",
+    "journal": "Curr Opin Crit Care",
+    "date": "2026 Oct 1",
+    "authors": "Salluh JIF, Quintairos A, et al."
+  },
+  {
+    "q": "R1 精确短语 calibration drift",
+    "pmid": "42558218",
+    "doi": "10.3389/fpubh.2026.1887503",
+    "title": "Development and validation of a nomogram for identifying prevalent sarcopenia in Chinese patients with Cardiovascular-Kidney-Metabolic Syndrome",
+    "journal": "Front Public Health",
+    "date": "2026",
+    "authors": "Yang C, He Q, et al."
+  },
+  {
+    "q": "R2 重症严重度评分的外部验证",
+    "pmid": "41159833",
+    "doi": "10.1001/jama.2025.20516",
+    "title": "Development and Validation of the Sequential Organ Failure Assessment (SOFA)-2 Score",
+    "journal": "JAMA",
+    "date": "2025 Dec 16",
+    "authors": "Ranzani OT, Singer M, et al."
+  },
+  {
+    "q": "R2 重症严重度评分的外部验证",
+    "pmid": "42045961",
+    "doi": "10.1186/s13054-026-06027-4",
+    "title": "SOFA-2 score predicts mortality in pneumonia-associated sepsis: a retrospective cohort study",
+    "journal": "Crit Care",
+    "date": "2026 Apr 27",
+    "authors": "Wei S, Wang T, et al."
+  },
+  {
+    "q": "R2 重症严重度评分的外部验证",
+    "pmid": "41029382",
+    "doi": "10.1186/s12933-025-02911-5",
+    "title": "An ensemble machine learning-based risk stratification tool for 30-day mortality prediction in critically ill cardiovascular patients",
+    "journal": "Cardiovasc Diabetol",
+    "date": "2025 Sep 30",
+    "authors": "Lei M, Liu X, et al."
+  },
+  {
+    "q": "R2 重症严重度评分的外部验证",
+    "pmid": "38172962",
+    "doi": "10.1186/s40001-023-01593-7",
+    "title": "Interpretable machine learning model for early prediction of 28-day mortality in ICU patients with sepsis-induced coagulopathy: development and validation",
+    "journal": "Eur J Med Res",
+    "date": "2024 Jan 3",
+    "authors": "Zhou S, Lu Z, et al."
+  },
+  {
+    "q": "R2 重症严重度评分的外部验证",
+    "pmid": "41477971",
+    "doi": "10.1016/j.jcrc.2025.155407",
+    "title": "Derivation and validation of a prediction rule for sedative-associated delirium during acute respiratory failure requiring mechanical ventilation",
+    "journal": "J Crit Care",
+    "date": "2026 Apr",
+    "authors": "Prendergast NT, Onyemekwu CA, et al."
+  },
+  {
+    "q": "R2 重症严重度评分的外部验证",
+    "pmid": "41767533",
+    "doi": "10.3389/fmed.2026.1756831",
+    "title": "An interpretable machine-learning model for predicting in-hospital mortality in patients with sepsis-associated acute kidney injury",
+    "journal": "Front Med (Lausanne)",
+    "date": "2026",
+    "authors": "Wang JZ, Zhang N, et al."
+  },
+  {
+    "q": "R2 重症严重度评分的外部验证",
+    "pmid": "37852108",
+    "doi": "10.1016/j.compbiomed.2023.107577",
+    "title": "An interpretable ensemble learning model facilitates early risk stratification of ischemic stroke in intensive care unit: Development and external validation of ICU-ISPM",
+    "journal": "Comput Biol Med",
+    "date": "2023 Nov",
+    "authors": "Hu W, Jin T, et al."
+  },
+  {
+    "q": "R2 重症严重度评分的外部验证",
+    "pmid": "41918111",
+    "doi": "10.1186/s12967-026-08067-4",
+    "title": "Cross-algorithm machine learning and consensus features for early disseminated intravascular coagulation risk prediction in sepsis-induced coagulopathy",
+    "journal": "J Transl Med",
+    "date": "2026 Mar 31",
+    "authors": "Chen F, Mei X, et al."
+  },
+  {
+    "q": "R2 重症严重度评分的外部验证",
+    "pmid": "38390493",
+    "doi": "10.1016/j.isci.2024.109153",
+    "title": "Acute kidney injury prediction model utility in premature myocardial infarction",
+    "journal": "iScience",
+    "date": "2024 Mar 15",
+    "authors": "Tao F, Yang H, et al."
+  },
+  {
+    "q": "R2 重症严重度评分的外部验证",
+    "pmid": "40259248",
+    "doi": "10.1186/s12879-025-10972-w",
+    "title": "Association analysis of sepsis progression to sepsis-induced coagulopathy: a study based on the MIMIC-IV database",
+    "journal": "BMC Infect Dis",
+    "date": "2025 Apr 21",
+    "authors": "Yang JY, Li LL, et al."
+  },
+  {
+    "q": "R2 重症严重度评分的外部验证",
+    "pmid": "41325650",
+    "doi": "10.1016/j.clnu.2025.11.006",
+    "title": "Development and validation of a risk prediction model for refeeding syndrome in adults with critical illness: A prospective observational study",
+    "journal": "Clin Nutr",
+    "date": "2025 Dec",
+    "authors": "Jing C, Hou L, et al."
+  },
+  {
+    "q": "R2 重症严重度评分的外部验证",
+    "pmid": "41877184",
+    "doi": "10.1186/s40560-026-00875-6",
+    "title": "SOFA-2 versus SOFA-1 for mortality prediction in critically ill patients",
+    "journal": "J Intensive Care",
+    "date": "2026 Mar 24",
+    "authors": "Bai S, Huang M, et al."
+  },
+  {
+    "q": "R2 重症严重度评分的外部验证",
+    "pmid": "39167241",
+    "doi": "10.1186/s13613-024-01357-4",
+    "title": "Derivation and external validation of predictive models for invasive mechanical ventilation in intensive care unit patients with COVID-19",
+    "journal": "Ann Intensive Care",
+    "date": "2024 Aug 21",
+    "authors": "Maia G, Martins CM, et al."
+  },
+  {
+    "q": "R2 重症严重度评分的外部验证",
+    "pmid": "38147839",
+    "doi": "10.3346/jkms.2023.38.e418",
+    "title": "Modified Cardiovascular Sequential Organ Failure Assessment Score in Sepsis: External Validation in Intensive Care Unit Patients",
+    "journal": "J Korean Med Sci",
+    "date": "2023 Dec 25",
+    "authors": "Ko BS, Ryoo SM, et al."
+  },
+  {
+    "q": "R2 重症严重度评分的外部验证",
+    "pmid": "33553206",
+    "doi": "10.3389/fmed.2020.609769",
+    "title": "Development and Validation of a Sepsis Mortality Risk Score for Sepsis-3 Patients in Intensive Care Unit",
+    "journal": "Front Med (Lausanne)",
+    "date": "2020",
+    "authors": "Zhang K, Zhang S, et al."
+  },
+  {
+    "q": "R3 重校准所需样本量 / 本地验证的不确定性",
+    "pmid": "40842026",
+    "doi": "10.1186/s12967-025-06977-3",
+    "title": "In silico prediction of optimal multifactorial intervention in chronic kidney disease",
+    "journal": "J Transl Med",
+    "date": "2025 Aug 21",
+    "authors": "Latosinska A, Mina IK, et al."
+  },
+  {
+    "q": "R3 重校准所需样本量 / 本地验证的不确定性",
+    "pmid": "40919460",
+    "doi": "10.1016/j.cobeha.2025.101581",
+    "title": "Events in the stream of behavior",
+    "journal": "Curr Opin Behav Sci",
+    "date": "2025 Oct",
+    "authors": "Smith ME, Zacks JM, et al."
+  },
+  {
+    "q": "R3 重校准所需样本量 / 本地验证的不确定性",
+    "pmid": "41206830",
+    "doi": "10.1007/s00125-025-06577-2",
+    "title": "Precision medicine in type 2 diabetes: targeting SGLT2 inhibitor treatment for kidney protection",
+    "journal": "Diabetologia",
+    "date": "2026 Feb",
+    "authors": "Jansz TT, Young KG, et al."
+  },
+  {
+    "q": "R3 重校准所需样本量 / 本地验证的不确定性",
+    "pmid": "36509123",
+    "doi": "10.1016/j.chest.2022.11.041",
+    "title": "Generalizability of Risk Stratification Algorithms for Exacerbations in COPD",
+    "journal": "Chest",
+    "date": "2023 Apr",
+    "authors": "Ho JK, Safari A, et al."
+  },
+  {
+    "q": "R3 重校准所需样本量 / 本地验证的不确定性",
+    "pmid": "36590085",
+    "doi": "10.3389/fnbot.2022.1061201",
+    "title": "Recalibration of myoelectric control with active learning",
+    "journal": "Front Neurorobot",
+    "date": "2022",
+    "authors": "Szymaniak K, Krasoulis A, et al."
+  },
+  {
+    "q": "R3 重校准所需样本量 / 本地验证的不确定性",
+    "pmid": "42562943",
+    "doi": "10.1038/s41583-026-01072-y",
+    "title": "Cerebellar rhythms: mechanisms, functions and translational opportunities",
+    "journal": "Nat Rev Neurosci",
+    "date": "2026 Oct",
+    "authors": "Spampinato DA, Antonioni A, et al."
+  },
+  {
+    "q": "R3 重校准所需样本量 / 本地验证的不确定性",
+    "pmid": "36695624",
+    "doi": "10.1016/j.ajt.2022.11.012",
+    "title": "Miscalibration of lung allocation models leads to inaccurate waitlist mortality predictions",
+    "journal": "Am J Transplant",
+    "date": "2023 Jan",
+    "authors": "Dalton JE, Lehr CJ, et al."
+  },
+  {
+    "q": "R3 重校准所需样本量 / 本地验证的不确定性",
+    "pmid": "38082429",
+    "doi": "10.1186/s41512-023-00163-z",
+    "title": "Dynamic updating of clinical survival prediction models in a changing environment",
+    "journal": "Diagn Progn Res",
+    "date": "2023 Dec 12",
+    "authors": "Tanner KT, Keogh RH, et al."
+  },
+  {
+    "q": "R3 重校准所需样本量 / 本地验证的不确定性",
+    "pmid": "42017562",
+    "doi": "10.1016/j.jaccao.2026.01.006",
+    "title": "Risk Prediction in Cardio-Oncology: Conceptual and Methodological Considerations: JACC: CardioOncology State-of-the-Art Review",
+    "journal": "JACC CardioOncol",
+    "date": "2026 Apr",
+    "authors": "Sen J, Amir E, et al."
+  },
+  {
+    "q": "R3 重校准所需样本量 / 本地验证的不确定性",
+    "pmid": "40342863",
+    "doi": "",
+    "title": "TumorTwin: A python framework for patient-specific digital twins in oncology",
+    "journal": "ArXiv",
+    "date": "2025 May 1",
+    "authors": "Kapteyn M, Chaudhuri A, et al."
+  },
+  {
+    "q": "R3 重校准所需样本量 / 本地验证的不确定性",
+    "pmid": "37884857",
+    "doi": "10.1186/s12874-023-02059-4",
+    "title": "Bayesian parametric models for survival prediction in medical applications",
+    "journal": "BMC Med Res Methodol",
+    "date": "2023 Oct 26",
+    "authors": "Paolucci I, Lin YM, et al."
+  },
+  {
+    "q": "R3 重校准所需样本量 / 本地验证的不确定性",
+    "pmid": "40487264",
+    "doi": "10.1016/j.lanwpc.2025.101575",
+    "title": "Assessment and recalibration of seventeen lung cancer risk prediction models in approximately one million Chinese population utilising healthcare big data: a retrospective cohort analysis",
+    "journal": "Lancet Reg Health West Pac",
+    "date": "2025 May",
+    "authors": "Ye Z, Sun Y, et al."
+  },
+  {
+    "q": "R3 重校准所需样本量 / 本地验证的不确定性",
+    "pmid": "39212118",
+    "doi": "10.1111/risa.17453",
+    "title": "Predicting pharmaceutical supply chain disruptions before and during the COVID-19 pandemic",
+    "journal": "Risk Anal",
+    "date": "2024 Dec",
+    "authors": "Hupman AC, Zhang J, et al."
+  },
+  {
+    "q": "R3 重校准所需样本量 / 本地验证的不确定性",
+    "pmid": "42061374",
+    "doi": "10.1016/S1470-2045(26)00067-7",
+    "title": "Bayesian sequential learning for prognostication in extremity soft tissue sarcoma (BayeSarc): a retrospective, multicentre cohort study",
+    "journal": "Lancet Oncol",
+    "date": "2026 May",
+    "authors": "Callegaro D, Tinè G, et al."
+  },
+  {
+    "q": "R3 重校准所需样本量 / 本地验证的不确定性",
+    "pmid": "39477712",
+    "doi": "10.1016/j.bja.2024.09.003",
+    "title": "International multi-institutional external validation of preoperative risk scores for 30-day in-hospital mortality in paediatric patients",
+    "journal": "Br J Anaesth",
+    "date": "2024 Dec",
+    "authors": "Tangel VE, Hoeks SE, et al."
+  },
+  {
+    "q": "R4 TRIPOD / 报告规范与校准",
+    "pmid": "38626948",
+    "doi": "10.1136/bmj-2023-078378",
+    "title": "TRIPOD+AI statement: updated guidance for reporting clinical prediction models that use regression or machine learning methods",
+    "journal": "BMJ",
+    "date": "2024 Apr 16",
+    "authors": "Collins GS, Moons KGM, et al."
+  },
+  {
+    "q": "R4 TRIPOD / 报告规范与校准",
+    "pmid": "34244270",
+    "doi": "10.1136/bmjopen-2020-048008",
+    "title": "Protocol for development of a reporting guideline (TRIPOD-AI) and risk of bias tool (PROBAST-AI) for diagnostic and prognostic prediction model studies based on artificial intelligence",
+    "journal": "BMJ Open",
+    "date": "2021 Jul 9",
+    "authors": "Collins GS, Dhiman P, et al."
+  },
+  {
+    "q": "R4 TRIPOD / 报告规范与校准",
+    "pmid": "41320158",
+    "doi": "10.1016/j.ajogmf.2025.101862",
+    "title": "Assessing adherence to TRIPOD+AI guidelines in machine learning models for predicting small for gestational age and fetal growth restriction: a systematic review",
+    "journal": "Am J Obstet Gynecol MFM",
+    "date": "2026 Feb",
+    "authors": "Zamagni G, Fregona C, et al."
+  },
+  {
+    "q": "R4 TRIPOD / 报告规范与校准",
+    "pmid": "40318314",
+    "doi": "10.1016/j.ijnurstu.2025.105094",
+    "title": "Risk prediction model for chemotherapy-induced nausea and vomiting in cancer patients: a systematic review",
+    "journal": "Int J Nurs Stud",
+    "date": "2025 Aug",
+    "authors": "Wang Y, Zheng R, et al."
+  },
+  {
+    "q": "R4 TRIPOD / 报告规范与校准",
+    "pmid": "41448505",
+    "doi": "10.1016/j.jclinepi.2025.112118",
+    "title": "Adherence to TRIPOD+AI guideline: an updated reporting assessment tool",
+    "journal": "J Clin Epidemiol",
+    "date": "2026 Mar",
+    "authors": "de Kanter E, Kaul T, et al."
+  },
+  {
+    "q": "R4 TRIPOD / 报告规范与校准",
+    "pmid": "38438694",
+    "doi": "10.1007/s10278-024-01058-1",
+    "title": "Diagnostic Performance of Artificial Intelligence in Detection of Hepatocellular Carcinoma: A Meta-analysis",
+    "journal": "J Imaging Inform Med",
+    "date": "2024 Aug",
+    "authors": "Salehi MA, Harandi H, et al."
+  },
+  {
+    "q": "R4 TRIPOD / 报告规范与校准",
+    "pmid": "37137496",
+    "doi": "10.1136/bmj-2022-073538",
+    "title": "Transparent reporting of multivariable prediction models for individual prognosis or diagnosis: checklist for systematic reviews and meta-analyses (TRIPOD-SRMA)",
+    "journal": "BMJ",
+    "date": "2023 May 3",
+    "authors": "Snell KIE, Levis B, et al."
+  },
+  {
+    "q": "R4 TRIPOD / 报告规范与校准",
+    "pmid": "35977533",
+    "doi": "10.1159/000525727",
+    "title": "Inpatient Fall Prediction Models: A Scoping Review",
+    "journal": "Gerontology",
+    "date": "2023",
+    "authors": "Parsons R, Blythe RD, et al."
+  },
+  {
+    "q": "R4 TRIPOD / 报告规范与校准",
+    "pmid": "38783054",
+    "doi": "10.1038/s41380-024-02606-5",
+    "title": "Individualized prediction models in ADHD: a systematic review and meta-regression",
+    "journal": "Mol Psychiatry",
+    "date": "2024 Dec",
+    "authors": "Salazar de Pablo G, Iniesta R, et al."
+  },
+  {
+    "q": "R4 TRIPOD / 报告规范与校准",
+    "pmid": "41268028",
+    "doi": "10.7759/cureus.97176",
+    "title": "Effect of TRIPOD+AI Guidelines on the Reporting Quality of Artificial Intelligence Prediction Models in Orthopaedic Surgery: An 18-Month Bibliometric Study",
+    "journal": "Cureus",
+    "date": "2025 Nov",
+    "authors": "Singh S"
+  },
+  {
+    "q": "R4 TRIPOD / 报告规范与校准",
+    "pmid": "32680829",
+    "doi": "10.1016/j.euf.2020.06.024",
+    "title": "Risk Prediction Models for Kidney Cancer: A Systematic Review",
+    "journal": "Eur Urol Focus",
+    "date": "2021 Nov",
+    "authors": "Harrison H, Thompson RE, et al."
+  },
+  {
+    "q": "R4 TRIPOD / 报告规范与校准",
+    "pmid": "37386544",
+    "doi": "10.1186/s44158-022-00033-y",
+    "title": "Machine learning in perioperative medicine: a systematic review",
+    "journal": "J Anesth Analg Crit Care",
+    "date": "2022 Jan 15",
+    "authors": "Bellini V, Valente M, et al."
+  },
+  {
+    "q": "R4 TRIPOD / 报告规范与校准",
+    "pmid": "36750236",
+    "doi": "10.1136/bmj-2022-071058",
+    "title": "Transparent reporting of multivariable prediction models developed or validated using clustered data (TRIPOD-Cluster): explanation and elaboration",
+    "journal": "BMJ",
+    "date": "2023 Feb 7",
+    "authors": "Debray TPA, Collins GS, et al."
+  },
+  {
+    "q": "R4 TRIPOD / 报告规范与校准",
+    "pmid": "38226447",
+    "doi": "10.1302/2633-1462.51.BJO-2023-0095.R1",
+    "title": "Systematic review of machine-learning models in orthopaedic trauma",
+    "journal": "Bone Jt Open",
+    "date": "2024 Jan 16",
+    "authors": "Dijkstra H, van de Kuit A, et al."
+  },
+  {
+    "q": "R4 TRIPOD / 报告规范与校准",
+    "pmid": "40626581",
+    "doi": "10.1111/jocn.17855",
+    "title": "Development and Validation of a Nomogram for Predicting Oral Frailty Risk in Elderly Patients With Ischaemic Stroke",
+    "journal": "J Clin Nurs",
+    "date": "2026 Jan",
+    "authors": "Xiao W, Gu D, et al."
+  },
+  {
+    "q": "R5 可迁移性 / 通用性（临床预测模型）",
+    "pmid": "39988142",
+    "doi": "10.1016/j.jad.2025.02.063",
+    "title": "A machine-learning-derived online prediction model for depression risk in COPD patients: A retrospective cohort study from CHARLS",
+    "journal": "J Affect Disord",
+    "date": "2025 May 15",
+    "authors": "Zhao X, Wang Y, et al."
+  },
+  {
+    "q": "R5 可迁移性 / 通用性（临床预测模型）",
+    "pmid": "39810076",
+    "doi": "10.1186/s12877-025-05688-0",
+    "title": "Risk prediction models for falls in hospitalized older patients: a systematic review and meta-analysis",
+    "journal": "BMC Geriatr",
+    "date": "2025 Jan 14",
+    "authors": "Mao A, Su J, et al."
+  },
+  {
+    "q": "R5 可迁移性 / 通用性（临床预测模型）",
+    "pmid": "40184783",
+    "doi": "10.1016/j.ijnurstu.2025.105068",
+    "title": "Risk prediction models for frailty in older adults: A systematic review and critical appraisal",
+    "journal": "Int J Nurs Stud",
+    "date": "2025 Jul",
+    "authors": "Kong LN, Yang L, et al."
+  },
+  {
+    "q": "R5 可迁移性 / 通用性（临床预测模型）",
+    "pmid": "38431223",
+    "doi": "10.1016/j.cgh.2024.02.014",
+    "title": "Dynamic Prediction of Advanced Colorectal Neoplasia in Inflammatory Bowel Disease",
+    "journal": "Clin Gastroenterol Hepatol",
+    "date": "2024 Aug",
+    "authors": "Wijnands AM, Penning de Vries BBL, et al."
+  },
+  {
+    "q": "R5 可迁移性 / 通用性（临床预测模型）",
+    "pmid": "39173927",
+    "doi": "10.1016/j.jad.2024.08.105",
+    "title": "Development, validation, and visualization of a novel nomogram to predict depression risk in patients with stroke",
+    "journal": "J Affect Disord",
+    "date": "2024 Nov 15",
+    "authors": "Wu C, Zhu S, et al."
+  },
+  {
+    "q": "R5 可迁移性 / 通用性（临床预测模型）",
+    "pmid": "33564405",
+    "doi": "10.1093/ckj/sfaa188",
+    "title": "External validation of prognostic models: what, why, how, when and where?",
+    "journal": "Clin Kidney J",
+    "date": "2021 Jan",
+    "authors": "Ramspek CL, Jager KJ, et al."
+  },
+  {
+    "q": "R5 可迁移性 / 通用性（临床预测模型）",
+    "pmid": "39285494",
+    "doi": "10.1186/s13098-024-01467-w",
+    "title": "Construction and evaluation of sarcopenia risk prediction model for patients with diabetes: a study based on the China health and retirement longitudinal study (CHARLS)",
+    "journal": "Diabetol Metab Syndr",
+    "date": "2024 Sep 16",
+    "authors": "Zou M, Shao Z"
+  },
+  {
+    "q": "R5 可迁移性 / 通用性（临床预测模型）",
+    "pmid": "34330146",
+    "doi": "10.1097/ALN.0000000000003871",
+    "title": "Statistical Development and Validation of Clinical Prediction Models",
+    "journal": "Anesthesiology",
+    "date": "2021 Sep 1",
+    "authors": "Staffa SJ, Zurakowski D"
+  },
+  {
+    "q": "R5 可迁移性 / 通用性（临床预测模型）",
+    "pmid": "40626581",
+    "doi": "10.1111/jocn.17855",
+    "title": "Development and Validation of a Nomogram for Predicting Oral Frailty Risk in Elderly Patients With Ischaemic Stroke",
+    "journal": "J Clin Nurs",
+    "date": "2026 Jan",
+    "authors": "Xiao W, Gu D, et al."
+  },
+  {
+    "q": "R5 可迁移性 / 通用性（临床预测模型）",
+    "pmid": "41459327",
+    "doi": "10.2147/DMSO.S570083",
+    "title": "Frailty Prediction Model for Elderly Diabetic Peripheral Neuropathy Patients",
+    "journal": "Diabetes Metab Syndr Obes",
+    "date": "2025",
+    "authors": "Xie X, Huang Y, et al."
+  },
+  {
+    "q": "R5 可迁移性 / 通用性（临床预测模型）",
+    "pmid": "40990679",
+    "doi": "10.1097/JS9.0000000000003562",
+    "title": "Development and validation of an explainable machine learning model for predicting postoperative venous thromboembolism in esophageal cancer",
+    "journal": "Int J Surg",
+    "date": "2026 Jan 1",
+    "authors": "Hu Z, Xu Q, et al."
+  },
+  {
+    "q": "R5 可迁移性 / 通用性（临床预测模型）",
+    "pmid": "35633976",
+    "doi": "10.3389/fped.2022.856159",
+    "title": "Prediction Models for Bronchopulmonary Dysplasia in Preterm Infants: A Systematic Review",
+    "journal": "Front Pediatr",
+    "date": "2022",
+    "authors": "Peng HB, Zhan YL, et al."
+  },
+  {
+    "q": "R5 可迁移性 / 通用性（临床预测模型）",
+    "pmid": "39035162",
+    "doi": "10.7717/peerj.17770",
+    "title": "Performance of risk prediction models for diabetic foot ulcer: a meta-analysis",
+    "journal": "PeerJ",
+    "date": "2024",
+    "authors": "Guo P, Tu Y, et al."
+  },
+  {
+    "q": "R5 可迁移性 / 通用性（临床预测模型）",
+    "pmid": "40756615",
+    "doi": "10.2147/JMDH.S538891",
+    "title": "Risk Prediction Models for Perioperative Hypothermia: A Systematic Review",
+    "journal": "J Multidiscip Healthc",
+    "date": "2025",
+    "authors": "Liu J, Liu F, et al."
+  },
+  {
+    "q": "R5 可迁移性 / 通用性（临床预测模型）",
+    "pmid": "38531493",
+    "doi": "10.1016/j.jhep.2024.03.030",
+    "title": "Developing and validating clinical prediction models in hepatology - An overview for clinicians",
+    "journal": "J Hepatol",
+    "date": "2024 Jul",
+    "authors": "Strandberg R, Jepsen P, et al."
+  },
+  {
+    "q": "R6 ICU 预测模型的院际表现差异",
+    "pmid": "40952748",
+    "doi": "10.1001/jama.2025.14194",
+    "title": "Individualized Prediction of Platelet Transfusion Outcomes in Preterm Infants With Severe Thrombocytopenia",
+    "journal": "JAMA",
+    "date": "2025 Oct 14",
+    "authors": "van der Staaij H, Prosepe I, et al."
+  },
+  {
+    "q": "R6 ICU 预测模型的院际表现差异",
+    "pmid": "41826985",
+    "doi": "10.1186/s13054-026-05928-8",
+    "title": "Machine learning in ARDS: an intensivist's guide to artificial intelligence applications",
+    "journal": "Crit Care",
+    "date": "2026 Mar 13",
+    "authors": "Lombardi R, Chaturvedi M, et al."
+  },
+  {
+    "q": "R6 ICU 预测模型的院际表现差异",
+    "pmid": "41359505",
+    "doi": "10.3791/69338",
+    "title": "Lymphocyte Trajectory Modeling for Mortality Risk Prediction in Pneumonia-Associated ARDS",
+    "journal": "J Vis Exp",
+    "date": "2025 Nov 21",
+    "authors": "Xu L, Li D, et al."
+  },
+  {
+    "q": "R6 ICU 预测模型的院际表现差异",
+    "pmid": "41487074",
+    "doi": "10.1111/1471-0528.70124",
+    "title": "Prediction Models for Severe Maternal Outcomes in Non-ICU Settings: Systematic Review",
+    "journal": "BJOG",
+    "date": "2026 Apr",
+    "authors": "Luo Z, Li J, et al."
+  },
+  {
+    "q": "R6 ICU 预测模型的院际表现差异",
+    "pmid": "37470277",
+    "doi": "10.1111/apt.17650",
+    "title": "Early serum ammonia variation in critically ill patients with cirrhosis: A multicentre cohort study",
+    "journal": "Aliment Pharmacol Ther",
+    "date": "2023 Oct",
+    "authors": "Cardoso FS, Kim M, et al."
+  },
+  {
+    "q": "R6 ICU 预测模型的院际表现差异",
+    "pmid": "41446276",
+    "doi": "10.3389/fcimb.2025.1676502",
+    "title": "Identification of subtypes and construction of a predictive model for novel subtypes in severe community-acquired pneumonia based on clinical metagenomics: a multicenter, retrospective cohort study",
+    "journal": "Front Cell Infect Microbiol",
+    "date": "2025",
+    "authors": "Chen S, Jiang Y, et al."
+  },
+  {
+    "q": "R6 ICU 预测模型的院际表现差异",
+    "pmid": "42369138",
+    "doi": "10.3389/fmed.2026.1852841",
+    "title": "Dynamic prognostic prediction in sepsis using longitudinal blood gas trajectories: development and external validation",
+    "journal": "Front Med (Lausanne)",
+    "date": "2026",
+    "authors": "Zong LR, Bi QY, et al."
+  },
+  {
+    "q": "R6 ICU 预测模型的院际表现差异",
+    "pmid": "37584111",
+    "doi": "10.1093/jpids/piad054",
+    "title": "Validation of Childhood Pneumonia Prognostic Models for Use in Emergency Care Settings",
+    "journal": "J Pediatric Infect Dis Soc",
+    "date": "2023 Aug 31",
+    "authors": "Antoon JW, Nian H, et al."
+  },
+  {
+    "q": "R6 ICU 预测模型的院际表现差异",
+    "pmid": "34823021",
+    "doi": "10.1016/j.jclinepi.2021.11.028",
+    "title": "Mortality prediction in intensive care units including premorbid functional status improved performance and internal validity",
+    "journal": "J Clin Epidemiol",
+    "date": "2022 Feb",
+    "authors": "Moser A, Reinikainen M, et al."
+  },
+  {
+    "q": "R6 ICU 预测模型的院际表现差异",
+    "pmid": "37288128",
+    "doi": "10.1016/j.shj.2022.100116",
+    "title": "Comparison of Risk Models in the Prediction of 30-Day Mortality in Acute Myocardial Infarction-Associated Cardiogenic Shock",
+    "journal": "Struct Heart",
+    "date": "2022 Nov",
+    "authors": "Ranard LS, Guber K, et al."
+  },
+  {
+    "q": "R6 ICU 预测模型的院际表现差异",
+    "pmid": "42727177",
+    "doi": "10.1016/j.injury.2026.113701",
+    "title": "Prognostic value of baseline RDW-CV in critically ill patients with pelvic fractures: A retrospective cohort study",
+    "journal": "Injury",
+    "date": "2026 Oct",
+    "authors": "Huang H, Gu L, et al."
+  },
+  {
+    "q": "R6 ICU 预测模型的院际表现差异",
+    "pmid": "41339857",
+    "doi": "10.1186/s12903-025-07461-6",
+    "title": "Postoperative delirium in patients with free flap reconstruction after head and neck tumor surgery: influencing factors for severity and onset time, and a prediction model",
+    "journal": "BMC Oral Health",
+    "date": "2025 Dec 4",
+    "authors": "Liu ZX, Yu ZL, et al."
+  },
+  {
+    "q": "R6 ICU 预测模型的院际表现差异",
+    "pmid": "41229934",
+    "doi": "10.1177/20552076251395708",
+    "title": "Lactate dehydrogenase-to-albumin ratio as a predictor of 28-day mortality in critically Ill patients with gastrointestinal cancers: Insights from machine learning and the Medical Information Mart for Intensive Care IV database",
+    "journal": "Digit Health",
+    "date": "2025 Jan-Dec",
+    "authors": "Chen X, Cai Y, et al."
+  },
+  {
+    "q": "R6 ICU 预测模型的院际表现差异",
+    "pmid": "38344194",
+    "doi": "10.2147/TCRM.S434397",
+    "title": "LASSO-Based Identification of Risk Factors and Development of a Prediction Model for Sepsis Patients",
+    "journal": "Ther Clin Risk Manag",
+    "date": "2024",
+    "authors": "Hong C, Xiong Y, et al."
+  },
+  {
+    "q": "R6 ICU 预测模型的院际表现差异",
+    "pmid": "42506073",
+    "doi": "10.3390/jpm16070346",
+    "title": "Artificial Intelligence Models for Mortality and Outcome Prediction in Intensive Care Unit Sepsis: A Systematic Review",
+    "journal": "J Pers Med",
+    "date": "2026 Jun 25",
+    "authors": "Mazza G, Neri G, et al."
+  },
+  {
+    "q": "R7 随机效应 meta 分析中的收缩与小中心",
+    "pmid": "36319967",
+    "doi": "10.1186/s12882-022-02976-4",
+    "title": "A nomogram to predict hyperkalemia in patients with hemodialysis: a retrospective cohort study",
+    "journal": "BMC Nephrol",
+    "date": "2022 Nov 1",
+    "authors": "Mei Z, Chen J, et al."
+  },
+  {
+    "q": "R7 随机效应 meta 分析中的收缩与小中心",
+    "pmid": "38504943",
+    "doi": "10.37737/ace.22010",
+    "title": "Introduction to Clinical Prediction Models",
+    "journal": "Ann Clin Epidemiol",
+    "date": "2022",
+    "authors": "Iwagami M, Matsui H"
+  },
+  {
+    "q": "R7 随机效应 meta 分析中的收缩与小中心",
+    "pmid": "39155811",
+    "doi": "10.1080/07853890.2024.2388709",
+    "title": "Construction and evaluation of a mortality prediction model for patients with acute kidney injury undergoing continuous renal replacement therapy based on machine learning algorithms",
+    "journal": "Ann Med",
+    "date": "2024 Dec",
+    "authors": "Wang Y, Sun X, et al."
+  },
+  {
+    "q": "R7 随机效应 meta 分析中的收缩与小中心",
+    "pmid": "40826885",
+    "doi": "10.1080/0886022X.2025.2542523",
+    "title": "Early prediction of sepsis-induced cardiorenal syndrome: superiority of myoglobin over troponin I",
+    "journal": "Ren Fail",
+    "date": "2025 Dec",
+    "authors": "Liu Y, Zheng C, et al."
+  },
+  {
+    "q": "R7 随机效应 meta 分析中的收缩与小中心",
+    "pmid": "40604631",
+    "doi": "10.1186/s12884-025-07824-5",
+    "title": "Noninvasive prediction of fetal growth restriction using maternal plasma cell-free RNA: a case-control study",
+    "journal": "BMC Pregnancy Childbirth",
+    "date": "2025 Jul 2",
+    "authors": "Huang Y, Wang R, et al."
+  },
+  {
+    "q": "R7 随机效应 meta 分析中的收缩与小中心",
+    "pmid": "38903917",
+    "doi": "10.7150/ijms.92837",
+    "title": "Validation of the Saga Fall Injury Risk Model",
+    "journal": "Int J Med Sci",
+    "date": "2024",
+    "authors": "Hirata R, Katsuki NE, et al."
+  },
+  {
+    "q": "R7 随机效应 meta 分析中的收缩与小中心",
+    "pmid": "41219742",
+    "doi": "10.1186/s12969-025-01148-6",
+    "title": "Machine learning for screening and predicting the risk of developing uveitis in juvenile idiopathic arthritis",
+    "journal": "Pediatr Rheumatol Online J",
+    "date": "2025 Nov 11",
+    "authors": "Li L, Zhang J, et al."
+  },
+  {
+    "q": "R7 随机效应 meta 分析中的收缩与小中心",
+    "pmid": "40903675",
+    "doi": "10.1007/s00586-025-09330-w",
+    "title": "Development and internal validation of a clinical-radiological nomogram for osteoporosis screening: A cohort retrospective study",
+    "journal": "Eur Spine J",
+    "date": "2025 Nov",
+    "authors": "Yi M, Lin W, et al."
+  },
+  {
+    "q": "R7 随机效应 meta 分析中的收缩与小中心",
+    "pmid": "41448796",
+    "doi": "10.1136/bmjresp-2024-002556",
+    "title": "Development of a clinical prediction model for falls in individuals with COPD",
+    "journal": "BMJ Open Respir Res",
+    "date": "2025 Dec 25",
+    "authors": "Nguyen KT, Brooks D, et al."
+  },
+  {
+    "q": "R7 随机效应 meta 分析中的收缩与小中心",
+    "pmid": "38407842",
+    "doi": "10.1097/MEG.0000000000002732",
+    "title": "Prediction and evaluation of a nomogram model for recurrent acute pancreatitis",
+    "journal": "Eur J Gastroenterol Hepatol",
+    "date": "2024 May 1",
+    "authors": "Chen Y, Huang S, et al."
+  },
+  {
+    "q": "R7 随机效应 meta 分析中的收缩与小中心",
+    "pmid": "38282659",
+    "doi": "10.1155/2024/8857453",
+    "title": "Explainable Machine Learning-Based Prediction Model for Diabetic Nephropathy",
+    "journal": "J Diabetes Res",
+    "date": "2024",
+    "authors": "Yin JM, Li Y, et al."
+  },
+  {
+    "q": "R7 随机效应 meta 分析中的收缩与小中心",
+    "pmid": "35953457",
+    "doi": "10.1097/SHK.0000000000001962",
+    "title": "A NOMOGRAM FOR PREDICTING PATIENTS WITH SEVERE HEATSTROKE",
+    "journal": "Shock",
+    "date": "2022 Aug 1",
+    "authors": "Wei D, Gu T, et al."
+  },
+  {
+    "q": "R7 随机效应 meta 分析中的收缩与小中心",
+    "pmid": "36549037",
+    "doi": "10.1016/j.jss.2022.11.021",
+    "title": "A Clinical Prediction Model for Postoperative Pneumonia After Lung Cancer Surgery",
+    "journal": "J Surg Res",
+    "date": "2023 Apr",
+    "authors": "Zhou J, Wu D, et al."
+  },
+  {
+    "q": "R7 随机效应 meta 分析中的收缩与小中心",
+    "pmid": "34867250",
+    "doi": "10.3389/fncom.2021.739265",
+    "title": "Mechanical Learning for Prediction of Sepsis-Associated Encephalopathy",
+    "journal": "Front Comput Neurosci",
+    "date": "2021",
+    "authors": "Zhao L, Wang Y, et al."
+  },
+  {
+    "q": "R7 随机效应 meta 分析中的收缩与小中心",
+    "pmid": "41225425",
+    "doi": "10.1186/s12879-025-12018-7",
+    "title": "Prediction models for encephalitis and in-hospital death associated with severe fever with thrombocytopenia syndrome",
+    "journal": "BMC Infect Dis",
+    "date": "2025 Nov 12",
+    "authors": "Wu X, Tan J, et al."
+  },
+  {
+    "q": "R8 时间验证与模型衰减",
+    "pmid": "37778742",
+    "doi": "10.1111/cas.15983",
+    "title": "Gut microbiome as a biomarker for predicting early recurrence of HBV-related hepatocellular carcinoma",
+    "journal": "Cancer Sci",
+    "date": "2023 Dec",
+    "authors": "Zheng C, Lu F, et al."
+  },
+  {
+    "q": "R8 时间验证与模型衰减",
+    "pmid": "37429173",
+    "doi": "10.1016/j.psychres.2023.115328",
+    "title": "Outcome prediction of electroconvulsive therapy for depression",
+    "journal": "Psychiatry Res",
+    "date": "2023 Aug",
+    "authors": "van der Does Y, Turner RJ, et al."
+  },
+  {
+    "q": "R8 时间验证与模型衰减",
+    "pmid": "38223716",
+    "doi": "10.1016/j.heliyon.2023.e23781",
+    "title": "What's next? Forecasting scientific research trends",
+    "journal": "Heliyon",
+    "date": "2024 Jan 15",
+    "authors": "Ofer D, Kaufman H, et al."
+  },
+  {
+    "q": "R8 时间验证与模型衰减",
+    "pmid": "41566002",
+    "doi": "10.1038/s41746-026-02370-6",
+    "title": "A Causal and interpretable machine learning framework for postcranioplasty risk prediction and surgical decision support",
+    "journal": "NPJ Digit Med",
+    "date": "2026 Jan 21",
+    "authors": "Li W, Wang B, et al."
+  },
+  {
+    "q": "R8 时间验证与模型衰减",
+    "pmid": "40166296",
+    "doi": "10.1101/2025.03.17.643817",
+    "title": "Domain-specific embeddings uncover latent genetics knowledge",
+    "journal": "bioRxiv",
+    "date": "2025 Mar 19",
+    "authors": "Ho SS, Mills RE"
+  },
+  {
+    "q": "R8 时间验证与模型衰减",
+    "pmid": "40659721",
+    "doi": "10.1038/s41746-025-01850-5",
+    "title": "Phenotypic screening and genetic insights for predicting major vascular-related diseases using retinal imaging",
+    "journal": "NPJ Digit Med",
+    "date": "2025 Jul 14",
+    "authors": "Lu M, Mao Y, et al."
+  },
+  {
+    "q": "R8 时间验证与模型衰减",
+    "pmid": "36204043",
+    "doi": "10.1038/s43856-022-00180-x",
+    "title": "Interpretable machine learning prediction of all-cause mortality",
+    "journal": "Commun Med (Lond)",
+    "date": "2022",
+    "authors": "Qiu W, Chen H, et al."
+  },
+  {
+    "q": "R8 时间验证与模型衰减",
+    "pmid": "41243616",
+    "doi": "10.1080/07853890.2025.2582245",
+    "title": "Machine learning-based preliminary screening tool for clinical pregnancy prediction: towards management of IVF/ICSI stages",
+    "journal": "Ann Med",
+    "date": "2025 Dec",
+    "authors": "Huang S, Tuerganbayi K, et al."
+  },
+  {
+    "q": "R8 时间验证与模型衰减",
+    "pmid": "34921938",
+    "doi": "10.1016/j.envpol.2021.118658",
+    "title": "ALS risk factors: Industrial airborne chemical releases",
+    "journal": "Environ Pollut",
+    "date": "2022 Feb 15",
+    "authors": "Andrew A, Zhou J, et al."
+  },
+  {
+    "q": "R8 时间验证与模型衰减",
+    "pmid": "41061007",
+    "doi": "10.1371/journal.pone.0333357",
+    "title": "Construction and application of machine learning models for predicting intradialytic hypotension",
+    "journal": "PLoS One",
+    "date": "2025",
+    "authors": "Wang P, Xu N, et al."
+  },
+  {
+    "q": "R8 时间验证与模型衰减",
+    "pmid": "35564684",
+    "doi": "10.3390/ijerph19095289",
+    "title": "Temporal Validation of Chiang Mai University Intussusception Failed Reduction Score (CMUI)",
+    "journal": "Int J Environ Res Public Health",
+    "date": "2022 Apr 26",
+    "authors": "Khorana J, Sayuen C, et al."
+  },
+  {
+    "q": "R8 时间验证与模型衰减",
+    "pmid": "41190213",
+    "doi": "10.3389/ti.2025.15061",
+    "title": "Early Post-Transplant Urinary EGF as a Potential Predictor of Long-Term Allograft Loss in Kidney Transplant Recipients",
+    "journal": "Transpl Int",
+    "date": "2025",
+    "authors": "Créon A, Morin L, et al."
+  },
+  {
+    "q": "R8 时间验证与模型衰减",
+    "pmid": "39451430",
+    "doi": "10.3390/healthcare12202015",
+    "title": "Development and Validation of the Communities Geriatric Mild Cognitive Impairment Risk Calculator (CGMCI-Risk)",
+    "journal": "Healthcare (Basel)",
+    "date": "2024 Oct 10",
+    "authors": "Chen J, Fang Q, et al."
+  },
+  {
+    "q": "R8 时间验证与模型衰减",
+    "pmid": "34673827",
+    "doi": "10.1371/journal.pone.0258993",
+    "title": "A model for predicting court decisions on child custody",
+    "journal": "PLoS One",
+    "date": "2021",
+    "authors": "Muñoz Soro JF, Serrano-Cinca C"
+  },
+  {
+    "q": "R8 时间验证与模型衰减",
+    "pmid": "38960729",
+    "doi": "10.1093/jamia/ocae170",
+    "title": "Fair prediction of 2-year stroke risk in patients with atrial fibrillation",
+    "journal": "J Am Med Inform Assoc",
+    "date": "2024 Dec 1",
+    "authors": "Gao J, Mar P, et al."
+  }
+]

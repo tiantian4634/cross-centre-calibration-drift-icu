@@ -1,0 +1,650 @@
+[
+  {
+    "q": "Q1 校准与外部验证（重症严重度）",
+    "pmid": "41029382",
+    "doi": "10.1186/s12933-025-02911-5",
+    "title": "An ensemble machine learning-based risk stratification tool for 30-day mortality prediction in critically ill cardiovascular patients",
+    "journal": "Cardiovasc Diabetol",
+    "date": "2025 Sep 30",
+    "authors": "Lei M, Liu X, et al."
+  },
+  {
+    "q": "Q1 校准与外部验证（重症严重度）",
+    "pmid": "41267877",
+    "doi": "10.3389/fmed.2025.1681621",
+    "title": "Early prediction of sepsis-induced coagulopathy in the ICU using interpretable machine learning: a multi-center retrospective cohort study",
+    "journal": "Front Med (Lausanne)",
+    "date": "2025",
+    "authors": "Sha T, Jiang H, et al."
+  },
+  {
+    "q": "Q1 校准与外部验证（重症严重度）",
+    "pmid": "41050322",
+    "doi": "10.2147/IJGM.S542796",
+    "title": "Development and Validation of a Nomogram for Predicting Sepsis-Associated Acute Respiratory Distress Syndrome",
+    "journal": "Int J Gen Med",
+    "date": "2025",
+    "authors": "Yan C, Cai Y, et al."
+  },
+  {
+    "q": "Q1 校准与外部验证（重症严重度）",
+    "pmid": "41477971",
+    "doi": "10.1016/j.jcrc.2025.155407",
+    "title": "Derivation and validation of a prediction rule for sedative-associated delirium during acute respiratory failure requiring mechanical ventilation",
+    "journal": "J Crit Care",
+    "date": "2026 Apr",
+    "authors": "Prendergast NT, Onyemekwu CA, et al."
+  },
+  {
+    "q": "Q1 校准与外部验证（重症严重度）",
+    "pmid": "41918111",
+    "doi": "10.1186/s12967-026-08067-4",
+    "title": "Cross-algorithm machine learning and consensus features for early disseminated intravascular coagulation risk prediction in sepsis-induced coagulopathy",
+    "journal": "J Transl Med",
+    "date": "2026 Mar 31",
+    "authors": "Chen F, Mei X, et al."
+  },
+  {
+    "q": "Q1 校准与外部验证（重症严重度）",
+    "pmid": "40259248",
+    "doi": "10.1186/s12879-025-10972-w",
+    "title": "Association analysis of sepsis progression to sepsis-induced coagulopathy: a study based on the MIMIC-IV database",
+    "journal": "BMC Infect Dis",
+    "date": "2025 Apr 21",
+    "authors": "Yang JY, Li LL, et al."
+  },
+  {
+    "q": "Q1 校准与外部验证（重症严重度）",
+    "pmid": "41325650",
+    "doi": "10.1016/j.clnu.2025.11.006",
+    "title": "Development and validation of a risk prediction model for refeeding syndrome in adults with critical illness: A prospective observational study",
+    "journal": "Clin Nutr",
+    "date": "2025 Dec",
+    "authors": "Jing C, Hou L, et al."
+  },
+  {
+    "q": "Q1 校准与外部验证（重症严重度）",
+    "pmid": "41114030",
+    "doi": "10.3389/fmed.2025.1653680",
+    "title": "A scoping review of models for predicting the risk of postherpetic neuralgia",
+    "journal": "Front Med (Lausanne)",
+    "date": "2025",
+    "authors": "Zhang L, Qu N, et al."
+  },
+  {
+    "q": "Q1 校准与外部验证（重症严重度）",
+    "pmid": "36726191",
+    "doi": "10.1097/TA.0000000000003904",
+    "title": "Prospective multicenter external validation of postoperative mortality prediction tools in patients undergoing emergency laparotomy",
+    "journal": "J Trauma Acute Care Surg",
+    "date": "2023 Jun 1",
+    "authors": "Kokkinakis S, Kritsotakis EI, et al."
+  },
+  {
+    "q": "Q1 校准与外部验证（重症严重度）",
+    "pmid": "38996962",
+    "doi": "10.1016/j.wneu.2024.04.006",
+    "title": "A Nomogram to Predict Intracranial Hypertension in Moderate Traumatic Brain Injury Patients",
+    "journal": "World Neurosurg",
+    "date": "2024 Nov",
+    "authors": "Li Z, Xu F, et al."
+  },
+  {
+    "q": "Q1 校准与外部验证（重症严重度）",
+    "pmid": "39732999",
+    "doi": "10.1038/s41598-024-83139-3",
+    "title": "Development and validation of a mortality predictive model for ICU patients with primary pulmonary hypertension",
+    "journal": "Sci Rep",
+    "date": "2024 Dec 28",
+    "authors": "Zhang CY, Hu YS, et al."
+  },
+  {
+    "q": "Q1 校准与外部验证（重症严重度）",
+    "pmid": "40905980",
+    "doi": "10.1097/TA.0000000000004782",
+    "title": "External validation of the revised lethal triad criteria for appropriate strategic decision making",
+    "journal": "J Trauma Acute Care Surg",
+    "date": "2026 Jan 1",
+    "authors": "Suzuki K, Endo A, et al."
+  },
+  {
+    "q": "Q2 预测模型的重校准与所需样本量",
+    "pmid": "37659584",
+    "doi": "10.1016/j.jclinepi.2023.08.020",
+    "title": "Temporal validation and updating of a prediction model for the diagnosis of gestational diabetes mellitus",
+    "journal": "J Clin Epidemiol",
+    "date": "2023 Dec",
+    "authors": "Cooray SD, De Silva K, et al."
+  },
+  {
+    "q": "Q2 预测模型的重校准与所需样本量",
+    "pmid": "36510134",
+    "doi": "10.1186/s12874-022-01801-8",
+    "title": "Methodological guidance for the evaluation and updating of clinical prediction models: a systematic review",
+    "journal": "BMC Med Res Methodol",
+    "date": "2022 Dec 12",
+    "authors": "Binuya MAE, Engelhardt EG, et al."
+  },
+  {
+    "q": "Q2 预测模型的重校准与所需样本量",
+    "pmid": "33768582",
+    "doi": "10.1002/sim.8959",
+    "title": "Individual participant data meta-analysis for external validation, recalibration, and updating of a flexible parametric prognostic model",
+    "journal": "Stat Med",
+    "date": "2021 Jun 15",
+    "authors": "Ensor J, Snell KIE, et al."
+  },
+  {
+    "q": "Q2 预测模型的重校准与所需样本量",
+    "pmid": "36745113",
+    "doi": "10.1111/ppe.12948",
+    "title": "Recalibrating prognostic models to improve predictions of in-hospital child mortality in resource-limited settings",
+    "journal": "Paediatr Perinat Epidemiol",
+    "date": "2023 May",
+    "authors": "Ogero M, Ndiritu J, et al."
+  },
+  {
+    "q": "Q2 预测模型的重校准与所需样本量",
+    "pmid": "38082429",
+    "doi": "10.1186/s41512-023-00163-z",
+    "title": "Dynamic updating of clinical survival prediction models in a changing environment",
+    "journal": "Diagn Progn Res",
+    "date": "2023 Dec 12",
+    "authors": "Tanner KT, Keogh RH, et al."
+  },
+  {
+    "q": "Q2 预测模型的重校准与所需样本量",
+    "pmid": "37597113",
+    "doi": "10.1007/s11357-023-00871-w",
+    "title": "Insights into ageing rates comparison across tissues from recalibrating cerebellum DNA methylation clock",
+    "journal": "Geroscience",
+    "date": "2024 Feb",
+    "authors": "Wang Y, Grant OA, et al."
+  },
+  {
+    "q": "Q2 预测模型的重校准与所需样本量",
+    "pmid": "34865652",
+    "doi": "10.1186/s41512-021-00110-w",
+    "title": "Comparison of dynamic updating strategies for clinical prediction models",
+    "journal": "Diagn Progn Res",
+    "date": "2021 Dec 6",
+    "authors": "Schnellinger EM, Yang W, et al."
+  },
+  {
+    "q": "Q2 预测模型的重校准与所需样本量",
+    "pmid": "42591955",
+    "doi": "10.21037/gs-2026-0217",
+    "title": "Clinical transportability, calibration drift, and local updating of a B-mode ultrasound radiomics-clinical prediction model for occult high-volume central lymph node metastasis in cN0 papillary thyroid carcinoma: development, temporal validation, and external validation",
+    "journal": "Gland Surg",
+    "date": "2026 Jul 31",
+    "authors": "Zhang Z, Lin C, et al."
+  },
+  {
+    "q": "Q2 预测模型的重校准与所需样本量",
+    "pmid": "39067542",
+    "doi": "10.1016/j.jclinepi.2024.111481",
+    "title": "How to develop, validate, and update clinical prediction models using multinomial logistic regression",
+    "journal": "J Clin Epidemiol",
+    "date": "2024 Oct",
+    "authors": "Gehringer CK, Martin GP, et al."
+  },
+  {
+    "q": "Q2 预测模型的重校准与所需样本量",
+    "pmid": "41935688",
+    "doi": "10.1016/j.ajogmf.2026.101959",
+    "title": "Validation of a prediction model for postpartum hospital use in geographic contexts with greater rural representation",
+    "journal": "Am J Obstet Gynecol MFM",
+    "date": "2026 Jun",
+    "authors": "Glazer KB, Lindley S, et al."
+  },
+  {
+    "q": "Q2 预测模型的重校准与所需样本量",
+    "pmid": "40158694",
+    "doi": "10.1016/j.bpsc.2025.03.006",
+    "title": "Dynamic Updating of Psychosis Prediction Models in Individuals at Ultra-High Risk of Psychosis",
+    "journal": "Biol Psychiatry Cogn Neurosci Neuroimaging",
+    "date": "2025 Jul",
+    "authors": "Hartmann S, Dwyer D, et al."
+  },
+  {
+    "q": "Q2 预测模型的重校准与所需样本量",
+    "pmid": "41500085",
+    "doi": "10.1016/j.lungcan.2025.108884",
+    "title": "External evaluation of the Manchester score in a contemporary SCLC cohort",
+    "journal": "Lung Cancer",
+    "date": "2026 Feb",
+    "authors": "Cunniffe C, Sperrin M, et al."
+  },
+  {
+    "q": "Q3 模型校准（TRIPOD 关注的性能维度）",
+    "pmid": "40318314",
+    "doi": "10.1016/j.ijnurstu.2025.105094",
+    "title": "Risk prediction model for chemotherapy-induced nausea and vomiting in cancer patients: a systematic review",
+    "journal": "Int J Nurs Stud",
+    "date": "2025 Aug",
+    "authors": "Wang Y, Zheng R, et al."
+  },
+  {
+    "q": "Q3 模型校准（TRIPOD 关注的性能维度）",
+    "pmid": "40987514",
+    "doi": "10.1136/bmj-2025-084062",
+    "title": "Risk prediction models for cancer therapy related cardiac dysfunction in patients with cancer and cancer survivors: systematic review and meta-analysis",
+    "journal": "BMJ",
+    "date": "2025 Sep 23",
+    "authors": "Gomes C, Geels J, et al."
+  },
+  {
+    "q": "Q3 模型校准（TRIPOD 关注的性能维度）",
+    "pmid": "34931303",
+    "doi": "10.1002/14651858.CD013139.pub2",
+    "title": "The comparative and added prognostic value of biomarkers to the Revised Cardiac Risk Index for preoperative prediction of major adverse cardiac events and all-cause mortality in patients who undergo noncardiac surgery",
+    "journal": "Cochrane Database Syst Rev",
+    "date": "2021 Dec 21",
+    "authors": "Vernooij LM, van Klei WA, et al."
+  },
+  {
+    "q": "Q3 模型校准（TRIPOD 关注的性能维度）",
+    "pmid": "39022345",
+    "doi": "10.3389/fendo.2024.1407348",
+    "title": "Risk prediction models for diabetic nephropathy among type 2 diabetes patients in China: a systematic review and meta-analysis",
+    "journal": "Front Endocrinol (Lausanne)",
+    "date": "2024",
+    "authors": "Xu W, Zhou Y, et al."
+  },
+  {
+    "q": "Q3 模型校准（TRIPOD 关注的性能维度）",
+    "pmid": "40626581",
+    "doi": "10.1111/jocn.17855",
+    "title": "Development and Validation of a Nomogram for Predicting Oral Frailty Risk in Elderly Patients With Ischaemic Stroke",
+    "journal": "J Clin Nurs",
+    "date": "2026 Jan",
+    "authors": "Xiao W, Gu D, et al."
+  },
+  {
+    "q": "Q3 模型校准（TRIPOD 关注的性能维度）",
+    "pmid": "35067242",
+    "doi": "10.1192/bjp.2021.219",
+    "title": "Prediction models in first-episode psychosis: systematic review and critical appraisal",
+    "journal": "Br J Psychiatry",
+    "date": "2022 Apr",
+    "authors": "Lee R, Leighton SP, et al."
+  },
+  {
+    "q": "Q3 模型校准（TRIPOD 关注的性能维度）",
+    "pmid": "35633976",
+    "doi": "10.3389/fped.2022.856159",
+    "title": "Prediction Models for Bronchopulmonary Dysplasia in Preterm Infants: A Systematic Review",
+    "journal": "Front Pediatr",
+    "date": "2022",
+    "authors": "Peng HB, Zhan YL, et al."
+  },
+  {
+    "q": "Q3 模型校准（TRIPOD 关注的性能维度）",
+    "pmid": "40536772",
+    "doi": "10.1056/EVIDoa2500115",
+    "title": "An Individualized Prediction Model for Early-Stage Classic Hodgkin's Lymphoma",
+    "journal": "NEJM Evid",
+    "date": "2025 Sep",
+    "authors": "Rodday AM, Evens AM, et al."
+  },
+  {
+    "q": "Q3 模型校准（TRIPOD 关注的性能维度）",
+    "pmid": "38143444",
+    "doi": "10.3389/fmed.2023.1284495",
+    "title": "Prediction model of adnexal masses with complex ultrasound morphology",
+    "journal": "Front Med (Lausanne)",
+    "date": "2023",
+    "authors": "Wu Y, Miao K, et al."
+  },
+  {
+    "q": "Q3 模型校准（TRIPOD 关注的性能维度）",
+    "pmid": "39283262",
+    "doi": "10.1111/anae.16429",
+    "title": "Prognostic clinical prediction models for acute post-surgical pain in adults: a systematic review",
+    "journal": "Anaesthesia",
+    "date": "2024 Dec",
+    "authors": "Papadomanolakis-Pakis N, Munch PV, et al."
+  },
+  {
+    "q": "Q3 模型校准（TRIPOD 关注的性能维度）",
+    "pmid": "34509878",
+    "doi": "10.1016/j.ejogrb.2021.08.013",
+    "title": "Prediction models in gynaecology: Transparent reporting needed for clinical application",
+    "journal": "Eur J Obstet Gynecol Reprod Biol",
+    "date": "2021 Oct",
+    "authors": "Gelderblom ME, Stevens KYR, et al."
+  },
+  {
+    "q": "Q3 模型校准（TRIPOD 关注的性能维度）",
+    "pmid": "34981135",
+    "doi": "10.1007/s00330-021-08429-0",
+    "title": "Quality assessment of radiomics research in cardiac CT: a systematic review",
+    "journal": "Eur Radiol",
+    "date": "2022 May",
+    "authors": "Lee S, Han K, et al."
+  },
+  {
+    "q": "Q4 跨中心/院际异质性与模型性能漂移",
+    "pmid": "40473567",
+    "doi": "10.1016/j.bja.2025.04.025",
+    "title": "Prediction models for postoperative pulmonary complications: a systematic review and meta-analysis",
+    "journal": "Br J Anaesth",
+    "date": "2025 Nov",
+    "authors": "Huang Z, Han Y, et al."
+  },
+  {
+    "q": "Q4 跨中心/院际异质性与模型性能漂移",
+    "pmid": "39252507",
+    "doi": "10.3310/DABW4814",
+    "title": "Development and validation of prediction models for fetal growth restriction and birthweight: an individual participant data meta-analysis",
+    "journal": "Health Technol Assess",
+    "date": "2024 Aug",
+    "authors": "Allotey J, Archer L, et al."
+  },
+  {
+    "q": "Q4 跨中心/院际异质性与模型性能漂移",
+    "pmid": "34931303",
+    "doi": "10.1002/14651858.CD013139.pub2",
+    "title": "The comparative and added prognostic value of biomarkers to the Revised Cardiac Risk Index for preoperative prediction of major adverse cardiac events and all-cause mortality in patients who undergo noncardiac surgery",
+    "journal": "Cochrane Database Syst Rev",
+    "date": "2021 Dec 21",
+    "authors": "Vernooij LM, van Klei WA, et al."
+  },
+  {
+    "q": "Q4 跨中心/院际异质性与模型性能漂移",
+    "pmid": "40152939",
+    "doi": "10.1681/ASN.0000000702",
+    "title": "Systematic Review and Meta-Analysis of Machine Learning Models for Acute Kidney Injury Risk Classification",
+    "journal": "J Am Soc Nephrol",
+    "date": "2025 Oct 1",
+    "authors": "Cama-Olivares A, Braun C, et al."
+  },
+  {
+    "q": "Q4 跨中心/院际异质性与模型性能漂移",
+    "pmid": "40924377",
+    "doi": "10.1007/s11883-025-01339-2",
+    "title": "Cardiovascular Risk Prediction in Older Adults",
+    "journal": "Curr Atheroscler Rep",
+    "date": "2025 Sep 9",
+    "authors": "Colantonio LD, Bittner V"
+  },
+  {
+    "q": "Q4 跨中心/院际异质性与模型性能漂移",
+    "pmid": "42814674",
+    "doi": "10.1159/kbr/adjag008",
+    "title": "Erratum",
+    "journal": "Kidney Blood Press Res",
+    "date": "2026",
+    "authors": ""
+  },
+  {
+    "q": "Q4 跨中心/院际异质性与模型性能漂移",
+    "pmid": "39846062",
+    "doi": "10.1093/ehjdh/ztae080",
+    "title": "Machine learning based prediction models for cardiovascular disease risk using electronic health records data: systematic review and meta-analysis",
+    "journal": "Eur Heart J Digit Health",
+    "date": "2025 Jan",
+    "authors": "Liu T, Krentz A, et al."
+  },
+  {
+    "q": "Q4 跨中心/院际异质性与模型性能漂移",
+    "pmid": "38803707",
+    "doi": "10.2147/MDER.S467146",
+    "title": "Artificial Intelligence in Emergency Trauma Care: A Preliminary Scoping Review",
+    "journal": "Med Devices (Auckl)",
+    "date": "2024",
+    "authors": "Ventura CAI, Denton EE, et al."
+  },
+  {
+    "q": "Q4 跨中心/院际异质性与模型性能漂移",
+    "pmid": "42006415",
+    "doi": "10.1016/j.ajpc.2026.101438",
+    "title": "Liver fibrosis biomarkers as a prognostic tool beyond the defining components in cardiovascular-kidney-metabolic syndrome",
+    "journal": "Am J Prev Cardiol",
+    "date": "2026 Apr",
+    "authors": "Cao Z, Chen B, et al."
+  },
+  {
+    "q": "Q4 跨中心/院际异质性与模型性能漂移",
+    "pmid": "42298605",
+    "doi": "10.1186/s12944-026-02990-7",
+    "title": "Development and validation of continuous cardiovascular-kidney-metabolic syndrome severity score (cCKMS-S) complementing CKM staging",
+    "journal": "Lipids Health Dis",
+    "date": "2026 Jun 15",
+    "authors": "Masoumi S, Tarighat-Payma M, et al."
+  },
+  {
+    "q": "Q4 跨中心/院际异质性与模型性能漂移",
+    "pmid": "41384995",
+    "doi": "10.1007/s10875-025-01970-3",
+    "title": "Exploring the Pathogens in Primary Predominantly Antibody Deficiencies of Unknown Genetic Origin",
+    "journal": "J Clin Immunol",
+    "date": "2025 Dec 12",
+    "authors": "Bergmans B, Fontane Pennock-Janssen L, et al."
+  },
+  {
+    "q": "Q4 跨中心/院际异质性与模型性能漂移",
+    "pmid": "35842343",
+    "doi": "10.1016/j.annemergmed.2022.05.011",
+    "title": "Machine Learning in the Prediction of Trauma Outcomes: A Systematic Review",
+    "journal": "Ann Emerg Med",
+    "date": "2022 Nov",
+    "authors": "Zhang T, Nikouline A, et al."
+  },
+  {
+    "q": "Q5 时间漂移 / 数据漂移（临床预测模型）",
+    "pmid": "39988142",
+    "doi": "10.1016/j.jad.2025.02.063",
+    "title": "A machine-learning-derived online prediction model for depression risk in COPD patients: A retrospective cohort study from CHARLS",
+    "journal": "J Affect Disord",
+    "date": "2025 May 15",
+    "authors": "Zhao X, Wang Y, et al."
+  },
+  {
+    "q": "Q5 时间漂移 / 数据漂移（临床预测模型）",
+    "pmid": "39675785",
+    "doi": "10.1136/jitc-2024-009879",
+    "title": "Spatial patterns and MRI-based radiomic prediction of high peritumoral tertiary lymphoid structure density in hepatocellular carcinoma: a multicenter study",
+    "journal": "J Immunother Cancer",
+    "date": "2024 Dec 15",
+    "authors": "Long S, Li M, et al."
+  },
+  {
+    "q": "Q5 时间漂移 / 数据漂移（临床预测模型）",
+    "pmid": "37659584",
+    "doi": "10.1016/j.jclinepi.2023.08.020",
+    "title": "Temporal validation and updating of a prediction model for the diagnosis of gestational diabetes mellitus",
+    "journal": "J Clin Epidemiol",
+    "date": "2023 Dec",
+    "authors": "Cooray SD, De Silva K, et al."
+  },
+  {
+    "q": "Q5 时间漂移 / 数据漂移（临床预测模型）",
+    "pmid": "39215286",
+    "doi": "10.1186/s12890-024-03233-0",
+    "title": "The PROgnostic ModEl for chronic lung disease (PRO-MEL): development and temporal validation",
+    "journal": "BMC Pulm Med",
+    "date": "2024 Aug 30",
+    "authors": "Ng SH, Chiam ZY, et al."
+  },
+  {
+    "q": "Q5 时间漂移 / 数据漂移（临床预测模型）",
+    "pmid": "41310377",
+    "doi": "10.1038/s41598-025-30028-y",
+    "title": "Predicting gestational diabetes before conception for personalized interpregnancy weight management",
+    "journal": "Sci Rep",
+    "date": "2025 Nov 27",
+    "authors": "Tano S, Kotani T, et al."
+  },
+  {
+    "q": "Q5 时间漂移 / 数据漂移（临床预测模型）",
+    "pmid": "39279417",
+    "doi": "10.1002/wps.21240",
+    "title": "Development and temporal validation of a clinical prediction model of transition to psychosis in individuals at ultra-high risk in the UHR 1000+ cohort",
+    "journal": "World Psychiatry",
+    "date": "2024 Oct",
+    "authors": "Hartmann S, Dwyer D, et al."
+  },
+  {
+    "q": "Q5 时间漂移 / 数据漂移（临床预测模型）",
+    "pmid": "40842330",
+    "doi": "10.1093/eurjpc/zwaf452",
+    "title": "Development and evaluation of cardiovascular disease-specific frailty index: a machine learning based analysis of the UK biobank",
+    "journal": "Eur J Prev Cardiol",
+    "date": "2025 Aug 22",
+    "authors": "Xu J, Hu Z, et al."
+  },
+  {
+    "q": "Q5 时间漂移 / 数据漂移（临床预测模型）",
+    "pmid": "36275391",
+    "doi": "10.1016/j.procs.2022.09.072",
+    "title": "Concept Drift in Japanese COVID-19 Infection Data",
+    "journal": "Procedia Comput Sci",
+    "date": "2022",
+    "authors": "Uchida T, Yoshida K"
+  },
+  {
+    "q": "Q5 时间漂移 / 数据漂移（临床预测模型）",
+    "pmid": "41399476",
+    "doi": "10.1016/j.eclinm.2025.103664",
+    "title": "Clinical prediction rules for cognitive outcomes post-stroke: an updated systematic review and meta-analysis",
+    "journal": "EClinicalMedicine",
+    "date": "2025 Dec",
+    "authors": "Tang EYH, Brain J, et al."
+  },
+  {
+    "q": "Q5 时间漂移 / 数据漂移（临床预测模型）",
+    "pmid": "41190213",
+    "doi": "10.3389/ti.2025.15061",
+    "title": "Early Post-Transplant Urinary EGF as a Potential Predictor of Long-Term Allograft Loss in Kidney Transplant Recipients",
+    "journal": "Transpl Int",
+    "date": "2025",
+    "authors": "Créon A, Morin L, et al."
+  },
+  {
+    "q": "Q5 时间漂移 / 数据漂移（临床预测模型）",
+    "pmid": "35564684",
+    "doi": "10.3390/ijerph19095289",
+    "title": "Temporal Validation of Chiang Mai University Intussusception Failed Reduction Score (CMUI)",
+    "journal": "Int J Environ Res Public Health",
+    "date": "2022 Apr 26",
+    "authors": "Khorana J, Sayuen C, et al."
+  },
+  {
+    "q": "Q5 时间漂移 / 数据漂移（临床预测模型）",
+    "pmid": "36080810",
+    "doi": "10.3390/s22176351",
+    "title": "Adaptive Lower Limb Pattern Recognition for Multi-Day Control",
+    "journal": "Sensors (Basel)",
+    "date": "2022 Aug 24",
+    "authors": "Schulte RV, Prinsen EC, et al."
+  },
+  {
+    "q": "Q6 收缩估计 / 经验贝叶斯在 meta 分析与诊断中的应用",
+    "pmid": "39914372",
+    "doi": "10.3350/cmh.2024.1038",
+    "title": "GULP1 as a novel diagnostic and predictive biomarker in hepatocellular carcinoma",
+    "journal": "Clin Mol Hepatol",
+    "date": "2025 Jul",
+    "authors": "Kim HS, Yoon JH, et al."
+  },
+  {
+    "q": "Q6 收缩估计 / 经验贝叶斯在 meta 分析与诊断中的应用",
+    "pmid": "34302344",
+    "doi": "10.1093/hmg/ddab210",
+    "title": "ANNORE: genetic fine-mapping with functional annotation",
+    "journal": "Hum Mol Genet",
+    "date": "2021 Dec 17",
+    "authors": "Fisher V, Sebastiani P, et al."
+  },
+  {
+    "q": "Q6 收缩估计 / 经验贝叶斯在 meta 分析与诊断中的应用",
+    "pmid": "38725078",
+    "doi": "10.1186/s13075-024-03330-9",
+    "title": "Early identification of macrophage activation syndrome secondary to systemic lupus erythematosus with machine learning",
+    "journal": "Arthritis Res Ther",
+    "date": "2024 May 9",
+    "authors": "Lin W, Xie X, et al."
+  },
+  {
+    "q": "Q6 收缩估计 / 经验贝叶斯在 meta 分析与诊断中的应用",
+    "pmid": "34826029",
+    "doi": "10.1007/s00784-021-04248-1",
+    "title": "Dimensional and histomorphometric evaluation of biomaterials used for alveolar ridge preservation: a systematic review and network meta-analysis",
+    "journal": "Clin Oral Investig",
+    "date": "2022 Jan",
+    "authors": "Canullo L, Del Fabbro M, et al."
+  },
+  {
+    "q": "Q6 收缩估计 / 经验贝叶斯在 meta 分析与诊断中的应用",
+    "pmid": "41066386",
+    "doi": "10.1177/09622802251380628",
+    "title": "Meta-analysis with a single study",
+    "journal": "Stat Methods Med Res",
+    "date": "2025 Dec",
+    "authors": "van Zwet E, Wiȩcek W, et al."
+  },
+  {
+    "q": "Q6 收缩估计 / 经验贝叶斯在 meta 分析与诊断中的应用",
+    "pmid": "39260879",
+    "doi": "10.1136/bmj-2023-079089",
+    "title": "Randomised controlled trials on radiation dose fractionation in breast cancer: systematic review and meta-analysis with emphasis on side effects and cosmesis",
+    "journal": "BMJ",
+    "date": "2024 Sep 11",
+    "authors": "Lee SF, Kennedy SKF, et al."
+  },
+  {
+    "q": "Q6 收缩估计 / 经验贝叶斯在 meta 分析与诊断中的应用",
+    "pmid": "34826371",
+    "doi": "10.1515/ijb-2020-0136",
+    "title": "Gradient boosting for linear mixed models",
+    "journal": "Int J Biostat",
+    "date": "2021 Jan 13",
+    "authors": "Griesbach C, Säfken B, et al."
+  },
+  {
+    "q": "Q6 收缩估计 / 经验贝叶斯在 meta 分析与诊断中的应用",
+    "pmid": "34197945",
+    "doi": "10.1016/j.jvs.2021.06.033",
+    "title": "Meta-analysis suggests statins reduce mortality after abdominal aortic aneurysm repair",
+    "journal": "J Vasc Surg",
+    "date": "2022 Jan",
+    "authors": "Xiong X, Wu Z, et al."
+  },
+  {
+    "q": "Q6 收缩估计 / 经验贝叶斯在 meta 分析与诊断中的应用",
+    "pmid": "34100945",
+    "doi": "10.1093/genetics/iyab087",
+    "title": "Meta-analysis identifies pleiotropic loci controlling phenotypic trade-offs in sorghum",
+    "journal": "Genetics",
+    "date": "2021 Jul 14",
+    "authors": "Mural RV, Grzybowski M, et al."
+  },
+  {
+    "q": "Q6 收缩估计 / 经验贝叶斯在 meta 分析与诊断中的应用",
+    "pmid": "41346577",
+    "doi": "10.3389/fimmu.2025.1685533",
+    "title": "Comprehensive analysis of the role of diverse programmed cell death patterns in sepsis",
+    "journal": "Front Immunol",
+    "date": "2025",
+    "authors": "Yu X, Zhou Z, et al."
+  },
+  {
+    "q": "Q6 收缩估计 / 经验贝叶斯在 meta 分析与诊断中的应用",
+    "pmid": "35661205",
+    "doi": "10.1002/sim.9484",
+    "title": "A straightforward meta-analysis approach for oncology phase I dose-finding studies",
+    "journal": "Stat Med",
+    "date": "2022 Sep 10",
+    "authors": "Röver C, Ursino M, et al."
+  },
+  {
+    "q": "Q6 收缩估计 / 经验贝叶斯在 meta 分析与诊断中的应用",
+    "pmid": "35222371",
+    "doi": "10.3389/fimmu.2022.783495",
+    "title": "Clinical Significance and Immunometabolism Landscapes of a Novel Recurrence-Associated Lipid Metabolism Signature In Early-Stage Lung Adenocarcinoma: A Comprehensive Analysis",
+    "journal": "Front Immunol",
+    "date": "2022",
+    "authors": "Zhu M, Zeng Q, et al."
+  }
+]

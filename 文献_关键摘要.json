@@ -1,0 +1,173 @@
+{
+  "31842878": {
+    "group": "奠基/概念",
+    "pmid": "31842878",
+    "title": "Calibration: the Achilles heel of predictive analytics.",
+    "journal": "BMC medicine",
+    "year": "2020",
+    "doi": "10.1186/s12916-019-1466-7",
+    "abstract": "The assessment of calibration performance of risk prediction models based on regression or more flexible machine learning algorithms receives little attention. Herein, we argue that this needs to change immediately because poorly calibrated algorithms can be misleading and potentially harmful for clinical decision-making. We summarize how to avoid poor calibration at algorithm development and how to assess calibration at algorithm validation, emphasizing balance between model complexity and the available sample size. At external validation, calibration curves require sufficiently large samples. Algorithm updating should be considered for appropriate support of clinical practice. Efforts are required to avoid poor calibration when developing prediction models, to evaluate calibration when validating models, and to update models when indicated. The ultimate aim is to optimize the utility of predictive analytics for shared decision-making and patient counseling."
+  },
+  "33157313": {
+    "group": "直接前作（calibration drift）",
+    "pmid": "33157313",
+    "title": "Detection of calibration drift in clinical prediction models to inform model updating.",
+    "journal": "Journal of biomedical informatics",
+    "year": "2021",
+    "doi": "10.1016/j.jbi.2020.103611",
+    "abstract": "Model calibration, critical to the success and safety of clinical prediction models, deteriorates over time in response to the dynamic nature of clinical environments. To support informed, data-driven model updating strategies, we present and evaluate a calibration drift detection system. Methods are developed for maintaining dynamic calibration curves with optimized online stochastic gradient descent and for detecting increasing miscalibration with adaptive sliding windows. These methods are generalizable to support diverse prediction models developed using a variety of learning algorithms and customizable to address the unique needs of clinical use cases. In both simulation and case studies, our system accurately detected calibration drift. When drift is detected, our system further provides actionable alerts by including information on a window of recent data that may be appropriate for model updating. Simulations showed these windows were primarily composed of data accruing after drift onset, supporting the potential utility of the windows for model updating. By promoting model updating as calibration deteriorates rather than on pre-determined schedules, implementations of our drift detection system may minimize interim periods of insufficient model accuracy and focus analytic resources on those models most in need of attention."
+  },
+  "35241261": {
+    "group": "直接前作（calibration drift）",
+    "pmid": "35241261",
+    "title": "A novel lifelong machine learning-based method to eliminate calibration drift in clinical prediction models.",
+    "journal": "Artificial intelligence in medicine",
+    "year": "2022",
+    "doi": "10.1016/j.artmed.2022.102256",
+    "abstract": "Clinical prediction models (CPMs) constructed based on artificial intelligence have been proven to have positive impacts on clinical activities. However, the deterioration of CPM performance over time has rarely been studied. This paper proposes a model updating method to solve the calibration drift issue caused by data drift. This paper proposes a novel model updating method based on lifelong machine learning (LML). The effectiveness of the proposed method is verified in four tumor datasets, and a comprehensive comparison with other model updating methods is performed. Changes in data distributions cause model performances to drift. The four compared model updating methods have different effects in terms of improving the discrimination and calibration abilities of the tested models. The LML method proposed in this study improves model performance better than or equivalent to the other methods. The proposed method achieved a mean AUC of 0.8249, 0.8780, 0.8261, and 0.8489, a mean AUPRC of 0.7782, 0.9730, 0.4655, and 0.5728, a mean F1 of 0.6866, 0.9552, 0.2985, and 0.3585, and a mean estimated calibration index (ECI) of 0.0320, 0.0338, 0.0101, and 0.0115 using colorectal, lung, breast and prostate cancer datasets. The LML framework simultaneously monitors model performance and the distribution of disease risk characteristics, enabling it to effectively address the performance deg"
+  },
+  "42591955": {
+    "group": "直接前作（calibration drift）",
+    "pmid": "42591955",
+    "title": "Clinical transportability, calibration drift, and local updating of a B-mode ultrasound radiomics-clinical prediction model for occult high-volume central lymph node metastasis in cN0 papillary thyroid carcinoma: development, temporal validation, and external validation.",
+    "journal": "Gland surgery",
+    "year": "2026",
+    "doi": "10.21037/gs-2026-0217",
+    "abstract": "Occult high-volume central lymph node metastasis (CLNM) can remain undetected in clinically node-negative papillary thyroid carcinoma (cN0 PTC), yet nodal burden influences preoperative counseling and recurrence-oriented risk stratification. For clinical implementation, a preoperative radiomics-based risk estimate must remain transportable, locally calibrated, and interpretable after transfer to another center. This study evaluated the clinical transportability, calibration drift, threshold consequences, and local updating of a B-mode ultrasound radiomics-clinical prediction model for occult high-volume CLNM. This three-center retrospective model-development, validation, and updating study used the source workbook containing 957 cN0 PTC patients. The endpoint was occult high-volume CLNM, defined as more than five metastatic central lymph nodes on postoperative pathology. Candidate predictors were restricted to preoperative clinical-ultrasound variables and a prespecified B-mode radiomics score. Clinical-only, B-mode score-only, and clinical plus B-mode score models were compared in the development cohort; the clinical plus B-mode score model was treated as the locked primary implementation model because it preserved routine clinical interpretability while incorporating the quantitative image signal. The locked model was evaluated in a temporal Center 1 cohort (n=210), Center 2 "
+  },
+  "36510134": {
+    "group": "重校准与模型更新的方法学",
+    "pmid": "36510134",
+    "title": "Methodological guidance for the evaluation and updating of clinical prediction models: a systematic review.",
+    "journal": "BMC medical research methodology",
+    "year": "2022",
+    "doi": "10.1186/s12874-022-01801-8",
+    "abstract": "Clinical prediction models are often not evaluated properly in specific settings or updated, for instance, with information from new markers. These key steps are needed such that models are fit for purpose and remain relevant in the long-term. We aimed to present an overview of methodological guidance for the evaluation (i.e.,&#xa0;validation and impact assessment) and updating of clinical prediction models. We systematically searched nine databases from January 2000 to January 2022 for articles in English with methodological recommendations for the post-derivation stages of interest. Qualitative analysis was used to summarize the 70 selected guidance papers. Key aspects for validation are the assessment of statistical performance using measures for discrimination (e.g., C-statistic) and calibration (e.g., calibration-in-the-large and calibration slope). For assessing impact or usefulness in clinical decision-making, recent papers advise using decision-analytic measures (e.g., the Net Benefit) over simplistic classification measures that ignore clinical consequences (e.g., accuracy, overall&#xa0;Net Reclassification Index). Commonly recommended methods for model updating are recalibration (i.e., adjustment of intercept or baseline hazard and/or slope), revision (i.e., re-estimation of individual predictor effects), and extension (i.e., addition of new markers). Additional metho"
+  },
+  "33768582": {
+    "group": "重校准与模型更新的方法学",
+    "pmid": "33768582",
+    "title": "Individual participant data meta-analysis for external validation, recalibration, and updating of a flexible parametric prognostic model.",
+    "journal": "Statistics in medicine",
+    "year": "2021",
+    "doi": "10.1002/sim.8959",
+    "abstract": "Individual participant data (IPD) from multiple sources allows external validation of a prognostic model across multiple populations. Often this reveals poor calibration, potentially causing poor predictive performance in some populations. However, rather than discarding the model outright, it may be possible to modify the model to improve performance using recalibration techniques. We use IPD meta-analysis to identify the simplest method to achieve good model performance. We examine four options for recalibrating an existing time-to-event model across multiple populations: (i) shifting the baseline hazard by a constant, (ii) re-estimating the shape of the baseline hazard, (iii) adjusting the prognostic index as a whole, and (iv) adjusting individual predictor effects. For each strategy, IPD meta-analysis examines (heterogeneity in) model performance across populations. Additionally, the probability of achieving good performance in a new population can be calculated allowing ranking of recalibration methods. In an applied example, IPD meta-analysis reveals that the existing model had poor calibration in some populations, and large heterogeneity across populations. However, re-estimation of the intercept substantially improved the expected calibration in new populations, and reduced between-population heterogeneity. Comparing recalibration strategies showed that re-estimating bo"
+  },
+  "37659584": {
+    "group": "重校准与模型更新的方法学",
+    "pmid": "37659584",
+    "title": "Temporal validation and updating of a prediction model for the diagnosis of gestational diabetes mellitus.",
+    "journal": "Journal of clinical epidemiology",
+    "year": "2023",
+    "doi": "10.1016/j.jclinepi.2023.08.020",
+    "abstract": "The original Monash gestational diabetes mellitus (GDM) risk prediction in early pregnancy model is internationally externally validated and clinically implemented. We temporally validate and update this model in a contemporary population with a universal screening context and revised diagnostic criteria and ethnicity categories, thereby improving model performance and generalizability. The updating dataset comprised of routinely collected health data for singleton pregnancies delivered in Melbourne, Australia from 2016 to 2018. Model predictors included age, body mass index, ethnicity, diabetes family history, GDM history, and poor obstetric outcome history. Model updating methods were recalibration-in-the-large (Model A), intercept and slope re-estimation (Model B), and coefficient revision using logistic regression (Model C1, original ethnicity categories; Model C2, revised ethnicity categories). Analysis included 10-fold cross-validation, assessment of performance measures (c-statistic, calibration-in-the-large, calibration slope, and expected-observed ratio), and a closed-loop testing procedure to compare models' log-likelihood and akaike information criterion scores. In 26,474 singleton pregnancies (4,756, 18% with GDM), the original model demonstrated reasonable temporal validation (c-statistic&#xa0;=&#xa0;0.698) but suboptimal calibration (expected-observed ratio&#xa0;="
+  },
+  "38082429": {
+    "group": "重校准与模型更新的方法学",
+    "pmid": "38082429",
+    "title": "Dynamic updating of clinical survival prediction models in a changing environment.",
+    "journal": "Diagnostic and prognostic research",
+    "year": "2025",
+    "doi": "10.1186/s41512-023-00163-z",
+    "abstract": "Over time, the performance of clinical prediction models may deteriorate due to changes in clinical management, data quality, disease risk and/or patient mix. Such prediction models must be updated in order to remain useful. In this study, we investigate dynamic model updating of clinical survival prediction models. In contrast to discrete or one-time updating, dynamic updating refers to a repeated process for updating a prediction model with new data. We aim to extend previous research which focused largely on binary outcome prediction models by concentrating on time-to-event outcomes. We were motivated by the rapidly changing environment seen during the COVID-19 pandemic where mortality rates changed over time and new treatments and vaccines were introduced. We illustrate three methods for dynamic model updating: Bayesian dynamic updating, recalibration, and full refitting. We use a simulation study to compare performance in a range of scenarios including changing mortality rates, predictors with low prevalence and the introduction of a new treatment. Next, the updating strategies were applied to a model for predicting 70-day COVID-19-related mortality using patient data from QResearch, an electronic health records database from general practices in the UK. In simulated scenarios with mortality rates changing over time, all updating methods resulted in better calibration than"
+  },
+  "34865652": {
+    "group": "重校准与模型更新的方法学",
+    "pmid": "34865652",
+    "title": "Comparison of dynamic updating strategies for clinical prediction models.",
+    "journal": "Diagnostic and prognostic research",
+    "year": "2024",
+    "doi": "10.1186/s41512-021-00110-w",
+    "abstract": "Prediction models inform many medical decisions, but their performance often deteriorates over time. Several discrete-time update strategies have been proposed in the literature, including model recalibration and revision. However, these strategies have not been compared in the dynamic updating setting. We used post-lung transplant survival data during 2010-2015 and compared the Brier Score (BS), discrimination, and calibration of the following update strategies: (1) never update, (2) update using the closed testing procedure proposed in the literature, (3) always recalibrate the intercept, (4) always recalibrate the intercept and slope, and (5) always refit/revise the model. In each case, we explored update intervals of every 1, 2, 4, and 8 quarters. We also examined how the performance of the update strategies changed as the amount of old data included in the update (i.e., sliding window length) increased. All methods of updating the model led to meaningful improvement in BS relative to never updating. More frequent updating yielded better BS, discrimination, and calibration, regardless of update strategy. Recalibration strategies led to more consistent improvements and less variability over time compared to the other updating strategies. Using longer sliding windows did not substantially impact the recalibration strategies, but did improve the discrimination and calibration "
+  },
+  "33564405": {
+    "group": "重校准与模型更新的方法学",
+    "pmid": "33564405",
+    "title": "External validation of prognostic models: what,&#xa0;why, how, when and where?",
+    "journal": "Clinical kidney journal",
+    "year": "2024",
+    "doi": "10.1093/ckj/sfaa188",
+    "abstract": "Prognostic models that aim to improve the prediction of clinical events, individualized treatment and decision-making are increasingly being developed and published. However, relatively few models are externally validated and validation by independent researchers is rare. External validation is necessary to determine a prediction model's reproducibility and generalizability to new and different patients. Various methodological considerations are important when assessing or designing an external validation study. In this article, an overview is provided of these considerations, starting with what external validation is, what types of external validation can be distinguished and why such studies are a crucial step towards the clinical implementation of accurate prediction models. Statistical analyses and interpretation of external validation results are reviewed in an intuitive manner and considerations for selecting an appropriate existing prediction model and external validation population are discussed. This study enables clinicians and researchers to gain a deeper understanding of how to interpret model validation results and how to translate these results to their own patient population."
+  },
+  "36750236": {
+    "group": "报告规范（我们为何选 STROBE）",
+    "pmid": "36750236",
+    "title": "Transparent reporting of multivariable prediction models developed or validated using clustered data (TRIPOD-Cluster): explanation and elaboration.",
+    "journal": "BMJ (Clinical research ed.)",
+    "year": "2023",
+    "doi": "10.1136/bmj-2022-071058",
+    "abstract": "The TRIPOD-Cluster (transparent reporting of multivariable prediction models developed or validated using clustered data) statement comprises a 19 item checklist, which aims to improve the reporting of studies developing or validating a prediction model in clustered data, such as individual participant data meta-analyses (clustering by study) and electronic health records (clustering by practice or hospital). This explanation and elaboration document describes the rationale; clarifies the meaning of each item; and discusses why transparent reporting is important, with a view to assessing risk of bias and clinical usefulness of the prediction model. Each checklist item of the TRIPOD-Cluster statement is explained in detail and accompanied by published examples of good reporting. The document also serves as a reference of factors to consider when designing, conducting, and analysing prediction model development or validation studies in clustered data. To aid the editorial process and help peer reviewers and, ultimately, readers and systematic reviewers of prediction model studies, authors are recommended to include a completed checklist in their submission."
+  },
+  "38626948": {
+    "group": "报告规范（我们为何选 STROBE）",
+    "pmid": "38626948",
+    "title": "TRIPOD+AI statement: updated guidance for reporting clinical prediction models that use regression or machine learning methods.",
+    "journal": "BMJ (Clinical research ed.)",
+    "year": "2024",
+    "doi": "10.1136/bmj-2023-078378",
+    "abstract": "The TRIPOD (Transparent Reporting of a multivariable prediction model for Individual Prognosis Or Diagnosis) statement was published in 2015 to provide the minimum reporting recommendations for studies developing or evaluating the performance of a prediction model. Methodological advances in the field of prediction have since included the widespread use of artificial intelligence (AI) powered by machine learning methods to develop prediction models. An update to the TRIPOD statement is thus needed. TRIPOD+AI provides harmonised guidance for reporting prediction model studies, irrespective of whether regression modelling or machine learning methods have been used. The new checklist supersedes the TRIPOD 2015 checklist, which should no longer be used. This article describes the development of TRIPOD+AI and presents the expanded 27 item checklist with more detailed explanation of each reporting recommendation, and the TRIPOD+AI for Abstracts checklist. TRIPOD+AI aims to promote the complete, accurate, and transparent reporting of studies that develop a prediction model or evaluate its performance. Complete reporting will facilitate study appraisal, model evaluation, and model implementation."
+  },
+  "41159833": {
+    "group": "重症领域的现状与对照",
+    "pmid": "41159833",
+    "title": "Development and Validation of the Sequential Organ Failure Assessment (SOFA)-2 Score.",
+    "journal": "JAMA",
+    "year": "2025",
+    "doi": "10.1001/jama.2025.20516",
+    "abstract": "Acute dysfunction of vital organs is the hallmark of critical illness. The Sequential Organ Failure Assessment (SOFA) score, the most widely adopted approach to describe organ dysfunction, has not been updated in 30 years and therefore may not appropriately capture current clinical practice and outcomes. To inform the data-driven component of an updated score (SOFA-2) in varied geographical and resource settings (stages 6-8) after expert input via a modified Delphi process (stages 1-5). A federated analysis was performed on data collected from adult patients admitted to 1319 intensive care units (ICUs) in 9 countries (Australia, Austria, Brazil, France, Italy, Japan, Nepal, New Zealand, United States) between 2014 and 2023. Four representative multicenter cohorts containing data from 2&#x202f;098&#x202f;356 patients were used for data-driven score development and internal validation. External validation was performed on 6 cohorts containing data from 1&#x202f;241&#x202f;114 patients. Content validity for organ dysfunction identified through the modified Delphi process should be reflected by predictive validity using the area under the receiver operating characteristic (AUROC) curve of the score measured on the first ICU day (higher scores indicate worse organ dysfunction). Of 3.34 million patient encounters, 270&#x202f;108 (8.1%) died in the ICU (range, 4.5% to 20.5% across the"
+  },
+  "41877184": {
+    "group": "重症领域的现状与对照",
+    "pmid": "41877184",
+    "title": "SOFA-2 versus SOFA-1 for mortality prediction in critically ill patients.",
+    "journal": "Journal of intensive care",
+    "year": "2026",
+    "doi": "10.1186/s40560-026-00875-6",
+    "abstract": "We validated the SOFA-2 score against the SOFA-1 score using 65,366 critically ill patients from the Medical Information Mart for Intensive Care IV (MIMIC-IV) database. SOFA-2 demonstrated superior discrimination for ICU mortality (AUROC: 0.829 [95% CI 0.823-0.835] vs. 0.796 [0.789-0.803]) and in-hospital mortality (0.789 [0.783-0.794] vs. 0.763 [0.757-0.769]) compared with SOFA-1. Of 65,366 patients, 40,990 (62.7%) were reclassified to higher scores under SOFA-2. Within each SOFA-1 stratum, those assigned higher SOFA-2 scores consistently demonstrated higher ICU mortality, confirming clinically meaningful reclassification. These findings provide additional external validation supporting the advantages of SOFA-2 for risk stratification in critically ill patients."
+  },
+  "42400900": {
+    "group": "重症领域的现状与对照",
+    "pmid": "42400900",
+    "title": "How to establish and run a national ICU benchmarking registry.",
+    "journal": "Current opinion in critical care",
+    "year": "2026",
+    "doi": "10.1097/MCC.0000000000001411",
+    "abstract": "National ICU benchmarking systems are critical infrastructure for evaluating and improving the quality of critical care across all settings. This review summarizes the recent literature on establishing, operating, and sustaining such systems, drawing on evidence from registries across high-income countries (HICs) and low-and-middle-income countries (LMICs). Recent evidence not only confirms the continued expansion of national ICU registries globally but also reveals persistent heterogeneity in data architecture and severity adjustment approaches. Key advances include the development of common data models enabling international collaboration (LOGIC consortium), the use of federated analysis for score development (SOFA-2), and the validation of simplified severity scores for resource-limited settings. Calibration drift remains universal, requiring periodic reassessment of risk-adjustment models. New methodological work highlights the impact of atypical patients and potential organ donor admissions on standardized mortality ratios. While 46% of registries support observational research, only 22% currently enable interventional studies - representing a major opportunity for the field. Establishing a national benchmarking system requires deliberate choices about data architecture, severity adjustment, governance, and feedback mechanisms. Challenges vary across the registry lifecycle"
+  },
+  "34823021": {
+    "group": "重症领域的现状与对照",
+    "pmid": "34823021",
+    "title": "Mortality prediction in intensive care units including premorbid functional status improved performance and internal validity.",
+    "journal": "Journal of clinical epidemiology",
+    "year": "2022",
+    "doi": "10.1016/j.jclinepi.2021.11.028",
+    "abstract": "Prognostic models are key for benchmarking intensive care units (ICUs). They require up-to-date predictors and should report transportability properties for reliable predictions. We developed and validated an in-hospital mortality risk prediction model to facilitate benchmarking, quality assurance, and health economics evaluation. We retrieved data from the database of an international (Finland, Estonia, Switzerland) multicenter ICU cohort study from 2015 to 2017. We used a hierarchical logistic regression model that included age, a modified Simplified Acute Physiology Score-II, admission type, premorbid functional status, and diagnosis as grouping variable. We used pooled and meta-analytic cross-validation approaches to assess temporal and geographical transportability. We included 61,224 patients treated in the ICU (hospital mortality 10.6%). The developed prediction model had an area under the receiver operating characteristic curve 0.886, 95% confidence interval (CI) 0.882-0.890; a calibration slope 1.01, 95% CI (0.99-1.03); a mean calibration -0.004, 95% CI (-0.035 to 0.027). Although the model showed very good internal validity and geographic discrimination transportability, we found substantial heterogeneity of performance measures between ICUs (I-squared: 53.4-84.7%). A novel framework evaluating the performance of our prediction model provided key information to judge "
+  },
+  "36695624": {
+    "group": "失校准的临床后果",
+    "pmid": "36695624",
+    "title": "Miscalibration of lung allocation models leads to inaccurate waitlist mortality predictions.",
+    "journal": "American journal of transplantation : official journal of the American Society of Transplantation and the American Society of Transplant Surgeons",
+    "year": "2023",
+    "doi": "10.1016/j.ajt.2022.11.012",
+    "abstract": "The importance of waitlist (WL) mortality risk estimates will increase with the adoption of the US Composite Allocation Score (CAS) system. Calibration is rarely assessed in clinical prediction models, yet it is a key factor in determining access to lung transplant. We assessed the calibration of the WL-lung allocation score (LAS)/CAS models and developed alternative models to minimize miscalibration. Scientific Registry of Transplant Recipients data from 2015 to 2020 were used to assess the calibration of the WL model and for subgroups (age, sex, diagnosis, and race/ethnicity). Three recalibrated models were developed and compared: (1) simple recalibration model (SRM), (2) weighted recalibration model 1 (WRM1), and (3) weighted recalibration model 2 (WRM2). The current WL-LAS/CAS model underestimated risk for 78% of individuals (predicted mortality risk, &lt;42%) and overpredicted risk for 22% of individuals (predicted mortality risk, &#x2265;42%), with divergent results among subgroups. Error measures improved in SRM, WRM1, and WRM2. SRM generally preserved candidate rankings, whereas WRM1 and WRM2 led to changes in ranking by age and diagnosis. Differential miscalibration occurred in the WL-LAS/CAS model, which improved with recalibration measures. Further inquiry is needed to develop mortality models in which risk predictions approximate observed data to ensure accurate ran"
+  },
+  "40487264": {
+    "group": "失校准的临床后果",
+    "pmid": "40487264",
+    "title": "Assessment and recalibration of seventeen lung cancer risk prediction models in approximately one million Chinese population utilising healthcare big data: a retrospective cohort analysis.",
+    "journal": "The Lancet regional health. Western Pacific",
+    "year": "2025",
+    "doi": "10.1016/j.lanwpc.2025.101575",
+    "abstract": "A number of lung cancer prediction models have been developed worldwide. However, there have been limited validation studies conducted specifically on Chinese populations. The objective of this study is to evaluate the feasibility and performance of 17 global lung cancer risk prediction models when applied to Chinese healthcare big data. The study encompassed individuals whose information was recorded in the Yinzhou Regional Health Care Database (YRHCD) between January 1, 2010 and December 31, 2021. The 17 lung cancer risk prediction models, which comprised the Bach, the Prostate, Lung, Colorectal, and Ovarian Cancer Screening Trial 2012 model (PLCOm2012), the Korean Men, the PLCOall2014, the Pittsburgh Predictor, Liverpool Lung Project Risk Prediction Model for Lung Cancer Incidence (LLPi), the Lung Cancer Risk Assessment Tool (LCRAT), Constrained LCRAT, the Nord-Tr&#xf8;ndelag Health Study (HUNT), the Japan Public Health Center-based study (JPHC), Reduced HUNT, the PLCOm2012 without information of race (PLCOm2012-norace), the Liverpool Lung Project version 3 (LLPv3), Lung Cancer Risk Score (LCRS), the Optimized Early Warning Model for Lung Cancer Risk (OWL), the University College London-Incidence (UCL-I), the Shanghai Lung Cancer incidence Model (Shanghai-LCM), were evaluated for their performance in overall population and subgroups stratified by age and sex. The discriminat"
+  },
+  "42278712": {
+    "group": "部署后监测 / 趋势",
+    "pmid": "42278712",
+    "title": "Beyond Model Development in Healthcare AI: Post-Development Robustness, Post-Deployment Monitoring, and Lifecycle Governance-A Scoping Review of Reviews.",
+    "journal": "Healthcare (Basel, Switzerland)",
+    "year": "2026",
+    "doi": "10.3390/healthcare14111459",
+    "abstract": "Background: Clinical artificial intelligence (AI) is rapidly moving from retrospective model development into prospective evaluation, implementation, and routine care. Existing reviews have addressed specific aspects of this transition, including monitoring, drift, implementation, governance, and human-AI interaction; however, these bodies of work remain methodologically and conceptually fragmented across different review traditions. Methods: We conducted a scoping review of review-level and review-oriented literature. We searched MEDLINE, Embase, Scopus, and Web of Science Core Collection from database inception to 28 February 2026. We charted review characteristics and conducted an inductive thematic synthesis of extracted review-level findings, while distinguishing operational, deployment-proximal, methodological, and conceptual/governance-oriented evidence. Results: We included 25 review-level publications spanning systematic, scoping, methodological, narrative, and governance-oriented reviews. Three major themes emerged. First, clinically important risks were consistently framed as socio-technical rather than purely algorithmic: trustworthiness depended not only on technical performance, but also on fairness, transparency, workflow fit, human oversight, and organisational readiness. Second, the included review literature consistently recommended post-deployment monitoring "
+  }
+}
