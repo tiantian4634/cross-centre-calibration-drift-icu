@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 """装配后质检：图注/引用/段落顺序/占位符/Sci Rep 结构要求。"""
 import io, sys, os, re
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")

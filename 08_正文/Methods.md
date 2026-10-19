@@ -173,8 +173,8 @@ the local recalibration sample sizes (*m* ∈ {0, 25, 50, 100, 200} and, for the
 {0, 25, 50, 100, 200, 400}), the resampling attempt counts (100 for the learning-curve analysis, 200
 for the shrinkage analyses), and the centre-size tertile boundaries (hospitals split by sample size
 into three groups of 36, 33 and 34 hospitals, with ranges 100–181, 184–280 and 289–987 patients
-respectively) were all specified in the analysis plans written before execution (Supplementary Note
-S1).
+respectively) were all specified in the analysis plans written before execution (Supplementary Note,
+*Prespecified analysis plans*).
 
 ## Between-centre heterogeneity
 
