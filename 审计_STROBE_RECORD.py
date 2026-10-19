@@ -8,7 +8,8 @@ SRC = os.path.join(B, "08_正文")
 OUT = os.path.join(B, "07_投稿附件", "STROBE_RECORD_合规审计.md")
 
 files = ["TitlePage_标题页.md", "Abstract_摘要_SciRep版.md",
-         "Introduction_Discussion.md", "Results.md", "Methods.md", "Tables_表格.md"]
+         "Introduction_Discussion.md", "Results.md", "Methods.md", "Tables_表格.md",
+         "BackMatter_文末段落.md"]
 blob = b"".join(open(os.path.join(SRC, f), "rb").read() for f in files)
 sha = hashlib.sha256(blob).hexdigest()[:12]
 date = "2026-10-20"
@@ -40,7 +41,7 @@ R = [
  ("14b","Results","Number with missing data for each variable","PRESENT","Supplementary Table S1 + Methods","★已补：仅 cci 缺失 11.6%/0.04%，其余 0%"),
  ("14c","Results","Summarise follow-up time","PRESENT","Methods §Cohort construction","结局窗口为本次住院；入组要求 ICU LOS ≥24 h"),
  ("15","Results","Numbers of outcome events or summary measures","PRESENT","Supplementary Table S1","院内死亡 3,901 (12.7%) / 1,654 (19.3%)"),
- ("16a","Results","Unadjusted/adjusted estimates and precision; which confounders and why","PARTIAL","Results §1; Table 1","未给合并 AUC 的 95% CI；混协变量的理由为'四个临床相关协变量'，可再明确"),
+ ("16a","Results","Unadjusted/adjusted estimates and precision; which confounders and why","PRESENT","Results §1; Table 1","★已补：合并 AUC 的 95% CI（按医院整群 bootstrap，1000 次）；混协变量的选择理由见 Methods §Case-mix ladder"),
  ("16b","Results","Category boundaries when continuous variables were categorized","PRESENT","Methods §Quantitative variables","★已补：中心规模三分层边界 100–181 / 184–280 / 289–987"),
  ("16c","Results","Translate relative risk into absolute risk","N/A","—","无相对风险估计；本研究直接报告绝对风险与 O/E"),
  ("17","Results","Other analyses: subgroups, interactions, sensitivity","PRESENT","Results §4/§10; Methods","规模分层、τ² 四框架、阶梯"),
@@ -48,7 +49,7 @@ R = [
  ("19","Discussion","Limitations incl. direction and magnitude of bias","PRESENT","Discussion §Limitations","六条局限；Charlson 编码差异已补"),
  ("20","Discussion","Cautious interpretation incl. multiplicity, similar studies","PRESENT","Discussion, 全篇","与既往漂移/更新文献逐篇比较；多重性已在 Methods 说明"),
  ("21","Discussion","Generalisability","PRESENT","Discussion §Limitations, 第六条","两个数据库；对其他卫生系统与评分家族的推广性留白"),
- ("22","Other Information","Source of funding and role of funders","MISSING","—","待作者提供；已知无基金资助，须在稿件中明确写出"),
+ ("22","Other Information","Source of funding and role of funders","PRESENT","08_正文\\BackMatter_文末段落.md","★已补：'This research received no external funding.'（单位承担版面费亦须在稿件中写明）"),
  # ---- RECORD ----
  ("R 1.1","RECORD — Title/Abstract","Type of data and database name(s) in title or abstract","PRESENT","Abstract","★已补：'secondary analysis of eICU-CRD'、'transferring to MIMIC-IV'"),
  ("R 1.2","RECORD — Title/Abstract","Geographic region and timeframe in title or abstract","PARTIAL","—","摘要未含地域与年份；Methods 已写明（美国、2014–2015）。Sci Rep 无强制，可接受但宜知悉"),
@@ -112,11 +113,10 @@ lines.append("")
 lines.append("## Part C — 待处理项（仅 MISSING / PARTIAL）\n")
 lines.append("| 优先级 | 条目 | 问题 | 建议 | AI 可修 |")
 lines.append("|---|---|---|---|---|")
-lines.append("| P1（期刊强制） | STROBE 22 | 资金来源未在稿件中写明 | 在文末加 Funding 段：'Funding: This research received no external funding.' | 否，须作者确认 |")
-lines.append("| P2 | STROBE 16a | 合并 AUC 未给 95% CI | Table 1 增加 AUC 的 95% CI（需补算 bootstrap 或 delta 法）| 否，须补算 |")
-lines.append("| P3 | RECORD 1.2 | 摘要未含地域与年份 | Sci Rep 无强制；如需可在摘要补 'United States, 2014–2015'（需重排词数）| 是 |")
+lines.append("| P3 | RECORD 1.2 | 摘要未含地域与年份 | Sci Rep 无强制；已确认**不加**（摘要已 200/200 满额，地域与年份见 Methods §Data sources）| —（作者决定不改）|")
 lines.append("")
-lines.append("> RECORD 19.1 已在本轮审计中补齐（误分类偏倚 + 随时间变化的纳入标准），不再列于本表。")
+lines.append("> STROBE 16a（合并 AUC 的 95% CI）与 STROBE 22（Funding）已在本轮补齐，不再列于本表。")
+lines.append("> 剩余唯一 PARTIAL 为 RECORD 1.2，属可选项且已由作者决定不改。")
 lines.append("")
 lines.append("## Part D — 机器可读 JSON\n")
 j = {"guideline": ["STROBE 2007", "RECORD 2015"], "target_version": "2026-10-20",
@@ -125,12 +125,17 @@ j = {"guideline": ["STROBE 2007", "RECORD 2015"], "target_version": "2026-10-20"
      "compliance_pct": round(pct, 1),
      "critical_items_all_present": True,
      "action_items": [
-         {"item": "STROBE 22", "status": "MISSING", "fixable_by_ai": False,
-          "suggested_fix": "Funding: This research received no external funding."},
-         {"item": "STROBE 16a", "status": "PARTIAL", "fixable_by_ai": False,
-          "suggested_fix": "Report 95% CIs for pooled AUC in Table 1."},
-         {"item": "RECORD 1.2", "status": "PARTIAL", "fixable_by_ai": True,
-          "suggested_fix": "Optional: add geographic region and years to the abstract."}]}
+         {"item": "RECORD 1.2", "status": "PARTIAL", "fixable_by_ai": False,
+          "suggested_fix": "Not applied by author decision: abstract is at the 200-word limit and "
+                           "geography/years are reported in Methods. Sci Rep does not require this."}],
+     "fixed_this_round": [
+         {"item": "STROBE 12c / 14b", "fix": "Missing-data handling quantified; only Charlson "
+                                             "index missing (11.6% eICU, 0.04% MIMIC)"},
+         {"item": "STROBE 16a", "fix": "95% CI for pooled AUC by cluster bootstrap (1000 replicates)"},
+         {"item": "STROBE 22", "fix": "Funding statement added to back matter"},
+         {"item": "RECORD 1.1", "fix": "Database names (eICU-CRD, MIMIC-IV) added to abstract"},
+         {"item": "RECORD 6.2", "fix": "Validity of variable definitions stated"},
+         {"item": "RECORD 19.1", "fix": "Misclassification bias and eligibility drift discussed"}]}
 lines.append("```json")
 lines.append(json.dumps(j, ensure_ascii=False, indent=2))
 lines.append("```")
@@ -141,5 +146,5 @@ print("    指纹 %s" % sha)
 print("    条目 %d（N/A %d）→ 合规率 %.1f%%" % (total, na, pct))
 print("    状态: " + ", ".join("%s=%d" % (k, v) for k, v in C.items()))
 print("\n    ★ 关键不可豁免项: 全部 PRESENT（缺失数据处理为本次补齐）")
-print("    待处理: STROBE 22 (MISSING) / STROBE 16a, RECORD 1.2 (PARTIAL)")
+print("    待处理: RECORD 1.2 (PARTIAL，可选，作者已决定不改)")
 print("\n    行数: %d" % (len(lines) + 1))

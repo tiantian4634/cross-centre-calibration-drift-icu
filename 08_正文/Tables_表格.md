@@ -20,7 +20,7 @@ units, by severity score**
 | | SOFA | OASIS | SAPS-II |
 |---|---|---|---|
 | Hospitals included, *k* | 103 | 103 | 103 |
-| Pooled model AUC | 0.732 | 0.728 | 0.761 |
+| Pooled model AUC (95% CI) | 0.732 (0.720–0.745) | 0.728 (0.715–0.741) | 0.761 (0.751–0.771) |
 | Per-centre AUC, 10th / median / 90th percentile | 0.649 / 0.738 / 0.812 | 0.666 / 0.729 / 0.813 | 0.683 / 0.762 / 0.844 |
 | Between-centre variance (τ²) | 0.131 | 0.165 | 0.109 |
 | Between-centre heterogeneity (I²), % | 75.4 | 79.8 | 70.4 |
@@ -30,12 +30,18 @@ units, by severity score**
 **Table 1 legend.** Each score was fitted as a single-score pooled logistic model across the full
 eICU-CRD cohort (30,796 patients, 3,901 in-hospital deaths), and the calibration-in-the-large offset
 and calibration slope were then derived separately in each of the 103 hospitals meeting the
-pre-specified eligibility criterion of ≥ 100 patients and ≥ 10 in-hospital deaths. AUC, area under the
-receiver operating characteristic curve; O/E, observed-to-expected mortality ratio; τ², between-centre
-variance estimated by the DerSimonian–Laird method; I², proportion of total variation attributable to
-between-centre heterogeneity. Percentiles are the 10th and 90th percentiles across hospitals and are
-**measures of spread, not confidence intervals**. **No hypothesis test was performed for any entry in
-this table**; the values are descriptive estimates.
+pre-specified eligibility criterion of ≥ 100 patients and ≥ 10 in-hospital deaths. AUC, area under
+the receiver operating characteristic curve; O/E, observed-to-expected mortality ratio; τ²,
+between-centre variance estimated by the DerSimonian–Laird method; I², proportion of total variation
+attributable to between-centre heterogeneity. **95% confidence intervals for the pooled AUC were
+obtained by cluster bootstrap**, resampling the 187 hospitals with replacement and taking all of each
+sampled hospital's patients (1,000 replicates; percentile interval; random seed 20261019). The
+standardisation parameters of the pooled model were held fixed across replicates. Percentiles in the
+other rows are the 10th and 90th percentiles across hospitals and are **measures of spread, not
+confidence intervals**. **No hypothesis test was performed for any entry in this table**; the values
+are descriptive estimates. The narrow confidence intervals around the pooled AUC (width ≈ 0.025)
+contrast with the 2.2-fold spread in the observed-to-expected ratio, which is the comparison this
+table is intended to make.
 
 > **一页可行性**：8 行 × 4 列，实际排版约 1/3 页。✔
 

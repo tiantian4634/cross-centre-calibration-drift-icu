@@ -330,6 +330,21 @@ no hypothesis tests; the values reported for them are estimates, and the bounds 
 percentiles rather than confidence intervals. No *P* value in this manuscript is reported only as
 "significant"; each is given as a number.
 
+## Uncertainty in pooled performance estimates
+
+Confidence intervals for the pooled AUC of each score were obtained by **cluster bootstrap**,
+resampling hospitals with replacement and taking all patients of each sampled hospital, so that the
+hospital — the level at which the variation of interest arises — is the unit of resampling. Treating
+patients as independent would ignore within-hospital correlation and understate the uncertainty.
+Standardisation parameters of the pooled model were held fixed across replicates so that only sampling
+variation, and not variation in the scale of the predictor, enters the interval. One thousand
+replicates were used with the pre-specified random seed (20261019), and the reported interval is the
+2.5th to 97.5th percentile of the replicate distribution.
+
+Percentile ranges reported elsewhere in this manuscript — for example the 10th and 90th percentiles
+of the per-hospital AUC, observed-to-expected ratio and calibration slope — are **spreads across
+hospitals, not confidence intervals**, and are not presented as tests of any hypothesis.
+
 ## Software, seed and reproducibility
 
 Analyses were performed in Python 3.14 with pandas 3.0.5, NumPy 2.5.1, scikit-learn 1.9.0, SciPy 1.18.0,
