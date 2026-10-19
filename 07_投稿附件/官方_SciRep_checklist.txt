@@ -1,0 +1,58 @@
+Checklist for initial submissions
+Your manuscript will be subject to a quality check before it can be presented to an Editorial Board Member (EBM) forassessment. This is to ensure that all of the information required by the EBM and peer-reviewers is available.
+Please review the checklist before submitting, as manuscripts that do not comply may be returned for changesbefore they are assigned to an EBM. Additionally, please ensure that all author information entered both in yourmanuscript and on our system is accurate.
+Should you have any questions regarding this checklist, please contact us atsrep@nature.com
+Submission Files
+Item Permissible file format Notes Completed
+Cover letter .doc, .docx, .pdf Will be seen by the EBM but not the peer-reviewers
+Manuscript File .doc, .docx, .tex, .pdf Only one file permitted
+Main FigureFile(s)
+.jpg, .eps, .tiff, .psd, .png,.pdf
+Can be uploaded separately or included within theManuscript file
+Main Table(s) Do not upload separately Must be included in the Manuscript File
+SupplementaryInformation
+.txt, .gif, .html, .doc, .jpg,.swf, .mov, .xlsx, .pdf,.ppt, .wav, .csv, .zip
+Must be included separately from the Manuscript File,preferably as a single file. Supplementary datasetsshould be provided as separate .xlsx files
+Manuscript File Completed
+TITLE
+Exactly matches the title entered on the submission system and in any supplementary information
+The title should be a precise statement describing the main message of the paper and not contain puns oridiomatic expressions
+AUTHORS
+Corresponding author(s) are identified using an asterisk.Email address(es) of corresponding author(s) shouldbeprovided on the title page
+All author (corresponding and contributing) details are included on the submission system as well as in theManuscript File
+Affiliations (including country) are provided and linked to authors with superscript numbers
+For papers withconsortiaas part of the authorship,please include the consortium name as a main author in theauthor list on the title page. Please provide a full list of members of this consortium at the end of yourManuscript File, after the references, providing affiliations marked by superscript numbers as per the mainauthor list. The consortium name should also be entered as an author on the submission system, together withthe contact details of a nominated consortia representative
+ABSTRACT
+Exactly matches the abstract entered on the submission system
+
+Does not contain citations
+Does not include subheadings or inline subheadings (i.e. not a structured abstract)
+MAIN TEXT
+No footnotes
+Tracked changes must not be used in the Manuscript File. If you wish to highlight any changes made in yourManuscript File, please do so with the highlighter tool or by changing the colour of the font. Please do nothighlight changes in the text by italicising. You may upload a version containing tracked changes as a ‘RelatedManuscript’ file, as long as a clean version of the Manuscript File is also provided
+METHODS
+Included in Manuscript File and contain sufficient detail to repeatexperiments
+For experiments involvinglive vertebrates and/orhigher invertebrates, the Methods section must includeastatement that:1. Identifies the institutional and/or licensing committee that approved the experiments, including anyrelevant details.2. Confirms that all experiments were performed in accordance with relevant named guidelines andregulations.3. Confirms that the authors complied with the ARRIVE guidelines.
+For experiments involvinghuman subjects (or tissuesamples)the Methods section must include a statementthat:1. Identifies the institutional and/or licensing committee that approved the experiments, including anyrelevant details.2. Confirms that all experiments were performed in accordance with relevant named guidelines andregulations.3. Confirms that informed consent was obtained from all participants and/or their legal guardians.
+Please note that:1. Study participant names (and other personally identifiable information) must be removed from alltext/figures/tables/images.2. For manuscripts that include information or images that could lead to the identification of a studyparticipant, your Methods section must include a statement that confirms informed consent wasobtained to publish the information/image(s) in an online open access publication. The use of colouredbars/shapes or blurring to obscure the eyes/facial region of study participants is not an acceptablemeans of anonymisation.
+Scientific Reportswill not consider manuscripts describingresearch that involves organs/tissues procured fromprisoners. In addition to the above requirements for experiments involving human subjects (or tissue samples)authors of manuscripts describinghuman transplantationresearchmust:1. Include a statement in their manuscript attesting that no organs/tissues were procured from prisoners2. Name all institution(s)/clinic(s)/department(s) via which organs/tissues were procured3. Confirm that informed consent was obtained from both organ donor(s) and recipient(s)
+AUTHOR CONTRIBUTIONS STATEMENT
+Author contributions statementspecifying the individualcontribution of each author, is provided. This should beincluded after the references, and every author’s contribution must be listed
+ADDITIONAL INFORMATION
+Competing interests statementis provided in the ManuscriptFile under the heading “Additional Information”, andmatches the information entered on the submission system. Competing financial and non-financial interestsshould be disclosed
+LEGENDS
+Alegendis provided for each main table and mainfigure in the Manuscript File. These should be placed at theend of the manuscript, after the references
+For supplementary figures and tables, include a brief title and legend (incorporated into the file to appear nearthe image)
+Only legends for main display items should be included in the Manuscript File; legends for supplementary figuresand tables should be included in theSupplementaryInformationfile
+DATA AVAILABILITY STATEMENT
+A Data Availability Statement is provided as a separate section (titled 'Data Availability') at the end of the maintext, before the 'References' section. See the 'Availabilityof materials and data' policy for statement requirements
+REFERENCES
+In a numbered list and all in-line citations should be matched back to areferencevia numbering withinsquarebrackets
+Display Items
+MAIN FIGURES
+Schemes, graphical abstracts and boxes are not permitted and must be labelled/numbered as either a figure ortable as appropriate. As an online journal, we are unable to accept any ‘Cover’ images or table of contentsfigures
+Gel and blot images are presented in compliance with ourdigital image and integrity policies. Where croppedgels/blots are displayed, this should be noted in the figure legend; full-length/uncropped gels and blots shouldbe included in aSupplementary Informationfile
+MAIN TABLES
+Main tablesare provided in the Manuscript File, andnot as separate files, in an editable format (not embeddedas animage in the document)
+Supplementary Information
+Supplementary material is uploaded separately, and not included in the Manuscript File
