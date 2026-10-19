@@ -60,12 +60,14 @@ actual pipeline rather than a reconstruction.
 
 All analysis and figure-generation code is openly available.
 
-**Repository:** ⟨to be filled: GitHub URL⟩
-**Archived DOI:** ⟨to be filled: Zenodo DOI⟩ (concept DOI 10.5281/zenodo.⟨NNNNNNNN⟩)
+**Repository:** https://github.com/tiantian4634/cross-centre-calibration-drift-icu
+**Archived DOI:** ⟨to be filled after Zenodo archiving: 10.5281/zenodo.XXXXXXXX⟩
 
-> **To be completed before submission.** Create the public repository from
-> `09_路B_跨院校准/`, publish under a permissive licence (MIT or CC-BY-4.0), archive the tagged release on
-> Zenodo, and paste the DOI into every manuscript file and the supplementary material.
+> **Remaining step.** Push the local repository to GitHub, create a tagged release
+> (`v1.0`), and connect the repository to Zenodo so that a version DOI and a concept DOI are minted
+> automatically. Then replace the DOI placeholder above and in `CITATION.cff`, `README.md`, and the
+> manuscript's own data and code availability sections. Cite the **concept DOI**, which resolves to the
+> most recent version.
 
 ### Pipeline, in execution order
 
