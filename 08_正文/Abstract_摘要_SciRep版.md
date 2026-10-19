@@ -6,9 +6,8 @@
 
 ## 摘要（英文投稿版）
 
-Acute severity scores are often assumed to transport between hospitals. In 30,796 patients aged
-≥65 years from 187 intensive-care units we examined whether such scores discriminate and calibrate
-alike across centres. Discrimination was moderate and nearly constant (pooled AUC 0.732 for SOFA;
+Severity scores are often assumed to transport between hospitals. In a secondary analysis of eICU-CRD (30,796 patients aged ≥65 years from 187
+hospitals) we examined whether such scores discriminate and calibrate alike across centres. Discrimination was moderate and nearly constant (pooled AUC 0.732 for SOFA;
 per-centre AUC 0.649–0.812), whereas calibration varied substantially: between-centre I² was
 75.4% and the observed-to-expected mortality ratio ranged from 0.69 to 1.54, a 2.2-fold spread.
 Calibration slopes ranged from 0.72 to 1.64, indicating drift in the risk gradient. Drift
@@ -20,7 +19,7 @@ local patients it performed worse than no recalibration (success rate 15.5% vers
 even at 200 patients only 34.3% of resamples met the pre-specified ±10% criterion, a threshold
 never reached. Empirical-Bayes shrinkage of the local calibration offset reversed this,
 outperforming naive recalibration at 25 patients (24.3% versus 15.5%; two-sided P = 3.7 × 10⁻¹¹²)
-and transferring to a second database without refitting. Discrimination transports; calibration
+and transferring to MIMIC-IV without refitting. Discrimination transports; calibration
 does not.
 
 ---

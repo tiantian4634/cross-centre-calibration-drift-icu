@@ -131,10 +131,13 @@ itself, not the performance of a model intended for patient-level decisions. We 
 reported the elements that matter for clustered data — the clustering level, the number of centres
 per estimate, and the resampling design.
 
-**Limitations.** First, eICU-CRD covers only 2014 and 2015. This study therefore quantifies the
-spatial component of drift and provides no evidence about longer-term temporal trends; the
-year-to-year analysis reported here addresses stability across two consecutive years and nothing
-more. Second, MIMIC-IV is a single centre, so the external analysis tests whether the shrinkage
+**Limitations.** First, both databases were collected for purposes other than this study, as is inherent in the
+secondary-use design. Two consequences follow, and both are limitations of that design rather than of the analysis. Misclassification in the underlying records — in the severity scores, in comorbidity coding and in the recorded discharge status — cannot be detected here, and its
+direction and magnitude could not be quantified. And because eICU-CRD covers only 2014 and
+2015, we could not assess how eligibility for the cohort, or the coding practices behind it,
+changed over time. The year-to-year analysis reported here addresses stability across two
+consecutive years and nothing more, and the study therefore quantifies the spatial component of
+drift while providing no evidence about longer-term temporal trends. Second, MIMIC-IV is a single centre, so the external analysis tests whether the shrinkage
 parameters transfer across databases; it is not multicentre external validation of the strategy,
 which can only be evaluated within eICU itself. Third, the variation not explained by measured
 case-mix is described here as residual between-hospital variation. Unmeasured differences in

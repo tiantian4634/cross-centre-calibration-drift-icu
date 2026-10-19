@@ -67,6 +67,53 @@ patients, of whom 1,654 (19.3%) died**.
 criterion was pre-specified. **103 of 187 hospitals** met it. Hospitals below the threshold continued to
 contribute to the pooled model.
 
+## Potential sources of bias
+
+Four sources were considered.
+
+**Selection.** Restricting to ICU stays of at least 24 h and to medical ICUs removes short stays and
+non-medical units, so the cohort does not describe all ICU admissions. Deaths within 24 h of ICU
+admission were excluded because such patients cannot in principle have the severity of illness
+captured by a score computed over the first ICU day; this removes 7 patients in eICU-CRD and 35 in
+MIMIC-IV.
+
+**Information.** The scores and the outcome are taken from the source databases' own records and were
+not re-adjudicated. Any misclassification in the underlying records would attenuate or distort the
+apparent calibration, and cannot be detected here.
+
+**Leakage.** In the shrinkage analysis, each hospital's shrinkage parameters were estimated from the
+remaining hospitals only (leave-one-centre-out cross-fitting), so no hospital's evaluation data enter
+its own shrinkage parameters. In the resampling analyses the local calibration set and the evaluation
+set are disjoint by construction.
+
+**Confounding of the between-centre comparison.** No causal comparison between hospitals is made or
+intended. Differences between hospitals are reported descriptively, and unmeasured differences in
+disease spectrum, referral patterns and pre-ICU course could each produce the observed pattern.
+
+## Study size and missing data
+
+**No sample size calculation was performed.** This is a secondary analysis of two existing databases,
+and the analysis used all patients meeting the eligibility criteria described above. The number of
+hospitals entering the centre-level analyses was therefore a property of the data rather than of a
+design decision; the pre-specified eligibility threshold (≥ 100 patients and ≥ 10 in-hospital deaths
+per hospital) was fixed before any analysis was run and is reported for every cell.
+
+**Missing data were negligible and are reported in full.** In the eICU-CRD cohort the three severity
+scores, age, sex, invasive ventilation and in-hospital death were complete in every patient (0%
+missing), so no imputation was performed. Charlson comorbidity index was missing in 3,560 of 30,796
+patients (11.6%) in eICU-CRD (2,807 of 26,436, 10.6%, within the 103-centre analysis subset) and in
+3 of 8,579 patients (0.04%) in MIMIC-IV. Comorbidity index enters only the descriptive case-mix
+ladder (model M3), which therefore uses complete cases: *n* = 27,236 and 97 hospitals, against
+*n* = 30,796 and 103 hospitals for M1 and M2. Because that analysis is descriptive and no
+confirmatory conclusion rests on M3, we did not impute. All analyses other than the case-mix ladder
+use the complete-case set defined by the cohort eligibility criteria, and that set has no missing
+values on any analysis variable.
+
+*Note on the exclusion step.* The exclusion of stays in which albumin, height and weight were all
+missing (141 patients in eICU-CRD, 15 in MIMIC-IV) is a cohort-eligibility filter inherited from
+the source extraction protocol; it is not a within-analysis missing-data decision, and it does not
+affect any analysis variable used here.
+
 ## Severity scores
 
 Three established acute severity scores were used as supplied by the source extraction: the Sequential
@@ -74,6 +121,15 @@ Organ Failure Assessment (SOFA), the Oxford Acute Severity of Illness Score (OAS
 Acute Physiology Score II (SAPS-II). This study did not recompute the scores, and their derivation is
 documented in the source protocols. Analysis was restricted to patients with a non-missing value for the
 score being analysed; all three scores were complete in both cohorts.
+
+**Validity of the variable definitions.** SOFA, OASIS and SAPS-II are established, previously
+published and externally validated scores, used here exactly as supplied by the source extraction
+protocols; their components and weights are those of the original publications and are not modified
+in this study. In-hospital death is a discharge status recorded in the source databases rather than a
+derived outcome, and no case-finding algorithm was applied to it. Age, sex, invasive ventilation and
+Charlson comorbidity index were taken as supplied. No code list or phenotype algorithm was developed
+for this study; where a variable required a derived definition, that definition is given above in full
+(the calibration offset and its standard error, and the calibration slope).
 
 ## Pooled models
 
@@ -108,6 +164,17 @@ The standard error of *a_h* was obtained by the delta method as
 **Calibration slope (b_h).** We additionally fitted, within each hospital, a logistic regression of the
 outcome on the logit of the pooled model's predicted probability with a free intercept, and retained the
 slope.
+
+**Quantitative variables and cut-points.** All three scores, age and comorbidity burden were
+analysed as continuous variables and standardised before fitting; they were not categorised. Cut-points
+used in this study were fixed in advance and are not data-driven: the four decision thresholds (0.10,
+0.20, 0.30, 0.40), the hospital-eligibility threshold (≥ 100 patients and ≥ 10 in-hospital deaths),
+the local recalibration sample sizes (*m* ∈ {0, 25, 50, 100, 200} and, for the external analysis,
+{0, 25, 50, 100, 200, 400}), the resampling attempt counts (100 for the learning-curve analysis, 200
+for the shrinkage analyses), and the centre-size tertile boundaries (hospitals split by sample size
+into three groups of 36, 33 and 34 hospitals, with ranges 100–181, 184–280 and 289–987 patients
+respectively) were all specified in the analysis plans written before execution (Supplementary Note
+S1).
 
 ## Between-centre heterogeneity
 

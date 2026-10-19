@@ -52,6 +52,11 @@ this table**; the values are descriptive estimates.
 | Male, n (%) | 15,538 (50.5) | 13,396 (50.7) | 4,338 (50.6) |
 | Age, years, mean (SD) | 77.0 (7.7) | 76.9 (7.7) | 77.7 (8.3) |
 | Charlson comorbidity index, mean (SD) | 0.9 (1.3) | 0.9 (1.3) | 3.5 (2.5) |
+| **Missing data, n (%)** | | | |
+| └ Severity scores (SOFA / OASIS / SAPS-II) | 0 (0) | 0 (0) | 0 (0) |
+| └ Age, sex, invasive ventilation | 0 (0) | 0 (0) | 0 (0) |
+| └ In-hospital death (outcome) | 0 (0) | 0 (0) | 0 (0) |
+| └ Charlson comorbidity index | 3,560 (11.6) | 2,807 (10.6) | 3 (0.04) |
 | Invasive ventilation, n (%) | 6,683 (21.7) | 6,134 (23.2) | 2,062 (24.0) |
 | SOFA score, mean (SD) | 4.3 (3.2) | 4.4 (3.3) | 5.5 (3.5) |
 | OASIS score, median [IQR] | 27 [22–34] | 27 [22–35] | 33 [28–39] |
@@ -61,9 +66,12 @@ this table**; the values are descriptive estimates.
 
 **Supplementary Table S1 legend.** Continuous variables are summarised as mean (SD) where the
 distribution was approximately symmetric in the full eICU-CRD cohort and as median [interquartile
-range] otherwise; the same summary is used for that row in all three columns. Percentages are column
-percentages and may not sum to 100 because of rounding. eICU-CRD (103 centres) is the subset of
-patients contributing to the centre-level analyses.
+range] otherwise; the same summary is used for that row in all three columns. Percentages are
+column percentages and may not sum to 100 because of rounding. eICU-CRD (103 centres) is the subset
+of patients contributing to the centre-level analyses. **Missing data** are reported for every
+analysis variable; all variables except the Charlson comorbidity index are complete, so no imputation
+was performed. Comorbidity index enters only the descriptive case-mix analysis, which uses complete
+cases; every other analysis uses a set with no missing values.
 
 > **⚠️ 需在正文局限性中配套说明的一点**：MIMIC-IV 的 Charlson 指数均值 3.5 明显高于 eICU 的 0.9。
 > 两个数据库的合并症**编码完整性不同**（MIMIC-IV 基于更完整的住院 ICD 编码），
