@@ -61,13 +61,13 @@ actual pipeline rather than a reconstruction.
 All analysis and figure-generation code is openly available.
 
 **Repository:** https://github.com/tiantian4634/cross-centre-calibration-drift-icu
-**Archived DOI:** ⟨to be filled after Zenodo archiving: 10.5281/zenodo.XXXXXXXX⟩
+**Archived DOI (concept):** https://doi.org/10.5281/zenodo.23479141
+**Archived DOI (version, v1.1):** https://doi.org/10.5281/zenodo.23479142
 
-> **Remaining step.** Push the local repository to GitHub, create a tagged release
-> (`v1.0`), and connect the repository to Zenodo so that a version DOI and a concept DOI are minted
-> automatically. Then replace the DOI placeholder above and in `CITATION.cff`, `README.md`, and the
-> manuscript's own data and code availability sections. Cite the **concept DOI**, which resolves to the
-> most recent version.
+> The repository is publicly archived on Zenodo, which mints a DOI for every tagged release and a
+> **concept DOI** that always resolves to the most recent version. The manuscript should cite the
+> concept DOI. Both DOIs are registered with DataCite and resolve through `doi.org`. The archive is
+> released under the MIT licence, with no patient-level data included.
 
 ### Pipeline, in execution order
 

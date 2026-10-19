@@ -1,8 +1,10 @@
 # GitHub + Zenodo 发布操作指引
 
-**状态：A 步（GitHub）已完成 ✅；剩余 B（上线核查）、C（Zenodo DOI）、D（回填）三步，约 15 分钟。**
+**状态：A–D 四步全部完成 ✅（2026-10-20）**
 
 仓库：<https://github.com/tiantian4634/cross-centre-calibration-drift-icu>
+**concept DOI：<https://doi.org/10.5281/zenodo.23479141>**（引用代码用这个）
+版本 DOI：`10.5281/zenodo.23479142`（v1.1）
 
 ---
 
@@ -281,10 +283,17 @@ Zenodo 会给一段 Markdown badge 代码，直接粘进 `README.md` 顶部：
 > 交接时的数值：**91 个文件 / 6.45 MB / 12 个提交**（2026-10-19）。
 > 要在线核对可用 `python 在线核查.py`（走 API，含患者级文件硬红线扫描）。
 
-**Zenodo 完成后回填（3 处）**
-- [ ] Zenodo 记录能看到，作者正确，License 是 MIT
-- [ ] DOI 已填回 `CITATION.cff` / `README.md` / `Data_Code_Availability.md`
-- [ ] 改动已重新提交并推送（`git add -A` → `git commit -m "Add DOI"` → `git push`）
+**Zenodo 归档与回填 ✅ 已完成（2026-10-20）**
+- [x] 真实 Zenodo（`10.5281`，非沙箱 `10.5072`）—— 见 §C 第零步的实录教训
+- [x] DataCite 状态 `findable`，类型 Software，标题与作者由 `CITATION.cff` 正确带入
+- [x] **License 识别为 MIT**（得益于 LICENSE 保持纯 MIT、说明另置 `LICENSE-NOTE.md`）
+- [x] `doi.org` 解析 302 → `zenodo.org/doi/10.5281/zenodo.23479142`
+- [x] DOI 已回填 `CITATION.cff`（软件 doi 字段）/ `README.md`（徽章+引用块）/ `Data_Code_Availability.md`（两处）
+- [x] 改动已提交并推送
+
+**仍待办**（与代码发布无关）
+- [ ] 文章 DOI —— 期刊录用后由期刊分配，届时填 `CITATION.cff` 的 `preferred-citation.doi`
+- [ ] `preferred-citation.journal` —— 目标期刊已定 Scientific Reports，可直接填
 
 **第 1、2、3 条是硬性的。** 违反 PhysioNet 数据使用协议的后果比审稿被退严重得多。
 

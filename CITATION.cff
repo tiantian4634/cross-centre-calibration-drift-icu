@@ -30,7 +30,11 @@ authors:
 
 repository-code: "https://github.com/tiantian4634/cross-centre-calibration-drift-icu"
 
-# ── 关联的论文（确定目标期刊后补全 journal / 卷期页码 / doi）──────────
+# 软件本体 DOI（concept DOI，指向最新版本；引用代码时用这个）
+doi: "10.5281/zenodo.23479141"
+
+# ── 关联的论文（期刊录用后补全 journal / 卷期页码 / 文章 DOI）──────────
+#    注意：下方的 doi 是「文章」的 DOI，与上方软件 DOI 不是一回事，勿混填。
 preferred-citation:
   type: article
   title: >-
@@ -42,7 +46,7 @@ preferred-citation:
   authors:
     - family-names: "Zhang"
       given-names: "Tiantian"
-  # doi: "10.XXXX/xxxxx"
+  # doi: "10.XXXX/xxxxx"   # ← 【勿填 Zenodo DOI】此为「文章」DOI，由期刊录用后分配
 
 keywords:
   - intensive care

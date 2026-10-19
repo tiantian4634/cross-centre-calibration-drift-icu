@@ -136,15 +136,17 @@ not reframed after the fact.
 
 ## Citation
 
-If you use this code or the accompanying results, please cite the manuscript above. A BibTeX entry will be
-added once the record is finalised. For citation of the code itself, use the Zenodo concept DOI, which
-resolves to the most recent version:
+**Cite the code** using the Zenodo **concept DOI**, which always resolves to the most recent
+release:
 
-> Zhang T. *Cross-centre calibration drift of acute severity scores*.
-> Zenodo. ⟨DOI to be added after archiving⟩
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23479141.svg)](https://doi.org/10.5281/zenodo.23479141)
 
-<!-- Zenodo badge: paste the snippet from the Zenodo landing page here once archiving is done -->
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
+> Zhang, T. *Cross-centre calibration drift of acute severity scores* (v1.1).
+> Zenodo. https://doi.org/10.5281/zenodo.23479141
+> Version DOI: https://doi.org/10.5281/zenodo.23479142
+
+**Cite the study** — the BibTeX entry for the manuscript will be added once the record is
+finalised.
 
 ## Licence
 
