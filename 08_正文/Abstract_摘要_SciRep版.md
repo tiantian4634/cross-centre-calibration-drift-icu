@@ -19,7 +19,7 @@ in 17–22% of centres. Naive local recalibration proved harmful at small sample
 local patients it performed worse than no recalibration (success rate 15.5% versus 21.4%), and
 even at 200 patients only 34.3% of resamples met the pre-specified ±10% criterion, a threshold
 never reached. Empirical-Bayes shrinkage of the local calibration offset reversed this,
-outperforming naive recalibration at 25 patients (23.4% versus 15.5%; two-sided P = 2.5 × 10⁻⁹²)
+outperforming naive recalibration at 25 patients (24.3% versus 15.5%; two-sided P = 3.7 × 10⁻¹¹²)
 and transferring to a second database without refitting. Discrimination transports; calibration
 does not.
 
@@ -78,7 +78,7 @@ Sci Rep 要求标题「用一句科学准确的句子描述文章主旨」。
 | 规模分层的 τ² 0.093→0.143 | Results 正文 |
 | 41.6% 时间成分占比 | Results 正文 |
 | 收缩权重 λ=0.234 自适应 | Results 正文 |
-| MIMIC 转移的具体数字（53.5% vs 23.5%、+30.0 pp） | Results 正文 |
+| MIMIC 转移的具体数字（47.0% vs 23.5%、+23.5 pp、约 6 倍） | Results 正文 |
 | τ² 框架分歧（3.9% / 低 50%） | Results 正文 + 局限性 |
 | 「本项为统计学建议，非临床推荐」 | **Discussion 必须保留**（三条措辞红线之一） |
 | 「两项判据未成立」 | 保留为「a threshold never reached」；完整表述见 Results 与补充材料 S1 |

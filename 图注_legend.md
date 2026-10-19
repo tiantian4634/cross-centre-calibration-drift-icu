@@ -252,8 +252,8 @@
 > with $\lambda = \tau^2/(\tau^2 + \mathrm{SE}^2)$.
 > Left: residual miscalibration $|a|$ (median; band → P90). Right: proportion of resampling
 > attempts landing within ±10% of perfect O/E. **Shrinkage reversed the small-sample penalty**:
-> at $m$ = 25 residual $|a|$ fell from 0.45 (naive) to 0.26 and the ±10% success rate rose from
-> 15.5% to **23.4%** (paired difference **+8.2 percentage points**, 19,678 pairs, Wilcoxon P = 2.5×10⁻⁹²)
+> at $m$ = 25 residual $|a|$ fell from 0.44 (naive) to 0.26 and the ±10% success rate rose from
+> 15.5% to **24.3%** (paired difference **+9.05 percentage points**, 19,678 pairs, Wilcoxon P = 3.7×10⁻¹¹²)
 > — surpassing even no recalibration (21.4%). The shrinkage weight adapted to sample size
 > (median λ = 0.234, 0.374, 0.536 and 0.712 at $m$ = 25, 50, 100 and 200).
 
@@ -261,8 +261,8 @@
 
 > **图10　分层收缩消除本地重校准的小样本惩罚。** 103 家中心，每 (中心, m) 重复 **200 次**；
 > 收缩目标 ā 与 τ² 由 **leave-one-centre-out** 交叉拟合估计，无任何中心的评估数据进入其自身收缩参数。
-> **收缩把小样本惩罚翻盘**：m=25 时残余 |a| 从 0.45（朴素）降至 0.26，±10% 达标率从 15.5% 升至 **23.4%**
-> （配对差 **+8.2 个百分点**，19,678 对，Wilcoxon P=2.5×10⁻⁹²），**已超过完全不校准（21.4%）**。
+> **收缩把小样本惩罚翻盘**：m=25 时残余 |a| 从 0.44（朴素）降至 0.26，±10% 达标率从 15.5% 升至 **24.3%**
+> （配对差 **+9.05 个百分点**，19,678 对，Wilcoxon P=3.7×10⁻¹¹²），**已超过完全不校准（21.4%）**。
 > 收缩强度随样本量自适应（m=25/50/100/200 时 λ 中位 = 0.234/0.374/0.536/0.712）。
 
 ---
@@ -275,13 +275,13 @@
 > Outcome: proportion of resampling attempts with residual |O/E − 1| ≤ 10%; 200 resamples per $m$.
 > **Left, internal validation:** 103 eICU centres, leave-one-centre-out (as Figure 10).
 > **Right, external validation:** MIMIC-IV treated as a single new centre (8,579 patients, 1,654 deaths);
-> the shrinkage target $\bar a$ = +0.068 and $\tau^2$ = 0.131 were **fixed from eICU and never
+> the shrinkage target $\bar a$ = +0.030 and $\tau^2$ = 0.131 were **fixed from eICU and never
 > re-estimated on MIMIC-IV**. The true offset to recover was $a^*$ = +0.221 (observed 19.3% vs
 > predicted 16.5%, O/E 1.17). Empirical-Bayes shrinkage outperformed naive recalibration at every
-> $m$ (at $m$ = 25: 53.5% vs 23.5%, paired difference **+30.0 percentage points**, Wilcoxon
-> P = 7.4×10⁻¹³) and, critically, **25 local patients with shrinkage performed comparably to 200
-> local patients without** (53.5% vs 53.0%) — an approximately **eight-fold reduction** in the
-> local sample requirement.
+> $m$ (at $m$ = 25: 47.0% vs 23.5%, paired difference **+23.5 percentage points**, Wilcoxon
+> P = 6.3×10⁻⁷) and, critically, **25 local patients with shrinkage matched the success rate that
+> naive recalibration reached only with roughly 150 local patients** (47.0%) — an approximately
+> **six-fold reduction** in the local sample requirement.
 >
 > **Note:** MIMIC-IV is a **single-centre** database. This analysis tests whether the *shrinkage
 > parameters* transfer across databases; it does **not** constitute multicentre external validation
@@ -291,9 +291,9 @@
 ### 中文对照
 
 > **图11　收缩参数可跨数据库迁移。** 左：eICU 103 家中心 LOO（同图10）。右：把 MIMIC-IV 的 8,579 例
-> 整体视为**一个新中心**，收缩目标 ā=+0.068、τ²=0.131 **完全固定自 eICU、绝不在 MIMIC 上重估**；
-> 待恢复真值 a*=+0.221。EB 收缩在每个 m 上均优于朴素（m=25：53.5% vs 23.5%，配对差 **+30.0 个百分点**，
-> P=7.4×10⁻¹³）；**25 例 + 收缩 ≈ 200 例 + 朴素**（53.5% vs 53.0%），本地数据需求降低约 **8 倍**。
+> 整体视为**一个新中心**，收缩目标 ā=+0.030、τ²=0.131 **完全固定自 eICU、绝不在 MIMIC 上重估**；
+> 待恢复真值 a*=+0.221。EB 收缩在每个 m 上均优于朴素（m=25：47.0% vs 23.5%，配对差 **+23.5 个百分点**，
+> P=6.3×10⁻⁷）；**25 例 + 收缩 ≈ 150 例 + 朴素**（47.0%），本地数据需求降低约 **6 倍**。
 >
 > **声明**：MIMIC-IV 为**单中心**库。本分析验证的是"**收缩参数能否跨库迁移**"，
 > **不是**该策略的多中心外部验证（后者只能在 eICU 内完成，见图10）。两者**不得混称**。

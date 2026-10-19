@@ -82,11 +82,23 @@ def solve_a(lp, y):
 
 
 def dersimonian(a, se):
+    """DL 估计 τ²，并返回**随机效应加权**的合并均值供 EB 收缩使用。
+
+    权重分工（不可混用）：
+      · w = 1/se²       → 计算 Q 与 τ²（DerSimonian-Laird 的定义，固定效应权重）
+      · w = 1/(se²+τ²)  → 计算返回的合并均值
+    为何必须用后者：收缩公式 a_EB = ā + λ(a − ā) 中 λ = τ²/(τ²+se²) 来自
+    层次模型 a ~ N(ā, τ²+se²)，该模型下 ā 的极大似然估计正是随机效应加权均值。
+    若 ā 用固定效应权重（等价于假设 τ² = 0），则与 λ 假设 τ² > 0 自相矛盾。
+    """
     a, se = np.asarray(a, float), np.asarray(se, float)
     w = 1.0 / se ** 2
-    abar = np.sum(w * a) / np.sum(w)
-    Q = np.sum(w * (a - abar) ** 2); C = np.sum(w) - np.sum(w ** 2) / np.sum(w)
-    return abar, max(0.0, (Q - (len(a) - 1)) / C)
+    abar_fe = np.sum(w * a) / np.sum(w)
+    Q = np.sum(w * (a - abar_fe) ** 2)
+    C = np.sum(w) - np.sum(w ** 2) / np.sum(w)
+    tau2 = max(0.0, (Q - (len(a) - 1)) / C)
+    wr = 1.0 / (se ** 2 + tau2)
+    return np.sum(wr * a) / np.sum(wr), tau2
 
 
 def se_of_a(p, y, a):
@@ -100,7 +112,7 @@ full = {h: (solve_a(lp, y), se_of_a(expit(lp), y, solve_a(lp, y)), len(y))
         for h, (lp, y) in groups.items()}
 ah = np.array([full[h][0] for h in groups]); seh = np.array([full[h][1] for h in groups])
 abar_all, tau_all = dersimonian(ah, seh)
-print(f"[pooled] ā = {abar_all:+.4f}；τ² = {tau_all:.4f}（k={len(ah)}）")
+print(f"[pooled] ā(RE加权·收缩目标) = {abar_all:+.4f}；τ² = {tau_all:.4f}（k={len(ah)}）")
 
 MS = [0, 25, 50, 100, 200]; NREP = 200
 recs = []

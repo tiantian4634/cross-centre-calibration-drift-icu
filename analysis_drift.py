@@ -125,6 +125,14 @@ def per_hosp(d, min_n=MIN_N, min_d=MIN_D):
 
 
 def dersimonian(a, se):
+    """DL 两阶段 meta 分析。
+
+    两套权重各司其职，不可混用：
+      · 固定效应权重 w = 1/se²        → 用于 Q 与 τ² 的估计（DL 定义如此）
+      · 随机效应权重 w = 1/(se²+τ²)   → 用于合并均值 abar_re 与标准误 seRE
+    返回的 abar 为固定效应加权（仅作描述），abar_re 为随机效应加权，
+    **EB 收缩的目标必须用 abar_re**，否则与 λ = τ²/(τ²+se²) 模型不一致。
+    """
     a, se = np.asarray(a, float), np.asarray(se, float)
     w = 1.0 / se ** 2
     abar = np.sum(w * a) / np.sum(w)
@@ -132,8 +140,10 @@ def dersimonian(a, se):
     C = np.sum(w) - np.sum(w ** 2) / np.sum(w)
     tau2 = max(0.0, (Q - (len(a) - 1)) / C)
     I2 = max(0.0, (Q - (len(a) - 1)) / Q) * 100 if Q > 0 else 0.0
-    seRE = np.sqrt(1.0 / np.sum(1.0 / (se ** 2 + tau2)))
-    return abar, tau2, I2, Q, seRE
+    wr = 1.0 / (se ** 2 + tau2)
+    abar_re = np.sum(wr * a) / np.sum(wr)
+    seRE = np.sqrt(1.0 / np.sum(wr))
+    return abar, tau2, I2, Q, seRE, abar_re
 
 
 RES, HOSP = {}, {}
@@ -143,12 +153,13 @@ print("=" * 84)
 for name, col in SCORES:
     d, m, auc = pooled(E, [col])
     H = per_hosp(d)
-    abar, tau2, I2, Q, seRE = dersimonian(H["a_h"], H["se_a"])
+    abar, tau2, I2, Q, seRE, abar_re = dersimonian(H["a_h"], H["se_a"])
     H["score"] = name
     HOSP[name] = H
     RES[name] = dict(pooled_n=len(d), pooled_events=int(d["y"].sum()), pooled_auc=round(auc, 4),
                      k=len(H), I2=round(I2, 2), tau2=round(tau2, 4),
                      a_bar=round(abar, 4), seRE=round(seRE, 4),
+                     a_bar_re=round(abar_re, 4),
                      OE_p10=round(float(np.percentile(H["OE"], 10)), 3),
                      OE_med=round(float(H["OE"].median()), 3),
                      OE_p90=round(float(np.percentile(H["OE"], 90)), 3),
@@ -176,7 +187,7 @@ for tag, cols in [("M1  SOFA", ["sofa"]),
     d = d.dropna(subset=["cci", "invasive_vent"]) if "cci" in cols else d
     d, m, auc = pooled(d, cols)
     H = per_hosp(d)
-    abar, tau2, I2, Q, seRE = dersimonian(H["a_h"], H["se_a"])
+    abar, tau2, I2, Q, seRE, abar_re = dersimonian(H["a_h"], H["se_a"])
     LADDER[tag] = dict(k=len(H), AUC=round(auc, 4), I2=round(I2, 2), tau2=round(tau2, 4),
                        OE_p10=round(float(np.percentile(H["OE"], 10)), 3),
                        OE_p90=round(float(np.percentile(H["OE"], 90)), 3))

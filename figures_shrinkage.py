@@ -10,6 +10,22 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 BASE = r"E:\文件杂\褚俊智老师\论文选题\选题T1_虚弱营养列线图\09_路B_跨院校准"
 ST, FG = os.path.join(BASE, "03_统计"), os.path.join(BASE, "04_图表")
 S = pd.DataFrame(json.load(open(os.path.join(ST, "shrinkage_summary.json"), encoding="utf-8"))["rows"])
+
+# 标注锚点由数据算出，并校验标注所声称的结论是否仍成立
+def _v(strat, m, col):
+    s = S[(S["strat"] == strat) & (S["m"] == m)][col]
+    if s.empty:
+        raise ValueError("找不到 strat=%s m=%s" % (strat, m))
+    return float(s.iloc[0])
+
+BASE0 = _v("S0", 0, "ra_med")      # 完全不校准的残余 |a|
+EB_M25 = _v("S3", 25, "ra_med")    # EB 在 m=25 的残余 |a|
+if not (EB_M25 < BASE0):
+    raise AssertionError(
+        f"标注声称『EB 在 m=25 已优于不校准』，但实测 EB={EB_M25:.4f} ≥ S0={BASE0:.4f}，"
+        "结论不再成立，须改写标注文字")
+print(f"[图10 数据核对] S0 基线={BASE0:.4f}  S3@m25={EB_M25:.4f}  (EB < S0 ✔)")
+
 BLUE, RED, GRAY, DARK, ORG, TEAL = "#2C6E9B", "#C0392B", "#9AA5B1", "#1B2631", "#E67E22", "#1E8449"
 plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 9, "axes.unicode_minus": False,
                      "axes.linewidth": 0.8})
@@ -31,7 +47,7 @@ d0 = S[(S["strat"] == "S0") & (S["m"] == 0)]["ra_med"].iloc[0]
 ax.axhline(d0, color=GRAY, lw=1.0, ls=":")
 ax.annotate("no recalibration at all\n$|a|$ = %.2f" % d0, xy=(0, d0), xytext=(112, d0 + 0.028),
             fontsize=7.6, color=GRAY, ha="left")
-ax.annotate("EB already beats\nno recalibration\nat m = 25", xy=(25, 0.2566), xytext=(46, 0.055),
+ax.annotate("EB already beats\nno recalibration\nat m = 25", xy=(25, EB_M25), xytext=(46, 0.055),
             fontsize=7.8, color=TEAL, fontweight="bold",
             arrowprops=dict(arrowstyle="->", color=TEAL, lw=1.0))
 ax.set_xlabel("Local patients used for recalibration  ($m$)", fontsize=9.4)

@@ -48,11 +48,11 @@ negative in 17–22% of centres. Naive local recalibration carried a small-sampl
 local patients it performed *worse* than no recalibration at all (success rate 15.5% versus
 21.4%), and even at 200 patients only 34.3% of resamples met the criterion — the pre-specified
 50% threshold was never reached. Empirical-Bayes shrinkage reversed this. At 25 local patients it
-achieved a 23.4% success rate versus 15.5% for naive recalibration (paired difference +8.2
-percentage points, P = 2.5 × 10⁻⁹²), with the shrinkage weight adapting to sample size
+achieved a 24.3% success rate versus 15.5% for naive recalibration (paired difference +9.05
+percentage points, P = 3.7 × 10⁻¹¹²), with the shrinkage weight adapting to sample size
 (median λ = 0.234). Fixing the shrinkage parameters on eICU and transferring them unchanged to
-MIMIC-IV treated as a single new centre yielded 53.5% versus 23.5% at 25 patients
-(+30.0 points, P = 7.4 × 10⁻¹³), equivalent to naive recalibration with about 200 patients. The
+MIMIC-IV treated as a single new centre yielded 47.0% versus 23.5% at 25 patients
+(+23.5 points, P = 6.3 × 10⁻⁷), equivalent to naive recalibration with about 150 patients. The
 two-stage τ² estimates agreed closely (relative range 3.9%) but the one-stage multilevel estimate
 was 50% lower — a pre-specified disagreement that did not alter any conclusion.
 

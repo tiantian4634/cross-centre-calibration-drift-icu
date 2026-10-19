@@ -63,8 +63,14 @@ E["y"] = E["hosp_death"].astype(int)
 mu, sd = E["sofa"].mean(), E["sofa"].std()
 mp = LogisticRegression(max_iter=5000, C=1.0).fit(((E[["sofa"]].values - mu) / sd), E["y"].values)
 DR = json.load(open(os.path.join(ST, "drift_results.json"), encoding="utf-8"))
-ABAR = DR["scores"]["SOFA"]["a_bar"]; TAU2 = DR["scores"]["SOFA"]["tau2"]
-print(f"[eICU 固定收缩参数] ā = {ABAR:+.4f}；τ² = {TAU2:.4f}（k={DR['scores']['SOFA']['k']} 家医院）")
+_sf = DR["scores"]["SOFA"]
+# 收缩目标必须用**随机效应加权**均值 a_bar_re，与 λ = τ²/(τ²+se²) 模型一致；
+# a_bar（固定效应加权）仅作描述，不可作收缩目标。
+if "a_bar_re" not in _sf:
+    raise KeyError("drift_results.json 缺少 a_bar_re —— 请先重跑 analysis_drift.py")
+ABAR = _sf["a_bar_re"]; TAU2 = _sf["tau2"]
+print(f"[eICU 固定收缩参数·RE加权] ā = {ABAR:+.4f}；τ² = {TAU2:.4f}"
+      f"（k={_sf['k']} 家医院；固定效应 ā = {_sf['a_bar']:+.4f} 未使用）")
 
 # ---------- MIMIC 侧：作为一个"新中心" ----------
 M = pd.read_csv(os.path.join(BASE, "02_数据集", "cohort_mimiciv.csv")).dropna(

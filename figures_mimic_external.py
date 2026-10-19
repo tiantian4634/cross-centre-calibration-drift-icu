@@ -12,6 +12,25 @@ ST, FG = os.path.join(BASE, "03_统计"), os.path.join(BASE, "04_图表")
 S_int = pd.DataFrame(json.load(open(os.path.join(ST, "shrinkage_summary.json"), encoding="utf-8"))["rows"])
 M = json.load(open(os.path.join(ST, "mimic_external_summary.json"), encoding="utf-8"))
 S_ext = pd.DataFrame(M["rows"])
+
+# ── 标注数值一律由数据算出，不写死（改结果时无需改图脚本）────────────────
+def _v(df, strat, m, col="ok11"):
+    s = df[(df["strat"] == strat) & (df["m"] == m)][col]
+    if s.empty:
+        raise ValueError("找不到 strat=%s m=%s" % (strat, m))
+    return float(s.iloc[0])
+
+# 内部：EB 在 m=25 的达标率（左图箭头锚点）
+INT_S3_M25 = _v(S_int, "S3", 25)
+# 外部：EB 在 m=25 的达标率，及朴素法达到同一水平所需的 m
+EXT_S3_M25 = _v(S_ext, "S3", 25)
+_s1 = S_ext[S_ext["strat"] == "S1"].sort_values("m")
+EXT_EQ_M = int(round(float(np.interp(EXT_S3_M25, _s1["ok11"].values, _s1["m"].values)) / 10) * 10)
+# 收缩目标与 τ²（已由 JSON 提供，读取以备打印核对）
+ABAR_USED, TAU2_USED = float(M["abar_eicu"]), float(M["tau2_eicu"])
+print(f"[图11 数据核对] 内部 S3@m25={INT_S3_M25:.1f}%  外部 S3@m25={EXT_S3_M25:.1f}%  "
+      f"外部朴素达到同水平 m≈{EXT_EQ_M}  ā={ABAR_USED:+.3f} τ²={TAU2_USED:.3f}")
+
 BLUE, GRAY, DARK, TEAL = "#2C6E9B", "#9AA5B1", "#1B2631", "#1E8449"
 plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 9, "axes.unicode_minus": False,
                      "axes.linewidth": 0.8})
@@ -35,7 +54,7 @@ ax.set_title("Internal (103 eICU centres)", fontsize=10.0, fontweight="bold", pa
 ax.set_xlim(-10, 212); ax.set_ylim(4, 42)
 ax.legend(fontsize=7.6, frameon=False, loc="lower right")
 ax.annotate("shrinkage already beats\nno recalibration at $m$ = 25",
-            xy=(25, 23.4), xytext=(6, 31.5), fontsize=7.6, color=TEAL, fontweight="bold",
+            xy=(25, INT_S3_M25), xytext=(6, 31.5), fontsize=7.6, color=TEAL, fontweight="bold",
             ha="left", arrowprops=dict(arrowstyle="->", color=TEAL, lw=0.9))
 
 # 右：MIMIC 外部
@@ -48,8 +67,8 @@ for s in ["S0", "S1", "S3"]:
 d0 = S_ext[(S_ext["strat"] == "S0") & (S_ext["m"] == 0)]["ok11"].iloc[0]
 ax.axhline(d0, color=GRAY, lw=1.0, ls=":")
 ax.text(300, d0 + 2.5, f"no recalibration: {d0:.0f}%", fontsize=7.4, color=GRAY, ha="left")
-ax.annotate("S3 at $m$=25 (53.5%)\n≈ S1 at $m$=200 (53.0%)",
-            xy=(25, 53.5), xytext=(95, 26), fontsize=7.8, color=TEAL, fontweight="bold",
+ax.annotate(f"S3 at $m$=25 ({EXT_S3_M25:.1f}%)\n≈ S1 at $m$ ≈ {EXT_EQ_M}",
+            xy=(25, EXT_S3_M25), xytext=(95, 26), fontsize=7.8, color=TEAL, fontweight="bold",
             arrowprops=dict(arrowstyle="->", color=TEAL, lw=1.0))
 ax.set_title("External (MIMIC-IV)", fontsize=10.0, fontweight="bold", pad=8)
 ax.set_xlim(-10, 412); ax.set_ylim(-6, 92)
