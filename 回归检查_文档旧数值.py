@@ -8,9 +8,19 @@ SELF = os.path.basename(__file__)
 
 SIG = re.compile(r"53\.5|23\.4(?!\.\d\s*$)|\+30\.0|\+8\.2|7\.4×10⁻¹³|2\.5×10⁻⁹²|"
                  r"0\.0683|eight-fold|8\s*倍|8倍|53\.0%|\+4\.43|\+8\.20|2\.5254317857068105e-92")
-# 需要排除的：说明「这是旧值」的句子、以及本扫描清单本身
-CONTEXT = re.compile(r"更正前|更正后|原值|旧值|作废|原先|曾|按原|勿填|→|->|作废值|" 
-                     r"shrinkage target|fixed-effect")
+# 需要排除的：说明「这是旧值」的句子、引用错误本身的句子、以及未随更正变化的值
+CONTEXT = re.compile(r"更正前|更正后|原值|旧值|旧数字|作废|原先|曾|按原|勿填|→|->|作废值|"
+                     r"硬编码|首轮|错误|待补|曾误|口径|修订|固定效应|"
+                     r"fixed-effect|corrected|original|shrinkage target|disclos")
+
+# 逐值豁免：行内同时出现「该旧值」与「豁免语境」 → 视为合法（未变的现值 / 说明性引用）
+ALLOW = [
+    # 53.0% = 朴素法 S1 在 m=200 的达标率，未因 ā 权重更正而变化
+    (re.compile(r"53\.0%"), re.compile(r"朴素|S1|200|naive|reached")),
+]
+# 同一行内同时出现旧值与新值 → 必然是「旧 → 新」对照表，合法
+OLDV = re.compile(r"53\.5|23\.4(?!\.\d\s*$)|\+30\.0|\+8\.2|7\.4×10⁻¹³|0\.0683")
+NEWV = re.compile(r"47\.0|24\.3|\+23\.5|\+9\.05|6\.3×10⁻⁷|3\.7×10⁻¹¹²|\+0\.030")
 
 print("=" * 96)
 print("  待更新文档清单（叙述中的旧数值）")
@@ -28,8 +38,15 @@ for root, dirs, files in os.walk(B):
             continue
         hits = []
         for i, ln in enumerate(lines, 1):
-            if SIG.search(ln) and not CONTEXT.search(ln):
-                hits.append((i, ln.strip()))
+            if not SIG.search(ln) or CONTEXT.search(ln):
+                continue
+            # 豁免一：该旧值在本行同时出现豁免语境（未变的现值 / 说明性引用）
+            if any(v.search(ln) and ctx.search(ln) for v, ctx in ALLOW):
+                continue
+            # 豁免二：同行为「旧值 → 新值」对照表
+            if OLDV.search(ln) and NEWV.search(ln):
+                continue
+            hits.append((i, ln.strip()))
         if hits:
             rel = os.path.relpath(p, B)
             targets.append((rel, hits))
