@@ -10,6 +10,9 @@ from matplotlib.gridspec import GridSpec
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 BASE = r"E:\文件杂\褚俊智老师\论文选题\选题T1_虚弱营养列线图\09_路B_跨院校准"
 ST, FG = os.path.join(BASE, "03_统计"), os.path.join(BASE, "04_图表")
+sys.path.insert(0, BASE)
+from figures_common import r1
+
 R = json.load(open(os.path.join(ST, "batch2_results.json"), encoding="utf-8"))
 BLUE, RED, GRAY, DARK, ORG = "#2C6E9B", "#C0392B", "#9AA5B1", "#1B2631", "#E67E22"
 plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 9, "axes.unicode_minus": False,
@@ -63,7 +66,7 @@ xs = np.arange(3)
 i2 = [G[l]["I2"] for l in labs]; t2 = [G[l]["tau2"] for l in labs]
 b = ax.bar(xs - 0.19, i2, width=0.36, color=BLUE, edgecolor=DARK, lw=0.7, zorder=3, label="$I^2$ (%)")
 for xx, v in zip(xs - 0.19, i2):
-    ax.text(xx, v + 1.6, f"{v:.1f}%", ha="center", fontsize=8.4, fontweight="bold", color=DARK)
+    ax.text(xx, v + 1.6, f"{r1(v)}%", ha="center", fontsize=8.4, fontweight="bold", color=DARK)
 ax.axhline(50, color=RED, lw=1.0, ls="--")
 ax.text(0.02, 52.5, "50% threshold for substantial heterogeneity", color=RED, fontsize=7.2, ha="left")
 ax.set_ylabel("$I^2$  (%)", fontsize=9.2); ax.set_ylim(0, 108)

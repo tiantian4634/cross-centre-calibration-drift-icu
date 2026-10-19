@@ -19,11 +19,11 @@
 
 ---
 
-# 图1　两库患者筛选流程图
+# Figure 1
 
 ### English legend
 
-> **Figure 1. Flow of participants from eICU-CRD and MIMIC-IV into the analysis.**
+> **Flow of participants from eICU-CRD and MIMIC-IV into the analysis.**
 > **Left, estimation cohort (eICU-CRD v2.0, 208 hospitals).** 200,859 unit stays → first ICU stay per
 > patient (139,367) → age ≥65 years (71,734; ages >89 recorded as 90) → ICU length of stay ≥24 h (50,138)
 > → medical or medical–surgical ICU (31,307) → exclusion of deaths within 24 h of ICU admission (7)
@@ -65,12 +65,11 @@
 > 校准截距可稳定估计；未达阈值的中心仍进入合并模型，但不参与中心层面分析。
 
 ---
-
-# 图3　三评分的跨中心校准漂移
+# Figure 2
 
 ### English legend
 
-> **Figure 3. Between-centre drift in calibration intercept for three acute-severity scores.**
+> **Between-centre drift in calibration intercept for three acute-severity scores.**
 > Each panel shows one severity score fitted as a single-predictor logistic model on the full eICU-CRD
 > cohort (30,796 patients; 3,901 in-hospital deaths) and then applied to each of **103 centres**
 > (≥100 patients and ≥10 deaths). Points are centres sorted by their calibration-in-the-large offset
@@ -92,12 +91,11 @@
 > O/E 比跨度约 2.2 倍。**说明漂移是"场景属性"，而非某一评分的缺陷。**
 
 ---
-
-# 图4　判别力可迁移，校准不可迁移
+# Figure 3
 
 ### English legend
 
-> **Figure 4. Discrimination transports across centres; calibration does not.**
+> **Discrimination transports across centres; calibration does not.**
 > SOFA-based model, 103 eICU centres. Each point is a centre: x = its AUC (discrimination),
 > y = its observed-to-expected ratio (calibration). The horizontal dashed line marks perfect
 > calibration (O/E = 1); the dotted vertical line marks the pooled AUC (0.732). Marginal histograms
@@ -112,12 +110,11 @@
 > **逐院 AUC 跨度仅 0.16（0.649–0.812），而 O/E 跨度达 2.2 倍（0.69–1.54）**——校准的变异远大于判别力。
 
 ---
-
-# 图5　实测病例组合几乎解释不了漂移
+# Supplementary Fig. S1
 
 ### English legend
 
-> **Figure 5. Measured case-mix barely reduces between-centre heterogeneity.**
+> **Supplementary Fig. S1. Measured case-mix barely reduces between-centre heterogeneity.**
 > Successive adjustment of the SOFA-based model: M1 = SOFA alone; M2 = + age, sex;
 > M3 = + comorbidity burden (Charlson) + invasive ventilation. Bars show between-centre $I^2$
 > (random-effects meta-analysis, DerSimonian–Laird); numbers inside bars are the corresponding
@@ -139,11 +136,14 @@
 
 ---
 
-# 图6　单中心开发队列在多中心分布中的位置
+> **Reference bar.** The fourth bar refits the M1 model — the score alone — on exactly the patients and hospitals used by M3 (n = 27,236; 97 centres) and gives I² = 73.5%. Of the 5.2-percentage-point fall in I² from M1 to M3, 3.4 points are attributable to the change in analysis set and 1.9 points to the addition of the covariates. The reduction reflects the covariates rather than the change in analysis set.
+>
+> **Analysis set.** M1 and M2 use 30,796 patients and 103 hospitals; M3 and the reference bar use 27,236 patients and 97 hospitals, because Charlson comorbidity index is missing for 11.6% of eICU-CRD patients and M3 uses complete cases.
+# Supplementary Fig. S2
 
 ### English legend
 
-> **Figure 6. Position of a single-centre development cohort within the multicentre distribution.**
+> **Supplementary Fig. S2. Position of a single-centre development cohort within the multicentre distribution.**
 > The eICU-derived SOFA model (full-cohort coefficients) was applied to MIMIC-IV
 > (8,579 patients, 1,654 deaths, 19.3%). MIMIC-IV is shown as the orange diamond; the grey points
 > are the 103 eICU centres. MIMIC-IV had an AUC of 0.722 (0.732 within eICU), observed mortality
@@ -160,12 +160,11 @@
 > **单中心队列并不特殊**——迁移时常见的系统性失校准，反映的是普遍的中心间漂移。
 
 ---
-
-# 图7　本地重校准学习曲线（朴素方法）
+# Figure 4
 
 ### English legend
 
-> **Figure 7. How many local patients does a centre need to recalibrate an externally developed model?**
+> **How many local patients does a centre need to recalibrate an externally developed model?**
 > SOFA-based model, eICU centres with ≥200 patients; for each $m$ the calibration set and the
 > evaluation set were required to be at least equal in size ($n \ge 2m$), and each (centre, $m$)
 > combination was repeated **100 times**. Two strategies were compared: recalibrating the
@@ -186,11 +185,14 @@
 
 ---
 
-# 图8　同一中心两年的校准偏移并不稳定
+> **Centre composition.** The set of contributing centres shrinks as *m* increases (k = 103, 103, 103, 59, 13), labelled beneath the x axis; changes across *m* therefore reflect both local sample size and centre composition. The S0 reference line is the *within-m* benchmark, not a learning effect.
+>
+> **Two success rates for naive recalibration.** This analysis uses 100 resampling attempts per cell and reports 15.3% at *m* = 25, whereas the shrinkage analyses use 200 attempts with a paired design and report 15.5%. Both are correct; the two are independent draws, and comparisons are made within, not between, figures.
+# Supplementary Fig. S3
 
 ### English legend
 
-> **Figure 8. A centre's calibration offset is not a stable centre property.**
+> **Supplementary Fig. S3. A centre's calibration offset is not a stable centre property.**
 > eICU-CRD covers 2014–2015; **88 centres** contributed ≥50 patients and ≥5 deaths in each year.
 > Each point is a centre: x = its calibration offset in 2014, y = its offset in 2015; colour =
 > change ($\Delta a$ = 2015 − 2014). The dashed line is the identity line.
@@ -207,8 +209,7 @@
 > 方差分解显示**院间总方差中 41.6% 来自院内时间成分**。**依赖"一次性固定重校准"的策略本质上不稳固。**
 
 ---
-
-# 图9　规模分层 与 临床影响
+# Figure 5
 
 ### English legend
 
@@ -238,12 +239,11 @@
 > **6.2% / 17.0% / 21.4% / 22.3%**——即最多五分之一的中心。
 
 ---
-
-# 图10　分层收缩把小样本负收益翻盘为净收益
+# Figure 6
 
 ### English legend
 
-> **Figure 10. Hierarchical shrinkage removes the small-sample penalty of local recalibration.**
+> **Hierarchical shrinkage removes the small-sample penalty of local recalibration.**
 > 103 eICU centres; **200 resamples** per (centre, $m$). The shrinkage target $\bar a$ and the
 > between-centre variance $\tau^2$ were estimated by **leave-one-centre-out** cross-fitting, so no
 > centre's evaluation data entered its own shrinkage parameters. Four strategies:
@@ -267,13 +267,16 @@
 
 ---
 
-# 图11　收缩参数可跨数据库迁移
+> **Centre composition.** The set of contributing centres shrinks as *m* increases (k = 103, 103, 103, 59, 13). Comparisons are made within each *m*.
+>
+> **Two success rates for naive recalibration.** This analysis uses 200 resampling attempts per cell and reports 15.5% at *m* = 25; the learning-curve analysis uses 100 attempts and reports 15.3%. Both are correct and are independent draws.
+# Figure 7
 
 ### English legend
 
-> **Figure 11. Shrinkage parameters estimated once from eICU generalise to a different database.**
+> **Shrinkage parameters estimated once from eICU generalise to a different database.**
 > Outcome: proportion of resampling attempts with residual |O/E − 1| ≤ 10%; 200 resamples per $m$.
-> **Left, internal validation:** 103 eICU centres, leave-one-centre-out (as Figure 10).
+> **Left, internal validation:** 103 eICU centres, leave-one-centre-out (as Figure 6).
 > **Right, external validation:** MIMIC-IV treated as a single new centre (8,579 patients, 1,654 deaths);
 > the shrinkage target $\bar a$ = +0.030 and $\tau^2$ = 0.131 were **fixed from eICU and never
 > re-estimated on MIMIC-IV**. The true offset to recover was $a^*$ = +0.221 (observed 19.3% vs
@@ -285,7 +288,7 @@
 >
 > **Note:** MIMIC-IV is a **single-centre** database. This analysis tests whether the *shrinkage
 > parameters* transfer across databases; it does **not** constitute multicentre external validation
-> of the strategy, which can only be evaluated within eICU itself (Figure 10). The two must not be
+> of the strategy, which can only be evaluated within eICU itself (Figure 6). The two must not be
 > conflated.
 
 ### 中文对照
@@ -300,6 +303,7 @@
 
 ---
 
+> **Panel titles.** The right-hand panel shows transfer of the shrinkage parameters to MIMIC-IV treated as a **single new centre**. It is **not** multicentre external validation of the strategy, which can only be evaluated within eICU (left panel).
 # 待补图（投稿前需完成）
 
 | 编号（暂定） | 内容 | 状态 |

@@ -11,6 +11,9 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 BASE = r"E:\文件杂\褚俊智老师\论文选题\选题T1_虚弱营养列线图"
 SRCDIR = os.path.join(BASE, "09_路B_跨院校准")
 FG = os.path.join(SRCDIR, "04_图表")
+sys.path.insert(0, BASE)
+from figures_common import r1
+
 DARK, EDGE, TXT = "#2C3E50", "#2C3E50", "#1B2631"
 
 plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 8.2, "axes.unicode_minus": False})

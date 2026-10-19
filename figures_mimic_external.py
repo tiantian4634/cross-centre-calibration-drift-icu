@@ -9,6 +9,9 @@ import matplotlib.pyplot as plt
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 BASE = r"E:\文件杂\褚俊智老师\论文选题\选题T1_虚弱营养列线图\09_路B_跨院校准"
 ST, FG = os.path.join(BASE, "03_统计"), os.path.join(BASE, "04_图表")
+sys.path.insert(0, BASE)
+from figures_common import r1
+
 S_int = pd.DataFrame(json.load(open(os.path.join(ST, "shrinkage_summary.json"), encoding="utf-8"))["rows"])
 M = json.load(open(os.path.join(ST, "mimic_external_summary.json"), encoding="utf-8"))
 S_ext = pd.DataFrame(M["rows"])
@@ -50,8 +53,8 @@ for s in ["S0", "S1", "S3"]:
 d0 = S_int[(S_int["strat"] == "S0") & (S_int["m"] == 0)]["ok11"].iloc[0]
 ax.axhline(d0, color=GRAY, lw=1.0, ls=":")
 ax.text(206, d0 + 1.6, f"{d0:.0f}%", fontsize=7.4, color=GRAY, ha="right")
-ax.set_title("Internal (103 eICU centres)", fontsize=10.0, fontweight="bold", pad=8)
-ax.set_xlim(-10, 212); ax.set_ylim(4, 42)
+ax.set_title("Internal cross-fitting\n(103 eICU centres)", fontsize=10.0, fontweight="bold", pad=8)
+ax.set_xlim(-10, 212); ax.set_ylim(0, 100)
 ax.legend(fontsize=7.6, frameon=False, loc="lower right")
 ax.annotate("shrinkage already beats\nno recalibration at $m$ = 25",
             xy=(25, INT_S3_M25), xytext=(6, 31.5), fontsize=7.6, color=TEAL, fontweight="bold",
@@ -70,8 +73,8 @@ ax.text(300, d0 + 2.5, f"no recalibration: {d0:.0f}%", fontsize=7.4, color=GRAY,
 ax.annotate(f"S3 at $m$=25 ({EXT_S3_M25:.1f}%)\n≈ S1 at $m$ ≈ {EXT_EQ_M}",
             xy=(25, EXT_S3_M25), xytext=(95, 26), fontsize=7.8, color=TEAL, fontweight="bold",
             arrowprops=dict(arrowstyle="->", color=TEAL, lw=1.0))
-ax.set_title("External (MIMIC-IV)", fontsize=10.0, fontweight="bold", pad=8)
-ax.set_xlim(-10, 412); ax.set_ylim(-6, 92)
+ax.set_title("Transfer to MIMIC-IV\n(single new centre)", fontsize=10.0, fontweight="bold", pad=8)
+ax.set_xlim(-10, 412); ax.set_ylim(0, 100)
 ax.text(0.03, 0.975, f"$\\bar a$ = {M['abar_eicu']:+.3f},  $\\tau^2$ = {M['tau2_eicu']:.3f}  (both from eICU)\n"
         f"true offset to recover $a^{{*}}$ = {M['a_star']:+.3f}",
         transform=ax.transAxes, fontsize=7.6, va="top", color=DARK,

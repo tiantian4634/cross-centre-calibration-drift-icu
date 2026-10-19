@@ -165,45 +165,24 @@ Writing – review & editing, Project administration, Supervision, Funding acqui
 **Funding.** This research received no external funding. The article processing charge was covered by
 the authors' institution."""
 
-# ---------- 8. 图注（原编号 → 投稿编号） ----------
+# ---------- 8. 图注（源文件已用投稿编号 Fig.1–7 / SuppFig S1–S3）----------
 leg = open(os.path.join(B, "图注_legend.md"), encoding="utf-8").read()
-# 原图号 -> (投稿编号, 中文标题片段)
-LEG_MAP = {1: "Figure 1", 3: "Figure 2", 4: "Figure 3", 7: "Figure 4",
-           9: "Figure 5", 10: "Figure 6", 11: "Figure 7"}
 blocks = re.split(r"\n# ", leg)
 kept = []
 for blk in blocks:
     head = blk.split("\n")[0].strip()
-    num = re.match(r"^图\s*(\d+)", head)
-    if not num:
-        continue
-    o = int(num.group(1))
-    if o not in LEG_MAP:                      # 图5/6/8 为补充材料，不进正文图注
+    m = re.match(r"^Figure\s+(\d+)", head)
+    if not m:
         continue
     eng = re.search(r"### English legend\s*\n(.*?)(?:\n### |\Z)", blk, re.S)
     if not eng:
         continue
     body = re.sub(r"^>\s?", "", eng.group(1), flags=re.M).strip()
-    # 图注体内自带旧编号的标题行与交叉引用，按映射统一重编，并去掉重复的标题层
-    body = re.sub(r"^\*\*Figure\s*\d+\.\s*", "**", body, count=1)
-    # 用一次性占位替换，避免 'Figure 3 → 2' 后再被 'Figure 4 → 3' 级联改写
-    tmp = body
-    for i, (old, newlab) in enumerate(sorted(LEG_MAP.items())):
-        tmp = re.sub(r"\bFigure\s+%d\b" % old, "@@F%d@@" % i, tmp)
-    for i, (old, newlab) in enumerate(sorted(LEG_MAP.items())):
-        tmp = tmp.replace("@@F%d@@" % i, newlab)
-    body = tmp
-    body = re.sub(r"\*\*\s*\n", "** ", body).strip()
-    kept.append((LEG_MAP[o], "图%d → %s" % (o, LEG_MAP[o]), body))
-
-
-def sk(s):
-    m = re.match(r"Figure (\d+)", s[0])
-    return int(m.group(1))
-kept.sort(key=sk)
+    kept.append((int(m.group(1)), "Figure %d" % int(m.group(1)), body))
+kept.sort(key=lambda x: x[0])
 LEG = ("## Figure legends\n\n"
-       + "\n\n".join("**%s**\n\n%s" % (n, b) for n, _, b in kept))
-print("    图注 %d 条: %s" % (len(kept), "; ".join(tag for _, tag, _ in kept)))
+       + "\n\n".join("**%s**\n\n%s" % (n, b) for _, n, b in kept))
+print("    图注 %d 条: %s" % (len(kept), "; ".join(n for _, n, _ in kept)))
 
 # ---------- 9. Table 1 ----------
 tab = rd("Tables_表格.md")

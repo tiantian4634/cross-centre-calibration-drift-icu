@@ -69,6 +69,8 @@ each step (Supplementary Fig. S1). Adding age and sex raised the pooled AUC by o
 ventilation raised the AUC by a further 0.011 (to 0.752) and lowered I² to 70.1%, a reduction of
 5.2 percentage points; τ² fell from 0.131 to 0.106.
 
+Because M3 also carries a smaller analysis set (27,236 patients and 97 hospitals, against 30,796 and 103 for M1 and M2), we separated the two contributions directly: refitting the M1 model — the score alone — on exactly the patients and hospitals used by M3 gave I² = 73.49%. Of the 5.2-percentage-point fall from M1 to M3, 1.9 points were therefore attributable to the change in analysis set and 3.4 points to the addition of the covariates themselves. The reduction reflects the covariates; the change in analysis set is the smaller contributor (Supplementary Fig. S1).
+
 Measured case-mix therefore accounts for only a small share of the between-centre variation: four
 clinically relevant covariates, added together, explain around 5 percentage points of I² against a
 baseline of 75%. **The remaining variation is reported here as residual between-hospital variation. It
@@ -173,6 +175,8 @@ hardest precisely where the local estimate is least reliable.
 
 **The pre-specified criterion for this analysis was met** (at *m* = 25, S3 exceeded S1; at *m* ≥ 100, S3
 was not worse than S1 by more than 5 percentage points).
+
+*Note on the two success rates for naive recalibration.* The learning-curve analysis reports 15.3% at *m* = 25, whereas the shrinkage analyses report 15.5%. Both are correct: the first uses 100 resampling attempts per cell and the second 200 with a paired design, so they are independent draws. Comparisons are made within, not between, figures.
 
 ### Shrinkage parameters transfer across databases
 

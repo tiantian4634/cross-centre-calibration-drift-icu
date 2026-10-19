@@ -9,6 +9,9 @@ import matplotlib.pyplot as plt
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 BASE = r"E:\文件杂\褚俊智老师\论文选题\选题T1_虚弱营养列线图\09_路B_跨院校准"
 ST, FG = os.path.join(BASE, "03_统计"), os.path.join(BASE, "04_图表")
+sys.path.insert(0, BASE)
+from figures_common import r1
+
 S = pd.DataFrame(json.load(open(os.path.join(ST, "shrinkage_summary.json"), encoding="utf-8"))["rows"])
 
 # 标注锚点由数据算出，并校验标注所声称的结论是否仍成立
@@ -69,7 +72,7 @@ ax.axhline(50, color=DARK, lw=0.8, ls="--", alpha=0.5)
 ax.text(206, 51.5, "50%", fontsize=7.2, color=DARK, ha="right", alpha=0.7)
 ax.set_xlabel("Local patients used for recalibration  ($m$)", fontsize=9.4)
 ax.set_ylabel("Recalibration attempts landing\nwithin ±10%  (%)", fontsize=9.0)
-ax.set_xlim(-8, 212); ax.set_ylim(5, 62)
+ax.set_xlim(-8, 212); ax.set_ylim(0, 100)
 ax.spines[["top", "right"]].set_visible(False)
 fig.tight_layout()
 fig.savefig(os.path.join(FG, "Fig6_分层收缩重校准.png"), dpi=600, bbox_inches="tight")

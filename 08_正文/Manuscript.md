@@ -134,6 +134,8 @@ each step (Supplementary Fig. S1). Adding age and sex raised the pooled AUC by o
 ventilation raised the AUC by a further 0.011 (to 0.752) and lowered I² to 70.1%, a reduction of
 5.2 percentage points; τ² fell from 0.131 to 0.106.
 
+Because M3 also carries a smaller analysis set (27,236 patients and 97 hospitals, against 30,796 and 103 for M1 and M2), we separated the two contributions directly: refitting the M1 model — the score alone — on exactly the patients and hospitals used by M3 gave I² = 73.49%. Of the 5.2-percentage-point fall from M1 to M3, 1.9 points were therefore attributable to the change in analysis set and 3.4 points to the addition of the covariates themselves. The reduction reflects the covariates; the change in analysis set is the smaller contributor (Supplementary Fig. S1).
+
 Measured case-mix therefore accounts for only a small share of the between-centre variation: four
 clinically relevant covariates, added together, explain around 5 percentage points of I² against a
 baseline of 75%. **The remaining variation is reported here as residual between-hospital variation. It
@@ -238,6 +240,8 @@ hardest precisely where the local estimate is least reliable.
 
 **The pre-specified criterion for this analysis was met** (at *m* = 25, S3 exceeded S1; at *m* ≥ 100, S3
 was not worse than S1 by more than 5 percentage points).
+
+*Note on the two success rates for naive recalibration.* The learning-curve analysis reports 15.3% at *m* = 25, whereas the shrinkage analyses report 15.5%. Both are correct: the first uses 100 resampling attempts per cell and the second 200 with a paired design, so they are independent draws. Comparisons are made within, not between, figures.
 
 ### Shrinkage parameters transfer across databases
 
@@ -886,7 +890,8 @@ the authors' institution.
 
 **Figure 1**
 
-**Flow of participants from eICU-CRD and MIMIC-IV into the analysis.** **Left, estimation cohort (eICU-CRD v2.0, 208 hospitals).** 200,859 unit stays → first ICU stay per
+**Flow of participants from eICU-CRD and MIMIC-IV into the analysis.**
+**Left, estimation cohort (eICU-CRD v2.0, 208 hospitals).** 200,859 unit stays → first ICU stay per
 patient (139,367) → age ≥65 years (71,734; ages >89 recorded as 90) → ICU length of stay ≥24 h (50,138)
 → medical or medical–surgical ICU (31,307) → exclusion of deaths within 24 h of ICU admission (7)
 and of missing hospital outcome status (363) → **analysis cohort of 30,796 patients from 187 hospitals
@@ -909,8 +914,10 @@ centre-level analyses.
 
 **Figure 2**
 
-**Between-centre drift in calibration intercept for three acute-severity scores.** Each panel shows one severity score fitted as a single-predictor logistic model on the full eICU-CRD
-cohort (30,796 patients; 3,901 in-hospital deaths) and then applied to each of **103 centres** (≥100 patients and ≥10 deaths). Points are centres sorted by their calibration-in-the-large offset
+**Between-centre drift in calibration intercept for three acute-severity scores.**
+Each panel shows one severity score fitted as a single-predictor logistic model on the full eICU-CRD
+cohort (30,796 patients; 3,901 in-hospital deaths) and then applied to each of **103 centres**
+(≥100 patients and ≥10 deaths). Points are centres sorted by their calibration-in-the-large offset
 $a_h$ (solving $\mathrm{mean}\{\mathrm{expit}(\mathrm{logit}(\hat p)+a_h)\}=\mathrm{observed\ mortality}$);
 **$a_h > 0$ indicates more deaths than the model predicts**. Bars are 95% CIs (delta method);
 point size is proportional to $\log(n)$. Colour encodes $a_h$ (blue = lower than predicted,
@@ -922,7 +929,8 @@ approximately 2.2-fold across centres (P10–P90: 0.69–1.54 for SOFA).
 
 **Figure 3**
 
-**Discrimination transports across centres; calibration does not.** SOFA-based model, 103 eICU centres. Each point is a centre: x = its AUC (discrimination),
+**Discrimination transports across centres; calibration does not.**
+SOFA-based model, 103 eICU centres. Each point is a centre: x = its AUC (discrimination),
 y = its observed-to-expected ratio (calibration). The horizontal dashed line marks perfect
 calibration (O/E = 1); the dotted vertical line marks the pooled AUC (0.732). Marginal histograms
 show each marginal distribution. **Per-centre AUC ranged from 0.649 to 0.812 (a spread of 0.16),
@@ -931,13 +939,15 @@ than discrimination. Point colour encodes $a_h$ (blue < 0, red > 0).
 
 **Figure 4**
 
-**How many local patients does a centre need to recalibrate an externally developed model?** SOFA-based model, eICU centres with ≥200 patients; for each $m$ the calibration set and the
+**How many local patients does a centre need to recalibrate an externally developed model?**
+SOFA-based model, eICU centres with ≥200 patients; for each $m$ the calibration set and the
 evaluation set were required to be at least equal in size ($n \ge 2m$), and each (centre, $m$)
 combination was repeated **100 times**. Two strategies were compared: recalibrating the
 intercept only (S1) and recalibrating both intercept and calibration slope (S2).
 Left: residual miscalibration $|a|$ (median across centres; band → P90).
 Right: the proportion of resampling attempts whose residual O/E fell within ±10%.
-**With 25 local patients, naive recalibration was worse than no recalibration at all** (residual $|a|$ 0.31 → 0.45; ±10% success 21.4% → 15.3%), and even 200 patients succeeded in
+**With 25 local patients, naive recalibration was worse than no recalibration at all**
+(residual $|a|$ 0.31 → 0.45; ±10% success 21.4% → 15.3%), and even 200 patients succeeded in
 only 34% of attempts. Two-parameter recalibration was no better than intercept-only and was
 worse at small $m$. **Sample-size requirements for local recalibration are commonly underestimated.**
 
@@ -959,7 +969,8 @@ i.e. in up to one in five centres the model performed worse than treating everyo
 
 **Figure 6**
 
-**Hierarchical shrinkage removes the small-sample penalty of local recalibration.** 103 eICU centres; **200 resamples** per (centre, $m$). The shrinkage target $\bar a$ and the
+**Hierarchical shrinkage removes the small-sample penalty of local recalibration.**
+103 eICU centres; **200 resamples** per (centre, $m$). The shrinkage target $\bar a$ and the
 between-centre variance $\tau^2$ were estimated by **leave-one-centre-out** cross-fitting, so no
 centre's evaluation data entered its own shrinkage parameters. Four strategies:
 S0 no recalibration; S1 naive intercept-only; S2 naive intercept + slope;
@@ -974,7 +985,8 @@ at $m$ = 25 residual $|a|$ fell from 0.44 (naive) to 0.26 and the ±10% success 
 
 **Figure 7**
 
-**Shrinkage parameters estimated once from eICU generalise to a different database.** Outcome: proportion of resampling attempts with residual |O/E − 1| ≤ 10%; 200 resamples per $m$.
+**Shrinkage parameters estimated once from eICU generalise to a different database.**
+Outcome: proportion of resampling attempts with residual |O/E − 1| ≤ 10%; 200 resamples per $m$.
 **Left, internal validation:** 103 eICU centres, leave-one-centre-out (as Figure 6).
 **Right, external validation:** MIMIC-IV treated as a single new centre (8,579 patients, 1,654 deaths);
 the shrinkage target $\bar a$ = +0.030 and $\tau^2$ = 0.131 were **fixed from eICU and never

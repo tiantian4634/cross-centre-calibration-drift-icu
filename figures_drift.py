@@ -11,6 +11,10 @@ from matplotlib.gridspec import GridSpec
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 BASE = r"E:\文件杂\褚俊智老师\论文选题\选题T1_虚弱营养列线图\09_路B_跨院校准"
 ST, FG = os.path.join(BASE, "03_统计"), os.path.join(BASE, "04_图表")
+sys.path.insert(0, BASE)
+from figures_common import r1
+AUC_CI = json.load(open(os.path.join(ST, "pooled_auc_ci.json"), encoding="utf-8"))
+
 os.makedirs(FG, exist_ok=True)
 
 H = pd.read_csv(os.path.join(ST, "hospital_level_三评分.csv"))
@@ -38,17 +42,18 @@ for i, name in enumerate(["SOFA", "OASIS", "SAPS-II"]):
     x = np.arange(len(d))
     ax.axhline(0, color=DARK, lw=1.0, ls="--", zorder=1)
     ax.vlines(x, d["a_h"] - 1.96 * d["se_a"], d["a_h"] + 1.96 * d["se_a"],
-              color="#D3D8DD", lw=0.65, zorder=2)
+              color="#B4BAC1", lw=0.7, zorder=2)
     sz = 13 + 30 * np.log10(d["n"] / d["n"].min() + 1)
     ax.scatter(x, d["a_h"], s=sz, c=np.clip(d["a_h"], -0.85, 0.85),
                cmap="RdBu_r", vmin=-0.85, vmax=0.85, edgecolor="#33414D", lw=0.45, zorder=3)
     r = R["scores"][name]
     ax.set_title(f"{name}", fontsize=11, fontweight="bold", pad=6)
-    ax.text(0.03, 0.965, f"$I^2$ = {r['I2']:.1f}%\nAUC {r['pooled_auc']:.3f}",
+    ax.text(0.03, 0.965, f"$I^2$ = {r1(r['I2'])}%\nAUC {r['pooled_auc']:.3f} ({AUC_CI[name]['lo']}–{AUC_CI[name]['hi']})",
             transform=ax.transAxes, fontsize=8.2, va="top", color=DARK,
             bbox=dict(fc="white", ec="#D5D8DC", lw=0.5, pad=3.2))
     ax.text(0.97, 0.035, f"P10–P90 O/E\n{r['OE_p10']:.2f} – {r['OE_p90']:.2f}",
-            transform=ax.transAxes, fontsize=7.4, va="bottom", ha="right", color=GRAY)
+            transform=ax.transAxes, fontsize=7.4, va="bottom", ha="right", color=DARK,
+            bbox=dict(fc="white", ec="none", pad=2.2))
     ax.set_ylim(-0.95, 1.45)
     ax.set_xlim(-4, len(d) + 3)
     ax.set_xticks([0, 25, 50, 75, 100])
@@ -76,7 +81,7 @@ axt.text(axv, 0.97, f"pooled AUC {axv:.3f}", transform=axt.get_yaxis_transform()
          ha="center", va="top", fontsize=7.4, color=RED, fontweight="bold")
 ax.text(0.663, 1.01, "perfect calibration", fontsize=7.4, color=DARK)
 ax.text(0.015, 0.955,
-        "AUC: 0.649 – 0.812  (range 0.16)\nO/E: 0.69 – 1.54      (range 2.2-fold)",
+        "AUC: 0.649–0.812 (P10–P90 width 0.163)\nO/E: 0.69–1.54 (P10–P90 ratio 2.2-fold)",
         transform=ax.transAxes, fontsize=8.2, va="top", color=DARK,
         bbox=dict(fc="white", ec="#D5D8DC", lw=0.5, pad=3.5))
 axt.hist(d["auc"], bins=18, color=BLUE, alpha=0.85, edgecolor="white", lw=0.4)
@@ -90,28 +95,42 @@ for s in ["top", "right"]:
 ax.set_xlim(0.62, 0.84); ax.set_ylim(0.55, 1.72)
 save(fig, "Fig3_判别稳与校准漂")
 
-# ══════════════════ 图5 病例组合阶梯 ══════════════════
+# ══════════════════ SuppFig S1 病例组合阶梯 ══════════════════
 L = R["ladder"]
 tags = list(L.keys())
 i2 = [L[t]["I2"] for t in tags]
 aucv = [L[t]["AUC"] for t in tags]
-fig, ax = plt.subplots(figsize=(6.6, 4.1))
-xx = np.arange(len(tags))
-bars = ax.bar(xx, i2, width=0.55, color=[BLUE, "#5B8FB9", GRAY], edgecolor=DARK, lw=0.7, zorder=3)
+# A5 参照柱：在 M3 的同一患者子集、同一中心集合上，只把模型换回 M1（SOFA 单评分）。
+# 若其 I² 接近 M1 而非 M3，则 M3 的下降可归因于协变量本身，而非分析集变化。
+CM = json.load(open(os.path.join(ST, "casemix_set_sensitivity.json"), encoding="utf-8"))
+REF_I2, REF_K, REF_N = CM["I2_m1_same_subset"], CM["m3"]["k"], CM["m3"]["n"]
+print("[SuppFigS1] 参照柱 I²=%.2f%%（同 %d 中心 / %d 患者）" % (REF_I2, REF_K, REF_N))
+
+i2 = i2 + [REF_I2]
+aucv = aucv + [None]
+tags_x = ["M1\nSOFA", "M2\n+ age, sex",
+          "M3\n+ comorbidity,\ninvasive ventilation\nn = 27,236; k = %d" % REF_K,
+          "M1 reference\nsame patients\nand centres\n(n = 27,236; k = %d)" % REF_K]
+COLS = [BLUE, "#5B8FB9", GRAY, "#D5D8DC"]
+fig, ax = plt.subplots(figsize=(7.9, 4.2))
+xx = np.arange(len(i2))
+bars = ax.bar(xx, i2, width=0.58, color=COLS, edgecolor=DARK, lw=0.7, zorder=3)
 for b, v, a in zip(bars, i2, aucv):
-    ax.text(b.get_x() + b.get_width() / 2, v + 1.6, f"$I^2$ = {v:.1f}%",
+    ax.text(b.get_x() + b.get_width() / 2, v + 1.6, "$I^2$ = %s%%" % r1(v),
             ha="center", fontsize=9.5, fontweight="bold", color=DARK)
-    ax.text(b.get_x() + b.get_width() / 2, v / 2, f"AUC\n{a:.3f}", ha="center",
-            va="center", fontsize=9, color="white", fontweight="bold")
+    if a is not None:
+        ax.text(b.get_x() + b.get_width() / 2, v / 2, "AUC\n%.3f" % a, ha="center",
+                va="center", fontsize=9, color="white", fontweight="bold")
 ax.axhline(50, color=RED, lw=1.1, ls="--", zorder=2)
-ax.text(len(tags) - 0.45, 52, "threshold for substantial heterogeneity",
-        color=RED, fontsize=7.2, ha="right")
+ax.text(-0.42, 51.5, "$I^2$ = 50% (substantial heterogeneity)",
+        color=RED, fontsize=7.4, ha="left", va="bottom")
 ax.set_xticks(xx)
-ax.set_xticklabels(["M1\nSOFA", "M2\n+ age, sex", "M3\n+ comorbidity,\ninvasive ventilation"], fontsize=9)
+ax.set_xticklabels(tags_x, fontsize=8.2)
 ax.set_ylabel("Between-centre heterogeneity $I^2$ (%)", fontsize=9.4)
 ax.set_ylim(0, 92)
+ax.set_xlim(-0.6, len(i2) - 0.4)
 ax.spines[["top", "right"]].set_visible(False)
-fig.subplots_adjust(left=0.115, right=0.98, top=0.96, bottom=0.165)
+fig.subplots_adjust(left=0.105, right=0.985, top=0.96, bottom=0.235)
 save(fig, "SuppFigS1_病例组合阶梯")
 
 # ══════════════════ 图6 MIMIC 定位 ══════════════════
