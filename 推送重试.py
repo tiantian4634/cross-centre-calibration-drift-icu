@@ -1,8 +1,21 @@
-import subprocess, time, io, sys, socket, shutil
+# -*- coding: utf-8 -*-
+"""推送器：先诊断代理状态，再推送。
+
+设计要点（2026-10-20 改进）：
+  原实现会在代理关闭时盲目重试 10 次后失败，给出的错误信息无法指导行动。
+  实测证据：
+    · 直连 TCP github.com:443 = 8/8 通，但 git 的 HTTPS 请求（TLS 层）失败
+    · 走代理则第 1 次即成功
+  因此**代理是必需的**，本工具在代理未运行时立即停止并给出可执行指引，
+  不做无意义重试。
+"""
+import subprocess, time, io, sys, shutil, socket
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 
 B = r"E:\文件杂\褚俊智老师\论文选题\选题T1_虚弱营养列线图\09_路B_跨院校准"
 G = shutil.which("git") or "git"
+PROXY_PORT = 20809
+PROXY = "http://127.0.0.1:%d" % PROXY_PORT
 
 
 def run(a, timeout=300):
@@ -14,78 +27,73 @@ def run(a, timeout=300):
         return -1, "TIMEOUT"
 
 
-print("=" * 66)
-print("  推送重试器（GitHub 国内间歇性故障）")
-print("=" * 66)
-
-# 1) DNS 解析稳定性
-print("\n[1] github.com DNS 解析 ×5")
-ips = set()
-for _ in range(5):
+def port_up(port, host="127.0.0.1"):
+    s = socket.socket(); s.settimeout(1.5)
     try:
-        ips.add(socket.gethostbyname("github.com"))
-    except Exception as e:
-        ips.add("FAIL")
-    time.sleep(0.3)
-print("    解析到的 IP: %s" % ", ".join(sorted(ips)))
-if len(ips) > 1:
-    print("    ⚠ DNS 结果不稳定 —— 存在解析异常")
-else:
-    print("    ✔ DNS 稳定")
-
-# 2) TCP 连通性稳定性
-print("\n[2] github.com:443 TCP 连通 ×8")
-ok = 0
-for _ in range(8):
-    s = socket.socket()
-    s.settimeout(8)
-    try:
-        s.connect(("github.com", 443))
-        ok += 1
+        s.connect((host, port)); return True
     except Exception:
-        pass
+        return False
     finally:
         s.close()
-    time.sleep(0.2)
-print("    成功 %d/8" % ok)
 
-# 3) ls-remote 探测
-print("\n[3] git ls-remote 探测")
-code, out = run([G, "-c", "core.quotepath=false", "ls-remote", "--heads", "origin"], 120)
+
+print("=" * 74)
+print("  推送器 · 先诊断后推送")
+print("=" * 74)
+
+cfg = subprocess.run([G, "config", "--global", "--get", "http.proxy"],
+                     capture_output=True, text=True, encoding="utf-8").stdout.strip()
+print("\n[1] 配置状态")
+print("    git http.proxy = %s" % (cfg or "（未配置）"))
+print("    代理端口 %d    = %s" % (PROXY_PORT, "监听中 ✔" if port_up(PROXY_PORT) else "未监听 ✘"))
+
+if not port_up(PROXY_PORT):
+    print("\n" + "=" * 74)
+    print("  ✘ 代理未运行 —— 已停止，不做无意义重试")
+    print("=" * 74)
+    print("""
+  诊断：直连 github.com 的 TCP 虽然能连通，但 git 的 HTTPS 请求会被在
+        TLS 层拦断（实测直连 push 与 ls-remote 均 exit=128，而走代理
+        第 1 次即成功）。**推代码必须开代理。**
+
+  操作：
+    1. 打开你的代理软件（mihomo / Clash），确保 %d 端口在监听
+    2. 重新运行本脚本
+
+  验证端口：  Get-NetTCPConnection -LocalPort %d -State Listen
+""" % (PROXY_PORT, PROXY_PORT))
+    sys.exit(2)
+
+if cfg != PROXY:
+    print("    ⚠ 与端口不一致 —— 本次以 %s 为准" % PROXY)
+
+print("\n[2] 代理连通性探测 (git ls-remote)")
+code, out = run([G, "ls-remote", "--heads", "origin"], 120)
 print("    exit=%d  %s" % (code, "✔ 通" if code == 0 else "✘ 不通"))
+if code != 0:
+    print("    " + next((l for l in out.splitlines() if "fatal" in l), "")[:90])
+    sys.exit(3)
 
-# 4) 推送重试
-print("\n[4] 推送重试（最多 10 次，指数退避）")
-for attempt in range(1, 11):
-    print("    第 %2d 次 ..." % attempt, end=" ", flush=True)
+print("\n[3] 推送")
+for attempt in range(1, 7):
+    print("    第 %d 次 ..." % attempt, end=" ", flush=True)
     code, out = run([G, "push", "origin", "main"], 300)
     if code == 0:
-        print("✔ 成功")
-        break
-    tail = [l for l in out.splitlines() if "fatal" in l or "error" in l]
-    print("✘ 失败  %s" % (tail[-1][:70] if tail else "未知"))
+        print("✔ 成功"); break
     if "new branch" in out or "Everything up-to-date" in out:
-        print("    （输出中已含成功标志，实际已推送）")
-        break
-    wait = min(30, 2 * attempt)
-    print("       等待 %ds 后重试" % wait)
-    time.sleep(wait)
+        print("✔ 成功（输出已含成功标志）"); break
+    print("✘ %s" % next((l.split(":")[-1].strip() for l in out.splitlines() if "fatal" in l), "失败")[:60])
+    time.sleep(min(30, 4 * attempt))
 else:
-    print("\n    10 次均失败 —— 请改走下方备用方案")
-    sys.exit(1)
+    print("\n    6 次均失败"); sys.exit(4)
 
-# 5) 核验
-print("\n[5] 核验")
-code, l = run([G, "rev-parse", "HEAD"], 60)
-code2, r = run([G, "ls-remote", "origin", "refs/heads/main"], 120)
-lh = l.strip()
-rh = (r.strip().split()[0] if r.strip() else "（空）")
+print("\n[4] 核验")
+_, l = run([G, "rev-parse", "HEAD"], 60)
+_, r = run([G, "ls-remote", "origin", "refs/heads/main"], 120)
+lh, rh = l.strip(), (r.strip().split()[0] if r.strip() else "（空）")
 print("    本地 %s" % lh)
 print("    远程 %s" % rh)
 print("    %s" % ("✔ 已同步" if lh == rh else "✘ 未同步"))
-
-code3, st = run([G, "status", "-sb"], 60)
-print("    status: %s" % st.strip().splitlines()[0] if st.strip() else "")
-print("\n" + "=" * 66)
-print("  推送命令结束")
-print("=" * 66)
+_, st = run([G, "status", "-sb"], 60)
+print("    status: %s" % (st.strip().splitlines()[0] if st.strip() else ""))
+print("\n" + "=" * 74)
