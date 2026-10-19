@@ -238,10 +238,21 @@ Zenodo 会给一段 Markdown badge 代码，直接粘进 `README.md` 顶部：
 - [x] README 里写明了「复现需 PhysioNet credentialed 授权」
 
 **需在 GitHub 网页上人工确认**
-- [ ] 仓库是 **Public**（Zenodo 只能归档公开仓库）
-- [ ] 仓库首页显示 **90 files**
-- [ ] 搜索 `eicu_hospital_context` → 0 结果（再确认一次）
-- [ ] README 渲染正常；右侧显示 "MIT license"
+- [x] 仓库是 **Public**（Zenodo 只能归档公开仓库）
+- [x] 搜索 `eicu_hospital_context` → 0 结果（另 `hospital_id_map` 同样 0）
+- [x] README 渲染正常
+- [x] LICENSE 显示 MIT
+
+> **关于「文件数」**：GitHub 现在的界面**不显示仓库文件总数**——首页标题旁只有
+> `NN Commits`（提交数）。曾把「首页显示 90 files」列为核查项是错的，已删除。
+>
+> **权威文件数只能查 API 或本地**：
+> ```powershell
+> # 本地（结果应等于 GitHub 上的文件总数）
+> (git -c core.quotepath=false ls-files).Count
+> ```
+> 交接时的数值：**91 个文件 / 6.45 MB / 12 个提交**（2026-10-19）。
+> 要在线核对可用 `python 在线核查.py`（走 API，含患者级文件硬红线扫描）。
 
 **Zenodo 完成后回填（3 处）**
 - [ ] Zenodo 记录能看到，作者正确，License 是 MIT
