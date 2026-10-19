@@ -25,8 +25,8 @@ license: MIT
 authors:
   - given-names: "Tiantian"
     family-names: "Zhang"
-    affiliation: "Zhejiang Chinese Medical University; Xianju People's Hospital"
-    # orcid: "https://orcid.org/0000-0000-0000-0000"   # 有 ORCID 就取消注释
+    affiliation: "Xianju People's Hospital"
+    # orcid: "https://orcid.org/0009-0000-2350-8008"   # 有 ORCID 就取消注释
 
 repository-code: "https://github.com/tiantian4634/cross-centre-calibration-drift-icu"
 
