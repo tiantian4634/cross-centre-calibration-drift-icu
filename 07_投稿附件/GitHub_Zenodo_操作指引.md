@@ -1,36 +1,46 @@
 # GitHub + Zenodo 发布操作指引
 
-**状态：** 本地仓库已建好、已提交、已通过安全核查。你只需要完成下面 A–D 四步，全部约 20–30 分钟。
+**状态：A 步（GitHub）已完成 ✅；剩余 B（上线核查）、C（Zenodo DOI）、D（回填）三步，约 15 分钟。**
+
+仓库：<https://github.com/tiantian4634/cross-centre-calibration-drift-icu>
 
 ---
 
-## 已经替你做完的部分
+## 已完成的部分
 
 | 项目 | 状态 |
 |---|---|
 | 本地 git 仓库（`09_路B_跨院校准/.git`） | ✅ 已建 |
-| 首个提交（commit `29b911f`） | ✅ 已提交 |
-| `.gitignore` 排除患者级文件 | ✅ 已验证生效 |
+| 提交历史（10 个提交，分支 `main`） | ✅ 已提交，身份为 Tiantian Zhang |
+| **推送到 GitHub** | ✅ **已完成**，本地/远程 HEAD 一致 `5123c3b2` |
+| `.gitignore` 排除患者级文件 | ✅ 已验证生效（4 个患者级文件均未入库） |
 | 内容级安全扫描（4 个 CSV 逐列检查） | ✅ 无患者 ID、无时间列 |
-| 凭据扫描（全部 `.py`） | ✅ 0 命中 |
+| 凭据扫描（全部 `.py`） | ✅ 实质命中 0（扫描器自身误报已剔除） |
 | `LICENSE`（MIT，Zenodo 必需） | ✅ 已建 |
-| `CITATION.cff`（Zenodo 读它预填作者） | ⬜ **占位符待你填真实姓名** |
+| `CITATION.cff`（Zenodo 读它预填作者） | ✅ 已填：Zhang Tiantian / Xianju People's Hospital / ORCID 0009-0000-2350-8008 |
 | `requirements.txt`（版本已锁） | ✅ 已建 |
-| 纳入文件 84 个 / 工作区 6.42 MB | ✅ 远低于 GitHub 限制 |
+| 纳入文件 90 个 / 工作区 6.45 MB | ✅ 远低于 GitHub 限制 |
+| 国内网络 git 调优（HTTP/1.1 等） | ✅ 已设全局配置 |
+
+> 推送前可用 `python 推送前最终核查.py` 复跑一次全绿检查（PhysioNet DUA 合规）。
 
 ---
 
 ## A. 创建 GitHub 仓库并推送（10 分钟）
 
-### A1. 先填 `CITATION.cff` 的作者信息
+### A1. 先填 `CITATION.cff` 的作者信息 ✅ 已完成
 
-打开 `09_路B_跨院校准\CITATION.cff`，把两处 `⟨FIRST⟩` / `⟨LAST⟩` / `⟨LAST⟩` 换成你的真实姓名。
-有 ORCID 就填上（没有可跳过）。
+已填入：`given-names: Tiantian` / `family-names: Zhang` / `affiliation: Xianju People's
+Hospital`（**第一单位**）/ `orcid: https://orcid.org/0009-0000-2350-8008` / `repository-code`
+已指向真实 GitHub URL / `preferred-citation` 作者已填（`journal` 仍为占位，确定后补）。
 
 > 为什么必须填：不填的话，Zenodo 会拿你的 GitHub 用户名当作者名，正式引用会变成
 > `Zhang, T. (2026). github-username/xxx` 这种形式，期刊编辑会退回来让你改。
 
-### A2. 在 GitHub 网页上建一个空仓库
+> ⚠️ **代码署名 ≠ 论文署名**：此处写张天天（代码是他做的）。论文须为
+> 第一作者＝同事、第一单位＝浙江中医药大学（学位要求），张天天任通讯作者。
+
+### A2. 在 GitHub 网页上建一个空仓库 ✅ 已完成
 
 1. 打开 <https://github.com/new>
 2. **Repository name**：`cross-centre-calibration-drift-icu`
@@ -42,26 +52,53 @@
 5. **不要**勾选 Add a README / .gitignore / LICENSE（本地已经有了，勾了会冲突）
 6. 点 **Create repository**
 
-### A3. 推送本地代码
+### A3. 推送本地代码 ✅ 已完成
 
-复制 GitHub 页面上那两行带仓库地址的命令，粘贴执行。会提示输入 GitHub 用户名和
-**Personal Access Token**（不是密码）。
+**实际走通的路径与原方案不同，以本节为准。**
 
-或者手动执行（在 `09_路B_跨院校准` 目录下）：
+**不需要 Personal Access Token。** 本机装了 Git for Windows 且已配 `credential.helper = manager`
+（Git Credential Manager），推送时直接弹浏览器授权即可。
+
+本地身份、remote、分支名均已在交接前配好，**A3 原列的 `git config user.name` /
+`git remote add origin` / `git branch -M` 三步无需重复执行**，直接：
 
 ```powershell
-# 先把提交身份改成你自己 —— 本地仓库是为了整理而临时设成了 T1-roadB <roadB@local>，
-# 不改的话所有提交的作者都是这个假身份，GitHub 和 Zenodo 上也会显示成它
-git config user.name  "你的姓名"
-git config user.email "你的 GitHub 邮箱"
-
-git remote add origin https://github.com/<你的用户名>/cross-centre-calibration-drift-icu.git
-git branch -M main
-git push -u main
+cd "E:\文件杂\褚俊智老师\论文选题\选题T1_虚弱营养列线图\09_路B_跨院校准"
+git push -u origin main
 ```
 
-> **Token 怎么拿**：GitHub → 头像 → Settings → Developer settings → Personal access
-> tokens → Tokens (classic) → Generate new token，勾 `repo` 和 `public_repo`。
+**已推送成功**，本地与远程 HEAD 一致（`5123c3b2`），分支 `main` 跟踪 `origin/main`。
+
+#### ⚠️ 国内网络必须的调优（换机器或重装 git 后需重设）
+
+从国内直连 GitHub 时，git 默认的 HTTP/2 常被干扰，报
+`Failed to connect to github.com:443 ... Could not connect to server`。已设的全局配置：
+
+```powershell
+git config --global http.version HTTP/1.1        # 关键，HTTP/2 经国内链路常被掐
+git config --global http.postBuffer 524288000    # 推送 6+ MB 需要
+git config --global http.lowSpeedLimit 0         # 关闭低速中断
+git config --global http.lowSpeedTime 999999     # 超长容忍
+git config --global core.compression 0           # 避免压缩层问题
+```
+
+设完先 `git ls-remote --heads origin` 探一次（实测 3.9 秒成功）再推。
+
+#### ⚠️ PowerShell 会误报失败
+
+`git push 2>&1` 在 PowerShell 下**即使成功也以红字报错**——git 把进度信息写 stderr，
+PowerShell 把 stderr 当异常。
+
+**判断成功的唯一标准**：
+- 输出里出现 `* [new branch] main -> main`
+- 或 `git status -sb` 显示 `## main...origin/main` 且**没有 ahead 字样**
+
+**不要因为红字就重试或以为失败。** 重试本身无害（push 幂等），但会浪费一次 20 秒的连接。
+
+#### 备用：credential.helper 失效时才需要 token
+
+GitHub → 头像 → Settings → Developer settings → Personal access tokens → Tokens (classic)
+→ Generate new token，勾 `repo` 和 `public_repo`。
 
 ---
 
@@ -153,14 +190,23 @@ Zenodo 会给一段 Markdown badge 代码，直接粘进 `README.md` 顶部：
 
 ## E. 投稿前最终核查清单
 
-- [ ] GitHub 仓库是 **Public**
-- [ ] 仓库里搜不到 `eicu_hospital_context`、`hospital_id_map`
-- [ ] 仓库里搜不到 `shrinkage_raw`、`learning_curve_raw`
-- [ ] README 里写明了「复现需 PhysioNet credentialed 授权」
-- [ ] `CITATION.cff` 里是你的真实姓名，不是 GitHub 用户名
+**已由脚本验证（`python 推送前最终核查.py` 输出全绿）**
+- [x] 仓库里搜不到 `eicu_hospital_context`、`hospital_id_map`
+- [x] 仓库里搜不到 `shrinkage_raw`、`learning_curve_raw`
+- [x] 4 个待公开 CSV 无患者 ID 列、无时间列
+- [x] `CITATION.cff` 里是真实姓名与 ORCID，不是 GitHub 用户名
+- [x] README 里写明了「复现需 PhysioNet credentialed 授权」
+
+**需在 GitHub 网页上人工确认**
+- [ ] 仓库是 **Public**（Zenodo 只能归档公开仓库）
+- [ ] 仓库首页显示 **90 files**
+- [ ] 搜索 `eicu_hospital_context` → 0 结果（再确认一次）
+- [ ] README 渲染正常；右侧显示 "MIT license"
+
+**Zenodo 完成后回填（3 处）**
 - [ ] Zenodo 记录能看到，作者正确，License 是 MIT
-- [ ] DOI 已填回上面那 3 处文件
-- [ ] `CITATION.cff` 改动已重新提交并推送（`git add -A` → `git commit -m "Add DOI"` → `git push`）
+- [ ] DOI 已填回 `CITATION.cff` / `README.md` / `Data_Code_Availability.md`
+- [ ] 改动已重新提交并推送（`git add -A` → `git commit -m "Add DOI"` → `git push`）
 
 **第 1、2、3 条是硬性的。** 违反 PhysioNet 数据使用协议的后果比审稿被退严重得多。
 
