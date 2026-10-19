@@ -50,9 +50,14 @@
 或者手动执行（在 `09_路B_跨院校准` 目录下）：
 
 ```powershell
+# 先把提交身份改成你自己 —— 本地仓库是为了整理而临时设成了 T1-roadB <roadB@local>，
+# 不改的话所有提交的作者都是这个假身份，GitHub 和 Zenodo 上也会显示成它
+git config user.name  "你的姓名"
+git config user.email "你的 GitHub 邮箱"
+
 git remote add origin https://github.com/<你的用户名>/cross-centre-calibration-drift-icu.git
 git branch -M main
-git push -u origin main
+git push -u main
 ```
 
 > **Token 怎么拿**：GitHub → 头像 → Settings → Developer settings → Personal access
