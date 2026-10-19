@@ -26,11 +26,11 @@ different hospitals, and, if it does not, what it takes to recalibrate it locall
 Both datasets are third-party, publicly available databases obtained under their respective data use
 agreements through PhysioNet (https://physionet.org/).
 
-**eICU-CRD v2.0** contains data from 208 hospitals in the United States for the period 2014–2015,
+**eICU-CRD v2.0**[20] contains data from 208 hospitals in the United States for the period 2014–2015,
 comprising 200,859 intensive-care unit (ICU) stays. Access required credentialed application and
 attestation of the PhysioNet data use agreement.
 
-**MIMIC-IV v3.1** contains data from Beth Israel Deaconess Medical Center, a single academic medical
+**MIMIC-IV v3.1**[21] contains data from Beth Israel Deaconess Medical Center, a single academic medical
 centre, comprising 94,458 ICU stays. Access required completion of CITI "Data or Specimens Only"
 training and a data use agreement.
 
@@ -116,9 +116,9 @@ affect any analysis variable used here.
 
 ## Severity scores
 
-Three established acute severity scores were used as supplied by the source extraction: the Sequential
-Organ Failure Assessment (SOFA), the Oxford Acute Severity of Illness Score (OASIS), and the Simplified
-Acute Physiology Score II (SAPS-II). This study did not recompute the scores, and their derivation is
+Three established severity scores were used exactly as supplied by the source extraction protocols: the Sequential
+Organ Failure Assessment (SOFA)[18], the Oxford Acute Severity of Illness Score (OASIS), and the Simplified
+Acute Physiology Score II (SAPS-II)[19]. This study did not recompute the scores, and their derivation is
 documented in the source protocols. Analysis was restricted to patients with a non-missing value for the
 score being analysed; all three scores were complete in both cohorts.
 
@@ -181,7 +181,7 @@ S1).
 For each score, per-hospital offsets were pooled by random-effects meta-analysis. Heterogeneity was
 summarised by *I²*, defined as `max(0, (Q − (k − 1))/Q) × 100`, where *Q* is the fixed-effect
 Cochran statistic computed with weights 1/SE². The between-centre variance *τ²* was estimated by the
-DerSimonian–Laird method. Because DerSimonian–Laird predates current guidance, *τ²* was additionally
+DerSimonian–Laird method[22]. Because DerSimonian–Laird predates current guidance, *τ²* was additionally
 re-estimated under three further frameworks as a pre-specified analysis (analysis K): Paule–Mandel,
 restricted maximum likelihood (REML), and a one-stage random-intercept multilevel logistic model fitted
 to patient-level data (`statsmodels` `BinomialBayesMixedGLM`, Laplace/maximum *a posteriori*). Analyses

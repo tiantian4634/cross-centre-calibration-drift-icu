@@ -1,0 +1,86 @@
+{
+  "SOFA 原始文献": {
+    "pmid": "8844239",
+    "title": "The SOFA (Sepsis-related Organ Failure Assessment) score to describe organ dysfunction/failure. On behalf of the Working Group on Sepsis-Related Problems of the European Society of Intensive Care Medicine.",
+    "journal": "Intensive care medicine",
+    "year": "1996",
+    "volume": "22",
+    "issue": "7",
+    "pages": "707-10",
+    "doi": "10.1007/BF01709751",
+    "authors": [
+      "Vincent",
+      "Moreno",
+      "Takala",
+      "Willatts",
+      "De Mendon&#xe7;a",
+      "Bruining"
+    ]
+  },
+  "OASIS 原始文献": {
+    "pmid": "35692197",
+    "title": "[Comparison of the predictive value of the Oxford acute severity of illness score and simplified acute physiology score II for in-hospital mortality in intensive care unit patients with sepsis: an analysis based on MIMIC-IV database].",
+    "journal": "Zhonghua wei zhong bing ji jiu yi xue",
+    "year": "2022",
+    "volume": "34",
+    "issue": "4",
+    "pages": "352-356",
+    "doi": "10.3760/cma.j.cn121430-20210722-01080",
+    "authors": [
+      "Luo",
+      "Gu",
+      "Jin",
+      "Liu"
+    ]
+  },
+  "eICU-CRD 数据库": {
+    "pmid": "39551012",
+    "title": "Enteral and Parenteral Nutrition Timing in eICU Collaborative Research Database by Race: A Retrospective Observational Study.",
+    "journal": "The Journal of surgical research",
+    "year": "2024",
+    "volume": "304",
+    "issue": "",
+    "pages": "181-189",
+    "doi": "10.1016/j.jss.2024.10.021",
+    "authors": [
+      "Wong",
+      "Wischmeyer",
+      "Lee",
+      "Gorenshtein",
+      "Sytsma",
+      "Hao"
+    ]
+  },
+  "MIMIC-IV 数据库": {
+    "pmid": "41741503",
+    "title": "MEETI: A Multimodal ECG Dataset from MIMIC-IV-ECG with Signals, Images, Features and Interpretations.",
+    "journal": "Scientific data",
+    "year": "2026",
+    "volume": "13",
+    "issue": "1",
+    "pages": "",
+    "doi": "10.1038/s41597-026-06796-1",
+    "authors": [
+      "Zhang",
+      "Lan",
+      "Geng",
+      "Zhao",
+      "Fan",
+      "Feng"
+    ]
+  },
+  "DerSimonian-Laird": {
+    "pmid": "26343745",
+    "title": "Meta-analysis in clinical trials revisited.",
+    "journal": "Contemporary clinical trials",
+    "year": "2016",
+    "volume": "45",
+    "issue": "Pt A",
+    "pages": "139-45",
+    "doi": "10.1016/j.cct.2015.09.002",
+    "authors": [
+      "DerSimonian",
+      "Laird"
+    ]
+  }
+}
