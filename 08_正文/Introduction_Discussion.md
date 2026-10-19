@@ -140,10 +140,15 @@ which can only be evaluated within eICU itself. Third, the variation not explain
 case-mix is described here as residual between-hospital variation. Unmeasured differences in
 disease spectrum, referral patterns and pre-ICU course would produce the same pattern, and this
 study is not designed to attribute the variation to any of them — no conclusion about quality of
-care is drawn. Fourth, we studied three established scores and one pooled model specification;
-other specifications, and scores not evaluated here, may behave differently. Fifth, the empirical-
-Bayes parameters were estimated in a single database, and although they transferred to a second, the
-extent to which they generalise to other health systems and other score families remains open.
+care is drawn. Fourth, the two databases record comorbidity differently. The mean Charlson index in
+MIMIC-IV (3.5) is far higher than in eICU-CRD (0.9), reflecting more complete inpatient ICD coding
+in MIMIC-IV rather than a difference in case-mix. Because the external analysis uses a single-score
+SOFA model that contains no comorbidity term, this does not affect any result reported here, but it
+limits how far the two cohorts can be compared on measured case-mix. Fifth, we studied three
+established scores and one pooled model specification; other specifications, and scores not
+evaluated here, may behave differently. Sixth, the empirical-Bayes parameters were estimated in a
+single database, and although they transferred to a second, the extent to which they generalise to
+other health systems and other score families remains open.
 
 **Conclusion.** Discrimination transports; calibration does not, and the difference is large enough
 to change what a risk threshold means in different hospitals. Local recalibration is not the

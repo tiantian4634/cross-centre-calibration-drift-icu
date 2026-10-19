@@ -102,10 +102,15 @@ for k in ["Data Availability 独立小节（标题须为 'Data Availability'，�
     print("    ⬜ " + k)
 
 # ---------- 7. 已知阻塞 ----------
-print("\n[7] Display items（上限 8 = 图+表合计）")
+print("\n[7] Display items（上限 8 = 正文图+表合计；补充材料另计，不占额度）")
 import glob
-pngs = glob.glob(os.path.join(R, "04_图表", "*.png"))
-print("    现有主图      %d 张  %s" % (len(pngs), "✘ 超限" if len(pngs) > 8 else "✔"))
-print("    加上 3 张表   = %d    %s" % (len(pngs) + 3, "✘ 需砍到 8" if len(pngs) + 3 > 8 else "✔"))
+main_png = glob.glob(os.path.join(R, "04_图表", "Fig*.png"))
+supp_png = glob.glob(os.path.join(R, "04_图表", "SuppFig*.png"))
+NMAIN, NSUPP = 1, 2          # Table 1 在正文；SuppTable S1/S2 在补充
+print("    正文主图      %d 张" % len(main_png))
+print("    正文主表      %d 张" % NMAIN)
+print("    display items %d    %s" % (len(main_png) + NMAIN,
+                                      "✘ 超限" if len(main_png) + NMAIN > 8 else "✔ 合规（上限 8）"))
+print("    补充材料      图 %d 张 + 表 %d 张（不计入）" % (len(supp_png), NSUPP))
 
 print("\n" + "=" * 88)
