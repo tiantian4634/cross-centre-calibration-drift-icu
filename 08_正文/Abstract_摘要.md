@@ -6,6 +6,15 @@
 
 ---
 
+## ⚠️ 本文件为 BMC/Springer 系期刊版本，已被 Scientific Reports 规范取代
+
+2026-10-19 用户确定投稿目标为 **Scientific Reports**。该刊摘要要求为
+**≤200 词、非结构化（无小标题）、不含参考文献与图**、关键词 ≤6 个。
+下文保留作备用版本（若转投 Critical Care / J Crit Care / Annals of the Intensive Care 可直接复用）。
+Sci Rep 版见 `Abstract_摘要_SciRep版.md`。
+
+---
+
 ## Abstract
 
 **Background.** Acute severity scores are widely assumed to be transportable between hospitals.
