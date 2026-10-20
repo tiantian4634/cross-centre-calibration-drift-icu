@@ -6,10 +6,9 @@ across 187 intensive-care units
 ⟨First Author Full Name⟩¹, ⟨Second Author Full Name⟩¹, Tiantian Zhang²*
 
 ¹ Zhejiang Chinese Medical University, Hangzhou, Zhejiang, China
+
 ² Xianju People's Hospital, Zhejiang Southeast Campus of Zhejiang Provincial People's Hospital,
 Affiliated Xianju's Hospital, Hangzhou Medical College, Xianju, Taizhou, Zhejiang, China
-
-* Corresponding author. Email: ⟨EMAIL⟩
 
 Corresponding author: Tiantian Zhang, Xianju People's Hospital, Xianju, Taizhou, Zhejiang, China.
 Email: ⟨EMAIL⟩
@@ -85,8 +84,6 @@ much of it measured case-mix could explain, decomposed it into components attrib
 size and to calendar year, translated it into consequences at four decision thresholds, and
 evaluated local recalibration as a function of the number of locally available patients — together
 with an empirical-Bayes shrinkage alternative.
-
----
 
 ---
 
@@ -248,7 +245,7 @@ was not worse than S1 by more than 5 percentage points).
 To test whether the shrinkage parameters generalise beyond the database in which they were estimated, we
 treated MIMIC-IV as a single new centre and fixed the shrinkage target (ā = +0.030) and between-centre
 variance (τ² = 0.131) at their eICU values, never re-estimating them on MIMIC-IV (Fig. 7). The true
-offset to recover was *a*\* = +0.221.
+offset to recover was *â* = +0.221.
 
 At 25 local patients drawn from MIMIC-IV, naive recalibration achieved a ±10% success rate of 23.5%,
 whereas shrinkage achieved **47.0%** — a paired difference of **+23.5 percentage points** (two-sided
@@ -295,19 +292,9 @@ standard errors and is independent of τ², so the heterogeneity of 75.4% is una
 direction and magnitude of the discrimination–calibration dissociation. To test the empirical-Bayes
 result directly, we re-ran it holding τ² fixed at each of three candidate values — 0.1312
 (DerSimonian–Laird), 0.0706 (marginal likelihood) and 0.0648 (multilevel) — on the same
-resampling draws used above.
-
-| Local patients (*m*) | τ² = 0.1312 (DL) | τ² = 0.0706 (marginal likelihood) | τ² = 0.0648 (multilevel) |
-|---|---|---|---|
-| 25 | 15.5% → **24.3%** (+9.1, P = 2.3 × 10⁻¹¹³) | 15.5% → **21.9%** (+6.7, P = 2.7 × 10⁻⁶⁴) | 15.5% → **21.7%** (+6.5, P = 1.3 × 10⁻⁶⁰) |
-| 50 | 19.7% → **26.4%** (+6.7, P = 1.4 × 10⁻⁶¹) | 19.7% → **24.3%** (+4.6, P = 1.6 × 10⁻²⁹) | 19.7% → **23.8%** (+4.2, P = 1.4 × 10⁻²⁴) |
-| 100 | 25.7% → **30.4%** (+4.7, P = 1.2 × 10⁻¹⁸) | 25.7% → **27.7%** (+2.0, P = 4.6 × 10⁻⁴) | 25.7% → **27.6%** (+1.9, P = 0.001) |
-| 200 | 32.3% → **34.4%** (+2.0, P = 0.035) | 32.3% → **32.6%** (+0.2, P = 0.832) | 32.3% → **32.5%** (+0.2, P = 0.889) |
-
-Values are naive recalibration → empirical-Bayes shrinkage (difference in percentage points), on 200
-resampling attempts per cell. *P* values are two-sided Wilcoxon signed-rank tests across paired
-(hospital, replicate) observations; α = 0.05. Shrinkage outperformed naive recalibration at *m* = 25
-under all three values of τ² (all P < 10⁻⁵⁹), so the pre-specified criterion was met.
+resampling draws used above, giving three parallel sensitivity tables (Supplementary Table S3). At
+*m* = 25 the shrinkage strategy outperformed naive recalibration under all three values of τ² (+9.1,
++6.7 and +6.5 percentage points respectively; all *P* < 10⁻⁵⁹), so the pre-specified criterion was met.
 
 Two consequences follow, and both are reported. **First, the size of the advantage depends on τ²**: at
 25 local patients it fell from +9.1 to +6.7
@@ -638,7 +625,7 @@ drift attributable to the measured covariates.
 eICU-CRD covers only 2014–2015, so temporal stability was assessed as a split-half comparison of the two
 calendar years. Of the 103 eligible hospitals, **88 contributed ≥ 50 patients and ≥ 5 deaths in each
 year**. We report the Pearson correlation between the two years' *a_h*, the median absolute difference
-|Δa_h|, the ratio of within-hospital (temporal) variance to total between-hospital variance, and the
+\|Δ*a_h*\|, the ratio of within-hospital (temporal) variance to total between-hospital variance, and the
 mean year-over-year drift. **Because only two years are available, this analysis addresses year-to-year
 stability and not a long-term temporal trend.**
 
@@ -701,7 +688,7 @@ the **two-sided Wilcoxon signed-rank test** across paired (hospital, replicate) 
 To test whether the shrinkage parameters generalise beyond the database in which they were estimated,
 MIMIC-IV was treated as **a single new centre**, and ā and *τ²* were **fixed at their eICU values
 (ā = +0.030, *τ²* = 0.131) and never re-estimated on MIMIC-IV**. The external model was the eICU-fitted
-SOFA pooled model, applied using eICU's standardisation parameters. The true offset to recover, *a*\* =
+SOFA pooled model, applied using eICU's standardisation parameters. The true offset to recover, *â* =
 +0.221, was computed once from the full MIMIC-IV cohort (observed 19.3% versus predicted 16.5%,
 O/E = 1.17). For each *m* ∈ {25, 50, 100, 200, 400} subject to *n* ≥ 2*m*, *m* patients were drawn as
 the local calibration set and the remainder served as evaluation, **200 times per cell**, with the same
@@ -727,12 +714,18 @@ them.
 **Confirmatory tier (pre-specified criterion).** Four analyses were each planned with an explicit
 criterion *and* with an explicit instruction for the case in which that criterion was not met:
 
-| Analysis | Pre-specified criterion | Criterion met? |
-|---|---|---|
-| E — local recalibration learning curve | Report the smallest local sample size *m* at which the success rate reaches 50%; if none is reached, state so | **No** — never reached within m = 200 |
-| I — empirical-Bayes shrinkage vs naive | At m = 25 the shrinkage strategy must exceed naive recalibration; at m ≥ 100 it must not be worse by more than 5 percentage points | **Yes** |
-| J — transfer of shrinkage parameters to a second database | At m = 25 shrinkage must exceed both naive recalibration and no recalibration | **Yes** |
-| K — agreement of *τ²* across estimation frameworks | Relative range across the three two-stage estimators < 25%, and the one-stage multilevel estimate within 50% of their median | **Partly** — first clause met (3.9%), second clause **not** met (multilevel *τ²* 50.1% lower) |
+- **Analysis E — local recalibration learning curve.** Criterion: report the smallest local sample
+  size *m* at which the success rate reaches 50%, and state so if none is reached. **Not met** — the
+  threshold was never reached within *m* = 200.
+- **Analysis I — empirical-Bayes shrinkage versus naive recalibration.** Criterion: at *m* = 25 the
+  shrinkage strategy must exceed naive recalibration, and at *m* ≥ 100 it must not be worse by more
+  than 5 percentage points. **Met.**
+- **Analysis J — transfer of the shrinkage parameters to a second database.** Criterion: at
+  *m* = 25 shrinkage must exceed both naive recalibration and no recalibration. **Met.**
+- **Analysis K — agreement of *τ²* across estimation frameworks.** Criterion: a relative range across
+  the three two-stage estimators below 25%, and the one-stage multilevel estimate within 50% of their
+  median. **Partly met** — the first clause was met (3.9%), the second was **not** (the multilevel
+  *τ²* was 50.1% lower).
 
 **Two of the four pre-specified criteria were not met, and both are reported as negative findings.** They
 are not reframed after the fact: analysis E is reported as showing that naive local recalibration has a
@@ -786,7 +779,7 @@ bit-reproducible. Analyses A–D, K are deterministic given the input data. The 
 analyses were written before execution and are reproduced in Supplementary Item S1.
 
 The complete analysis and figure-generation code, all derived result files, the prespecified plans, and
-this document are publicly archived with a DOI (see Data availability). Patient-level records are not
+this document are publicly archived with a DOI (see Data Availability). Patient-level records are not
 redistributed, under the terms of the PhysioNet data use agreements; the centred-level summary table
 (103 centres × 3 scores) on which Figures 3–5 depend is included, and contains no patient identifiers,
 no dates and no free text.
@@ -832,9 +825,22 @@ prediction model was developed or deployed for clinical use: the pooled model se
 measurement instrument for quantifying calibration drift, and the study reports heterogeneity and a
 recalibration strategy rather than the performance of a model intended for clinical decision-making.
 
-## Data availability
+## Data Availability
 
----
+This is a retrospective secondary analysis of two publicly available, de-identified critical-care databases.
+The eICU Collaborative Research Database (eICU-CRD v2.0) and MIMIC-IV (v3.1) are available from PhysioNet
+(https://physionet.org/) to investigators who complete the required training and sign the data use agreement.
+Neither database may be redistributed, and no patient-level records are reproduced here.
+
+The complete analysis and figure-generation code, the prespecified analysis plans and their timestamps, all
+derived result files, and a centre-level summary table containing no patient identifiers (one row per
+eligible centre, for each of the three severity scores) are openly available at
+https://github.com/tiantian4634/cross-centre-calibration-drift-icu and archived at Zenodo
+(https://doi.org/10.5281/zenodo.23479141). Every number reported in this article can be reproduced from
+these materials by an investigator with credentialed access to the two source databases: the analysis
+scripts read only locally cached centre-level artefacts and require no database credentials.
+
+All database access during this study was read-only, and no script written for this study modified a database.
 
 ---
 
@@ -870,10 +876,6 @@ recalibration strategy rather than the performance of a model intended for clini
 **Author contributions.** ⟨逐位作者填写，参照 CRediT 条目：Conceptualisation, Data curation, Formal
 analysis, Investigation, Methodology, Software, Validation, Visualisation, Writing – original draft,
 Writing – review & editing, Project administration, Supervision, Funding acquisition⟩
-
-## Data Availability
-
-⟨Data Availability 小节待填：须置于 References 之前、正文末尾；含 Zenodo DOI。⟩
 
 ## Additional Information
 
@@ -1031,5 +1033,3 @@ confidence intervals**. **No hypothesis test was performed for any entry in this
 are descriptive estimates. The narrow confidence intervals around the pooled AUC (width ≈ 0.025)
 contrast with the 2.2-fold spread in the observed-to-expected ratio, which is the comparison this
 table is intended to make.
-
----

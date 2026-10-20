@@ -2,9 +2,13 @@
 """按 Scientific Reports 规定的段落顺序，把各文件拼成单一 Manuscript File。
 
 Sci Rep 顺序：标题页 → 摘要 → 关键词 → Introduction → Results（带小标题）→
-Discussion（无小标题）→ Methods → References → Author contributions →
-Data Availability → Additional Information（Competing interests）→ Funding →
+Discussion（无小标题）→ Methods → **Data Availability（须在 References 之前）** →
+References → Author contributions → Additional Information（Competing interests / Funding）→
 图注（仅正文图，置于 References 之后）→ 表（最后）
+
+注：Sci Rep 官方清单原文 —— "A Data Availability Statement is provided as a separate section
+(titled 'Data Availability') at the end of the main text, before the 'References' section."
+本脚本此前把 Data Availability 放在 References 之后，已更正。
 """
 import io, sys, os, re
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
@@ -63,10 +67,9 @@ across 187 intensive-care units
 ⟨First Author Full Name⟩¹, ⟨Second Author Full Name⟩¹, Tiantian Zhang²*
 
 ¹ Zhejiang Chinese Medical University, Hangzhou, Zhejiang, China
+
 ² Xianju People's Hospital, Zhejiang Southeast Campus of Zhejiang Provincial People's Hospital,
 Affiliated Xianju's Hospital, Hangzhou Medical College, Xianju, Taizhou, Zhejiang, China
-
-* Corresponding author. Email: ⟨EMAIL⟩
 
 Corresponding author: Tiantian Zhang, Xianju People's Hospital, Xianju, Taizhou, Zhejiang, China.
 Email: ⟨EMAIL⟩"""
@@ -156,10 +159,6 @@ BACK = """## Author contributions
 analysis, Investigation, Methodology, Software, Validation, Visualisation, Writing – original draft,
 Writing – review & editing, Project administration, Supervision, Funding acquisition⟩
 
-## Data Availability
-
-⟨Data Availability 小节待填：须置于 References 之前、正文末尾；含 Zenodo DOI。⟩
-
 ## Additional Information
 
 **Competing interests.** ⟨逐位作者声明⟩
@@ -204,7 +203,10 @@ parts = [
     INTRO, RES, DISC, MET,
     REF, BACK, LEG, T1,
 ]
-man = "\n\n---\n\n".join(p.strip() for p in parts if p and p.strip())
+# 各源文件末尾自带的 --- 会让接缝处出现双分隔线，先剥掉再加分隔
+parts = [re.sub(r"(?:\n*^---\s*$)+$", "", p.strip(), flags=re.M) for p in parts if p and p.strip()]
+man = "\n\n---\n\n".join(parts)
+man = re.sub(r"(?m)(?:^---\s*$\n\s*){2,}", "---\n\n", man)
 man = re.sub(r"\n{3,}", "\n\n", man)
 open(OUT, "w", encoding="utf-8").write(man)
 

@@ -68,7 +68,7 @@ for h in ["## Study design and setting", "## Data sources", "## Cohort construct
           "## Empirical-Bayes shrinkage", "## Transfer of the shrinkage parameters",
           "## Analysis framework and inferential status", "## Statistical reporting",
           "## Software, seed and reproducibility", "## Ethics", "## Use of a large language model",
-          "## Reporting guidelines", "## Data availability"]:
+          "## Reporting guidelines", "## Data Availability"]:
     print("    %s %s" % ("✔" if h in mt else "✘ 缺", h))
 
 print("\n" + "=" * 88)

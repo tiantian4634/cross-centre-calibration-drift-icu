@@ -32,6 +32,14 @@ remain comparable with related work from the same research group. This study ana
 height nor weight, so the step affects neither the analysis cohort nor any result. It is reported in
 Figure 1 and in the supplementary notes for transparency about the extraction pipeline.
 
+## Temporal split-half eligibility
+
+eICU-CRD covers only 2014–2015. Of the 103 centres eligible for centre-level analysis, **88 contributed
+≥ 50 patients and ≥ 5 deaths in each of the two calendar years** and entered the within-hospital temporal
+stability analysis. Per-centre calibration offsets and standard errors for each year, together with the
+year-over-year difference, are in `03_统计/temporal_split_half.csv` (88 rows). This analysis addresses
+year-to-year stability only; two years cannot support a claim about longer-term temporal trend.
+
 ## MIMIC-IV v3.1 → 8,579 patients, single centre
 
 | Step | Criterion | n remaining |

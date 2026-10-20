@@ -111,6 +111,32 @@ reported as a negative finding.
 
 ---
 
+## Supplementary Table S3 —— 主结论对 τ² 取值的敏感性
+
+**Supplementary Table S3. Sensitivity of the empirical-Bayes result to the choice of between-centre variance**
+
+| Local patients (*m*) | τ² = 0.1312 (DL) | τ² = 0.0706 (marginal likelihood) | τ² = 0.0648 (multilevel) |
+|---|---|---|---|
+| 25 | 15.5% → **24.3%** (+9.1, P = 2.3 × 10⁻¹¹³) | 15.5% → **21.9%** (+6.7, P = 2.7 × 10⁻⁶⁴) | 15.5% → **21.7%** (+6.5, P = 1.3 × 10⁻⁶⁰) |
+| 50 | 19.7% → **26.4%** (+6.7, P = 1.4 × 10⁻⁶¹) | 19.7% → **24.3%** (+4.6, P = 1.6 × 10⁻²⁹) | 19.7% → **23.8%** (+4.2, P = 1.4 × 10⁻²⁴) |
+| 100 | 25.7% → **30.4%** (+4.7, P = 1.2 × 10⁻¹⁸) | 25.7% → **27.7%** (+2.0, P = 4.6 × 10⁻⁴) | 25.7% → **27.6%** (+1.9, P = 0.001) |
+| 200 | 32.3% → **34.4%** (+2.0, P = 0.035) | 32.3% → **32.6%** (+0.2, P = 0.832) | 32.3% → **32.5%** (+0.2, P = 0.889) |
+
+**Supplementary Table S3 legend.** Each cell gives the success rate of naive local recalibration →
+that of empirical-Bayes shrinkage, with the difference in percentage points and the two-sided
+Wilcoxon signed-rank *P* value across paired (hospital, replicate) observations; α = 0.05. Two
+hundred resampling attempts were used per cell, on the same draws for all three values of *τ²*, so
+that the columns differ only in the variance used for shrinkage. The three candidate values were
+chosen to span the range produced by the estimation frameworks compared in Supplementary Table S2:
+0.1312 (DerSimonian–Laird, used in all primary analyses), 0.0706 (marginal likelihood) and 0.0648
+(one-stage multilevel). **The pre-specified criterion** — that shrinkage exceed naive recalibration
+at *m* = 25 — was met under all three values (all *P* < 10⁻⁵⁹). The magnitude of the advantage
+depends on *τ²* and the advantage is not statistically detectable at *m* = 200 for the two smaller
+values, which is why the strategy is described as one for small local samples rather than a general
+replacement for naive estimation.
+
+---
+
 ## 装配时的核对
 
 - [ ] 三张表均在 Word 中为**可编辑表格**（非图片）

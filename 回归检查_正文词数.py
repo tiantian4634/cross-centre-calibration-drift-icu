@@ -68,12 +68,30 @@ RED = {
     "漏掉「非临床推荐」收尾": r"not a clinical recommendation",
 }
 both = intro_txt + disc_txt
+
+
+def _negated(text, m, win=80):
+    """判断命中处是否处于否定语境（“is not …”“does not constitute …”）。"""
+    pre = text[max(0, m.start() - win):m.start()]
+    return bool(re.search(r"\b(?:not|never|no|cannot|rather than)\b[\s\S]{0,60}$", pre, re.I))
+
+
 for name, pat in RED.items():
-    hits = re.findall(pat, both, re.I)
     if name.startswith("漏掉"):
+        hits = re.findall(pat, both, re.I)
         print("  %-26s %s" % (name, "✔ 已出现（结论处）" if hits else "✘ 缺失，须补"))
+        continue
+    ms = list(re.finditer(pat, both, re.I))
+    if name.startswith("称外部多中心验证"):
+        # 红线是“**声称**外部多中心验证”；明确否认（is not / does not constitute）不算违规
+        bad_hits = [m.group(0) for m in ms if not _negated(both, m)]
+        neg = len(ms) - len(bad_hits)
+        note = "（另有 %d 处明确否认，合规）" % neg if neg else ""
+        print("  %-26s %s" % (name, "✔ 未出现" if not bad_hits
+                              else "✘ 出现 %d 次: %s" % (len(bad_hits), bad_hits)) + note)
     else:
-        print("  %-26s %s" % (name, "✔ 未出现" if not hits else "✘ 出现 %d 次: %s" % (len(hits), hits)))
+        print("  %-26s %s" % (name, "✔ 未出现" if not ms else
+                              "✘ 出现 %d 次: %s" % (len(ms), [m.group(0) for m in ms])))
 
 print("\n" + "=" * 84)
 print("  文内引用编号（Nature 格式 [n]）检查")

@@ -206,7 +206,7 @@ drift attributable to the measured covariates.
 eICU-CRD covers only 2014–2015, so temporal stability was assessed as a split-half comparison of the two
 calendar years. Of the 103 eligible hospitals, **88 contributed ≥ 50 patients and ≥ 5 deaths in each
 year**. We report the Pearson correlation between the two years' *a_h*, the median absolute difference
-|Δa_h|, the ratio of within-hospital (temporal) variance to total between-hospital variance, and the
+\|Δ*a_h*\|, the ratio of within-hospital (temporal) variance to total between-hospital variance, and the
 mean year-over-year drift. **Because only two years are available, this analysis addresses year-to-year
 stability and not a long-term temporal trend.**
 
@@ -269,7 +269,7 @@ the **two-sided Wilcoxon signed-rank test** across paired (hospital, replicate) 
 To test whether the shrinkage parameters generalise beyond the database in which they were estimated,
 MIMIC-IV was treated as **a single new centre**, and ā and *τ²* were **fixed at their eICU values
 (ā = +0.030, *τ²* = 0.131) and never re-estimated on MIMIC-IV**. The external model was the eICU-fitted
-SOFA pooled model, applied using eICU's standardisation parameters. The true offset to recover, *a*\* =
+SOFA pooled model, applied using eICU's standardisation parameters. The true offset to recover, *â* =
 +0.221, was computed once from the full MIMIC-IV cohort (observed 19.3% versus predicted 16.5%,
 O/E = 1.17). For each *m* ∈ {25, 50, 100, 200, 400} subject to *n* ≥ 2*m*, *m* patients were drawn as
 the local calibration set and the remainder served as evaluation, **200 times per cell**, with the same
@@ -298,12 +298,18 @@ them.
 **Confirmatory tier (pre-specified criterion).** Four analyses were each planned with an explicit
 criterion *and* with an explicit instruction for the case in which that criterion was not met:
 
-| Analysis | Pre-specified criterion | Criterion met? |
-|---|---|---|
-| E — local recalibration learning curve | Report the smallest local sample size *m* at which the success rate reaches 50%; if none is reached, state so | **No** — never reached within m = 200 |
-| I — empirical-Bayes shrinkage vs naive | At m = 25 the shrinkage strategy must exceed naive recalibration; at m ≥ 100 it must not be worse by more than 5 percentage points | **Yes** |
-| J — transfer of shrinkage parameters to a second database | At m = 25 shrinkage must exceed both naive recalibration and no recalibration | **Yes** |
-| K — agreement of *τ²* across estimation frameworks | Relative range across the three two-stage estimators < 25%, and the one-stage multilevel estimate within 50% of their median | **Partly** — first clause met (3.9%), second clause **not** met (multilevel *τ²* 50.1% lower) |
+- **Analysis E — local recalibration learning curve.** Criterion: report the smallest local sample
+  size *m* at which the success rate reaches 50%, and state so if none is reached. **Not met** — the
+  threshold was never reached within *m* = 200.
+- **Analysis I — empirical-Bayes shrinkage versus naive recalibration.** Criterion: at *m* = 25 the
+  shrinkage strategy must exceed naive recalibration, and at *m* ≥ 100 it must not be worse by more
+  than 5 percentage points. **Met.**
+- **Analysis J — transfer of the shrinkage parameters to a second database.** Criterion: at
+  *m* = 25 shrinkage must exceed both naive recalibration and no recalibration. **Met.**
+- **Analysis K — agreement of *τ²* across estimation frameworks.** Criterion: a relative range across
+  the three two-stage estimators below 25%, and the one-stage multilevel estimate within 50% of their
+  median. **Partly met** — the first clause was met (3.9%), the second was **not** (the multilevel
+  *τ²* was 50.1% lower).
 
 **Two of the four pre-specified criteria were not met, and both are reported as negative findings.** They
 are not reframed after the fact: analysis E is reported as showing that naive local recalibration has a
@@ -357,7 +363,7 @@ bit-reproducible. Analyses A–D, K are deterministic given the input data. The 
 analyses were written before execution and are reproduced in Supplementary Item S1.
 
 The complete analysis and figure-generation code, all derived result files, the prespecified plans, and
-this document are publicly archived with a DOI (see Data availability). Patient-level records are not
+this document are publicly archived with a DOI (see Data Availability). Patient-level records are not
 redistributed, under the terms of the PhysioNet data use agreements; the centred-level summary table
 (103 centres × 3 scores) on which Figures 3–5 depend is included, and contains no patient identifiers,
 no dates and no free text.
@@ -406,10 +412,22 @@ prediction model was developed or deployed for clinical use: the pooled model se
 measurement instrument for quantifying calibration drift, and the study reports heterogeneity and a
 recalibration strategy rather than the performance of a model intended for clinical decision-making.
 
-## Data availability
+## Data Availability
 
-*(正文末尾、References 之前，Sci Rep 标为 mandatory。材料已备于
-`07_投稿附件/Data_Code_Availability.md`，投稿前须翻译成该刊所需段落并填入 Zenodo DOI。)*
+This is a retrospective secondary analysis of two publicly available, de-identified critical-care databases.
+The eICU Collaborative Research Database (eICU-CRD v2.0) and MIMIC-IV (v3.1) are available from PhysioNet
+(https://physionet.org/) to investigators who complete the required training and sign the data use agreement.
+Neither database may be redistributed, and no patient-level records are reproduced here.
+
+The complete analysis and figure-generation code, the prespecified analysis plans and their timestamps, all
+derived result files, and a centre-level summary table containing no patient identifiers (one row per
+eligible centre, for each of the three severity scores) are openly available at
+https://github.com/tiantian4634/cross-centre-calibration-drift-icu and archived at Zenodo
+(https://doi.org/10.5281/zenodo.23479141). Every number reported in this article can be reproduced from
+these materials by an investigator with credentialed access to the two source databases: the analysis
+scripts read only locally cached centre-level artefacts and require no database credentials.
+
+All database access during this study was read-only, and no script written for this study modified a database.
 
 ---
 

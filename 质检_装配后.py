@@ -19,8 +19,11 @@ print("=" * 84)
 
 print("\n[1] 段落顺序（Sci Rep 规定）")
 order = ["# Title Page", "# Abstract", "## Introduction", "## Results", "## Discussion",
-         "## Study design and setting", "## References", "## Author contributions",
-         "## Data Availability", "## Additional Information", "## Figure legends", "## Table 1"]
+         "## Study design and setting", "## Data Availability", "## References",
+         "## Author contributions", "## Additional Information", "## Figure legends", "## Table 1"]
+# Sci Rep 官方清单：Data Availability 须在 References **之前**
+# "A Data Availability Statement is provided as a separate section (titled 'Data Availability')
+#  at the end of the main text, before the 'References' section."
 pos = []
 for o in order:
     if t.startswith(o):                     # Title Page 是全文第一行
@@ -67,8 +70,12 @@ chk(not uncited, "列表中未被引用的条目: %s" % (uncited if uncited else
 chk(len(refs_list) <= 60, "参考文献 ≤60（现 %d）" % len(refs_list))
 
 print("\n[5] 占位符（须作者填写，此处仅确认存在）")
-for tok in ["⟨First Author", "⟨EMAIL⟩", "⟨逐位作者", "⟨ETHICS⟩", "⟨Data Availability"]:
+for tok in ["⟨First Author", "⟨EMAIL⟩", "⟨逐位作者", "⟨ETHICS⟩"]:
     print("      %-24s %s" % (tok, "✔" if tok in t else "✘ 缺"))
+# Data Availability 已由流程代填（英文段落 + Zenodo DOI），改为检查其内容而非占位符
+chk("zenodo.org" in t.lower() or "zenodo" in t.lower(),
+    "Data Availability 已填入（含 Zenodo DOI）")
+chk("before the 'References'" not in t, "无残留的流程说明文字")
 
 print("\n[6] Sci Rep 结构要求")
 chk("## Results" in t and t.count("### ") >= 8, "Results 含小标题（%d 个）" % len(re.findall(r"^### ", t, re.M)))

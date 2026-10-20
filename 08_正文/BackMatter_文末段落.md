@@ -1,8 +1,12 @@
 # 文末段落（Back matter）—— Scientific Reports 投稿版
 
 > **Sci Rep 规定的顺序**（主正文之后）：
-> References → Acknowledgements（可选）→ Author contributions → **Data Availability**（标题须精确）
-> → Additional Information（Competing Interests）→ Figure legends → Tables
+> **Data Availability**（标题须精确，须在 References **之前**）→ References →
+> Author contributions → Additional Information（Competing Interests）→ Figure legends → Tables
+>
+> Sci Rep 官方清单原文：*"A Data Availability Statement is provided as a separate section (titled
+> 'Data Availability') at the end of the main text, before the 'References' section."*
+> **本文件此前的顺序说明把 Data Availability 写在 References 之后，属错误，已更正。**
 >
 > **须与投稿系统中所填完全一致。**
 

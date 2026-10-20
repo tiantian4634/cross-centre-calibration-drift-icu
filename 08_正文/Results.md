@@ -183,7 +183,7 @@ was not worse than S1 by more than 5 percentage points).
 To test whether the shrinkage parameters generalise beyond the database in which they were estimated, we
 treated MIMIC-IV as a single new centre and fixed the shrinkage target (ā = +0.030) and between-centre
 variance (τ² = 0.131) at their eICU values, never re-estimating them on MIMIC-IV (Fig. 7). The true
-offset to recover was *a*\* = +0.221.
+offset to recover was *â* = +0.221.
 
 At 25 local patients drawn from MIMIC-IV, naive recalibration achieved a ±10% success rate of 23.5%,
 whereas shrinkage achieved **47.0%** — a paired difference of **+23.5 percentage points** (two-sided
@@ -230,19 +230,9 @@ standard errors and is independent of τ², so the heterogeneity of 75.4% is una
 direction and magnitude of the discrimination–calibration dissociation. To test the empirical-Bayes
 result directly, we re-ran it holding τ² fixed at each of three candidate values — 0.1312
 (DerSimonian–Laird), 0.0706 (marginal likelihood) and 0.0648 (multilevel) — on the same
-resampling draws used above.
-
-| Local patients (*m*) | τ² = 0.1312 (DL) | τ² = 0.0706 (marginal likelihood) | τ² = 0.0648 (multilevel) |
-|---|---|---|---|
-| 25 | 15.5% → **24.3%** (+9.1, P = 2.3 × 10⁻¹¹³) | 15.5% → **21.9%** (+6.7, P = 2.7 × 10⁻⁶⁴) | 15.5% → **21.7%** (+6.5, P = 1.3 × 10⁻⁶⁰) |
-| 50 | 19.7% → **26.4%** (+6.7, P = 1.4 × 10⁻⁶¹) | 19.7% → **24.3%** (+4.6, P = 1.6 × 10⁻²⁹) | 19.7% → **23.8%** (+4.2, P = 1.4 × 10⁻²⁴) |
-| 100 | 25.7% → **30.4%** (+4.7, P = 1.2 × 10⁻¹⁸) | 25.7% → **27.7%** (+2.0, P = 4.6 × 10⁻⁴) | 25.7% → **27.6%** (+1.9, P = 0.001) |
-| 200 | 32.3% → **34.4%** (+2.0, P = 0.035) | 32.3% → **32.6%** (+0.2, P = 0.832) | 32.3% → **32.5%** (+0.2, P = 0.889) |
-
-Values are naive recalibration → empirical-Bayes shrinkage (difference in percentage points), on 200
-resampling attempts per cell. *P* values are two-sided Wilcoxon signed-rank tests across paired
-(hospital, replicate) observations; α = 0.05. Shrinkage outperformed naive recalibration at *m* = 25
-under all three values of τ² (all P < 10⁻⁵⁹), so the pre-specified criterion was met.
+resampling draws used above, giving three parallel sensitivity tables (Supplementary Table S3). At
+*m* = 25 the shrinkage strategy outperformed naive recalibration under all three values of τ² (+9.1,
++6.7 and +6.5 percentage points respectively; all *P* < 10⁻⁵⁹), so the pre-specified criterion was met.
 
 Two consequences follow, and both are reported. **First, the size of the advantage depends on τ²**: at
 25 local patients it fell from +9.1 to +6.7

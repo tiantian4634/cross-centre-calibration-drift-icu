@@ -49,7 +49,8 @@ print("\n[4] FIGURE LEGENDS（每条 ≤350 词；须置于正文末参考文献
 blocks = re.split(r"\n# ", LEG)
 cnt = 0
 for b in blocks:
-    if not re.match(r"图\s*\d", b) and "图1" not in b[:6]:
+    # 图注文件已统一为投稿编号（Figure N），补充图为 Supplementary Fig. SN
+    if not re.match(r"Figure\s*\d", b):
         continue
     title = b.split("\n")[0].strip()
     eng = re.search(r"### English legend\s*\n(.*?)(?:\n### |\Z)", b, re.S)
@@ -63,11 +64,13 @@ if cnt == 0:
 # ---------- 5. 千分位（官方：≥5 位数字须用逗号分隔）----------
 print("\n[5] 千分位分隔（5 位及以上数字须用逗号；官方 style）")
 bad = []
+# 随机种子等「标识符」不是数量，按官方 style 不应加千分位
+IDENT = {"20261019"}
 for nm, txt in [("Methods", MET), ("Abstract", ABS)]:
-    for mt in re.finditer(r"(?<![\d,.])(\d{5,})(?![\d,])", re.sub(r"[\d,]", lambda m: m.group(0), txt)):
-        pass
     for ln in txt.split("\n"):
         for mt in re.finditer(r"(?<![\d,.])(\d{5,})(?![\d,.])", ln):
+            if mt.group(1) in IDENT:
+                continue
             bad.append((nm, mt.group(1), ln.strip()[:80]))
 if bad:
     for nm, v, ln in bad[:8]:
@@ -104,11 +107,33 @@ for k in ["Data Availability 独立小节（标题须为 'Data Availability'，�
 # ---------- 7. 已知阻塞 ----------
 print("\n[7] Display items（上限 8 = 正文图+表合计；补充材料另计，不占额度）")
 import glob
-main_png = glob.glob(os.path.join(R, "04_图表", "Fig*.png"))
-supp_png = glob.glob(os.path.join(R, "04_图表", "SuppFig*.png"))
-NMAIN, NSUPP = 1, 2          # Table 1 在正文；SuppTable S1/S2 在补充
+main_png = sorted(glob.glob(os.path.join(R, "04_图表", "Fig*.png")))
+supp_png = sorted(glob.glob(os.path.join(R, "04_图表", "SuppFig*.png")))
+
+# 正文表格数**实测**（此前硬编码为 1，会漏掉正文里的未编号表格，导致低估）
+man_txt = open(os.path.join(R, "08_正文", "Manuscript.md"), encoding="utf-8").read()
+_mlines = man_txt.split("\n")
+
+
+def _is_sep(t):
+    t = t.strip()
+    if not t.startswith("|"):
+        return False
+    cells = [c.strip() for c in t.strip("|").split("|")]
+    return bool(cells) and all(re.fullmatch(r":?-{2,}:?", c) for c in cells if c)
+
+
+main_tables = 0
+for _i in range(len(_mlines) - 1):
+    if _mlines[_i].strip().startswith("|") and _is_sep(_mlines[_i + 1]):
+        if _i == 0 or not (_mlines[_i - 1].strip().startswith("|") and _is_sep(_mlines[_i])):
+            main_tables += 1
+
+NSUPP = len([1 for f in os.listdir(os.path.join(R, "08_正文"))
+             if f == "Tables_表格.md"]) and 3   # SuppTable S1/S2/S3 在补充
+NMAIN = main_tables
 print("    正文主图      %d 张" % len(main_png))
-print("    正文主表      %d 张" % NMAIN)
+print("    正文主表      %d 张  %s" % (NMAIN, "✔" if NMAIN <= 2 else "⚠ 请复核是否编号"))
 print("    display items %d    %s" % (len(main_png) + NMAIN,
                                       "✘ 超限" if len(main_png) + NMAIN > 8 else "✔ 合规（上限 8）"))
 print("    补充材料      图 %d 张 + 表 %d 张（不计入）" % (len(supp_png), NSUPP))

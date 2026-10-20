@@ -15,6 +15,8 @@ RS = norm(open(os.path.join(R, "08_正文", "Results.md"), encoding="utf-8").rea
 AU = norm(open(os.path.join(R, "结果汇总_v1.md"), encoding="utf-8").read())
 CO = norm(open(os.path.join(R, "cohort", "README.md"), encoding="utf-8").read())
 FJ = norm(open(os.path.join(R, "03_统计", "tau2_framework.json"), encoding="utf-8").read())
+# τ² 敏感性明细已从正文移到补充表 S3（display items 限额 8），数值在 Tables_表格.md 中报告
+TS = norm(open(os.path.join(R, "08_正文", "Tables_表格.md"), encoding="utf-8").read())
 
 
 def in_srcs(v):
@@ -127,7 +129,9 @@ bad = []
 seen = {}
 for sec, a, b, desc in CHECKS:
     a_n, b_n = norm(a), norm(b)
-    inR, inA = a_n in RS, in_srcs(b_n)
+    # K 组（τ² 敏感性）的明细在补充表 S3 中报告，故同时接受 Tables_表格.md
+    inR = a_n in RS or (sec == "K" and a_n in TS)
+    inA = in_srcs(b_n)
     if not inR:
         bad.append("正文缺 %-14s 「%s」（%s）" % (sec, a, desc))
     if not inA:
