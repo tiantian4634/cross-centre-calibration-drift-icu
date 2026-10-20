@@ -33,6 +33,8 @@ def clean(txt):
     # ① 「⟨X⟩ **【中文说明】**」→ 保留 ⟨X⟩，去掉说明
     txt = re.sub(r"(⟨[^⟩]+⟩)\s*\*\*【[^】]*】\*\*", r"\1", txt)
     txt = re.sub(r"(⟨[^⟩]+⟩)\s*【[^】]*】", r"\1", txt)
+    # ①b 跨行编辑注整块删除（此前只删首行，第二行残句漏进正文）
+    txt = re.sub(r"(?s)\*?\(This block is taken from.*?kept in sync\.\)\*", "", txt)
     # ② 其余含【…】的行整行删除
     txt = re.sub(r"(?m)^>?\s*\*\*【.*$", "", txt)
     txt = re.sub(r"(?m)^>?\s*【.*$", "", txt)

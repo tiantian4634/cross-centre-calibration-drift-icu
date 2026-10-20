@@ -713,8 +713,6 @@ multicentre external validation of the strategy**, which can only be evaluated w
 
 ## Analysis framework and inferential status
 
-here so that the two are kept in sync.)*
-
 Analyses were assigned to one of two inferential tiers, and the assignment is reported in the manuscript
 so that readers can weight the findings accordingly. **This classification was fixed after the analyses
 were completed and is disclosed as such; it is not a claim that all analyses were confirmatory.**
