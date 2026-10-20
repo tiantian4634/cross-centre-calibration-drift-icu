@@ -419,7 +419,8 @@ Sci Rep 投稿系统按下列槽位收文件。**主表不单独上传**（已�
 - `PDF/Fig1.pdf … Fig7.pdf` — 矢量版，若编辑要求矢量则用这一套。
 
 **`3_补充材料_Supplementary/`**
-- `Supplementary_Information.pdf` — 10 页：封面目录 + 图 S1–S3 + 表 S1–S2 + Supplementary Note。
+- `Supplementary_Information.pdf` — {s3pages} 页 / {m3}：封面目录 + 图 S1–S3 + 表 S1–S3 + Supplementary Note。
+  正文型 PDF（文字可选中、可检索），表为真正的表格，每项各占一页。
 
 **`4_报告清单_Reporting_Checklist/`**
 - `STROBE_checklist.docx` — **可编辑，页码列留空待填**。
@@ -451,7 +452,15 @@ Sci Rep 投稿系统按下列槽位收文件。**主表不单独上传**（已�
 """
 
 # 填入实际大小
+_s3 = os.path.join(D["supp"], "Supplementary_Information.pdf")
+try:
+    import fitz as _fitz
+    _s3p = _fitz.open(_s3).page_count
+except Exception:
+    _s3p = "?"
+
 README = README.format(
+    s3pages=_s3p,
     m1=sz(docx_path),
     m2="%d 个文件" % nfig,
     m3=sz(os.path.join(D["supp"], "Supplementary_Information.pdf")),
