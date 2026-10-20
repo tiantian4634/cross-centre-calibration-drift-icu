@@ -313,14 +313,6 @@
 
 > **The dip at m = 50.** The small decrease in the external success rate between 25 and 50 local patients reflects Monte-Carlo variation across the 200 resampling attempts, not a systematic effect; the monotonic trend across sample sizes should be read across the panel rather than between adjacent points.
 
-# 待补图（投稿前需完成）
-
-| 编号（暂定） | 内容 | 状态 |
-|---|---|---|
-| **图1** | 两库患者筛选流程图（CONSORT 式） | ⬜ **未做**，须补 |
-| 附图S1 | 逐院校准漂移 caterpillar（探测轮图1，n≥50 版） | ⬜ 候选，可并入主图或作附图 |
-| 附图S2 | 病例组合 vs 残余漂移散点（探测轮图2） | ⬜ 候选 |
-
 ---
 
 # 统计方法句（可复用于各图注末尾）
