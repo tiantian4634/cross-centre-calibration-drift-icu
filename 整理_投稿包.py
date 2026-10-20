@@ -10,7 +10,7 @@
 
 转换链：Manuscript.md → HTML → Word COM → DOCX（可编辑，表格为真 Word 表）→ PDF
 """
-import io, sys, os, re, shutil, subprocess, html as _html
+import io, sys, os, re, shutil, subprocess, html as _html, tempfile
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
 B = r"E:\文件杂\褚俊智老师\论文选题\选题T1_虚弱营养列线图\09_路B_跨院校准"
@@ -253,7 +253,10 @@ md = open(os.path.join(SRC, "Manuscript.md"), encoding="utf-8").read()
 body = md_to_html(md)
 html_doc = ("<html><head><meta charset='utf-8'><style>%s</style></head><body>%s</body></html>"
             % (CSS, body))
-html_path = os.path.join(D["manu"], "_manuscript.html")
+# MD→HTML→DOCX→PDF 的中间物（HTML / 两个 PowerShell 脚本）放系统临时目录，
+# 不进投稿包 —— 包内只留投稿系统要的东西。
+TMPD = tempfile.mkdtemp(prefix="pkg_build_")
+html_path = os.path.join(TMPD, "_manuscript.html")
 open(html_path, "w", encoding="utf-8").write(html_doc)
 print("  [2] Manuscript.md → HTML（%.1f KB）" % (os.path.getsize(html_path) / 1024))
 
@@ -300,8 +303,8 @@ try {
 
 docx_path = os.path.join(D["manu"], "Manuscript.docx")
 pdf_path = os.path.join(D["manu"], "Manuscript.pdf")
-ps1 = os.path.join(D["manu"], "_conv1.ps1")
-ps2 = os.path.join(D["manu"], "_conv2.ps1")
+ps1 = os.path.join(TMPD, "_conv1.ps1")
+ps2 = os.path.join(TMPD, "_conv2.ps1")
 open(ps1, "w", encoding="utf-8-sig").write(PS1)
 open(ps2, "w", encoding="utf-8-sig").write(PS2)
 
@@ -337,6 +340,7 @@ if r.returncode != 0:
     print("       stderr: %s" % (r.stderr or "")[:400])
 
 # ── 复制稿件源 ────────────────────────────────────────────
+shutil.rmtree(TMPD, ignore_errors=True)   # 清掉 HTML / PowerShell 中间件
 shutil.copy2(os.path.join(SRC, "Manuscript.md"), os.path.join(D["manu"], "Manuscript_source.md"))
 
 # ── 正文图 ────────────────────────────────────────────────

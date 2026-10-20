@@ -39,8 +39,8 @@ does not.
 
 ## Introduction
 
-Acute severity scores such as the Sequential Organ Failure Assessment (SOFA), the Oxford Acute
-Severity of Illness Score (OASIS) and the Simplified Acute Physiology Score II (SAPS-II) are used
+Acute severity scores such as the Sequential Organ Failure Assessment (SOFA) [1], the Oxford Acute
+Severity of Illness Score (OASIS) [2] and the Simplified Acute Physiology Score II (SAPS-II) [3] are used
 across intensive care units (ICUs) to quantify illness severity, to benchmark units against one
 another, and increasingly to inform decisions about the level of care a patient should receive.
 Their use rests on an assumption that is rarely examined: that a given score means the same thing
@@ -51,23 +51,23 @@ healthier ones will retain most of that ability when it is carried from one popu
 and a pooled area under the receiver operating characteristic curve (AUC) is a standard feature of
 validation studies. Calibration — whether the predicted probability of death matches the observed
 probability — is the property that determines what a risk estimate actually means at the bedside,
-and it has long been recognised as the more fragile of the two. Poorly calibrated algorithms can be
+and it has long been recognised as the more fragile of the two [4]. Poorly calibrated algorithms can be
 misleading and harmful in clinical decision-making, and calibration has been described as the
-Achilles heel of predictive analytics [1]. Even so, calibration is assessed less consistently than
-discrimination in published validation studies [2], and where it is assessed the finding is
+Achilles heel of predictive analytics [5]. Even so, calibration is assessed less consistently than
+discrimination in published validation studies [6], and where it is assessed the finding is
 typically that it does not transport.
 
 Most published work on calibration failure addresses one of two settings. The first is temporal:
 within a single environment, calibration deteriorates as clinical practice, data capture and
 patient mix change, and a substantial methodological literature now exists on detecting such drift
-[3] and on updating models once it has been detected [4,5]. The second is a single transfer: a model
+[7] and on updating models once it has been detected [8,9]. The second is a single transfer: a model
 developed in one centre is applied to one other centre or population, where miscalibration is
-observed and locally corrected [6]. What has received much less attention is the *spatial*
+observed and locally corrected [10]. What has received much less attention is the *spatial*
 dimension — how far calibration differs **simultaneously across many centres** in a health system
 that routinely uses the same score, and how large that between-centre component is relative to the
 others. This matters because the practical response to inter-centre variation is assumed to be
 local recalibration, and because benchmarking systems that compare hospitals depend on the premise
-that the underlying risk adjustment is comparable across them.
+that the underlying risk adjustment is comparable across them [11].
 
 Two questions follow that have not, to our knowledge, been answered together. First, quantitatively:
 when a severity score is used in 100 or more hospitals at once, how much of the variation in
@@ -341,11 +341,11 @@ to do so could be estimated once and used in a second database without refitting
 **Relation to prior work on calibration drift.** The closest antecedents to the present study
 treat calibration drift as a *temporal* phenomenon within one environment: Han et al. detected
 increasing miscalibration over time using online stochastic gradient descent and adaptive windows
-[3], and Zhang et al. proposed lifelong machine learning to counter it across four tumour datasets
-[7]. Both are well-suited to their question and neither is contradicted here. The present study
+[7], and Zhang et al. proposed lifelong machine learning to counter it across four tumour datasets
+[12]. Both are well-suited to their question and neither is contradicted here. The present study
 addresses the orthogonal question — the *spatial* component — and does so at a scale rarely
 attempted: rather than one environment followed over time or one transfer from centre to centre
-[6,8], we observed 103 centres simultaneously and were able to partition the resulting variance. A
+[10,13], we observed 103 centres simultaneously and were able to partition the resulting variance. A
 clinically important corollary is that the two sources are not interchangeable. A hospital offset
 that is 41.6% temporal in origin cannot be fixed by a permanent recalibration, however large the
 sample used to fit it, and a hospital-to-hospital difference that persists after case-mix adjustment
@@ -353,16 +353,16 @@ cannot be explained by improvement over time. Decomposing them would require a d
 several years, which eICU-CRD does not.
 
 **Relation to the model-updating literature.** A mature methodological literature describes how to
-evaluate and update a prediction model, including when recalibration is appropriate [4,5,9,10], and
-empirical comparisons of update strategies exist [11,12]. Those recommendations are generally
+evaluate and update a prediction model, including when recalibration is appropriate [8,9,14,15], and
+empirical comparisons of update strategies exist [16,17]. Those recommendations are generally
 presented as unqualified: if calibration in the target setting is poor, recalibrate. Our findings
-qualify rather than contradict them. The literature assumes a local sample large enough for the
-recalibration to be estimated reliably, and does not typically state what that means in patients. We
+qualify rather than contradict them. The literature assumes a local sample large enough for the recalibration to be estimated
+reliably. Formal minimum sample sizes exist for external validation [18], but they address the
+precision of the calibration estimate rather than whether recalibration improves decisions. We
 found that with 25 local patients naive recalibration lowered the proportion of resamples reaching
 ±10% accuracy from 21.4% to 15.3%, that estimating a second parameter (the calibration slope) made it
-worse still, and that a 50% success rate was not reached even at 200 patients. The quantity the
-guidance leaves unspecified — how many local patients — appears to be the parameter that governs
-whether the recommendation helps.
+worse still, and that a 50% success rate was not reached even at 200 patients. That missing quantity — how many local patients are needed before recalibration helps rather
+than harms — appears to govern whether the recommendation helps.
 
 **The shrinkage result and its limits.** Empirical-Bayes shrinkage of the local offset toward the
 pooled mean recovered small-sample performance (24.3% versus 15.5% at 25 patients) and transferred to
@@ -378,18 +378,19 @@ variation is absorbed into the intercept; we present this as a possible mechanis
 finding.
 
 **Consequences for benchmarking.** Benchmarking systems for ICU care are expanding internationally
-[13,14], and such systems presume that observed-to-expected ratios are comparable between
+[19,20], and such systems presume that observed-to-expected ratios are comparable between
 institutions. Our results indicate that this premise requires active verification: an observed-to-
 expected ratio of 0.69 in one hospital and 1.54 in another, under the same model, is not a
 difference in performance that a benchmark can safely interpret. Because the variation is only
 partly temporal and not explained by measured case-mix, neither a stable unit-level adjustment nor a
 one-off recalibration resolves it. The emerging focus on post-deployment monitoring and lifecycle
-governance of clinical models [15] would be strengthened by treating centre-specific calibration as
+governance of clinical models [21] would be strengthened by treating centre-specific calibration as
 a quantity to be monitored rather than assumed.
 
 **Why STROBE rather than TRIPOD.** The data are clustered by hospital, which is the structure the
-TRIPOD-Cluster statement was written to address [16], and reporting standards for prediction models
-have continued to develop with TRIPOD+AI [17]. We report using STROBE because no prediction model
+TRIPOD-Cluster statement was written to address [22], and reporting standards for prediction models
+have continued to develop with TRIPOD+AI [23]. We report using STROBE [24] with the RECORD extension for routinely collected health
+data [25], because no prediction model
 was developed or deployed for clinical use in this study: the pooled model served as a measurement
 instrument for quantifying drift, and the object of the study is the between-centre variation
 itself, not the performance of a model intended for patient-level decisions. We have nonetheless
@@ -445,11 +446,11 @@ different hospitals, and, if it does not, what it takes to recalibrate it locall
 Both datasets are third-party, publicly available databases obtained under their respective data use
 agreements through PhysioNet (https://physionet.org/).
 
-**eICU-CRD v2.0**[20] contains data from 208 hospitals in the United States for the period 2014–2015,
+**eICU-CRD v2.0** [26] contains data from 208 hospitals in the United States for the period 2014–2015,
 comprising 200,859 intensive-care unit (ICU) stays. Access required credentialed application and
 attestation of the PhysioNet data use agreement.
 
-**MIMIC-IV v3.1**[21] contains data from Beth Israel Deaconess Medical Center, a single academic medical
+**MIMIC-IV v3.1** [27] contains data from Beth Israel Deaconess Medical Center, a single academic medical
 centre, comprising 94,458 ICU stays. Access required completion of CITI "Data or Specimens Only"
 training and a data use agreement.
 
@@ -536,8 +537,8 @@ affect any analysis variable used here.
 ## Severity scores
 
 Three established severity scores were used exactly as supplied by the source extraction protocols: the Sequential
-Organ Failure Assessment (SOFA)[18], the Oxford Acute Severity of Illness Score (OASIS), and the Simplified
-Acute Physiology Score II (SAPS-II)[19]. This study did not recompute the scores, and their derivation is
+Organ Failure Assessment (SOFA) [1], the Oxford Acute Severity of Illness Score (OASIS) [2], and the Simplified
+Acute Physiology Score II (SAPS-II) [3]. This study did not recompute the scores, and their derivation is
 documented in the source protocols. Analysis was restricted to patients with a non-missing value for the
 score being analysed; all three scores were complete in both cohorts.
 
@@ -597,10 +598,8 @@ respectively) were all specified in the analysis plans written before execution 
 
 ## Between-centre heterogeneity
 
-For each score, per-hospital offsets were pooled by random-effects meta-analysis. Heterogeneity was
-summarised by *I²*, defined as `max(0, (Q − (k − 1))/Q) × 100`, where *Q* is the fixed-effect
-Cochran statistic computed with weights 1/SE². The between-centre variance *τ²* was estimated by the
-DerSimonian–Laird method[22]. Because DerSimonian–Laird predates current guidance, *τ²* was additionally
+For each score, per-hospital offsets were pooled by random-effects meta-analysis. Heterogeneity was summarised by *I²* [28], defined as `max(0, (Q − (k − 1))/Q) × 100`, where *Q* is the fixed-effect
+Cochran statistic computed with weights 1/SE². The between-centre variance *τ²* was estimated by the DerSimonian–Laird method [29]. Because DerSimonian–Laird predates current guidance [30], *τ²* was additionally
 re-estimated under three further frameworks as a pre-specified analysis (analysis K): Paule–Mandel,
 restricted maximum likelihood (REML), and a one-stage random-intercept multilevel logistic model fitted
 to patient-level data (`statsmodels` `BinomialBayesMixedGLM`, Laplace/maximum *a posteriori*). Analyses
@@ -658,7 +657,7 @@ converges to 1 — such a statistic measures unbiasedness rather than accuracy.
 
 We evaluated four strategies on the same (hospital, *m*, replicate) draws: **S0**, no recalibration;
 **S1**, naive re-estimation of the intercept only; **S2**, naive re-estimation of intercept plus
-calibration slope; and **S3**, empirical-Bayes shrinkage of the intercept
+calibration slope; and **S3**, empirical-Bayes shrinkage of the intercept [31]
 
 > *a*_EB = ā + λ · (*a*_MLE − ā), with λ = *τ²* / (*τ²* + SE²)
 
@@ -820,7 +819,8 @@ This statement is required by the target journal and must be retained.
 
 ## Reporting guidelines
 
-The study is reported in accordance with the STROBE statement. TRIPOD was **not** used, because no
+The study is reported in accordance with the STROBE statement [24] and its RECORD extension for
+routinely collected health data [25]. TRIPOD was **not** used, because no
 prediction model was developed or deployed for clinical use: the pooled model served only as a
 measurement instrument for quantifying calibration drift, and the study reports heterogeneity and a
 recalibration strategy rather than the performance of a model intended for clinical decision-making.
@@ -846,28 +846,37 @@ All database access during this study was read-only, and no script written for t
 
 ## References
 
-[1] Van Calster, B., McLernon, D. J., van Smeden, M., Wynants, L. & Bossuyt, P. M. M. Calibration: the Achilles heel of predictive analytics. *BMC Med.* **18**, 88 (2020).
-[2] Miao, Q. et al. Miscalibration of lung allocation models leads to inaccurate waitlist mortality predictions. *Am. J. Transplant.* **23**, 245–252 (2023).
-[3] Han, K. et al. Detection of calibration drift in clinical prediction models to inform model updating. *J. Biomed. Inform.* **111**, 103611 (2021).
-[4] Binuya, M. A. E., Engelhardt, E. G., Schröder, C. P., de Vries, E. G. E. & Braat, C. H. M. Methodological guidance for the evaluation and updating of clinical prediction models: a systematic review. *BMC Med. Res. Methodol.* **22**, 317 (2022).
-[5] Ensor, J., Snell, K. I. E., Martin, G. P., Sperrin, M. & Riley, R. D. Individual participant data meta-analysis for external validation, recalibration, and updating of a flexible parametric prognostic model. *Stat. Med.* **40**, 3720–3733 (2021).
-[6] Riley, R. D. et al. External validation of prognostic models: what, why, how, when and where? *Clin. Kidney J.* **15**, 469–472 (2022).
-[7] Zhang, Z. et al. A novel lifelong machine learning-based method to eliminate calibration drift in clinical prediction models. *Artif. Intell. Med.* **125**, 102256 (2022).
-[8] Zhang, Z. et al. Clinical transportability, calibration drift, and local updating of a B-mode ultrasound radiomics-clinical prediction model. *Gland Surg.* **15**, 1274 (2026).
-[9] Gehringer, C. K., Martin, G. P., Sperrin, M., Welch, C. & Riley, R. D. How to develop, validate, and update clinical prediction models using multinomial logistic regression. *J. Clin. Epidemiol.* **170**, 114–126 (2024).
-[10] Ogero, M. et al. Recalibrating prognostic models to improve predictions of in-hospital child mortality in resource-limited settings. *Paediatr. Perinat. Epidemiol.* **37**, 257–269 (2023).
-[11] Schnellinger, E. M. & Yang, W. Comparison of dynamic updating strategies for clinical prediction models. *Diagn. Progn. Res.* **5**, 20 (2021).
-[12] Tanner, K. T. & Keogh, R. H. Dynamic updating of clinical survival prediction models in a changing environment. *Diagn. Progn. Res.* **7**, 14 (2023).
-[13] How to establish and run a national ICU benchmarking registry. *Curr. Opin. Crit. Care* **32**, 523–530 (2026).
-[14] Mortality prediction in intensive care units including premorbid functional status improved performance and internal validity. *J. Clin. Epidemiol.* **142**, 55–63 (2022).
-[15] van Geloven, N. et al. Beyond model development in healthcare AI: post-development robustness, post-deployment monitoring, and lifecycle governance. *Healthcare* **14**, 1459 (2026).
-[16] Riley, R. D. et al. Transparent reporting of multivariable prediction models developed or validated using clustered data (TRIPOD-Cluster): explanation and elaboration. *BMJ* **380**, e071058 (2023).
-[17] Collins, G. S. et al. TRIPOD+AI statement: updated guidance for reporting clinical prediction models that use regression or machine learning methods. *BMJ* **385**, e078378 (2024).
-[18] Vincent, J. L. et al. The SOFA (Sepsis-related Organ Failure Assessment) score to describe organ dysfunction/failure. *Intensive Care Med.* **22**, 707–710 (1996).
-[19] Le Gall, J. R., Lemeshow, S. & Saulnier, F. A new Simplified Acute Physiology Score (SAPS II) based on a European/North American multicenter study. *JAMA* **270**, 2957–2963 (1994).
-[20] Pollard, T. J., Johnson, A. E. W., Raffa, J. D., Celi, L. A., Mark, R. G. & Badawi, O. The eICU Collaborative Research Database, a freely available multi-center database for critical care research. *Sci. Data* **5**, 180178 (2018).
-[21] Johnson, A. E. W. et al. MIMIC-IV, a freely accessible electronic health record dataset. *Sci. Data* **10**, 1 (2023).
-[22] DerSimonian, R. & Laird, N. Meta-analysis in clinical trials. *Control. Clin. Trials* **7**, 177–188 (1986).
+[1] Vincent, J. L. et al. The SOFA (Sepsis-related Organ Failure Assessment) score to describe organ dysfunction/failure. *Intensive Care Med.* **22**, 707–710 (1996).
+[2] Johnson, A. E. W., Kramer, A. A. & Clifford, G. D. A new severity of illness scale using a subset of Acute Physiology and Chronic Health Evaluation data elements shows comparable predictive accuracy. *Crit. Care Med.* **41**, 1711–1718 (2013).
+[3] Le Gall, J. R., Lemeshow, S. & Saulnier, F. A new Simplified Acute Physiology Score (SAPS II) based on a European/North American multicenter study. *JAMA* **270**, 2957–2963 (1994).
+[4] Van Calster, B., Nieboer, D., Vergouwe, Y., De Cock, B., Pencina, M. J. & Steyerberg, E. W. A calibration hierarchy for risk models was defined: from utopia to empirical data. *J. Clin. Epidemiol.* **74**, 167–176 (2016).
+[5] Van Calster, B., McLernon, D. J., van Smeden, M., Wynants, L. & Bossuyt, P. M. M. Calibration: the Achilles heel of predictive analytics. *BMC Med.* **18**, 88 (2020).
+[6] Miao, Q. et al. Miscalibration of lung allocation models leads to inaccurate waitlist mortality predictions. *Am. J. Transplant.* **23**, 245–252 (2023).
+[7] Han, K. et al. Detection of calibration drift in clinical prediction models to inform model updating. *J. Biomed. Inform.* **111**, 103611 (2021).
+[8] Binuya, M. A. E., Engelhardt, E. G., Schröder, C. P., de Vries, E. G. E. & Braat, C. H. M. Methodological guidance for the evaluation and updating of clinical prediction models: a systematic review. *BMC Med. Res. Methodol.* **22**, 317 (2022).
+[9] Ensor, J., Snell, K. I. E., Martin, G. P., Sperrin, M. & Riley, R. D. Individual participant data meta-analysis for external validation, recalibration, and updating of a flexible parametric prognostic model. *Stat. Med.* **40**, 3720–3733 (2021).
+[10] Riley, R. D. et al. External validation of prognostic models: what, why, how, when and where? *Clin. Kidney J.* **15**, 469–472 (2022).
+[11] Moreno, R. P., Metnitz, P. G. H., Almeida, E., Jordan, B. et al. SAPS 3—From evaluation of the patient to evaluation of the intensive care unit. Part 2: Development of a prognostic model for hospital mortality at ICU admission. *Intensive Care Med.* **31**, 1345–1355 (2005).
+[12] Zhang, Z. et al. A novel lifelong machine learning-based method to eliminate calibration drift in clinical prediction models. *Artif. Intell. Med.* **125**, 102256 (2022).
+[13] Zhang, Z. et al. Clinical transportability, calibration drift, and local updating of a B-mode ultrasound radiomics-clinical prediction model. *Gland Surg.* **15**, 1274 (2026).
+[14] Gehringer, C. K., Martin, G. P., Sperrin, M., Welch, C. & Riley, R. D. How to develop, validate, and update clinical prediction models using multinomial logistic regression. *J. Clin. Epidemiol.* **170**, 114–126 (2024).
+[15] Ogero, M. et al. Recalibrating prognostic models to improve predictions of in-hospital child mortality in resource-limited settings. *Paediatr. Perinat. Epidemiol.* **37**, 257–269 (2023).
+[16] Schnellinger, E. M. & Yang, W. Comparison of dynamic updating strategies for clinical prediction models. *Diagn. Progn. Res.* **5**, 20 (2021).
+[17] Tanner, K. T. & Keogh, R. H. Dynamic updating of clinical survival prediction models in a changing environment. *Diagn. Progn. Res.* **7**, 14 (2023).
+[18] Riley, R. D., Debray, T. P. A., Collins, G. S., Archer, L. et al. Minimum sample size for external validation of a clinical prediction model with a binary outcome. *Stat. Med.* **40**, 4230–4251 (2021).
+[19] Salluh, J. I. F., Quintairos, A., Dongelmans, D. A., Fujii, T. et al. How to establish and run a national ICU benchmarking registry. *Curr. Opin. Crit. Care* **32**, 523–530 (2026).
+[20] Moser, A., Reinikainen, M., Jakob, S. M., Selander, T. A. et al. Mortality prediction in intensive care units including premorbid functional status improved performance and internal validity. *J. Clin. Epidemiol.* **142**, 55–63 (2022).
+[21] van Geloven, N. et al. Beyond model development in healthcare AI: post-development robustness, post-deployment monitoring, and lifecycle governance. *Healthcare* **14**, 1459 (2026).
+[22] Riley, R. D. et al. Transparent reporting of multivariable prediction models developed or validated using clustered data (TRIPOD-Cluster): explanation and elaboration. *BMJ* **380**, e071058 (2023).
+[23] Collins, G. S. et al. TRIPOD+AI statement: updated guidance for reporting clinical prediction models that use regression or machine learning methods. *BMJ* **385**, e078378 (2024).
+[24] von Elm, E., Altman, D. G., Egger, M., Pocock, S. J., Gøtzsche, P. C. & Vandenbroucke, J. P. The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) statement: guidelines for reporting observational studies. *Ann. Intern. Med.* **147**, 573–577 (2007).
+[25] Benchimol, E. I., Smeeth, L., Guttmann, A., Harron, K. et al. The REporting of studies Conducted using Observational Routinely-collected health Data (RECORD) statement. *PLoS Med.* **12**, e1001885 (2015).
+[26] Pollard, T. J., Johnson, A. E. W., Raffa, J. D., Celi, L. A., Mark, R. G. & Badawi, O. The eICU Collaborative Research Database, a freely available multi-center database for critical care research. *Sci. Data* **5**, 180178 (2018).
+[27] Johnson, A. E. W. et al. MIMIC-IV, a freely accessible electronic health record dataset. *Sci. Data* **10**, 1 (2023).
+[28] Higgins, J. P. T. & Thompson, S. G. Quantifying heterogeneity in a meta-analysis. *Stat. Med.* **21**, 1539–1558 (2002).
+[29] DerSimonian, R. & Laird, N. Meta-analysis in clinical trials. *Control. Clin. Trials* **7**, 177–188 (1986).
+[30] Veroniki, A. A. et al. Methods to estimate the between-study variance and its uncertainty in meta-analysis. *Res. Synth. Methods* **7**, 55–79 (2016).
+[31] Efron, B. & Morris, C. Data analysis using Stein's estimator and its generalizations. *J. Am. Stat. Assoc.* **70**, 311–319 (1975).
 
 ---
 

@@ -22,6 +22,8 @@ def norm(s, strip_md=False):
         s = re.sub(r"\*+", "", s)
         s = s.replace("`", "")
         s = CITE.sub("", s)           # 只剥离 [20] / [1,2]，不误伤 [\u221212, 12]
+    # 剥引用后可能留下「逗号前的空格」，先压掉
+    s = re.sub(r"\s+([,.;:!?])", r"\1", s)
     return re.sub(r"\s+", " ", s).strip()
 
 

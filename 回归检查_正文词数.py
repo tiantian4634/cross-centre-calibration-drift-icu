@@ -11,7 +11,7 @@ def words(t):
     t = re.sub(r"```.*?```", " ", t, flags=re.S)      # 去代码块
     t = re.sub(r"\|[\s:|-]+\|", "\n", t)              # 去表格分隔行
     t = re.sub(r"^>?\s*\|", "", t, flags=re.M)        # 去表格行首
-    t = re.sub(r"\[\d+(?:,\d+)*\]", "", t)            # 去文内编号引用（Sci Rep 用方括号）
+    t = re.sub(r"\[\[[A-Za-z0-9_,\s]+\]\]", "", t)      # 去引用键标记（源文件写法）\n    t = re.sub(r"\[\d+(?:,\s*\d+)*\]", "", t)          # 去文内编号引用（Sci Rep 用方括号）
     t = re.sub(r"[*_`#]+", "", t)
     return [w for w in re.findall(r"\S+", t) if re.search(r"[A-Za-z0-9]", w)]
 
@@ -96,12 +96,26 @@ for name, pat in RED.items():
 print("\n" + "=" * 84)
 print("  文内引用编号（Nature 格式 [n]）检查")
 print("=" * 84)
-cites = re.findall(r"\[(\d+(?:,\s*\d+)*)\]", both)
-nums = sorted({int(x) for c in cites for x in re.split(r",\s*", c)})
-print("  已用引用编号: %s" % nums)
-if nums:
-    missing = [n for n in range(1, max(nums) + 1) if n not in nums]
+# 源文件用 [[KEY]] 标记，编号在装配时按首次出现顺序生成；因此这里读装配后的稿件，
+# 同时核对「正文引用编号」与「参考文献列表」是否一一对应。
+MAN = os.path.join(B, "Manuscript.md")
+if not os.path.exists(MAN):
+    print("  ✘ 缺 Manuscript.md，先跑 装配_Manuscript.py")
+else:
+    mt = open(MAN, encoding="utf-8").read()
+    cut = mt.find("## References")
+    body_txt, ref_txt = mt[:cut], mt[cut:]
+    cites = re.findall(r"\[(\d+(?:\s*,\s*\d+)*)\]", body_txt)
+    nums = sorted({int(x) for c in cites for x in re.split(r"\s*,\s*", c)})
+    listed = [int(x) for x in re.findall(r"(?m)^\[(\d+)\] ", ref_txt)]
+    print("  正文引用编号: %d 个，范围 1–%d" % (len(nums), max(nums) if nums else 0))
+    missing = [n for n in range(1, max(nums) + 1) if n not in nums] if nums else []
     print("  缺号: %s" % (missing if missing else "无 ✔"))
+    print("  参考文献列表: %d 条" % len(listed))
+    gap = [n for n in (nums or []) if n not in listed]
+    orphan = [n for n in listed if n not in nums]
+    print("  被引但未列出: %s" % (gap if gap else "无 ✔"))
+    print("  列出但未被引: %s" % (orphan if orphan else "无 ✔"))
 print("  参考文献条数上限: 60（建议）")
 
 print("\n" + "=" * 84)

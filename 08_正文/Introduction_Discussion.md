@@ -11,8 +11,8 @@
 
 ## Introduction
 
-Acute severity scores such as the Sequential Organ Failure Assessment (SOFA), the Oxford Acute
-Severity of Illness Score (OASIS) and the Simplified Acute Physiology Score II (SAPS-II) are used
+Acute severity scores such as the Sequential Organ Failure Assessment (SOFA) [[SOFA]], the Oxford Acute
+Severity of Illness Score (OASIS) [[OASIS]] and the Simplified Acute Physiology Score II (SAPS-II) [[SAPS2]] are used
 across intensive care units (ICUs) to quantify illness severity, to benchmark units against one
 another, and increasingly to inform decisions about the level of care a patient should receive.
 Their use rests on an assumption that is rarely examined: that a given score means the same thing
@@ -23,23 +23,23 @@ healthier ones will retain most of that ability when it is carried from one popu
 and a pooled area under the receiver operating characteristic curve (AUC) is a standard feature of
 validation studies. Calibration — whether the predicted probability of death matches the observed
 probability — is the property that determines what a risk estimate actually means at the bedside,
-and it has long been recognised as the more fragile of the two. Poorly calibrated algorithms can be
+and it has long been recognised as the more fragile of the two [[CAL_HIER]]. Poorly calibrated algorithms can be
 misleading and harmful in clinical decision-making, and calibration has been described as the
-Achilles heel of predictive analytics [1]. Even so, calibration is assessed less consistently than
-discrimination in published validation studies [2], and where it is assessed the finding is
+Achilles heel of predictive analytics [[CAL_ACHILLES]]. Even so, calibration is assessed less consistently than
+discrimination in published validation studies [[MIAO]], and where it is assessed the finding is
 typically that it does not transport.
 
 Most published work on calibration failure addresses one of two settings. The first is temporal:
 within a single environment, calibration deteriorates as clinical practice, data capture and
 patient mix change, and a substantial methodological literature now exists on detecting such drift
-[3] and on updating models once it has been detected [4,5]. The second is a single transfer: a model
+[[HAN]] and on updating models once it has been detected [[BINUYA,ENSOR]]. The second is a single transfer: a model
 developed in one centre is applied to one other centre or population, where miscalibration is
-observed and locally corrected [6]. What has received much less attention is the *spatial*
+observed and locally corrected [[RILEY_EXT]]. What has received much less attention is the *spatial*
 dimension — how far calibration differs **simultaneously across many centres** in a health system
 that routinely uses the same score, and how large that between-centre component is relative to the
 others. This matters because the practical response to inter-centre variation is assumed to be
 local recalibration, and because benchmarking systems that compare hospitals depend on the premise
-that the underlying risk adjustment is comparable across them.
+that the underlying risk adjustment is comparable across them [[SAPS3]].
 
 Two questions follow that have not, to our knowledge, been answered together. First, quantitatively:
 when a severity score is used in 100 or more hospitals at once, how much of the variation in
@@ -76,11 +76,11 @@ to do so could be estimated once and used in a second database without refitting
 **Relation to prior work on calibration drift.** The closest antecedents to the present study
 treat calibration drift as a *temporal* phenomenon within one environment: Han et al. detected
 increasing miscalibration over time using online stochastic gradient descent and adaptive windows
-[3], and Zhang et al. proposed lifelong machine learning to counter it across four tumour datasets
-[7]. Both are well-suited to their question and neither is contradicted here. The present study
+[[HAN]], and Zhang et al. proposed lifelong machine learning to counter it across four tumour datasets
+[[ZHANG_LIFELONG]]. Both are well-suited to their question and neither is contradicted here. The present study
 addresses the orthogonal question — the *spatial* component — and does so at a scale rarely
 attempted: rather than one environment followed over time or one transfer from centre to centre
-[6,8], we observed 103 centres simultaneously and were able to partition the resulting variance. A
+[[RILEY_EXT,ZHANG_TRANSPORT]], we observed 103 centres simultaneously and were able to partition the resulting variance. A
 clinically important corollary is that the two sources are not interchangeable. A hospital offset
 that is 41.6% temporal in origin cannot be fixed by a permanent recalibration, however large the
 sample used to fit it, and a hospital-to-hospital difference that persists after case-mix adjustment
@@ -88,16 +88,16 @@ cannot be explained by improvement over time. Decomposing them would require a d
 several years, which eICU-CRD does not.
 
 **Relation to the model-updating literature.** A mature methodological literature describes how to
-evaluate and update a prediction model, including when recalibration is appropriate [4,5,9,10], and
-empirical comparisons of update strategies exist [11,12]. Those recommendations are generally
+evaluate and update a prediction model, including when recalibration is appropriate [[BINUYA,ENSOR,GEHRINGER,OGERO]], and
+empirical comparisons of update strategies exist [[SCHNELLINGER,TANNER]]. Those recommendations are generally
 presented as unqualified: if calibration in the target setting is poor, recalibrate. Our findings
-qualify rather than contradict them. The literature assumes a local sample large enough for the
-recalibration to be estimated reliably, and does not typically state what that means in patients. We
+qualify rather than contradict them. The literature assumes a local sample large enough for the recalibration to be estimated
+reliably. Formal minimum sample sizes exist for external validation [[RILEY_SS]], but they address the
+precision of the calibration estimate rather than whether recalibration improves decisions. We
 found that with 25 local patients naive recalibration lowered the proportion of resamples reaching
 ±10% accuracy from 21.4% to 15.3%, that estimating a second parameter (the calibration slope) made it
-worse still, and that a 50% success rate was not reached even at 200 patients. The quantity the
-guidance leaves unspecified — how many local patients — appears to be the parameter that governs
-whether the recommendation helps.
+worse still, and that a 50% success rate was not reached even at 200 patients. That missing quantity — how many local patients are needed before recalibration helps rather
+than harms — appears to govern whether the recommendation helps.
 
 **The shrinkage result and its limits.** Empirical-Bayes shrinkage of the local offset toward the
 pooled mean recovered small-sample performance (24.3% versus 15.5% at 25 patients) and transferred to
@@ -113,18 +113,19 @@ variation is absorbed into the intercept; we present this as a possible mechanis
 finding.
 
 **Consequences for benchmarking.** Benchmarking systems for ICU care are expanding internationally
-[13,14], and such systems presume that observed-to-expected ratios are comparable between
+[[ICU_REGISTRY,MOSER]], and such systems presume that observed-to-expected ratios are comparable between
 institutions. Our results indicate that this premise requires active verification: an observed-to-
 expected ratio of 0.69 in one hospital and 1.54 in another, under the same model, is not a
 difference in performance that a benchmark can safely interpret. Because the variation is only
 partly temporal and not explained by measured case-mix, neither a stable unit-level adjustment nor a
 one-off recalibration resolves it. The emerging focus on post-deployment monitoring and lifecycle
-governance of clinical models [15] would be strengthened by treating centre-specific calibration as
+governance of clinical models [[VAN_GELOVEN]] would be strengthened by treating centre-specific calibration as
 a quantity to be monitored rather than assumed.
 
 **Why STROBE rather than TRIPOD.** The data are clustered by hospital, which is the structure the
-TRIPOD-Cluster statement was written to address [16], and reporting standards for prediction models
-have continued to develop with TRIPOD+AI [17]. We report using STROBE because no prediction model
+TRIPOD-Cluster statement was written to address [[TRIPOD_CLUSTER]], and reporting standards for prediction models
+have continued to develop with TRIPOD+AI [[TRIPOD_AI]]. We report using STROBE [[STROBE]] with the RECORD extension for routinely collected health
+data [[RECORD]], because no prediction model
 was developed or deployed for clinical use in this study: the pooled model served as a measurement
 instrument for quantifying drift, and the object of the study is the between-centre variation
 itself, not the performance of a model intended for patient-level decisions. We have nonetheless

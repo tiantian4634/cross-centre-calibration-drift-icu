@@ -26,11 +26,11 @@ different hospitals, and, if it does not, what it takes to recalibrate it locall
 Both datasets are third-party, publicly available databases obtained under their respective data use
 agreements through PhysioNet (https://physionet.org/).
 
-**eICU-CRD v2.0**[20] contains data from 208 hospitals in the United States for the period 2014–2015,
+**eICU-CRD v2.0** [[EICU]] contains data from 208 hospitals in the United States for the period 2014–2015,
 comprising 200,859 intensive-care unit (ICU) stays. Access required credentialed application and
 attestation of the PhysioNet data use agreement.
 
-**MIMIC-IV v3.1**[21] contains data from Beth Israel Deaconess Medical Center, a single academic medical
+**MIMIC-IV v3.1** [[MIMIC]] contains data from Beth Israel Deaconess Medical Center, a single academic medical
 centre, comprising 94,458 ICU stays. Access required completion of CITI "Data or Specimens Only"
 training and a data use agreement.
 
@@ -117,8 +117,8 @@ affect any analysis variable used here.
 ## Severity scores
 
 Three established severity scores were used exactly as supplied by the source extraction protocols: the Sequential
-Organ Failure Assessment (SOFA)[18], the Oxford Acute Severity of Illness Score (OASIS), and the Simplified
-Acute Physiology Score II (SAPS-II)[19]. This study did not recompute the scores, and their derivation is
+Organ Failure Assessment (SOFA) [[SOFA]], the Oxford Acute Severity of Illness Score (OASIS) [[OASIS]], and the Simplified
+Acute Physiology Score II (SAPS-II) [[SAPS2]]. This study did not recompute the scores, and their derivation is
 documented in the source protocols. Analysis was restricted to patients with a non-missing value for the
 score being analysed; all three scores were complete in both cohorts.
 
@@ -178,10 +178,8 @@ respectively) were all specified in the analysis plans written before execution 
 
 ## Between-centre heterogeneity
 
-For each score, per-hospital offsets were pooled by random-effects meta-analysis. Heterogeneity was
-summarised by *I²*, defined as `max(0, (Q − (k − 1))/Q) × 100`, where *Q* is the fixed-effect
-Cochran statistic computed with weights 1/SE². The between-centre variance *τ²* was estimated by the
-DerSimonian–Laird method[22]. Because DerSimonian–Laird predates current guidance, *τ²* was additionally
+For each score, per-hospital offsets were pooled by random-effects meta-analysis. Heterogeneity was summarised by *I²* [[I2]], defined as `max(0, (Q − (k − 1))/Q) × 100`, where *Q* is the fixed-effect
+Cochran statistic computed with weights 1/SE². The between-centre variance *τ²* was estimated by the DerSimonian–Laird method [[DL]]. Because DerSimonian–Laird predates current guidance [[TAU2]], *τ²* was additionally
 re-estimated under three further frameworks as a pre-specified analysis (analysis K): Paule–Mandel,
 restricted maximum likelihood (REML), and a one-stage random-intercept multilevel logistic model fitted
 to patient-level data (`statsmodels` `BinomialBayesMixedGLM`, Laplace/maximum *a posteriori*). Analyses
@@ -239,7 +237,7 @@ converges to 1 — such a statistic measures unbiasedness rather than accuracy.
 
 We evaluated four strategies on the same (hospital, *m*, replicate) draws: **S0**, no recalibration;
 **S1**, naive re-estimation of the intercept only; **S2**, naive re-estimation of intercept plus
-calibration slope; and **S3**, empirical-Bayes shrinkage of the intercept
+calibration slope; and **S3**, empirical-Bayes shrinkage of the intercept [[EB]]
 
 > *a*_EB = ā + λ · (*a*_MLE − ā), with λ = *τ²* / (*τ²* + SE²)
 
@@ -407,7 +405,8 @@ This statement is required by the target journal and must be retained.
 
 ## Reporting guidelines
 
-The study is reported in accordance with the STROBE statement. TRIPOD was **not** used, because no
+The study is reported in accordance with the STROBE statement [[STROBE]] and its RECORD extension for
+routinely collected health data [[RECORD]]. TRIPOD was **not** used, because no
 prediction model was developed or deployed for clinical use: the pooled model served only as a
 measurement instrument for quantifying calibration drift, and the study reports heterogeneity and a
 recalibration strategy rather than the performance of a model intended for clinical decision-making.
