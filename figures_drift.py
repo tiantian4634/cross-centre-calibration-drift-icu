@@ -122,12 +122,14 @@ for b, v, a in zip(bars, i2, aucv):
         ax.text(b.get_x() + b.get_width() / 2, v / 2, "AUC\n%.3f" % a, ha="center",
                 va="center", fontsize=9, color="white", fontweight="bold")
 ax.axhline(50, color=RED, lw=1.1, ls="--", zorder=2)
-ax.text(-0.42, 51.5, "$I^2$ = 50% (substantial heterogeneity)",
-        color=RED, fontsize=7.4, ha="left", va="bottom")
+# 阈值文字不压柱：放右上方空白带，垂直细红线连回阈值线（x=3.50 在末柱右侧空白带内，全程不触碰柱与任何标签）。
+ax.plot([3.50, 3.50], [50.9, 85.2], color=RED, lw=0.8, zorder=2, solid_capstyle="butt")
+ax.text(3.50, 85.9, "$I^2$ = 50% (substantial heterogeneity)",
+        ha="right", va="bottom", color=RED, fontsize=7.4, zorder=4)
 ax.set_xticks(xx)
 ax.set_xticklabels(tags_x, fontsize=8.2)
 ax.set_ylabel("Between-centre heterogeneity $I^2$ (%)", fontsize=9.4)
-ax.set_ylim(0, 92)
+ax.set_ylim(0, 96)
 ax.set_xlim(-0.6, len(i2) - 0.4)
 ax.spines[["top", "right"]].set_visible(False)
 fig.subplots_adjust(left=0.105, right=0.985, top=0.96, bottom=0.235)
