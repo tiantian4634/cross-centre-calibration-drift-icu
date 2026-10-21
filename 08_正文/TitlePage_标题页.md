@@ -28,13 +28,13 @@
 
 ## 作者与单位
 
-**⟨First Author Full Name⟩¹, ⟨Second Author Full Name⟩¹, Tiantian Zhang²\***
+**Junzhi Chu¹, Tiantian Zhang²\***
 
-¹ Zhejiang Chinese Medical University, Hangzhou, Zhejiang, China
+¹ First Clinical Medical College, Zhejiang Chinese Medical University, Hangzhou, Zhejiang, China
 ² Xianju People's Hospital, Zhejiang Southeast Campus of Zhejiang Provincial People's Hospital,
 Affiliated Xianju's Hospital, Hangzhou Medical College, Xianju, Taizhou, Zhejiang, China
 
-\* Corresponding author. Email: ⟨EMAIL⟩
+\* Corresponding author. Email: tiantian4634@163.com
 
 ---
 
@@ -56,21 +56,20 @@ contributing) details are included on the submission system as well as in the Ma
 
 | # | 姓名 | 顺序 | 单位编号 | 单位 | 邮箱 | 通讯作者 |
 |---|---|---|---|---|---|---|
-| 1 | ⟨同事姓名⟩ | 第一作者 | ¹ | Zhejiang Chinese Medical University, Hangzhou, Zhejiang, China | | |
-| 2 | Tiantian Zhang | 通讯作者 | ² | Xianju People's Hospital, … Hangzhou Medical College, Xianju, Taizhou, Zhejiang, China | ⟨EMAIL⟩ | ✅ `*` |
-| 3 | ⟨其他作者待填〉 | | | | | |
+| 1 | Junzhi Chu | 第一作者 | ¹ | First Clinical Medical College, Zhejiang Chinese Medical University, Hangzhou, Zhejiang, China | | |
+| 2 | Tiantian Zhang | 通讯作者 | ² | Xianju People's Hospital, … Hangzhou Medical College, Xianju, Taizhou, Zhejiang, China | tiantian4634@163.com | ✅ `*` |
 
-**ORCID**：Tiantian Zhang = `https://orcid.org/0009-0000-2350-8008`（已入库 CITATION.cff）
+**ORCID**：Tiantian Zhang = `https://orcid.org/0009-0000-2350-8008`（已入库 CITATION.cff；投稿系统中须填写）
 
 ---
 
 ## 待填清单（🔴 = 投稿阻塞）
 
-- [ ] 🔴 同事姓名（第一作者）
-- [ ] 🔴 通讯作者邮箱
-- [ ] 🔴 是否还有其他共同作者及单位（若无，第 3 行删除）
-- [ ] 浙中医大城市写法确认（Hangzhou）
-- [ ] 通讯作者 ORCID 是否填入投稿系统
+- [x] 🔴 同事姓名（第一作者）—— Junzhi Chu（浙江中医药大学第一临床医学院）
+- [x] 🔴 通讯作者邮箱 —— tiantian4634@163.com
+- [x] 🔴 是否还有其他共同作者 —— 无，两名作者定稿（2026-10-21）
+- [x] 浙中医大城市写法确认（Hangzhou）
+- [ ] 通讯作者 ORCID 是否填入投稿系统（`0009-0000-2350-8008`，系统填写时用）
 - [ ] 标题、作者、单位、摘要录入投稿系统后与本文件**逐字比对**
 
 ---

@@ -48,7 +48,7 @@ keys = {
     "摘要首句": "Severity scores are often assumed to transport",
     "Data Availability 段落": "zenodo.23479141",
     "Funding": "received no external funding",
-    "Author contributions": "CRediT",
+    "Author contributions": "Both authors approved the final version of the manuscript",
     "Competing interests": "Competing interests",
     "Figure legends": "Figure 1",
     "Table 1": "Table 1",

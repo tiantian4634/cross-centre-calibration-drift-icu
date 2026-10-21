@@ -64,15 +64,15 @@ def clean(txt):
 TITLE = """Discrimination transports, calibration does not: calibration drift in severity scoring
 across 187 intensive-care units
 
-⟨First Author Full Name⟩¹, ⟨Second Author Full Name⟩¹, Tiantian Zhang²*
+Junzhi Chu¹, Tiantian Zhang²*
 
-¹ Zhejiang Chinese Medical University, Hangzhou, Zhejiang, China
+¹ First Clinical Medical College, Zhejiang Chinese Medical University, Hangzhou, Zhejiang, China
 
 ² Xianju People's Hospital, Zhejiang Southeast Campus of Zhejiang Provincial People's Hospital,
 Affiliated Xianju's Hospital, Hangzhou Medical College, Xianju, Taizhou, Zhejiang, China
 
 Corresponding author: Tiantian Zhang, Xianju People's Hospital, Xianju, Taizhou, Zhejiang, China.
-Email: ⟨EMAIL⟩"""
+Email: tiantian4634@163.com"""
 
 # ---------- 2. 摘要 + 关键词 ----------
 abs_txt = rd("Abstract_摘要_SciRep版.md")
@@ -220,13 +220,16 @@ def build_refs():
 # ---------- 7. 文末段落（仅英文部分） ----------
 BACK = """## Author contributions
 
-**Author contributions.** ⟨逐位作者填写，参照 CRediT 条目：Conceptualisation, Data curation, Formal
-analysis, Investigation, Methodology, Software, Validation, Visualisation, Writing – original draft,
-Writing – review & editing, Project administration, Supervision, Funding acquisition⟩
+**Author contributions.** Tiantian Zhang conceived and designed the study, extracted the data,
+performed all statistical analyses, wrote the analysis code, generated the figures, drafted and
+revised the manuscript, and supervised the project. Junzhi Chu contributed to the study design,
+interpreted the clinical findings, and drafted and revised the manuscript. Both authors approved the
+final version of the manuscript and agree to be accountable for all aspects of the work in accordance
+with the journal's authorship criteria.
 
 ## Additional Information
 
-**Competing interests.** ⟨逐位作者声明⟩
+**Competing interests.** The author(s) declare no competing interests.
 
 **Funding.** This research received no external funding. The article processing charge was covered by
 the authors' institution."""

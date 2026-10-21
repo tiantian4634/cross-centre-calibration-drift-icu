@@ -3,8 +3,8 @@
 > 目标期刊：Scientific Reports。该刊**不限 Methods 字数**，要求"足以让他人复现"。
 > 本文所有数字均来自 `结果汇总_v1.md`（唯一权威来源）与 `cohort\` 的逐步计数。
 >
-> **占位符**：`⟨ETHICS⟩` = 伦理委员会名称 + 批件号（**用户提供**）；
-> `⟨⟨FULL⟩⟩` = 该节为完整正文，非占位。
+> **伦理声明**：已按 PhysioNet 公开库惯例成稿（上游 IRB + HIPAA Safe Harbor 去标识 +
+> 免本地伦理/免知情同意，培训记录号见伦理节）。无待填占位符。
 
 ---
 
@@ -368,26 +368,17 @@ no dates and no free text.
 
 ## Ethics
 
-⟨ETHICS⟩ **【占位——须由用户提供：伦理委员会全称 + 批件号/豁免认定文号】**
-
-Required statement structure (BMC/Springer Nature policy):
-
-1. Names the institutional or national research ethics committee that approved the study, with the
-   reference number where applicable.
-2. States that the study was performed in accordance with the Declaration of Helsinki.
-3. If a study was **granted an exemption** from requiring ethics approval, states this **and names the
-   committee that granted the exemption**.
-4. States that informed consent was obtained, or that it was not required (typically the case for
-   secondary analysis of de-identified publicly available data).
-
-Draft once the number is known (placeholders `⟨⟩` to be filled):
-
-> This study is a retrospective secondary analysis of publicly available, de-identified data and does not
-> involve identifiable human participants. The use of the eICU Collaborative Research Database and
-> MIMIC-IV under their respective PhysioNet data use agreements was reviewed by the ⟨COMMITTEE NAME⟩,
-> which determined that formal ethical approval was not required and granted an exemption (⟨REFERENCE
-> NUMBER⟩), in accordance with the Declaration of Helsinki. All data are de-identified before release by
-> the custodians of both databases, and no identifiable human data were accessed by the authors.
+This study is a retrospective secondary analysis of publicly available, fully de-identified data and
+involves no identifiable human participants. The MIMIC-IV database was approved by the Institutional
+Review Boards of the Massachusetts Institute of Technology and Beth Israel Deaconess Medical Center,
+and access to the eICU Collaborative Research Database was approved by the Institutional Review Board
+of the Massachusetts Institute of Technology (Boston, MA). All records in both databases are
+de-identified in accordance with the HIPAA Safe Harbor provisions; therefore, neither additional
+ethical approval nor individual informed consent was required for this secondary analysis, which was
+conducted in accordance with the Declaration of Helsinki and relevant guidelines and regulations.
+Access to both databases was obtained under the respective PhysioNet data use agreements, with
+completion of the required human-subjects training; the data were extracted by T.T.Z. (PhysioNet
+record ID 68897765).
 
 ## Use of a large language model
 
@@ -432,7 +423,7 @@ All database access during this study was read-only, and no script written for t
 
 ## 本节完成后的自查清单
 
-- [ ] `⟨ETHICS⟩` 已替换为真实委员会名称 + 批件号
+- [x] 伦理声明已定稿（PhysioNet 惯例写法：上游 IRB 批准 + 全去标识 → 免本地审批，见下）
 - [ ] LLM 声明措辞经作者本人核对
 - [ ] 每处 P 值在 **Results** 中都带检验名/n/α/单双尾（Methods 已给出规则）
 - [ ] Data availability 已翻译成投稿段落并含 Zenodo DOI

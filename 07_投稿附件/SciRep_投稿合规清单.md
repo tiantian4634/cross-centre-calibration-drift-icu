@@ -79,7 +79,7 @@
 
 | 角色 | 作者 | 第一单位 |
 |---|---|---|
-| 第一作者 | ⟨同事待填⟩ | **Zhejiang Chinese Medical University**（本研究作为学位课题在此完成主要工作） |
+| 第一作者 | **Junzhi Chu** | **First Clinical Medical College, Zhejiang Chinese Medical University**（本研究作为学位课题在此完成主要工作） |
 | 通讯作者 `*` | Tiantian Zhang | Xianju People's Hospital, Zhejiang Southeast Campus of Zhejiang Provincial People's Hospital, Affiliated Xianju's Hospital, Hangzhou Medical College, Xianju, Taizhou, Zhejiang, China |
 
 **理由（如需向编辑说明）**：第一作者以该研究为学位课题、在浙江中医药大学完成主要工作；

@@ -65,7 +65,8 @@ if cnt == 0:
 print("\n[5] 千分位分隔（5 位及以上数字须用逗号；官方 style）")
 bad = []
 # 随机种子等「标识符」不是数量，按官方 style 不应加千分位
-IDENT = {"20261019"}
+# 68897765 = PhysioNet record ID（标识符；Liu 2024 Sci Rep 「CITI record number」同例不加千分位）
+IDENT = {"20261019", "68897765"}
 for nm, txt in [("Methods", MET), ("Abstract", ABS)]:
     for ln in txt.split("\n"):
         for mt in re.finditer(r"(?<![\d,.])(\d{5,})(?![\d,.])", ln):

@@ -3,15 +3,15 @@
 Discrimination transports, calibration does not: calibration drift in severity scoring
 across 187 intensive-care units
 
-⟨First Author Full Name⟩¹, ⟨Second Author Full Name⟩¹, Tiantian Zhang²*
+Junzhi Chu¹, Tiantian Zhang²*
 
-¹ Zhejiang Chinese Medical University, Hangzhou, Zhejiang, China
+¹ First Clinical Medical College, Zhejiang Chinese Medical University, Hangzhou, Zhejiang, China
 
 ² Xianju People's Hospital, Zhejiang Southeast Campus of Zhejiang Provincial People's Hospital,
 Affiliated Xianju's Hospital, Hangzhou Medical College, Xianju, Taizhou, Zhejiang, China
 
 Corresponding author: Tiantian Zhang, Xianju People's Hospital, Xianju, Taizhou, Zhejiang, China.
-Email: ⟨EMAIL⟩
+Email: tiantian4634@163.com
 
 ---
 
@@ -789,26 +789,17 @@ no dates and no free text.
 
 ## Ethics
 
-⟨ETHICS⟩
-
-Required statement structure (BMC/Springer Nature policy):
-
-1. Names the institutional or national research ethics committee that approved the study, with the
-   reference number where applicable.
-2. States that the study was performed in accordance with the Declaration of Helsinki.
-3. If a study was **granted an exemption** from requiring ethics approval, states this **and names the
-   committee that granted the exemption**.
-4. States that informed consent was obtained, or that it was not required (typically the case for
-   secondary analysis of de-identified publicly available data).
-
-Draft once the number is known (placeholders `⟨⟩` to be filled):
-
-> This study is a retrospective secondary analysis of publicly available, de-identified data and does not
-> involve identifiable human participants. The use of the eICU Collaborative Research Database and
-> MIMIC-IV under their respective PhysioNet data use agreements was reviewed by the ⟨COMMITTEE NAME⟩,
-> which determined that formal ethical approval was not required and granted an exemption (⟨REFERENCE
-> NUMBER⟩), in accordance with the Declaration of Helsinki. All data are de-identified before release by
-> the custodians of both databases, and no identifiable human data were accessed by the authors.
+This study is a retrospective secondary analysis of publicly available, fully de-identified data and
+involves no identifiable human participants. The MIMIC-IV database was approved by the Institutional
+Review Boards of the Massachusetts Institute of Technology and Beth Israel Deaconess Medical Center,
+and access to the eICU Collaborative Research Database was approved by the Institutional Review Board
+of the Massachusetts Institute of Technology (Boston, MA). All records in both databases are
+de-identified in accordance with the HIPAA Safe Harbor provisions; therefore, neither additional
+ethical approval nor individual informed consent was required for this secondary analysis, which was
+conducted in accordance with the Declaration of Helsinki and relevant guidelines and regulations.
+Access to both databases was obtained under the respective PhysioNet data use agreements, with
+completion of the required human-subjects training; the data were extracted by T.T.Z. (PhysioNet
+record ID 68897765).
 
 ## Use of a large language model
 
@@ -887,13 +878,16 @@ All database access during this study was read-only, and no script written for t
 
 ## Author contributions
 
-**Author contributions.** ⟨逐位作者填写，参照 CRediT 条目：Conceptualisation, Data curation, Formal
-analysis, Investigation, Methodology, Software, Validation, Visualisation, Writing – original draft,
-Writing – review & editing, Project administration, Supervision, Funding acquisition⟩
+**Author contributions.** Tiantian Zhang conceived and designed the study, extracted the data,
+performed all statistical analyses, wrote the analysis code, generated the figures, drafted and
+revised the manuscript, and supervised the project. Junzhi Chu contributed to the study design,
+interpreted the clinical findings, and drafted and revised the manuscript. Both authors approved the
+final version of the manuscript and agree to be accountable for all aspects of the work in accordance
+with the journal's authorship criteria.
 
 ## Additional Information
 
-**Competing interests.** ⟨逐位作者声明⟩
+**Competing interests.** The author(s) declare no competing interests.
 
 **Funding.** This research received no external funding. The article processing charge was covered by
 the authors' institution.
