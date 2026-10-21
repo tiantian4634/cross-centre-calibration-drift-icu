@@ -80,7 +80,11 @@ increasing miscalibration over time using online stochastic gradient descent and
 [[ZHANG_LIFELONG]]. Both are well-suited to their question and neither is contradicted here. The present study
 addresses the orthogonal question — the *spatial* component — and does so at a scale rarely
 attempted: rather than one environment followed over time or one transfer from centre to centre
-[[RILEY_EXT,ZHANG_TRANSPORT]], we observed 103 centres simultaneously and were able to partition the resulting variance. A
+[[RILEY_EXT,ZHANG_TRANSPORT]], we observed 103 centres simultaneously and were able to partition the resulting variance. Work
+in the opposite direction reaches the same verdict from a different angle: models developed in
+MIMIC-IV and applied to 208 eICU-CRD hospitals without recalibration lost external calibration
+faster than discrimination as feature complexity grew — the external calibration slope fell from
+1.007 to 0.417 while a single aggregate score stayed essentially intact [[YAMAMOTO]]. A
 clinically important corollary is that the two sources are not interchangeable. A hospital offset
 that is 41.6% temporal in origin cannot be fixed by a permanent recalibration, however large the
 sample used to fit it, and a hospital-to-hospital difference that persists after case-mix adjustment

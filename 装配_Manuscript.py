@@ -138,6 +138,9 @@ REFS = {
     "ZHANG_TRANSPORT": "Zhang, Z. et al. Clinical transportability, calibration drift, and local "
                        "updating of a B-mode ultrasound radiomics-clinical prediction model. "
                        "*Gland Surg.* **15**, 1274 (2026).",
+    "YAMAMOTO": "Yamamoto, R. et al. Observation-process features are associated with larger domain "
+                "shift in sepsis mortality prediction: a cross-database evaluation using MIMIC-IV "
+                "and eICU-CRD. *medRxiv* 2026.04.05.26350209 (2026).",
     "GEHRINGER": "Gehringer, C. K., Martin, G. P., Sperrin, M., Welch, C. & Riley, R. D. How to "
                  "develop, validate, and update clinical prediction models using multinomial "
                  "logistic regression. *J. Clin. Epidemiol.* **170**, 114–126 (2024).",

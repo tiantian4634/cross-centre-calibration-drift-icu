@@ -345,7 +345,11 @@ increasing miscalibration over time using online stochastic gradient descent and
 [12]. Both are well-suited to their question and neither is contradicted here. The present study
 addresses the orthogonal question — the *spatial* component — and does so at a scale rarely
 attempted: rather than one environment followed over time or one transfer from centre to centre
-[10,13], we observed 103 centres simultaneously and were able to partition the resulting variance. A
+[10,13], we observed 103 centres simultaneously and were able to partition the resulting variance. Work
+in the opposite direction reaches the same verdict from a different angle: models developed in
+MIMIC-IV and applied to 208 eICU-CRD hospitals without recalibration lost external calibration
+faster than discrimination as feature complexity grew — the external calibration slope fell from
+1.007 to 0.417 while a single aggregate score stayed essentially intact [14]. A
 clinically important corollary is that the two sources are not interchangeable. A hospital offset
 that is 41.6% temporal in origin cannot be fixed by a permanent recalibration, however large the
 sample used to fit it, and a hospital-to-hospital difference that persists after case-mix adjustment
@@ -353,11 +357,11 @@ cannot be explained by improvement over time. Decomposing them would require a d
 several years, which eICU-CRD does not.
 
 **Relation to the model-updating literature.** A mature methodological literature describes how to
-evaluate and update a prediction model, including when recalibration is appropriate [8,9,14,15], and
-empirical comparisons of update strategies exist [16,17]. Those recommendations are generally
+evaluate and update a prediction model, including when recalibration is appropriate [8,9,15,16], and
+empirical comparisons of update strategies exist [17,18]. Those recommendations are generally
 presented as unqualified: if calibration in the target setting is poor, recalibrate. Our findings
 qualify rather than contradict them. The literature assumes a local sample large enough for the recalibration to be estimated
-reliably. Formal minimum sample sizes exist for external validation [18], but they address the
+reliably. Formal minimum sample sizes exist for external validation [19], but they address the
 precision of the calibration estimate rather than whether recalibration improves decisions. We
 found that with 25 local patients naive recalibration lowered the proportion of resamples reaching
 ±10% accuracy from 21.4% to 15.3%, that estimating a second parameter (the calibration slope) made it
@@ -378,19 +382,19 @@ variation is absorbed into the intercept; we present this as a possible mechanis
 finding.
 
 **Consequences for benchmarking.** Benchmarking systems for ICU care are expanding internationally
-[19,20], and such systems presume that observed-to-expected ratios are comparable between
+[20,21], and such systems presume that observed-to-expected ratios are comparable between
 institutions. Our results indicate that this premise requires active verification: an observed-to-
 expected ratio of 0.69 in one hospital and 1.54 in another, under the same model, is not a
 difference in performance that a benchmark can safely interpret. Because the variation is only
 partly temporal and not explained by measured case-mix, neither a stable unit-level adjustment nor a
 one-off recalibration resolves it. The emerging focus on post-deployment monitoring and lifecycle
-governance of clinical models [21] would be strengthened by treating centre-specific calibration as
+governance of clinical models [22] would be strengthened by treating centre-specific calibration as
 a quantity to be monitored rather than assumed.
 
 **Why STROBE rather than TRIPOD.** The data are clustered by hospital, which is the structure the
-TRIPOD-Cluster statement was written to address [22], and reporting standards for prediction models
-have continued to develop with TRIPOD+AI [23]. We report using STROBE [24] with the RECORD extension for routinely collected health
-data [25], because no prediction model
+TRIPOD-Cluster statement was written to address [23], and reporting standards for prediction models
+have continued to develop with TRIPOD+AI [24]. We report using STROBE [25] with the RECORD extension for routinely collected health
+data [26], because no prediction model
 was developed or deployed for clinical use in this study: the pooled model served as a measurement
 instrument for quantifying drift, and the object of the study is the between-centre variation
 itself, not the performance of a model intended for patient-level decisions. We have nonetheless
@@ -446,11 +450,11 @@ different hospitals, and, if it does not, what it takes to recalibrate it locall
 Both datasets are third-party, publicly available databases obtained under their respective data use
 agreements through PhysioNet (https://physionet.org/).
 
-**eICU-CRD v2.0** [26] contains data from 208 hospitals in the United States for the period 2014–2015,
+**eICU-CRD v2.0** [27] contains data from 208 hospitals in the United States for the period 2014–2015,
 comprising 200,859 intensive-care unit (ICU) stays. Access required credentialed application and
 attestation of the PhysioNet data use agreement.
 
-**MIMIC-IV v3.1** [27] contains data from Beth Israel Deaconess Medical Center, a single academic medical
+**MIMIC-IV v3.1** [28] contains data from Beth Israel Deaconess Medical Center, a single academic medical
 centre, comprising 94,458 ICU stays. Access required completion of CITI "Data or Specimens Only"
 training and a data use agreement.
 
@@ -598,8 +602,8 @@ respectively) were all specified in the analysis plans written before execution 
 
 ## Between-centre heterogeneity
 
-For each score, per-hospital offsets were pooled by random-effects meta-analysis. Heterogeneity was summarised by *I²* [28], defined as `max(0, (Q − (k − 1))/Q) × 100`, where *Q* is the fixed-effect
-Cochran statistic computed with weights 1/SE². The between-centre variance *τ²* was estimated by the DerSimonian–Laird method [29]. Because DerSimonian–Laird predates current guidance [30], *τ²* was additionally
+For each score, per-hospital offsets were pooled by random-effects meta-analysis. Heterogeneity was summarised by *I²* [29], defined as `max(0, (Q − (k − 1))/Q) × 100`, where *Q* is the fixed-effect
+Cochran statistic computed with weights 1/SE². The between-centre variance *τ²* was estimated by the DerSimonian–Laird method [30]. Because DerSimonian–Laird predates current guidance [31], *τ²* was additionally
 re-estimated under three further frameworks as a pre-specified analysis (analysis K): Paule–Mandel,
 restricted maximum likelihood (REML), and a one-stage random-intercept multilevel logistic model fitted
 to patient-level data (`statsmodels` `BinomialBayesMixedGLM`, Laplace/maximum *a posteriori*). Analyses
@@ -657,7 +661,7 @@ converges to 1 — such a statistic measures unbiasedness rather than accuracy.
 
 We evaluated four strategies on the same (hospital, *m*, replicate) draws: **S0**, no recalibration;
 **S1**, naive re-estimation of the intercept only; **S2**, naive re-estimation of intercept plus
-calibration slope; and **S3**, empirical-Bayes shrinkage of the intercept [31]
+calibration slope; and **S3**, empirical-Bayes shrinkage of the intercept [32]
 
 > *a*_EB = ā + λ · (*a*_MLE − ā), with λ = *τ²* / (*τ²* + SE²)
 
@@ -819,8 +823,8 @@ This statement is required by the target journal and must be retained.
 
 ## Reporting guidelines
 
-The study is reported in accordance with the STROBE statement [24] and its RECORD extension for
-routinely collected health data [25]. TRIPOD was **not** used, because no
+The study is reported in accordance with the STROBE statement [25] and its RECORD extension for
+routinely collected health data [26]. TRIPOD was **not** used, because no
 prediction model was developed or deployed for clinical use: the pooled model served only as a
 measurement instrument for quantifying calibration drift, and the study reports heterogeneity and a
 recalibration strategy rather than the performance of a model intended for clinical decision-making.
@@ -859,24 +863,25 @@ All database access during this study was read-only, and no script written for t
 [11] Moreno, R. P., Metnitz, P. G. H., Almeida, E., Jordan, B. et al. SAPS 3—From evaluation of the patient to evaluation of the intensive care unit. Part 2: Development of a prognostic model for hospital mortality at ICU admission. *Intensive Care Med.* **31**, 1345–1355 (2005).
 [12] Zhang, Z. et al. A novel lifelong machine learning-based method to eliminate calibration drift in clinical prediction models. *Artif. Intell. Med.* **125**, 102256 (2022).
 [13] Zhang, Z. et al. Clinical transportability, calibration drift, and local updating of a B-mode ultrasound radiomics-clinical prediction model. *Gland Surg.* **15**, 1274 (2026).
-[14] Gehringer, C. K., Martin, G. P., Sperrin, M., Welch, C. & Riley, R. D. How to develop, validate, and update clinical prediction models using multinomial logistic regression. *J. Clin. Epidemiol.* **170**, 114–126 (2024).
-[15] Ogero, M. et al. Recalibrating prognostic models to improve predictions of in-hospital child mortality in resource-limited settings. *Paediatr. Perinat. Epidemiol.* **37**, 257–269 (2023).
-[16] Schnellinger, E. M. & Yang, W. Comparison of dynamic updating strategies for clinical prediction models. *Diagn. Progn. Res.* **5**, 20 (2021).
-[17] Tanner, K. T. & Keogh, R. H. Dynamic updating of clinical survival prediction models in a changing environment. *Diagn. Progn. Res.* **7**, 14 (2023).
-[18] Riley, R. D., Debray, T. P. A., Collins, G. S., Archer, L. et al. Minimum sample size for external validation of a clinical prediction model with a binary outcome. *Stat. Med.* **40**, 4230–4251 (2021).
-[19] Salluh, J. I. F., Quintairos, A., Dongelmans, D. A., Fujii, T. et al. How to establish and run a national ICU benchmarking registry. *Curr. Opin. Crit. Care* **32**, 523–530 (2026).
-[20] Moser, A., Reinikainen, M., Jakob, S. M., Selander, T. A. et al. Mortality prediction in intensive care units including premorbid functional status improved performance and internal validity. *J. Clin. Epidemiol.* **142**, 55–63 (2022).
-[21] van Geloven, N. et al. Beyond model development in healthcare AI: post-development robustness, post-deployment monitoring, and lifecycle governance. *Healthcare* **14**, 1459 (2026).
-[22] Riley, R. D. et al. Transparent reporting of multivariable prediction models developed or validated using clustered data (TRIPOD-Cluster): explanation and elaboration. *BMJ* **380**, e071058 (2023).
-[23] Collins, G. S. et al. TRIPOD+AI statement: updated guidance for reporting clinical prediction models that use regression or machine learning methods. *BMJ* **385**, e078378 (2024).
-[24] von Elm, E., Altman, D. G., Egger, M., Pocock, S. J., Gøtzsche, P. C. & Vandenbroucke, J. P. The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) statement: guidelines for reporting observational studies. *Ann. Intern. Med.* **147**, 573–577 (2007).
-[25] Benchimol, E. I., Smeeth, L., Guttmann, A., Harron, K. et al. The REporting of studies Conducted using Observational Routinely-collected health Data (RECORD) statement. *PLoS Med.* **12**, e1001885 (2015).
-[26] Pollard, T. J., Johnson, A. E. W., Raffa, J. D., Celi, L. A., Mark, R. G. & Badawi, O. The eICU Collaborative Research Database, a freely available multi-center database for critical care research. *Sci. Data* **5**, 180178 (2018).
-[27] Johnson, A. E. W. et al. MIMIC-IV, a freely accessible electronic health record dataset. *Sci. Data* **10**, 1 (2023).
-[28] Higgins, J. P. T. & Thompson, S. G. Quantifying heterogeneity in a meta-analysis. *Stat. Med.* **21**, 1539–1558 (2002).
-[29] DerSimonian, R. & Laird, N. Meta-analysis in clinical trials. *Control. Clin. Trials* **7**, 177–188 (1986).
-[30] Veroniki, A. A. et al. Methods to estimate the between-study variance and its uncertainty in meta-analysis. *Res. Synth. Methods* **7**, 55–79 (2016).
-[31] Efron, B. & Morris, C. Data analysis using Stein's estimator and its generalizations. *J. Am. Stat. Assoc.* **70**, 311–319 (1975).
+[14] Yamamoto, R. et al. Observation-process features are associated with larger domain shift in sepsis mortality prediction: a cross-database evaluation using MIMIC-IV and eICU-CRD. *medRxiv* 2026.04.05.26350209 (2026).
+[15] Gehringer, C. K., Martin, G. P., Sperrin, M., Welch, C. & Riley, R. D. How to develop, validate, and update clinical prediction models using multinomial logistic regression. *J. Clin. Epidemiol.* **170**, 114–126 (2024).
+[16] Ogero, M. et al. Recalibrating prognostic models to improve predictions of in-hospital child mortality in resource-limited settings. *Paediatr. Perinat. Epidemiol.* **37**, 257–269 (2023).
+[17] Schnellinger, E. M. & Yang, W. Comparison of dynamic updating strategies for clinical prediction models. *Diagn. Progn. Res.* **5**, 20 (2021).
+[18] Tanner, K. T. & Keogh, R. H. Dynamic updating of clinical survival prediction models in a changing environment. *Diagn. Progn. Res.* **7**, 14 (2023).
+[19] Riley, R. D., Debray, T. P. A., Collins, G. S., Archer, L. et al. Minimum sample size for external validation of a clinical prediction model with a binary outcome. *Stat. Med.* **40**, 4230–4251 (2021).
+[20] Salluh, J. I. F., Quintairos, A., Dongelmans, D. A., Fujii, T. et al. How to establish and run a national ICU benchmarking registry. *Curr. Opin. Crit. Care* **32**, 523–530 (2026).
+[21] Moser, A., Reinikainen, M., Jakob, S. M., Selander, T. A. et al. Mortality prediction in intensive care units including premorbid functional status improved performance and internal validity. *J. Clin. Epidemiol.* **142**, 55–63 (2022).
+[22] van Geloven, N. et al. Beyond model development in healthcare AI: post-development robustness, post-deployment monitoring, and lifecycle governance. *Healthcare* **14**, 1459 (2026).
+[23] Riley, R. D. et al. Transparent reporting of multivariable prediction models developed or validated using clustered data (TRIPOD-Cluster): explanation and elaboration. *BMJ* **380**, e071058 (2023).
+[24] Collins, G. S. et al. TRIPOD+AI statement: updated guidance for reporting clinical prediction models that use regression or machine learning methods. *BMJ* **385**, e078378 (2024).
+[25] von Elm, E., Altman, D. G., Egger, M., Pocock, S. J., Gøtzsche, P. C. & Vandenbroucke, J. P. The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) statement: guidelines for reporting observational studies. *Ann. Intern. Med.* **147**, 573–577 (2007).
+[26] Benchimol, E. I., Smeeth, L., Guttmann, A., Harron, K. et al. The REporting of studies Conducted using Observational Routinely-collected health Data (RECORD) statement. *PLoS Med.* **12**, e1001885 (2015).
+[27] Pollard, T. J., Johnson, A. E. W., Raffa, J. D., Celi, L. A., Mark, R. G. & Badawi, O. The eICU Collaborative Research Database, a freely available multi-center database for critical care research. *Sci. Data* **5**, 180178 (2018).
+[28] Johnson, A. E. W. et al. MIMIC-IV, a freely accessible electronic health record dataset. *Sci. Data* **10**, 1 (2023).
+[29] Higgins, J. P. T. & Thompson, S. G. Quantifying heterogeneity in a meta-analysis. *Stat. Med.* **21**, 1539–1558 (2002).
+[30] DerSimonian, R. & Laird, N. Meta-analysis in clinical trials. *Control. Clin. Trials* **7**, 177–188 (1986).
+[31] Veroniki, A. A. et al. Methods to estimate the between-study variance and its uncertainty in meta-analysis. *Res. Synth. Methods* **7**, 55–79 (2016).
+[32] Efron, B. & Morris, C. Data analysis using Stein's estimator and its generalizations. *J. Am. Stat. Assoc.* **70**, 311–319 (1975).
 
 ---
 

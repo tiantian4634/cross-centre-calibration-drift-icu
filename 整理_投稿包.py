@@ -589,6 +589,12 @@ CL = """# Cover letter（待写）
 """
 open(os.path.join(D["cl"], "待填说明.md"), "w", encoding="utf-8").write(CL)
 
+# 推荐审稿人名单：权威副本在仓库根（受 git 跟踪），打包时自动拷入投稿包。
+# 避免「包重建后手写的名单丢失」——要改名单就改仓库根文件再重跑本脚本。
+_RV = os.path.join(B, "审稿人推荐_2026-10-21.md")
+if os.path.exists(_RV):
+    shutil.copyfile(_RV, os.path.join(D["cl"], "待选审稿人名单.md"))
+
 print("  [6] README / 自查清单 / 待填清单 / Cover letter 说明 已生成")
 print("\n  ✔ 投稿包：%s" % PKG)
 for k, d in D.items():
