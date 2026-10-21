@@ -101,14 +101,14 @@ Supplementary Table S1).
 
 For SOFA, the pooled model discriminated moderately (AUC 0.732) and this varied little between
 hospitals: the per-hospital AUC ranged from 0.649 to 0.812 (median 0.738), a spread of 0.16
-(Fig. 3). Calibration, in contrast, varied substantially (Fig. 2, Table 1). Between-hospital
+(Fig. 2). Calibration, in contrast, varied substantially (Fig. 3, Table 1). Between-hospital
 heterogeneity in the calibration-in-the-large offset was high (**I² = 75.4%**, between-centre variance
 τ² = 0.131), and the observed-to-expected (O/E) mortality ratio ranged from **0.69 to 1.54** across
-hospitals (10th to 90th percentile; median 0.96) — a 2.2-fold spread (Fig. 2).
+hospitals (10th to 90th percentile; median 0.96) — a 2.2-fold spread (Fig. 3).
 
 The pattern was not specific to SOFA. OASIS (pooled AUC 0.728; **I² = 79.8%**; O/E 0.71–1.57) and
 SAPS-II (pooled AUC 0.761; **I² = 70.4%**; O/E 0.69–1.49) showed heterogeneity of comparable
-magnitude (Table 1, Fig. 2). Because all three scores are established, widely used instruments fitted
+magnitude (Table 1, Fig. 3). Because all three scores are established, widely used instruments fitted
 with the same pipeline, this consistency indicates that between-centre calibration drift is a
 property of the setting rather than of any single instrument.
 
@@ -156,7 +156,7 @@ being sampled is a property of the set of centres.
 
 If apparent between-centre variation were driven by sampling noise, the smallest hospitals — whose
 offsets are least precisely estimated — should show the highest apparent heterogeneity. The opposite
-was observed (Fig. 5, upper panel). Stratifying the 103 centres into tertiles by sample size, I² rose
+was observed (Fig. 4a). Stratifying the 103 centres into tertiles by sample size, I² rose
 from 56.7% in the smallest tertile (36 centres; median 145 patients) to 69.8% in the middle tertile
 (33 centres; median 225 patients) and 83.9% in the largest (34 centres; median 386 patients). The
 absolute between-centre variance followed the same pattern, rising from τ² = 0.093 to 0.117 to 0.143.
@@ -186,7 +186,7 @@ does not support any statement about a long-term temporal trend.**
 
 We next quantified the consequence of the observed drift for threshold-based decisions. For each
 hospital and each of four decision thresholds, we computed net benefit and the observed mortality among
-patients whose predicted risk exceeded the threshold (Fig. 5, lower panel; Supplementary Table S1).
+patients whose predicted risk exceeded the threshold (Fig. 4b; Supplementary Table S1).
 
 At a decision threshold of 0.20, the median proportion of patients flagged as high-risk was 12.8%, and
 the **observed mortality among those patients ranged from 15% to 52%** (10th to 90th percentile;
@@ -200,12 +200,12 @@ centres with negative net benefit rose from 6.2% at threshold 0.10 to 21.4% at 0
 The findings above raise the obvious question: why not recalibrate the score using local data? We
 examined this directly, drawing *m* patients from each hospital for local recalibration and using the
 remainder for evaluation, with 100 resampling attempts per (hospital, *m*) cell, for centres with at
-least 200 patients and at least 2*m* in all (*m* ∈ {0, 25, 50, 100, 200}; Fig. 4).
+least 200 patients and at least 2*m* in all (*m* ∈ {0, 25, 50, 100, 200}; Fig. 5a).
 
 The answer was counter-intuitive. Re-estimating the intercept on 25 local patients **made calibration
 worse than not recalibrating at all**: the proportion of resampling attempts landing within ±10% of
 perfect O/E fell from 21.4% (no recalibration) to 15.3%, and the median residual |*a*| rose from 0.308
-to 0.448 (Fig. 4). Naive recalibration injects estimation noise that outweighs the signal at small
+to 0.448 (Fig. 5b). Naive recalibration injects estimation noise that outweighs the signal at small
 sample sizes. Performance improved gradually with *m* — 20.0% at 50 patients, 25.5% at 100, and 34.3%
 at 200 — but **the pre-specified criterion of a 50% success rate was never reached within 200 local
 patients**, which is reported here as a negative finding.
@@ -221,14 +221,14 @@ The number of hospitals contributing to each cell is reported throughout, becaus
 ### Empirical-Bayes shrinkage removes the small-sample penalty
 
 We then tested whether shrinking each hospital's estimated offset toward the pooled mean could recover
-the small-sample performance (Fig. 6). Four strategies were compared on identical draws: no
+the small-sample performance (Fig. 5c). Four strategies were compared on identical draws: no
 recalibration (S0), naive intercept-only (S1), naive intercept plus slope (S2), and empirical-Bayes
 shrinkage of the intercept (S3), with the shrinkage target and between-centre variance estimated by
 leave-one-centre-out cross-fitting.
 
 At 25 local patients, shrinkage achieved a ±10% success rate of **24.3%** against 15.5% for naive
 recalibration and 21.4% for no recalibration: the strategy outperformed both alternatives at the sample
-size at which naive recalibration is harmful (Fig. 6). Paired on identical draws, the difference
+size at which naive recalibration is harmful (Fig. 5c). Paired on identical draws, the difference
 between S3 and S1 at *m* = 25 was **+9.05 percentage points** (19,678 paired (hospital, replicate)
 observations; two-sided Wilcoxon signed-rank test, P = 3.7 × 10⁻¹¹²). At *m* = 100 the paired difference
 was +4.65 percentage points. The shrinkage weight adapted to local sample size as expected, with median
@@ -238,13 +238,13 @@ hardest precisely where the local estimate is least reliable.
 **The pre-specified criterion for this analysis was met** (at *m* = 25, S3 exceeded S1; at *m* ≥ 100, S3
 was not worse than S1 by more than 5 percentage points).
 
-*Note on the two success rates for naive recalibration.* The learning-curve analysis reports 15.3% at *m* = 25, whereas the shrinkage analyses report 15.5%. Both are correct: the first uses 100 resampling attempts per cell and the second 200 with a paired design, so they are independent draws. Comparisons are made within, not between, figures.
+*Note on the two success rates for naive recalibration.* The learning-curve analysis reports 15.3% at *m* = 25, whereas the shrinkage analyses report 15.5%. Both are correct: the first uses 100 resampling attempts per cell and the second 200 with a paired design, so they are independent draws. Comparisons are made within, not between, panels.
 
 ### Shrinkage parameters transfer across databases
 
 To test whether the shrinkage parameters generalise beyond the database in which they were estimated, we
 treated MIMIC-IV as a single new centre and fixed the shrinkage target (ā = +0.030) and between-centre
-variance (τ² = 0.131) at their eICU values, never re-estimating them on MIMIC-IV (Fig. 7). The true
+variance (τ² = 0.131) at their eICU values, never re-estimating them on MIMIC-IV (Fig. 5d). The true
 offset to recover was *â* = +0.221.
 
 At 25 local patients drawn from MIMIC-IV, naive recalibration achieved a ±10% success rate of 23.5%,
@@ -923,6 +923,16 @@ centre-level analyses.
 
 **Figure 2**
 
+**Discrimination transports across centres; calibration does not.**
+SOFA-based model, 103 eICU centres. Each point is a centre: x = its AUC (discrimination),
+y = its observed-to-expected ratio (calibration). The horizontal dashed line marks perfect
+calibration (O/E = 1); the dotted vertical line marks the pooled AUC (0.732). Marginal histograms
+show each marginal distribution. **Per-centre AUC ranged from 0.649 to 0.812 (a spread of 0.16),
+whereas per-centre O/E ranged from 0.69 to 1.54 (a 2.2-fold spread)** — calibration varies far more
+than discrimination. Point colour encodes $a_h$ (blue < 0, red > 0).
+
+**Figure 3**
+
 **Between-centre drift in calibration intercept for three acute-severity scores.**
 Each panel shows one severity score fitted as a single-predictor logistic model on the full eICU-CRD
 cohort (30,796 patients; 3,901 in-hospital deaths) and then applied to each of **103 centres**
@@ -936,31 +946,7 @@ red = higher). Heterogeneity ($I^2$) was estimated by random-effects meta-analys
 approximately 2.2-fold across centres (P10–P90: 0.69–1.54 for SOFA).
 **The drift is therefore a property of the setting rather than of any one score.**
 
-**Figure 3**
-
-**Discrimination transports across centres; calibration does not.**
-SOFA-based model, 103 eICU centres. Each point is a centre: x = its AUC (discrimination),
-y = its observed-to-expected ratio (calibration). The horizontal dashed line marks perfect
-calibration (O/E = 1); the dotted vertical line marks the pooled AUC (0.732). Marginal histograms
-show each marginal distribution. **Per-centre AUC ranged from 0.649 to 0.812 (a spread of 0.16),
-whereas per-centre O/E ranged from 0.69 to 1.54 (a 2.2-fold spread)** — calibration varies far more
-than discrimination. Point colour encodes $a_h$ (blue < 0, red > 0).
-
 **Figure 4**
-
-**How many local patients does a centre need to recalibrate an externally developed model?**
-SOFA-based model, eICU centres with ≥200 patients; for each $m$ the calibration set and the
-evaluation set were required to be at least equal in size ($n \ge 2m$), and each (centre, $m$)
-combination was repeated **100 times**. Two strategies were compared: recalibrating the
-intercept only (S1) and recalibrating both intercept and calibration slope (S2).
-Left: residual miscalibration $|a|$ (median across centres; band → P90).
-Right: the proportion of resampling attempts whose residual O/E fell within ±10%.
-**With 25 local patients, naive recalibration was worse than no recalibration at all**
-(residual $|a|$ 0.31 → 0.45; ±10% success 21.4% → 15.3%), and even 200 patients succeeded in
-only 34% of attempts. Two-parameter recalibration was no better than intercept-only and was
-worse at small $m$. **Sample-size requirements for local recalibration are commonly underestimated.**
-
-**Figure 5**
 
 **(a)** Between-centre heterogeneity by centre size. Centres were split into tertiles by
 sample size; bars are $I^2$ and the orange line is the between-centre variance $\tau^2$.
@@ -976,39 +962,13 @@ ranged from **15% to 52% (3.5-fold)**. Model-guided escalation yielded **negativ
 6.2%, 17.0%, 21.4% and 22.3% of centres** at $p_t$ = 0.10, 0.20, 0.30 and 0.40 respectively —
 i.e. in up to one in five centres the model performed worse than treating everyone.
 
-**Figure 6**
+**Figure 5**
 
-**Hierarchical shrinkage removes the small-sample penalty of local recalibration.**
-103 eICU centres; **200 resamples** per (centre, $m$). The shrinkage target $\bar a$ and the
-between-centre variance $\tau^2$ were estimated by **leave-one-centre-out** cross-fitting, so no
-centre's evaluation data entered its own shrinkage parameters. Four strategies:
-S0 no recalibration; S1 naive intercept-only; S2 naive intercept + slope;
-**S3 empirical-Bayes shrinkage**, $\hat a_{\mathrm{EB}} = \bar a + \lambda(\hat a_{\mathrm{ML}} - \bar a)$
-with $\lambda = \tau^2/(\tau^2 + \mathrm{SE}^2)$.
-Left: residual miscalibration $|a|$ (median; band → P90). Right: proportion of resampling
-attempts landing within ±10% of perfect O/E. **Shrinkage reversed the small-sample penalty**:
-at $m$ = 25 residual $|a|$ fell from 0.44 (naive) to 0.26 and the ±10% success rate rose from
-15.5% to **24.3%** (paired difference **+9.05 percentage points**, 19,678 pairs, Wilcoxon P = 3.7×10⁻¹¹²)
-— surpassing even no recalibration (21.4%). The shrinkage weight adapted to sample size
-(median λ = 0.234, 0.374, 0.536 and 0.712 at $m$ = 25, 50, 100 and 200).
-
-**Figure 7**
-
-**Shrinkage parameters estimated once from eICU generalise to a different database.**
-Outcome: proportion of resampling attempts with residual |O/E − 1| ≤ 10%; 200 resamples per $m$.
-**Left, internal validation:** 103 eICU centres, leave-one-centre-out (as Figure 6).
-**Right, external validation:** MIMIC-IV treated as a single new centre (8,579 patients, 1,654 deaths);
-the shrinkage target $\bar a$ = +0.030 and $\tau^2$ = 0.131 were **fixed from eICU and never
-re-estimated on MIMIC-IV**. The true offset to recover was $a^*$ = +0.221 (observed 19.3% vs
-predicted 16.5%, O/E 1.17). Empirical-Bayes shrinkage outperformed naive recalibration at every
-$m$ (at $m$ = 25: 47.0% vs 23.5%, paired difference **+23.5 percentage points**, Wilcoxon
-P = 6.3×10⁻⁷) and, critically, **25 local patients with shrinkage matched the success rate that
-naive recalibration reached only with roughly 150 local patients** (47.0%) — an approximately
-**six-fold reduction** in the local sample requirement.
-**Note:** MIMIC-IV is a **single-centre** database. This analysis tests whether the *shrinkage
-parameters* transfer across databases; it does **not** constitute multicentre external validation
-of the strategy, which can only be evaluated within eICU itself (Figure 6). The two must not be
-conflated.
+**(a)** Learning-curve analysis: for each $m$, $m$ patients per centre were drawn for local recalibration and the remainder for evaluation ($n\ge 2m$; 100 repeats per centre-$m$ cell). y axis: proportion of attempts with residual O/E within ±10% for S1 (intercept only) and S2 (intercept + slope); dotted line, no recalibration; dashed line, the 50% target; k, the number of contributing centres. **With 25 local patients, naive recalibration was worse than no recalibration at all (21.4% → 15.3%); the 50% target was never reached.**
+**(b)** Residual miscalibration |$a$| (median; band → P90).
+**(c)** Empirical-Bayes (EB) shrinkage removes the penalty: 103 centres; 200 paired resamples per centre-$m$ cell; $\bar a$ and per-centre SEs were leave-one-centre-out cross-fitted, so no centre's evaluation data entered its own shrinkage parameters. S0, no recalibration; S1/S2, naive; S3, EB shrinkage, $\hat a_{\mathrm{EB}}=\bar a+\lambda(\hat a_{\mathrm{ML}}-\bar a)$, $\lambda=\tau^2/(\tau^2+\mathrm{SE}^2)$. At $m$ = 25 the success rate rose from 15.5% to 24.3% (paired difference +9.05 percentage points, Wilcoxon P = 3.7×10⁻¹¹²), surpassing no recalibration (21.4%); median $\lambda$ 0.234/0.374/0.536/0.712 (m = 25/50/100/200), and residual |$a$| fell from 0.44 (naive) to 0.26.
+**(d)** Shrinkage parameters estimated once from eICU transfer to a different database: MIMIC-IV treated as a single new centre; $\bar a$ = +0.030 and $\tau^2$ = 0.131 fixed from eICU, never re-estimated; the offset to recover, $a^*$ = +0.221. EB shrinkage outperformed naive recalibration at every $m$ (at $m$ = 25: 47.0% vs 23.5%, +23.5 percentage points, Wilcoxon P = 6.3×10⁻⁷); **25 patients with shrinkage matched the success rate naive recalibration reached only with roughly 150 patients — a six-fold smaller local sample requirement.**
+**Notes.** The contributing-centre set shrinks with $m$; the S0 line is the *within-m* benchmark (not a learning effect). Panels a–b use 100 resampling attempts (15.3% at $m$ = 25), panels c–d 200 paired attempts (15.5%); both are correct independent draws — comparisons are within, not between, panels. MIMIC-IV is a single-centre database: panel d tests whether the shrinkage parameters transfer across databases and does not constitute multicentre external validation, which can only be evaluated within eICU itself (panel c). The dip at $m$ = 50 (panel d) is Monte-Carlo variation across the 200 attempts; read the trend across the panel.
 
 ---
 

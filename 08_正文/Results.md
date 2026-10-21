@@ -1,16 +1,14 @@
 # Results —— Scientific Reports 投稿版
 
-> **图号已按投稿方案重编**：正文 7 张连续编号（Fig. 1–7），补充材料 S1–S3。
+> **图号已按投稿方案重编**：正文 5 张连续编号（Fig. 1–5，其中 Fig.5 为 a–d 合并面板），补充材料 S1–S3。
 >
 > | 投稿编号 | 内容 | 文件 | 去向 |
 > |---|---|---|---|
 > | **Fig. 1** | 两库筛选流程图 | `Fig1_两库筛选流程图` | 正文 |
-> | **Fig. 2** | 三评分校准漂移对比 | `Fig2_三评分校准漂移对比` | 正文 |
-> | **Fig. 3** | 判别稳 vs 校准漂 | `Fig3_判别稳与校准漂` | 正文 |
-> | **Fig. 4** | 本地重校准学习曲线 | `Fig4_本地重校准学习曲线` | 正文 |
-> | **Fig. 5** | 规模分层 + 临床影响 | `Fig5_规模分层与临床影响` | 正文 |
-> | **Fig. 6** | EB 收缩重校准 | `Fig6_分层收缩重校准` | 正文 |
-> | **Fig. 7** | 收缩参数跨库迁移 | `Fig7_收缩方案的内外部验证` | 正文 |
+> | **Fig. 2** | 判别稳 + 校准漂 | `Fig2_判别稳与校准漂` | 正文 |
+> | **Fig. 3** | 三评分校准漂移对比 | `Fig3_三评分校准漂移对比` | 正文 |
+> | **Fig. 4** | 规模分层 + 临床影响 | `Fig4_规模分层与临床影响` | 正文 |
+> | **Fig. 5** | 重校准与收缩收益（原学习曲线/分层收缩/MIMIC 迁移三图合并为 a–d 四面板） | `Fig5_重校准与收缩收益` | 正文 |
 > | **Supplementary Fig. S1** | 病例组合阶梯 | `SuppFigS1_病例组合阶梯` | 补充 |
 > | **Supplementary Fig. S2** | MIMIC 在多中心分布中的位置 | `SuppFigS2_MIMIC在多中心分布中的位置` | 补充 |
 > | **Supplementary Fig. S3** | 同一中心两年校准偏移的稳定性 | `SuppFigS3_同一中心两年校准偏移的稳定性` | 补充 |
@@ -39,14 +37,14 @@ Supplementary Table S1).
 
 For SOFA, the pooled model discriminated moderately (AUC 0.732) and this varied little between
 hospitals: the per-hospital AUC ranged from 0.649 to 0.812 (median 0.738), a spread of 0.16
-(Fig. 3). Calibration, in contrast, varied substantially (Fig. 2, Table 1). Between-hospital
+(Fig. 2). Calibration, in contrast, varied substantially (Fig. 3, Table 1). Between-hospital
 heterogeneity in the calibration-in-the-large offset was high (**I² = 75.4%**, between-centre variance
 τ² = 0.131), and the observed-to-expected (O/E) mortality ratio ranged from **0.69 to 1.54** across
-hospitals (10th to 90th percentile; median 0.96) — a 2.2-fold spread (Fig. 2).
+hospitals (10th to 90th percentile; median 0.96) — a 2.2-fold spread (Fig. 3).
 
 The pattern was not specific to SOFA. OASIS (pooled AUC 0.728; **I² = 79.8%**; O/E 0.71–1.57) and
 SAPS-II (pooled AUC 0.761; **I² = 70.4%**; O/E 0.69–1.49) showed heterogeneity of comparable
-magnitude (Table 1, Fig. 2). Because all three scores are established, widely used instruments fitted
+magnitude (Table 1, Fig. 3). Because all three scores are established, widely used instruments fitted
 with the same pipeline, this consistency indicates that between-centre calibration drift is a
 property of the setting rather than of any single instrument.
 
@@ -94,7 +92,7 @@ being sampled is a property of the set of centres.
 
 If apparent between-centre variation were driven by sampling noise, the smallest hospitals — whose
 offsets are least precisely estimated — should show the highest apparent heterogeneity. The opposite
-was observed (Fig. 5, upper panel). Stratifying the 103 centres into tertiles by sample size, I² rose
+was observed (Fig. 4a). Stratifying the 103 centres into tertiles by sample size, I² rose
 from 56.7% in the smallest tertile (36 centres; median 145 patients) to 69.8% in the middle tertile
 (33 centres; median 225 patients) and 83.9% in the largest (34 centres; median 386 patients). The
 absolute between-centre variance followed the same pattern, rising from τ² = 0.093 to 0.117 to 0.143.
@@ -124,7 +122,7 @@ does not support any statement about a long-term temporal trend.**
 
 We next quantified the consequence of the observed drift for threshold-based decisions. For each
 hospital and each of four decision thresholds, we computed net benefit and the observed mortality among
-patients whose predicted risk exceeded the threshold (Fig. 5, lower panel; Supplementary Table S1).
+patients whose predicted risk exceeded the threshold (Fig. 4b; Supplementary Table S1).
 
 At a decision threshold of 0.20, the median proportion of patients flagged as high-risk was 12.8%, and
 the **observed mortality among those patients ranged from 15% to 52%** (10th to 90th percentile;
@@ -138,12 +136,12 @@ centres with negative net benefit rose from 6.2% at threshold 0.10 to 21.4% at 0
 The findings above raise the obvious question: why not recalibrate the score using local data? We
 examined this directly, drawing *m* patients from each hospital for local recalibration and using the
 remainder for evaluation, with 100 resampling attempts per (hospital, *m*) cell, for centres with at
-least 200 patients and at least 2*m* in all (*m* ∈ {0, 25, 50, 100, 200}; Fig. 4).
+least 200 patients and at least 2*m* in all (*m* ∈ {0, 25, 50, 100, 200}; Fig. 5a).
 
 The answer was counter-intuitive. Re-estimating the intercept on 25 local patients **made calibration
 worse than not recalibrating at all**: the proportion of resampling attempts landing within ±10% of
 perfect O/E fell from 21.4% (no recalibration) to 15.3%, and the median residual |*a*| rose from 0.308
-to 0.448 (Fig. 4). Naive recalibration injects estimation noise that outweighs the signal at small
+to 0.448 (Fig. 5b). Naive recalibration injects estimation noise that outweighs the signal at small
 sample sizes. Performance improved gradually with *m* — 20.0% at 50 patients, 25.5% at 100, and 34.3%
 at 200 — but **the pre-specified criterion of a 50% success rate was never reached within 200 local
 patients**, which is reported here as a negative finding.
@@ -159,14 +157,14 @@ The number of hospitals contributing to each cell is reported throughout, becaus
 ### Empirical-Bayes shrinkage removes the small-sample penalty
 
 We then tested whether shrinking each hospital's estimated offset toward the pooled mean could recover
-the small-sample performance (Fig. 6). Four strategies were compared on identical draws: no
+the small-sample performance (Fig. 5c). Four strategies were compared on identical draws: no
 recalibration (S0), naive intercept-only (S1), naive intercept plus slope (S2), and empirical-Bayes
 shrinkage of the intercept (S3), with the shrinkage target and between-centre variance estimated by
 leave-one-centre-out cross-fitting.
 
 At 25 local patients, shrinkage achieved a ±10% success rate of **24.3%** against 15.5% for naive
 recalibration and 21.4% for no recalibration: the strategy outperformed both alternatives at the sample
-size at which naive recalibration is harmful (Fig. 6). Paired on identical draws, the difference
+size at which naive recalibration is harmful (Fig. 5c). Paired on identical draws, the difference
 between S3 and S1 at *m* = 25 was **+9.05 percentage points** (19,678 paired (hospital, replicate)
 observations; two-sided Wilcoxon signed-rank test, P = 3.7 × 10⁻¹¹²). At *m* = 100 the paired difference
 was +4.65 percentage points. The shrinkage weight adapted to local sample size as expected, with median
@@ -176,13 +174,13 @@ hardest precisely where the local estimate is least reliable.
 **The pre-specified criterion for this analysis was met** (at *m* = 25, S3 exceeded S1; at *m* ≥ 100, S3
 was not worse than S1 by more than 5 percentage points).
 
-*Note on the two success rates for naive recalibration.* The learning-curve analysis reports 15.3% at *m* = 25, whereas the shrinkage analyses report 15.5%. Both are correct: the first uses 100 resampling attempts per cell and the second 200 with a paired design, so they are independent draws. Comparisons are made within, not between, figures.
+*Note on the two success rates for naive recalibration.* The learning-curve analysis reports 15.3% at *m* = 25, whereas the shrinkage analyses report 15.5%. Both are correct: the first uses 100 resampling attempts per cell and the second 200 with a paired design, so they are independent draws. Comparisons are made within, not between, panels.
 
 ### Shrinkage parameters transfer across databases
 
 To test whether the shrinkage parameters generalise beyond the database in which they were estimated, we
 treated MIMIC-IV as a single new centre and fixed the shrinkage target (ā = +0.030) and between-centre
-variance (τ² = 0.131) at their eICU values, never re-estimating them on MIMIC-IV (Fig. 7). The true
+variance (τ² = 0.131) at their eICU values, never re-estimating them on MIMIC-IV (Fig. 5d). The true
 offset to recover was *â* = +0.221.
 
 At 25 local patients drawn from MIMIC-IV, naive recalibration achieved a ±10% success rate of 23.5%,

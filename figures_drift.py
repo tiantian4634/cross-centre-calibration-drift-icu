@@ -62,7 +62,7 @@ for i, name in enumerate(["SOFA", "OASIS", "SAPS-II"]):
         ax.set_ylabel("Calibration-in-the-large offset $a_h$\n"
                       "(> 0 = more deaths than predicted)", fontsize=8.6)
     ax.spines[["top", "right"]].set_visible(False)
-save(fig, "Fig2_三评分校准漂移对比")
+save(fig, "Fig3_三评分校准漂移对比")
 
 # ══════════════════ 图4 判别稳 · 校准漂 ══════════════════
 d = H[H["score"] == "SOFA"].copy()
@@ -93,7 +93,7 @@ axr.set_xlabel("n", fontsize=8); axr.tick_params(labelleft=False, labelsize=7.5)
 for s in ["top", "right"]:
     axt.spines[s].set_visible(False); axr.spines[s].set_visible(False)
 ax.set_xlim(0.62, 0.84); ax.set_ylim(0.55, 1.72)
-save(fig, "Fig3_判别稳与校准漂")
+save(fig, "Fig2_判别稳与校准漂")
 
 # ══════════════════ SuppFig S1 病例组合阶梯 ══════════════════
 L = R["ladder"]

@@ -10,12 +10,14 @@
 图内**不出现**主标题、解释性副标题、底部文字注释——这些信息**全部写在本文件的图注里**。
 图内只保留：面板标识、坐标轴标签、图例、图内统计标注框。
 
-**被从图上删掉、但必须保留在图注里的关键声明**（尤其图5、图9）：
+**被从图上删掉、但必须保留在图注里的关键声明**（Supplementary Fig. S1 与 Fig. 4）：
 > 「实测病例组合解释不了漂移」「残余院间变异不作医疗质量归因」——
 > 这是**方法学红线**，删掉图注就等于丢了这条声明，审稿人会追问。
 
-> **编号说明**：以下按**当前文件名**编号（图3–图11）。
-> 正式投稿前若加流程图（图1）或调整顺序，需统一重编号；本文件的图注文字不受影响，只改编号即可。
+> **编号说明**（2026-10-21 重排）：图号已按**投稿正文首现顺序**统一：
+> Figure 1 = 两库筛选流程图；Figure 2 = 判别稳与校准漂（散点图）；Figure 3 = 三评分校准漂移对比（caterpillar）；
+> Figure 4 = 规模分层与临床影响；Figure 5 = 重校准与收缩收益（**合并原"学习曲线 + 分层收缩 + MIMIC 迁移"三图**，四面板 a–d）；
+> Supplementary Fig. S1–S3 不变。小节物理顺序与编号无关，装配时按编号排序提取。
 
 ---
 
@@ -65,7 +67,7 @@
 > 校准截距可稳定估计；未达阈值的中心仍进入合并模型，但不参与中心层面分析。
 
 ---
-# Figure 2
+# Figure 3
 
 ### English legend
 
@@ -94,7 +96,7 @@
 
 > **Sorting and colour.** Centres are sorted independently within each panel; the same x position does not denote the same centre across panels. Point colour simply re-encodes the calibration offset already shown on the y-axis and carries no additional information. Vertical bars are 95% confidence intervals for the offset by the delta method.
 
-# Figure 3
+# Figure 2
 
 ### English legend
 
@@ -108,7 +110,7 @@
 
 ### 中文对照
 
-> **图4　判别力跨中心可迁移，校准不可迁移。** 每点为一家中心：x = 该院 AUC，y = 该院 O/E 比。
+> **图2　判别力跨中心可迁移，校准不可迁移。** 每点为一家中心：x = 该院 AUC，y = 该院 O/E 比。
 > 水平虚线为完美校准（O/E=1），竖点线为合并 AUC（0.732）；边缘直方图为各边际分布。
 > **逐院 AUC 跨度仅 0.16（0.649–0.812），而 O/E 跨度达 2.2 倍（0.69–1.54）**——校准的变异远大于判别力。
 
@@ -163,34 +165,31 @@
 > **单中心队列并不特殊**——迁移时常见的系统性失校准，反映的是普遍的中心间漂移。
 
 ---
-# Figure 4
+# Figure 5
 
 ### English legend
 
-> **How many local patients does a centre need to recalibrate an externally developed model?**
-> SOFA-based model, eICU centres with ≥200 patients; for each $m$ the calibration set and the
-> evaluation set were required to be at least equal in size ($n \ge 2m$), and each (centre, $m$)
-> combination was repeated **100 times**. Two strategies were compared: recalibrating the
-> intercept only (S1) and recalibrating both intercept and calibration slope (S2).
-> Left: residual miscalibration $|a|$ (median across centres; band → P90).
-> Right: the proportion of resampling attempts whose residual O/E fell within ±10%.
-> **With 25 local patients, naive recalibration was worse than no recalibration at all**
-> (residual $|a|$ 0.31 → 0.45; ±10% success 21.4% → 15.3%), and even 200 patients succeeded in
-> only 34% of attempts. Two-parameter recalibration was no better than intercept-only and was
-> worse at small $m$. **Sample-size requirements for local recalibration are commonly underestimated.**
+> **(a)** Learning-curve analysis: for each $m$, $m$ patients per centre were drawn for local recalibration and the remainder for evaluation ($n\ge 2m$; 100 repeats per centre-$m$ cell). y axis: proportion of attempts with residual O/E within ±10% for S1 (intercept only) and S2 (intercept + slope); dotted line, no recalibration; dashed line, the 50% target; k, the number of contributing centres. **With 25 local patients, naive recalibration was worse than no recalibration at all (21.4% → 15.3%); the 50% target was never reached.**
+>
+> **(b)** Residual miscalibration |$a$| (median; band → P90).
+>
+> **(c)** Empirical-Bayes (EB) shrinkage removes the penalty: 103 centres; 200 paired resamples per centre-$m$ cell; $\bar a$ and per-centre SEs were leave-one-centre-out cross-fitted, so no centre's evaluation data entered its own shrinkage parameters. S0, no recalibration; S1/S2, naive; S3, EB shrinkage, $\hat a_{\mathrm{EB}}=\bar a+\lambda(\hat a_{\mathrm{ML}}-\bar a)$, $\lambda=\tau^2/(\tau^2+\mathrm{SE}^2)$. At $m$ = 25 the success rate rose from 15.5% to 24.3% (paired difference +9.05 percentage points, Wilcoxon P = 3.7×10⁻¹¹²), surpassing no recalibration (21.4%); median $\lambda$ 0.234/0.374/0.536/0.712 (m = 25/50/100/200), and residual |$a$| fell from 0.44 (naive) to 0.26.
+>
+> **(d)** Shrinkage parameters estimated once from eICU transfer to a different database: MIMIC-IV treated as a single new centre; $\bar a$ = +0.030 and $\tau^2$ = 0.131 fixed from eICU, never re-estimated; the offset to recover, $a^*$ = +0.221. EB shrinkage outperformed naive recalibration at every $m$ (at $m$ = 25: 47.0% vs 23.5%, +23.5 percentage points, Wilcoxon P = 6.3×10⁻⁷); **25 patients with shrinkage matched the success rate naive recalibration reached only with roughly 150 patients — a six-fold smaller local sample requirement.**
+>
+> **Notes.** The contributing-centre set shrinks with $m$; the S0 line is the *within-m* benchmark (not a learning effect). Panels a–b use 100 resampling attempts (15.3% at $m$ = 25), panels c–d 200 paired attempts (15.5%); both are correct independent draws — comparisons are within, not between, panels. MIMIC-IV is a single-centre database: panel d tests whether the shrinkage parameters transfer across databases and does not constitute multicentre external validation, which can only be evaluated within eICU itself (panel c). The dip at $m$ = 50 (panel d) is Monte-Carlo variation across the 200 attempts; read the trend across the panel.
 
 ### 中文对照
 
-> **图7　本地重校准需要多少例？** SOFA 模型，eICU 中 n≥200 的中心；每个 m 要求校准集与评估集
-> 至少等大（n≥2m），每个 (中心, m) 组合重复 **100 次**。比较两种策略：仅校截距（S1）、
-> 截距+校准斜率（S2）。**用 25 例本地数据做朴素重校准，比完全不校准更糟**（残余|a| 0.31→0.45；
-> ±10% 达标 21.4%→15.3%），即使 200 例也只有 34% 成功。**本地重校准的样本量需求常被严重低估。**
-
----
-
-> **Centre composition.** The set of contributing centres shrinks as *m* increases (k = 103, 103, 103, 59, 13), labelled beneath the x axis; changes across *m* therefore reflect both local sample size and centre composition. The S0 reference line is the *within-m* benchmark, not a learning effect.
+> **(a)** 学习曲线分析：每个 m 从每家中心抽取 m 例用于本地重校准、其余用于评估（n≥2m；每个 (中心, m) 组合重复 **100 次**）。y 轴为残余 O/E 落在 ±10% 内的比例（S1 仅校截距；S2 截距+斜率）；点线为不校准参照，虚线为 50% 目标；k 为参与中心数（横轴下方标注）。**25 例本地患者时，朴素重校准比完全不校准更糟（21.4%→15.3%）；50% 目标始终未达到。**
 >
-> **Two success rates for naive recalibration.** This analysis uses 100 resampling attempts per cell and reports 15.3% at *m* = 25, whereas the shrinkage analyses use 200 attempts with a paired design and report 15.5%. Both are correct; the two are independent draws, and comparisons are made within, not between, figures.
+> **(b)** 残余失准 |a|（中位数；带 → P90）。
+>
+> **(c)** EB 收缩消除小样本惩罚：eICU 103 家中心；每 (中心, m) 组合 200 次配对重抽样；收缩目标 ā 与各中心 SE 由 **leave-one-centre-out** 交叉拟合估计，任何中心的评估数据都不进入其自身收缩参数。S0 不校准；S1/S2 朴素；S3 EB 收缩，â_EB=ā+λ(â_ML−ā)，λ=τ²/(τ²+SE²)。m=25 时达标率从 15.5% 升至 **24.3%**（配对差 **+9.05 个百分点**，Wilcoxon P=3.7×10⁻¹¹²），**超过不校准（21.4%）**；λ 中位数随 m 自适应（25/50/100/200 → 0.234/0.374/0.536/0.712），残余 |a| 从 0.44（朴素）降至 **0.26**。
+>
+> **(d)** 收缩参数仅在 eICU 估计一次、跨数据库迁移：把 MIMIC-IV 视为**一个新中心**；ā=+0.030、τ²=0.131 **固定自 eICU、绝不在 MIMIC 重估**；待恢复偏移 a*=+0.221。EB 收缩在每个 m 上均优于朴素（m=25：**47.0%** vs 23.5%，**+23.5 个百分点**，P=6.3×10⁻⁷）；**25 例 + 收缩 ≈ 150 例 + 朴素——本地数据需求缩小约 6 倍。**
+>
+> **说明**：(i) 参与中心集合随 m 收缩；S0 线是 m 内基准（不是学习效应）。(ii) 面板 a–b 用 100 次重抽样（m=25 为 15.3%），面板 c–d 用 200 次配对重抽样（15.5%）；两者都是正确的独立抽样——比较只在面板内进行。(iii) MIMIC-IV 为**单中心**库：面板 d 验证的是**收缩参数能否跨库迁移**，**不构成多中心外部验证**（后者只能在 eICU 内完成，见面板 c）。(iv) 面板 d 中 m=50 的轻微回落是 200 次重抽样的蒙特卡洛波动；趋势应跨整个面板阅读。
 # Supplementary Fig. S3
 
 ### English legend
@@ -212,7 +211,7 @@
 > 方差分解显示**院间总方差中 41.6% 来自院内时间成分**。**依赖"一次性固定重校准"的策略本质上不稳固。**
 
 ---
-# Figure 5
+# Figure 4
 
 ### English legend
 
@@ -244,74 +243,6 @@
 ---
 
 > **Centres contributing at each threshold.** The number of hospitals contributing to each threshold varies, because a hospital contributes only when it flags at least ten patients. At the higher thresholds the flagged subgroup is small in many centres, so the observed mortality among flagged patients is imprecise and the 10th-to-90th percentile range widens accordingly.
-
-# Figure 6
-
-### English legend
-
-> **Hierarchical shrinkage removes the small-sample penalty of local recalibration.**
-> 103 eICU centres; **200 resamples** per (centre, $m$). The shrinkage target $\bar a$ and the
-> between-centre variance $\tau^2$ were estimated by **leave-one-centre-out** cross-fitting, so no
-> centre's evaluation data entered its own shrinkage parameters. Four strategies:
-> S0 no recalibration; S1 naive intercept-only; S2 naive intercept + slope;
-> **S3 empirical-Bayes shrinkage**, $\hat a_{\mathrm{EB}} = \bar a + \lambda(\hat a_{\mathrm{ML}} - \bar a)$
-> with $\lambda = \tau^2/(\tau^2 + \mathrm{SE}^2)$.
-> Left: residual miscalibration $|a|$ (median; band → P90). Right: proportion of resampling
-> attempts landing within ±10% of perfect O/E. **Shrinkage reversed the small-sample penalty**:
-> at $m$ = 25 residual $|a|$ fell from 0.44 (naive) to 0.26 and the ±10% success rate rose from
-> 15.5% to **24.3%** (paired difference **+9.05 percentage points**, 19,678 pairs, Wilcoxon P = 3.7×10⁻¹¹²)
-> — surpassing even no recalibration (21.4%). The shrinkage weight adapted to sample size
-> (median λ = 0.234, 0.374, 0.536 and 0.712 at $m$ = 25, 50, 100 and 200).
-
-### 中文对照
-
-> **图10　分层收缩消除本地重校准的小样本惩罚。** 103 家中心，每 (中心, m) 重复 **200 次**；
-> 收缩目标 ā 与 τ² 由 **leave-one-centre-out** 交叉拟合估计，无任何中心的评估数据进入其自身收缩参数。
-> **收缩把小样本惩罚翻盘**：m=25 时残余 |a| 从 0.44（朴素）降至 0.26，±10% 达标率从 15.5% 升至 **24.3%**
-> （配对差 **+9.05 个百分点**，19,678 对，Wilcoxon P=3.7×10⁻¹¹²），**已超过完全不校准（21.4%）**。
-> 收缩强度随样本量自适应（m=25/50/100/200 时 λ 中位 = 0.234/0.374/0.536/0.712）。
-
----
-
-> **Centre composition.** The set of contributing centres shrinks as *m* increases (k = 103, 103, 103, 59, 13). Comparisons are made within each *m*.
->
-> **Two success rates for naive recalibration.** This analysis uses 200 resampling attempts per cell and reports 15.5% at *m* = 25; the learning-curve analysis uses 100 attempts and reports 15.3%. Both are correct and are independent draws.
-# Figure 7
-
-### English legend
-
-> **Shrinkage parameters estimated once from eICU generalise to a different database.**
-> Outcome: proportion of resampling attempts with residual |O/E − 1| ≤ 10%; 200 resamples per $m$.
-> **Left, internal validation:** 103 eICU centres, leave-one-centre-out (as Figure 6).
-> **Right, external validation:** MIMIC-IV treated as a single new centre (8,579 patients, 1,654 deaths);
-> the shrinkage target $\bar a$ = +0.030 and $\tau^2$ = 0.131 were **fixed from eICU and never
-> re-estimated on MIMIC-IV**. The true offset to recover was $a^*$ = +0.221 (observed 19.3% vs
-> predicted 16.5%, O/E 1.17). Empirical-Bayes shrinkage outperformed naive recalibration at every
-> $m$ (at $m$ = 25: 47.0% vs 23.5%, paired difference **+23.5 percentage points**, Wilcoxon
-> P = 6.3×10⁻⁷) and, critically, **25 local patients with shrinkage matched the success rate that
-> naive recalibration reached only with roughly 150 local patients** (47.0%) — an approximately
-> **six-fold reduction** in the local sample requirement.
->
-> **Note:** MIMIC-IV is a **single-centre** database. This analysis tests whether the *shrinkage
-> parameters* transfer across databases; it does **not** constitute multicentre external validation
-> of the strategy, which can only be evaluated within eICU itself (Figure 6). The two must not be
-> conflated.
-
-### 中文对照
-
-> **图11　收缩参数可跨数据库迁移。** 左：eICU 103 家中心 LOO（同图10）。右：把 MIMIC-IV 的 8,579 例
-> 整体视为**一个新中心**，收缩目标 ā=+0.030、τ²=0.131 **完全固定自 eICU、绝不在 MIMIC 上重估**；
-> 待恢复真值 a*=+0.221。EB 收缩在每个 m 上均优于朴素（m=25：47.0% vs 23.5%，配对差 **+23.5 个百分点**，
-> P=6.3×10⁻⁷）；**25 例 + 收缩 ≈ 150 例 + 朴素**（47.0%），本地数据需求降低约 **6 倍**。
->
-> **声明**：MIMIC-IV 为**单中心**库。本分析验证的是"**收缩参数能否跨库迁移**"，
-> **不是**该策略的多中心外部验证（后者只能在 eICU 内完成，见图10）。两者**不得混称**。
-
----
-
-> **Panel titles.** The right-hand panel shows transfer of the shrinkage parameters to MIMIC-IV treated as a **single new centre**. It is **not** multicentre external validation of the strategy, which can only be evaluated within eICU (left panel).
-
-> **The dip at m = 50.** The small decrease in the external success rate between 25 and 50 local patients reflects Monte-Carlo variation across the 200 resampling attempts, not a systematic effect; the monotonic trend across sample sizes should be read across the panel rather than between adjacent points.
 
 ---
 

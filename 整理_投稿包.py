@@ -346,12 +346,10 @@ shutil.copy2(os.path.join(SRC, "Manuscript.md"), os.path.join(D["manu"], "Manusc
 # ── 正文图 ────────────────────────────────────────────────
 FG = os.path.join(B, "04_图表")
 figmap = [("Fig1_两库筛选流程图", "Fig1"),
-          ("Fig2_三评分校准漂移对比", "Fig2"),
-          ("Fig3_判别稳与校准漂", "Fig3"),
-          ("Fig4_本地重校准学习曲线", "Fig4"),
-          ("Fig5_规模分层与临床影响", "Fig5"),
-          ("Fig6_分层收缩重校准", "Fig6"),
-          ("Fig7_收缩方案的内外部验证", "Fig7")]
+          ("Fig2_判别稳与校准漂", "Fig2"),
+          ("Fig3_三评分校准漂移对比", "Fig3"),
+          ("Fig4_规模分层与临床影响", "Fig4"),
+          ("Fig5_重校准与收缩收益", "Fig5")]
 nfig = 0
 for stem, newname in figmap:
     for ext, dest in [(".png", D["figs"]), (".pdf", D["figp"])]:
@@ -419,8 +417,8 @@ Sci Rep 投稿系统按下列槽位收文件。**主表不单独上传**（已�
 - `Manuscript_source.md` — Markdown 源，仅供追溯。
 
 **`2_正文图_Main_Figures/`**
-- `Fig1.png … Fig7.png` — 600 dpi PNG（Sci Rep 官方清单明列接受 .png）。
-- `PDF/Fig1.pdf … Fig7.pdf` — 矢量版，若编辑要求矢量则用这一套。
+- `Fig1.png … Fig5.png` — 600 dpi PNG（Sci Rep 官方清单明列接受 .png）。
+- `PDF/Fig1.pdf … Fig5.pdf` — 矢量版，若编辑要求矢量则用这一套。
 
 **`3_补充材料_Supplementary/`**
 - `Supplementary_Information.pdf` — {s3pages} 页 / {m3}：封面目录 + 图 S1–S3 + 表 S1–S3 + Supplementary Note。
@@ -443,7 +441,7 @@ Sci Rep 投稿系统按下列槽位收文件。**主表不单独上传**（已�
    在 Word 里一眼可见。
 2. **STROBE 清单的页码列** —— 等 `Manuscript.docx` 定稿后填。
 3. **Cover letter**。
-4. **灰度打印试读** 7 张正文图 + 3 张补充图。
+4. **灰度打印试读** 5 张正文图 + 3 张补充图。
 
 ---
 
@@ -526,7 +524,7 @@ SC = """# 上传前自查清单
 | 10 | **Data Availability** 在 **References 之前** | "at the end of the main text, before the 'References' section" | ☐ |
 | 11 | 每张正文图表都有**图注**，置于 References 之后 | "These should be placed at the end of the manuscript, after the references" | ☐ |
 | 12 | 补充图表图注**不**出现在稿件内 | "Only legends for main display items should be included in the Manuscript File" | ☐ |
-| 13 | 正文图 ≤ **8** 个 display items | 本稿 7 图 + 1 表 = 8，**已到上限** | ☑ |
+| 13 | 正文图 ≤ **8** 个 display items | 本稿 5 图 + 1 表 = 6（Fig.5 合并后有余量） | ☑ |
 | 14 | 摘要 ≤ **200** 词 | 自动质检 200/200 | ☑ |
 | 15 | 标题 ≤ **20** 词 | 自动质检通过 | ☑ |
 | 16 | 正文（Intro+Results+Discussion）≤ **4,500** 词 | 自动质检通过 | ☑ |
@@ -535,7 +533,7 @@ SC = """# 上传前自查清单
 
 | # | 检查项 | 状态 |
 |---|---|---|
-| 17 | 7 张正文图为 **600 dpi**、宽 ≥ 89 mm（单栏）/ 183 mm（双栏） | ☐ |
+| 17 | 5 张正文图为 **600 dpi**、宽 ≥ 89 mm（单栏）/ 183 mm（双栏） | ☐ |
 | 18 | 图内**无主标题、无解释性副标题、无底部注释** | ☑ |
 | 19 | **灰度打印试读**：10 张图在黑白下仍可区分 | ☐ **只有作者能做** |
 | 20 | 图中文字在 100% 打印尺寸下 ≥ 5 pt | ☐ |

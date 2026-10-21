@@ -86,6 +86,7 @@ ax.set_xticks(xs)
 ax.set_xticklabels(["%s (k=%d)\nmedian n = %.0f"
                     % (l, int(G[l].get("k", 0)), G[l]["n_med"]) for l in labs], fontsize=8.4)
 ax.legend(fontsize=8, loc="upper left", frameon=False)
+ax.text(-0.115, 1.04, "a", transform=ax.transAxes, fontsize=12.5, fontweight="bold", va="bottom")
 ax.spines[["top"]].set_visible(False)
 
 ax = axes[1]
@@ -107,6 +108,7 @@ ax.set_xlabel("Decision threshold  $p_t$", fontsize=9.2)
 ax.set_ylabel("Observed mortality among\nthose flagged  (%)", fontsize=9.0)
 ax.set_ylim(-16, 112)
 ax.spines[["top", "right"]].set_visible(False)
+ax.text(-0.135, 1.04, "b", transform=ax.transAxes, fontsize=12.5, fontweight="bold", va="bottom")
 fig.subplots_adjust(left=0.085, right=0.965, top=0.965, bottom=0.145, wspace=0.42)
-save(fig, "Fig5_规模分层与临床影响")
+save(fig, "Fig4_规模分层与临床影响")
 print("[done]")
