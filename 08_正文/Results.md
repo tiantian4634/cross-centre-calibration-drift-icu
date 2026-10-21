@@ -40,7 +40,7 @@ hospitals: the per-hospital AUC ranged from 0.649 to 0.812 (median 0.738), a spr
 (Fig. 2). Calibration, in contrast, varied substantially (Fig. 3, Table 1). Between-hospital
 heterogeneity in the calibration-in-the-large offset was high (**I² = 75.4%**, between-centre variance
 τ² = 0.131), and the observed-to-expected (O/E) mortality ratio ranged from **0.69 to 1.54** across
-hospitals (10th to 90th percentile; median 0.96) — a 2.2-fold spread (Fig. 3).
+hospitals (10th to 90th percentile; median 0.96); a 2.2-fold spread (Fig. 3).
 
 The pattern was not specific to SOFA. OASIS (pooled AUC 0.728; **I² = 79.8%**; O/E 0.71–1.57) and
 SAPS-II (pooled AUC 0.761; **I² = 70.4%**; O/E 0.69–1.49) showed heterogeneity of comparable
@@ -60,14 +60,14 @@ across hospitals, not confidence intervals.
 ### Measured case-mix does not explain the drift
 
 We next asked whether the measured case-mix of each hospital explains its offset. We fitted a ladder of
-nested models — the score alone (M1), the score with age and sex (M2), and the score with age, sex,
-comorbidity burden and invasive ventilation (M3) — and recomputed the between-centre heterogeneity at
+nested models (M1: the score alone; M2: the score with age and sex; M3: the score with age,
+sex, comorbidity burden and invasive ventilation) and recomputed the between-centre heterogeneity at
 each step (Supplementary Fig. S1). Adding age and sex raised the pooled AUC by only 0.009 (0.732 to
 0.741) and left I² essentially unchanged (75.4% to 75.2%). Adding comorbidity burden and invasive
 ventilation raised the AUC by a further 0.011 (to 0.752) and lowered I² to 70.1%, a reduction of
 5.2 percentage points; τ² fell from 0.131 to 0.106.
 
-Because M3 also carries a smaller analysis set (27,236 patients and 97 hospitals, against 30,796 and 103 for M1 and M2), we separated the two contributions directly: refitting the M1 model — the score alone — on exactly the patients and hospitals used by M3 gave I² = 73.49%. Of the 5.2-percentage-point fall from M1 to M3, 1.9 points were therefore attributable to the change in analysis set and 3.4 points to the addition of the covariates themselves. The reduction reflects the covariates; the change in analysis set is the smaller contributor (Supplementary Fig. S1).
+Because M3 also carries a smaller analysis set (27,236 patients and 97 hospitals, against 30,796 and 103 for M1 and M2), we separated the two contributions directly: refitting the M1 model (the score alone) on exactly the patients and hospitals used by M3 gave I² = 73.49%. Of the 5.2-percentage-point fall from M1 to M3, 1.9 points were therefore attributable to the change in analysis set and 3.4 points to the addition of the covariates themselves. The reduction reflects the covariates; the change in analysis set is the smaller contributor (Supplementary Fig. S1).
 
 Measured case-mix therefore accounts for only a small share of the between-centre variation: four
 clinically relevant covariates, added together, explain around 5 percentage points of I² against a
@@ -83,15 +83,15 @@ within eICU), but calibration shifted: observed mortality was 19.3% against a mo
 16.5%, giving an O/E ratio of 1.17 and a calibration offset of *a* = +0.221 (Supplementary Fig. S2).
 
 That offset placed MIMIC-IV at the **66th percentile** of the distribution of the 103 eICU hospitals. A
-single-centre development cohort is therefore not an outlier in this setting — it sits well inside the
+single-centre development cohort is therefore not an outlier in this setting; it sits well inside the
 multicentre distribution. This is consistent with the general observation that a model developed in one
 centre will systematically mis-estimate risk in another, without any centre being unusual; the variation
 being sampled is a property of the set of centres.
 
 ### Drift strengthens rather than shrinks with centre size
 
-If apparent between-centre variation were driven by sampling noise, the smallest hospitals — whose
-offsets are least precisely estimated — should show the highest apparent heterogeneity. The opposite
+If apparent between-centre variation were driven by sampling noise, the smallest hospitals (whose
+offsets are least precisely estimated) should show the highest apparent heterogeneity. The opposite
 was observed (Fig. 4a). Stratifying the 103 centres into tertiles by sample size, I² rose
 from 56.7% in the smallest tertile (36 centres; median 145 patients) to 69.8% in the middle tertile
 (33 centres; median 225 patients) and 83.9% in the largest (34 centres; median 386 patients). The
@@ -126,7 +126,7 @@ patients whose predicted risk exceeded the threshold (Fig. 4b; Supplementary Tab
 
 At a decision threshold of 0.20, the median proportion of patients flagged as high-risk was 12.8%, and
 the **observed mortality among those patients ranged from 15% to 52%** (10th to 90th percentile;
-median 33.3%) — a 3.5-fold spread for the same model and the same threshold. Net benefit was positive
+median 33.3%); a 3.5-fold spread for the same model and the same threshold. Net benefit was positive
 in the median hospital (+0.021) but was **negative in 17.0% of centres**, meaning that acting on the
 model would have been worse than treating everyone as high-risk in those hospitals. The proportion of
 centres with negative net benefit rose from 6.2% at threshold 0.10 to 21.4% at 0.30 and 22.3% at 0.40.
@@ -142,8 +142,8 @@ The answer was counter-intuitive. Re-estimating the intercept on 25 local patien
 worse than not recalibrating at all**: the proportion of resampling attempts landing within ±10% of
 perfect O/E fell from 21.4% (no recalibration) to 15.3%, and the median residual |*a*| rose from 0.308
 to 0.448 (Fig. 5b). Naive recalibration injects estimation noise that outweighs the signal at small
-sample sizes. Performance improved gradually with *m* — 20.0% at 50 patients, 25.5% at 100, and 34.3%
-at 200 — but **the pre-specified criterion of a 50% success rate was never reached within 200 local
+sample sizes. Performance improved gradually with *m* (20.0% at 50 patients, 25.5% at 100, and 34.3%
+at 200), but **the pre-specified criterion of a 50% success rate was never reached within 200 local
 patients**, which is reported here as a negative finding.
 
 Estimating a second parameter did not help. Re-estimating both intercept and calibration slope was
@@ -168,7 +168,7 @@ size at which naive recalibration is harmful (Fig. 5c). Paired on identical draw
 between S3 and S1 at *m* = 25 was **+9.05 percentage points** (19,678 paired (hospital, replicate)
 observations; two-sided Wilcoxon signed-rank test, P = 3.7 × 10⁻¹¹²). At *m* = 100 the paired difference
 was +4.65 percentage points. The shrinkage weight adapted to local sample size as expected, with median
-λ of 0.234, 0.374, 0.536 and 0.712 at *m* = 25, 50, 100 and 200 respectively — the strategy shrinks
+λ of 0.234, 0.374, 0.536 and 0.712 at *m* = 25, 50, 100 and 200 respectively; the strategy shrinks
 hardest precisely where the local estimate is least reliable.
 
 **The pre-specified criterion for this analysis was met** (at *m* = 25, S3 exceeded S1; at *m* ≥ 100, S3
@@ -184,7 +184,7 @@ variance (τ² = 0.131) at their eICU values, never re-estimating them on MIMIC-
 offset to recover was *â* = +0.221.
 
 At 25 local patients drawn from MIMIC-IV, naive recalibration achieved a ±10% success rate of 23.5%,
-whereas shrinkage achieved **47.0%** — a paired difference of **+23.5 percentage points** (two-sided
+whereas shrinkage achieved **47.0%**; a paired difference of **+23.5 percentage points** (two-sided
 Wilcoxon signed-rank test across 200 paired resampling attempts, P = 6.3 × 10⁻⁷). Shrinkage outperformed
 naive recalibration at every sample size: +19.0 points at 50 patients (P = 4.1 × 10⁻⁶), +15.5 at 100
 (P = 3.8 × 10⁻⁶), +13.0 at 200 (P = 6.0 × 10⁻⁵), and +4.0 at 400 (P = 0.059, not significant at
@@ -193,7 +193,7 @@ naive recalibration at every sample size: +19.0 points at 50 patients (P = 4.1 �
 Expressed in terms of local data requirement, **25 local patients combined with shrinkage reached the
 success rate that naive recalibration attained only with roughly 150 local patients** (naive
 recalibration reached 40.5% at 100 patients and 53.0% at 200; linear interpolation gives approximately
-152) — an approximately six-fold reduction. As expected, the advantage narrowed as the local sample
+152); an approximately six-fold reduction. As expected, the advantage narrowed as the local sample
 grew, since naive estimators become adequate once enough data are available.
 
 **The pre-specified criterion for this analysis was met** (at *m* = 25, S3 exceeded both S1 and S0).
@@ -209,7 +209,7 @@ pre-specified analysis we re-estimated it under three further frameworks: Paule�
 maximum likelihood (REML), and a one-stage random-intercept multilevel logistic model fitted to
 patient-level data (Supplementary Table S2).
 
-The three two-stage estimators agreed closely — τ² = 0.1312 (DerSimonian–Laird), 0.1261 (Paule–Mandel)
+The three two-stage estimators agreed closely: τ² = 0.1312 (DerSimonian–Laird), 0.1261 (Paule–Mandel)
 and 0.1299 (REML), a relative range of 3.9%, within the pre-specified 25% bound. **The one-stage
 multilevel estimate did not agree**: fitted to 26,436 patients across 103 centres, it gave τ² = 0.0648,
 **50.1% below the median of the two-stage estimates**, exceeding the pre-specified 50% bound. An
@@ -226,8 +226,8 @@ the disagreement, not as an established finding.
 **The principal conclusions do not depend on which estimate is used.** I² is computed from Q and the
 standard errors and is independent of τ², so the heterogeneity of 75.4% is unaffected, as are the
 direction and magnitude of the discrimination–calibration dissociation. To test the empirical-Bayes
-result directly, we re-ran it holding τ² fixed at each of three candidate values — 0.1312
-(DerSimonian–Laird), 0.0706 (marginal likelihood) and 0.0648 (multilevel) — on the same
+result directly, we re-ran it holding τ² fixed at each of three candidate values (0.1312,
+DerSimonian–Laird; 0.0706, marginal likelihood; 0.0648, multilevel) on the same
 resampling draws used above, giving three parallel sensitivity tables (Supplementary Table S3). At
 *m* = 25 the shrinkage strategy outperformed naive recalibration under all three values of τ² (+9.1,
 +6.7 and +6.5 percentage points respectively; all *P* < 10⁻⁵⁹), so the pre-specified criterion was met.

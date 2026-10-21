@@ -129,7 +129,7 @@ in this study. In-hospital death is a discharge status recorded in the source da
 derived outcome, and no case-finding algorithm was applied to it. Age, sex, invasive ventilation and
 Charlson comorbidity index were taken as supplied. No code list or phenotype algorithm was developed
 for this study; where a variable required a derived definition, that definition is given above in full
-(the calibration offset and its standard error, and the calibration slope).
+(the calibration offset, its standard error (SE), and the calibration slope).
 
 ## Pooled models
 
@@ -140,8 +140,8 @@ penalty, maximum 5,000 iterations).
 **Justification of the penalised estimator.** The penalty was verified to be immaterial for this design:
 refitting all seven pooled models without the penalty changed no predicted probability by more than
 2.2 × 10⁻⁴ and changed no AUC by more than 1.3 × 10⁻⁶ (observed range: M1 SOFA, M1 OASIS, M1 SAPS-II,
-M2, and the three M3 models; n = 30,796 for M1/M2 and n = 27,236 for M3, the latter reflecting
-complete-case exclusion on comorbidity and ventilation). This is consistent with a penalty term that is
+M2, and the three M3 models). The refits used *n* = 30,796 patients for M1/M2 and *n* = 27,236 for M3,
+the latter reflecting complete-case exclusion on comorbidity and ventilation. This is consistent with a penalty term that is
 negligible relative to the log-likelihood at this sample size with one to five predictors. Both the
 penalised and unpenalised refits are recoverable from the repository.
 
@@ -168,13 +168,14 @@ slope.
 **Quantitative variables and cut-points.** All three scores, age and comorbidity burden were
 analysed as continuous variables and standardised before fitting; they were not categorised. Cut-points
 used in this study were fixed in advance and are not data-driven: the four decision thresholds (0.10,
-0.20, 0.30, 0.40), the hospital-eligibility threshold (≥ 100 patients and ≥ 10 in-hospital deaths),
-the local recalibration sample sizes (*m* ∈ {0, 25, 50, 100, 200} and, for the external analysis,
-{0, 25, 50, 100, 200, 400}), the resampling attempt counts (100 for the learning-curve analysis, 200
-for the shrinkage analyses), and the centre-size tertile boundaries (hospitals split by sample size
-into three groups of 36, 33 and 34 hospitals, with ranges 100–181, 184–280 and 289–987 patients
-respectively) were all specified in the analysis plans written before execution (Supplementary Note,
-*Prespecified analysis plans*).
+0.20, 0.30, 0.40) and the hospital-eligibility threshold (≥ 100 patients and ≥ 10 in-hospital deaths).
+
+The remaining cut-points were likewise fixed in the analysis plans written before execution
+(Supplementary Note, *Prespecified analysis plans*): the local recalibration sample sizes
+(*m* ∈ {0, 25, 50, 100, 200} and, for the external analysis, {0, 25, 50, 100, 200, 400}), the
+resampling attempt counts (100 for the learning-curve analysis, 200 for the shrinkage analyses), and
+the centre-size tertile boundaries (hospitals split by sample size into three groups of 36, 33 and 34
+hospitals, with ranges 100–181, 184–280 and 289–987 patients respectively).
 
 ## Between-centre heterogeneity
 
@@ -190,7 +191,7 @@ reported with analysis K.
 weights (1/SE²) are used to compute *Q* and hence *τ²*, as DerSimonian–Laird specifies. The random-effects
 weights (1/(SE² + *τ²*)) are used for the pooled mean and its standard error, which is the maximum
 likelihood estimate under the hierarchical model `a_h ~ N(ā, τ² + SE²)`. The distinction matters for the
-shrinkage analysis below and is set out in Supplementary Item S1 (§S1.6).
+shrinkage analysis below and is set out in Supplementary Item S1.6.
 
 ## Case-mix ladder
 
@@ -231,7 +232,7 @@ The primary measure was the proportion of resampling attempts whose residual abs
 perfect observed-to-expected ratio was within ±10% (|O/E − 1| ≤ 0.10), **computed for each resampling
 attempt and then averaged across hospitals**; a secondary measure used ±20%. Success rates are not
 computed from the median residual O/E, because the resampling error is unbiased and its median therefore
-converges to 1 — such a statistic measures unbiasedness rather than accuracy.
+converges to 1; such a statistic measures unbiasedness rather than accuracy.
 
 ## Empirical-Bayes shrinkage (analysis I)
 
@@ -243,7 +244,7 @@ calibration slope; and **S3**, empirical-Bayes shrinkage of the intercept [[EB]]
 
 Both ā and *τ²* were estimated by **leave-one-centre-out cross-fitting**, so that no hospital's own
 evaluation data entered its shrinkage parameters. λ decreases as SE² grows relative to *τ²*, so the
-shrinkage weight adapts to local sample size — it is strongest exactly where the local estimate is least
+shrinkage weight adapts to local sample size; it is strongest exactly where the local estimate is least
 trustworthy.
 
 *Empirical-Bayes shrinkage target.* ā is estimated with **random-effects weights**
@@ -252,7 +253,7 @@ reason is that λ above is derived from the hierarchical model `a ~ N(ā, τ² +
 maximum likelihood estimate of ā is precisely the random-effects weighted mean; using a fixed-effect
 mean (the estimate implied by *τ²* = 0) while using a λ that assumes *τ²* > 0 would make the two halves
 of the estimator rest on mutually contradictory assumptions. This specification was settled after the
-initial analyses, is disclosed as a post-hoc correction in Supplementary Item S1 (§S1.6), and is not a
+initial analyses, is disclosed as a post-hoc correction in Supplementary Item S1.6, and is not a
 change to any pre-specified criterion. Re-running analyses A–D after the change reproduced every
 pre-existing field exactly.
 
@@ -385,7 +386,7 @@ record ID 68897765).
 This statement is required by the target journal and must be retained.
 
 > During the preparation of this work the authors used a large language model–based coding assistant
-> (OpenCode) in order to draft and debug analysis scripts, to generate figures, and to assist with
+> (OpenCode) to draft and debug analysis scripts, to generate figures, and to assist with
 > English-language drafting. After using this tool, the authors reviewed and edited the content as needed,
 > verified every reported number against the underlying result files, and take full responsibility for the
 > content of the publication. No large language model was used as an author, and none satisfies the
@@ -396,8 +397,11 @@ This statement is required by the target journal and must be retained.
 
 ## Reporting guidelines
 
-The study is reported in accordance with the STROBE statement [[STROBE]] and its RECORD extension for
-routinely collected health data [[RECORD]]. TRIPOD was **not** used, because no
+The study is reported in accordance with the Strengthening the Reporting of Observational Studies in
+Epidemiology (STROBE) statement [[STROBE]] and its extension for routinely collected health data, the
+REporting of studies Conducted using Observational Routinely-collected Health Data (RECORD) statement
+[[RECORD]]. The Transparent Reporting of a multivariable prediction model for Individual Prognosis Or
+Diagnosis (TRIPOD) was **not** used, because no
 prediction model was developed or deployed for clinical use: the pooled model served only as a
 measurement instrument for quantifying calibration drift, and the study reports heterogeneity and a
 recalibration strategy rather than the performance of a model intended for clinical decision-making.

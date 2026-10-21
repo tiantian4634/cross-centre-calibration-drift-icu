@@ -35,7 +35,7 @@ patient mix change, and a substantial methodological literature now exists on de
 [[HAN]] and on updating models once it has been detected [[BINUYA,ENSOR]]. The second is a single transfer: a model
 developed in one centre is applied to one other centre or population, where miscalibration is
 observed and locally corrected [[RILEY_EXT]]. What has received much less attention is the *spatial*
-dimension — how far calibration differs **simultaneously across many centres** in a health system
+dimension: how far calibration differs **simultaneously across many centres** in a health system
 that routinely uses the same score, and how large that between-centre component is relative to the
 others. This matters because the practical response to inter-centre variation is assumed to be
 local recalibration, and because benchmarking systems that compare hospitals depend on the premise
@@ -54,7 +54,7 @@ database for testing whether parameters estimated in one database can be used in
 quantified between-centre variation in calibration for three established severity scores, tested how
 much of it measured case-mix could explain, decomposed it into components attributable to centre
 size and to calendar year, translated it into consequences at four decision thresholds, and
-evaluated local recalibration as a function of the number of locally available patients — together
+evaluated local recalibration as a function of the number of locally available patients, together
 with an empirical-Bayes shrinkage alternative.
 
 ---
@@ -83,7 +83,7 @@ attempted: rather than one environment followed over time or one transfer from c
 [[RILEY_EXT,ZHANG_TRANSPORT]], we observed 103 centres simultaneously and were able to partition the resulting variance. Work
 in the opposite direction reaches the same verdict from a different angle: models developed in
 MIMIC-IV and applied to 208 eICU-CRD hospitals without recalibration lost external calibration
-faster than discrimination as feature complexity grew — the external calibration slope fell from
+faster than discrimination as feature complexity grew; the external calibration slope fell from
 1.007 to 0.417 while a single aggregate score stayed essentially intact [[YAMAMOTO]]. A
 clinically important corollary is that the two sources are not interchangeable. A hospital offset
 that is 41.6% temporal in origin cannot be fixed by a permanent recalibration, however large the
@@ -133,11 +133,11 @@ data [[RECORD]], because no prediction model
 was developed or deployed for clinical use in this study: the pooled model served as a measurement
 instrument for quantifying drift, and the object of the study is the between-centre variation
 itself, not the performance of a model intended for patient-level decisions. We have nonetheless
-reported the elements that matter for clustered data — the clustering level, the number of centres
+reported the elements that matter for clustered data: the clustering level, the number of centres
 per estimate, and the resampling design.
 
 **Limitations.** First, both databases were collected for purposes other than this study, as is inherent in the
-secondary-use design. Two consequences follow, and both are limitations of that design rather than of the analysis. Misclassification in the underlying records — in the severity scores, in comorbidity coding and in the recorded discharge status — cannot be detected here, and its
+secondary-use design. Two consequences follow, and both are limitations of that design rather than of the analysis. Misclassification in the underlying records (in the severity scores, in comorbidity coding and in the recorded discharge status) cannot be detected here, and its
 direction and magnitude could not be quantified. And because eICU-CRD covers only 2014 and
 2015, we could not assess how eligibility for the cohort, or the coding practices behind it,
 changed over time. The year-to-year analysis reported here addresses stability across two
@@ -147,7 +147,7 @@ parameters transfer across databases; it is not multicentre external validation 
 which can only be evaluated within eICU itself. Third, the variation not explained by measured
 case-mix is described here as residual between-hospital variation. Unmeasured differences in
 disease spectrum, referral patterns and pre-ICU course would produce the same pattern, and this
-study is not designed to attribute the variation to any of them — no conclusion about quality of
+study is not designed to attribute the variation to any of them; no conclusion about quality of
 care is drawn. Fourth, the two databases record comorbidity differently. The mean Charlson index in
 MIMIC-IV (3.5) is far higher than in eICU-CRD (0.9), reflecting more complete inpatient ICD coding
 in MIMIC-IV rather than a difference in case-mix. Because the external analysis uses a single-score
