@@ -156,7 +156,9 @@ limits how far the two cohorts can be compared on measured case-mix. Fifth, we s
 established scores and one pooled model specification; other specifications, and scores not
 evaluated here, may behave differently. Sixth, the empirical-Bayes parameters were estimated in a
 single database, and although they transferred to a second, the extent to which they generalise to
-other health systems and other score families remains open.
+other health systems and other score families remains open. Seventh, the cohort is restricted to
+patients aged ≥ 65 years in medical or medical–surgical ICUs, so the estimates describe an elderly
+medical-ICU population and may not transport to younger or surgical populations.
 
 **Conclusion.** Discrimination transports; calibration does not, and the difference is large enough
 to change what a risk threshold means in different hospitals. Local recalibration is not the

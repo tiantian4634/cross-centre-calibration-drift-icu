@@ -221,10 +221,17 @@ flagged above the threshold (positive predictive value).
 
 ## Local recalibration learning curve (analysis E)
 
-For every hospital with n ≥ 200 patients, and for each *m* ∈ {0, 25, 50, 100, 200} subject to *n* ≥
-2*m*, we randomly drew *m* patients as a local recalibration set and used the remaining patients as the
-evaluation set; hospitals that did not satisfy *n* ≥ 2*m* at a given *m* were excluded from that cell and
+For each *m* ∈ {0, 25, 50, 100, 200}, every centre-eligible hospital subject to *n* ≥ 2*m* was used:
+*m* patients were randomly drawn as a local recalibration set and the remaining patients served as the
+evaluation set; centres that did not satisfy *n* ≥ 2*m* at a given *m* were excluded from that cell and
 *k* is reported for every cell. **Each (hospital, *m*) cell was resampled 100 times**, as pre-specified.
+The plan had additionally stated a centre-level filter of *n* ≥ 200; in the executed pipeline this
+filter took effect only at *m* ≥ 100, because *n* ≥ 2*m* already implies it there, so the cells with
+*m* ≤ 50 also include centres with 100–199 patients (44 centres). This implementation deviation is
+disclosed in the Supplementary Note (analysis P2) together with a sensitivity run restricted to
+centres with *n* ≥ 200: no success rate changed by more than 1.1 percentage points (S1 at *m* = 0,
+21.4% → 20.3%; at *m* = 50, 20.0% → 21.1%; the cells with *m* = 100 and 200 are identical by
+construction), and the pre-specified criterion was unaffected.
 Two strategies were compared: re-estimating only the intercept, and re-estimating both intercept and
 calibration slope.
 
