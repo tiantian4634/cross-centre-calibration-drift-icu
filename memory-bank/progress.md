@@ -16,12 +16,16 @@
 - [x] 同题期刊落点调查：Sci Rep 维持，退路 BMC Med Inform Decis Mak / PLOS ONE
 - [x] 300 例本地数据裁定：本篇不用；作为下篇（统计源期刊）种子
 - [x] memory-bank 建立并写入首份检查点
+- [x] **作者定稿（2 人）**：Junzhi Chu（一临床医学院）+ Tiantian Zhang 通讯（邮箱/ORCID 落稿）
+- [x] **伦理声明成稿**：PhysioNet 领域惯例（上游 IRB + Safe Harbor → 免本地审批），记录 ID 68897765
+- [x] **CRediT + Competing interests 定稿**；审稿人 5 人维持
+- [x] **稿件占位符清零**（包内待填清单 0 处）；检查器探针修正；全链路重跑全绿；投稿包全量再生（commit dcb3698）
 
 ## Doing（进行中）
-- [ ] 无（管线全部静止，等用户输入）
+- [ ] 无（管线全部静止，等用户 push + 上传系统）
 
 ## Next（下一步）
-- [ ] 用户填占位符 5 项 → 重跑装配+九项+投稿包
-- [ ] STROBE 页码 / 审稿人过目 / Cover letter 收尾
-- [ ] 投稿前统一 git push（本地领先 origin 5 提交）
+- [ ] 投稿前统一 git push（本地领先 origin 7 提交）
+- [ ] 上传 Sci Rep 系统：录入后与标题页逐字比对；ORCID 填系统；suggested reviewers 用 5 人名单
+- [ ] STROBE 页码（n/a 可填 n/a）/ Cover letter 过目
 - [ ] （远期）300 例下篇：数据字典→伦理→立项
