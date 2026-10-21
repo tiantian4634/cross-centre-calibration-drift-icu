@@ -41,12 +41,12 @@
   内容级扫描证明无 ID/时间列，纯重抽样聚合计数）——推送与否留给用户决定。
 
 ## ⚠️ 待解决（等用户）
-- [ ] 投稿前统一 `git push`（remote https://github.com/tiantian4634/cross-centre-calibration-drift-icu.git；当前本地领先 origin/main **7 个提交**）——可试 `git -c http.proxy= -c https.proxy= push` 直连
+- [x] ~~投稿前统一 git push~~ **✅ 已推送**（7aca874 → origin/main，2026-10-21，授权完成）
 - [ ] STROBE checklist 页码（投稿系统要求 n/a 就填 n/a）
 - [ ] Cover letter 最终过目（审稿人段已备好英文粘贴段）
 
 ## 🔜 下一步
-1. push → 上传 Sci Rep 系统（suggested reviewers 用名单 5 人；excluded 可不填）
+1. ~~push~~（done）→ 上传 Sci Rep 系统（suggested reviewers 用名单 5 人；excluded 可不填）
 2. 投稿系统录入时：标题/作者/单位/摘要与标题页源**逐字比对**；ORCID 0009-0000-2350-8008 填入系统
 3. 远期：300 例下篇论文立项（data dictionary 先行）
 4. 伏笔：审稿人若要求时域稳定性主图化 → S3 小节后移 §J 后 + 升 Fig.6 免重排路径；伦理若被编辑追问
