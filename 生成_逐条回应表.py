@@ -13,7 +13,7 @@ from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml.ns import qn
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                   "10_预审版", "逐条回应表_预审稿意见v2.docx")
+                   "10_预审版", "逐条回应表_预审意见_两轮汇总.docx")
 
 DARK = RGBColor(0x11, 0x11, 0x11)
 GREY = RGBColor(0x44, 0x44, 0x44)
@@ -49,13 +49,15 @@ def para(text="", size=9.5, color=DARK):
     return add(text, size=size, color=color)
 
 
-add("Response to the pre-review comments (v2) — point-by-point", size=14, bold=True)
+add("Response to the pre-review comments — two rounds consolidated", size=14, bold=True)
 para("Manuscript: Discrimination transports, calibration does not: calibration drift in severity scoring "
-     "across 187 intensive-care units.  Date: 2026-10-30.", size=9.5, color=GREY)
-para("Method note: every checked item was verified against the manuscript source files, the original "
-     "figure raster, the generated PDF text layer, raw statistic files, or the online DOI registry — "
-     "not by visual impression. Verdicts: FIXED (defect real, corrected), REBUTTED (defect not present "
-     "in the files, with evidence), ACCEPTED (editorial/content change adopted).", size=9, color=GREY)
+     "across 187 intensive-care units.  Round 1 comments (v2) + Round 2 audit of the response and of the "
+     "v3 revised draft.  Date: 2026-10-30.", size=9.5, color=GREY)
+para("Method note (unchanged in spirit, upgraded in the second round): every item is verified against the "
+     "manuscript source files, the original figure raster, the generated PDF/DOCX text layer, raw "
+     "statistic files, or the online DOI registry / OpenAlex records — and, for the contested round-2 "
+     "items, additionally by page-level screen renders of the actual PDF (Appendix A), so that arguments "
+     "about extraction artifacts can be settled by what a PDF reader displays.", size=9, color=GREY)
 
 ROWS = [
     # M1-M10
@@ -192,6 +194,89 @@ BONUS = ("NEW (found during audit)", "Figure 1: column titles overlapped the blu
          "Title raised and the main chain lowered by 1.3 units; figure regenerated and re-checked; the "
          "submission package and integrated draft now carry the corrected raster/PDF.")
 
+ROUND2 = [
+    ("R2-M3", "核对：Figure 1 图注仍是 193,367", "REBUTTED (page-level evidence)",
+     "The '193,367' insists a third time and is again a reading artifact: the assembled Figure 1 legend "
+     "in text and on the rendered page (Appendix A-1) reads 'first ICU stay per patient (139,367)'. A "
+     "full-text scan of the v3 PDF contains '193,367' 0 times and '139,367' twice (Methods + legend). "
+     "The same digit transposition (139→193) recurs across both rounds from the reviewing pipeline."),
+    ("R2-M4/E5", "核对：Figure 2 上方仍有 '2020- 0.745)'", "REBUTTED (source string identified)",
+     "The reviewing pipeline keeps transcribing the in-figure annotation of Figure 2. Its actual string "
+     "is 'pooled AUC 0.732 (95% CI 0.720–0.745)' (Appendix A-2, visible top of the panel; source: "
+     "figures_drift.py line 51). '(0.720–' is read as '(2020-'. The token '2020-' occurs 0 times in the "
+     "manuscript, the legend source and the PDF text layer; the only '2020' tokens are reference years."),
+    ("R2-M2", "核对：v3 的 Table 1 仍是单单元格压缩串", "REBUTTED (page-level evidence)",
+     "Appendix A-3 is a screen render of v3 page 4: Table 1 displays as a complete 8-row × 4-column "
+     "ruled grid. The '<table>…' string quoted by the reviewing pipeline cannot occur in any PDF; it is "
+     "emitted by the pipeline's own HTML export step. The DOCX carries the same true Word table "
+     "(verified cell by cell). Submission files unchanged and correct."),
+    ("R2-M10", "核对：v3 把斜率模型写成 log(y) = α + β log(p)", "REBUTTED (page-level evidence)",
+     "Appendix A-4 (v3 page 16) renders the sentence: 'Within each hospital we fitted logit(y) = α_h + "
+     "β_h logit(p̂) with a free intercept and retained β_h. All 103 slopes per score converged; none "
+     "exceeded |β_h| = 5 (largest 2.24, SOFA). Slopes above 1 indicate a steeper risk gradient…'. The "
+     "PDF text layer contains 'logit(y)' once and 'log(y)' zero times — the 'log(y)' form in the "
+     "reviewing pipeline drops the letters 'it' and the hat, so no error exists to correct."),
+    ("R2-M1", "核对：文献仍粘连、[2] 缺左括号、24) 缺左括号", "REBUTTED (page-level evidence) + ACCEPTED (DOIs)",
+     "Text layer: '[2] Johnson…' occurs verbatim with intact brackets; the PDF renders each of the 32 "
+     "entries as its own paragraph (Appendix A-5, page 21). Separately, the reviewer's request to "
+     "document the four 2026 references was justified and is now satisfied — see the VAN_GELOVEN row."),
+    ("R2-REFS", "四条 2026 年文献需 DOI/PMID 核实", "ACCEPTED — and a real author error found and fixed",
+     "All four are real, verified via OpenAlex/Crossref: [13] Zhang Z. et al., Gland Surg. 15, 1274 "
+     "(2026), doi:10.21037/gs-2026-0217; [14] Yamamoto R. et al., medRxiv 2026.04.05.26350209, "
+     "doi:10.64898/2026.04.05.26350209; [20] Salluh J.I.F. et al., Curr. Opin. Crit. Care 32, 523–530 "
+     "(2026), doi:10.1097/mcc.0000000000001411; [22] — the paper exists but was author-misattributed: "
+     "the published record is El Arab, R. A., Mustafa, M. H., Almagharbeh, W. T., Saleem, N. H. et al. "
+     "(Healthcare 14, 1459 (2026), doi:10.3390/healthcare14111459), not 'van Geloven, N.' The reference "
+     "has been corrected and DOIs added to all four entries. Thanks for forcing this verification."),
+    ("R2-E1", "核对：t² 与 τ² 混用多处", "REBUTTED",
+     "Text layer: 't²' 0 occurrences, 'τ²' 50. The quoted '\\(\\mathrm{t}^2\\) fell from 0.131 to 0.106' "
+     "corresponds to the Typeset τ² in 'τ² fell from 0.131 to 0.106' (case-mix ladder section); the τ "
+     "glyph plus superscript is read as a latin 't' by the reviewing pipeline. Appendix A-4 shows the "
+     "actual typesetting."),
+    ("R2-E7", "核对：表注仍为 'P, proportion'", "REBUTTED (page-level evidence)",
+     "Appendix A-3 (page 4) — the note reads 'I², proportion of total variation attributable to "
+     "between-centre heterogeneity', exactly as round 1 verified at source level. The bold italic 'I²' "
+     "glyph is read as 'P' by the pipeline."),
+    ("R2-E3", "核对：Page 6 仍有 '1. Fig. 3)'", "REBUTTED",
+     "The file context is '…showed heterogeneity of comparable magnitude (Table 1, Fig. 3). Because all "
+     "three scores are established…' — clean in source and PDF text layer ('1. Fig. 3)' 0 occurrences). "
+     "The '1.' prepended by the pipeline is its own page-boundary artifact (same mechanism in both rounds"),
+    ("R2-E6", "核对：m* 字形仍在", "ACCEPTED (de-italicised)",
+     "The round-1 rendering set 'within-m' in italics, whose trailing asterisk the pipeline again read "
+     "as a superscript marker. The whole phrase is now plain text: 'the S0 line is the within-m "
+     "benchmark — the no-recalibration rate at that same m (not a learning effect)'."),
+    ("R2-Fig5", "核对：图注用 Δ 与正文 a 两套符号；[a] 应为 |a|", "REBUTTED",
+     "The Figure 5 captions use the a-family throughout: ā = +0.030, â_EB = ā + λ(â_ML − ā), λ = τ² / "
+     "(τ² + SE²) — same family as Methods. No Δ appears in any caption; the single Δ in the manuscript "
+     "is |Δa_h|, the defined year-over-year offset difference of the temporal analysis. 'Residual "
+     "miscalibration' is typeset as |a| in text and output; the '[a]' form is the pipeline's bracket "
+     "substitution for the vertical bar."),
+    ("R2-a_h", "核对：a_{-h} 应为 a_h", "REBUTTED (page-level evidence)",
+     "Appendix A-2 (page 5) shows the caption rendering 'Point colour encodes a_h (blue < 0, red > 0)' "
+     "and the Figure 3 caption with 'offset a_h'. The '_-h' subscript reading is the pipeline's "
+     "subscript transcription; no 'a_{-h}' string exists in any source or output."),
+    ("R2-E10", "核对：Figure 1 图注漏掉 (141) 步骤", "ACCEPTED, FIXED",
+     "Correct and useful: the legend flow lines jumped from (7)/(363) directly to the analysed cohort "
+     "without the (141) step, leaving the arithmetic unexplained in the flow line itself (the Notes "
+     "always carried it). Both flow lines now read '… and of missing albumin, height and weight (141)' "
+     "(eICU) and '(35) and of missing albumin, height and weight (15)' (MIMIC); the MIMIC age note was "
+     "aligned to the new Methods formula ('age at admission = anchor_age + (admission year − anchor "
+     "year)'). Legend lengths remain within limits (Figure 1: 305 / 350)."),
+    ("R2-QA", "v3 小节标题带出 '### ' 标记（自制证据时发现）", "FIXED",
+     "While assembling page renders we caught a genuine layout slip of our own: third-level headings "
+     "('### Cohort and study setting' etc.) rendered with the leading marker in the integrated draft "
+     "(first-level/second-level were handled). All heading marks are now consumed and render as "
+     "formatted headings; a full pass shows 0 residual markers in the rebuilt draft."),
+]
+
+EVIDENCE = [
+    (r"10_预审版\_证据截图\legend_fig1_flow.png", "A-1 · v3 page 3: Figure 1 legend flow line — 'first ICU stay per patient (139,367)'; no 193,367 anywhere."),
+    (r"10_预审版\_证据截图\table1_page.png", "A-3 · v3 page 4: Table 1 rendered as an 8×4 ruled grid; note reads 'I², proportion of total variation…' (rows R2-M2/R2-E7)."),
+    (r"10_预审版\_证据截图\fig2_page.png", "A-2 · v3 page 5: Figure 2/3 — in-figure annotation 'pooled AUC 0.732 (95% CI 0.720–0.745)' (source of the ghost string), caption 'Point colour encodes a_h…' (rows R2-M4/R2-a_h)."),
+    (r"10_预审版\_证据截图\slope_formula_page.png", "A-4 · v3 page 16: 'logit(y) = α_h + β_h logit(p̂)… All 103 slopes per score converged' (rows R2-M10/R2-E1)."),
+    (r"10_预审版\_证据截图\refs_page.png", "A-5 · v3 page 21: references rendered as separate paragraphs, '[2] Johnson…' bracket intact; [13]/[14]/[20]/[22] carry DOIs, [22] corrected to El Arab et al. (rows R2-M1/R2-REFS)."),
+]
+
 tbl = doc.add_table(rows=1, cols=4)
 tbl.style = "Table Grid"
 tbl.alignment = WD_TABLE_ALIGNMENT.CENTER
@@ -202,7 +287,7 @@ for i, htxt in enumerate(["#", "Comment", "Verdict", "Response / evidence"]):
     r.bold = True
     r.font.size = Pt(9.5)
 
-for num, comment, verdict, resp in ROWS + [BONUS]:
+for num, comment, verdict, resp in ROWS + [BONUS] + ROUND2:
     cells = tbl.add_row().cells
     for ci, txt in enumerate((num, comment, verdict, resp)):
         cells[ci].text = ""
@@ -226,10 +311,20 @@ for ci, w in enumerate(widths):
         row.cells[ci].width = Cm(w)
 
 para("")
-para("Rebuilds after this round: manuscript word count 4,498 / 4,500; abstract 200 / 200; Methods/Results "
-     "numeric audits all green (16 + 95 items); citations 32/32; Sci-Rep structural compliance all green; "
-     "Figure 5 legend reduced to 348 / 350 words; submission package and integrated pre-review draft both "
-     "rebuilt with the corrected Figure 1.", size=9, color=GREY)
+add("Rebuilds after this round: manuscript word count 4,498 / 4,500; abstract 200 / 200; Methods/Results "
+    "numeric audits all green (16 + 95 items); citations 32/32; Sci-Rep structural compliance all green; "
+    "Figure 1 legend 305/350 and Figure 5 legend 347/350 words; Figure 1 corrected and both packages rebuilt.",
+    size=9, color=GREY)
+
+add("Appendix A — page-level screen renders of the revised integrated draft (PDF pages as displayed)",
+    size=12, bold=True,
+)
+for png, cap in EVIDENCE:
+    if os.path.exists(png):
+        doc.add_picture(png, width=Cm(16.2))
+        para(cap, size=8.5, color=GREY)
+    else:
+        para("(缺少截图：" + png + ")", size=9, color=RED)
 
 doc.save(OUT)
 print("✔ 已生成:", OUT)

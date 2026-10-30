@@ -28,15 +28,17 @@
 > **Flow of participants from eICU-CRD and MIMIC-IV into the analysis.**
 > **Left, estimation cohort (eICU-CRD v2.0, 208 hospitals).** 200,859 unit stays → first ICU stay per
 > patient (139,367) → age ≥65 years (71,734; ages >89 recorded as 90) → ICU length of stay ≥24 h (50,138)
-> → medical or medical–surgical ICU (31,307) → exclusion of deaths within 24 h of ICU admission (7)
-> and of missing hospital outcome status (363) → **analysis cohort of 30,796 patients from 187 hospitals
+> → medical or medical–surgical ICU (31,307) → exclusion of deaths within 24 h of ICU admission (7) and
+> of missing hospital outcome status (363) and of missing albumin, height and weight (141) →
+> **analysis cohort of 30,796 patients from 187 hospitals
 > (3,901 in-hospital deaths, 12.7%)**. A centre was eligible for the between-centre analyses if it
 > contributed ≥100 patients and ≥10 deaths, leaving **k = 103 centres**.
 >
 > **Right, external application (MIMIC-IV v3.1).** 94,458 ICU stays → first ICU stay per patient (65,366)
-> → age ≥65 years (35,499, age corrected by the difference between admission and anchor year)
+> → age ≥65 years (35,499; age at admission = anchor_age + (admission year − anchor year))
 > → ICU length of stay ≥24 h (28,607) → first stay in a medical or medical–surgical ICU (8,629)
-> → exclusion of deaths within 24 h of ICU admission (35) → **analysis cohort of 8,579 patients
+> → exclusion of deaths within 24 h of ICU admission (35) and of missing albumin, height and
+> weight (15) → **analysis cohort of 8,579 patients
 > (1,654 in-hospital deaths, 19.3%)**. MIMIC-IV comprises a **single centre** (Beth Israel Deaconess
 > Medical Center); the eICU-derived model was applied to it **without refitting**.
 >
@@ -175,9 +177,9 @@
 >
 > **(c)** Empirical-Bayes (EB) shrinkage removes the penalty: 103 centres; 200 paired resamples per centre-$m$ cell; $\bar a$ and per-centre SEs were leave-one-centre-out cross-fitted, so no centre's evaluation data entered its own shrinkage parameters. S0, no recalibration; S1/S2, naive; S3, EB shrinkage, $\hat a_{\mathrm{EB}}=\bar a+\lambda(\hat a_{\mathrm{ML}}-\bar a)$, $\lambda=\tau^2/(\tau^2+\mathrm{SE}^2)$. At $m$ = 25 the success rate rose from 15.5% to 24.3% (paired difference +9.05 percentage points, Wilcoxon P = 3.7×10⁻¹¹²), surpassing no recalibration (21.4%); median $\lambda$ 0.234/0.374/0.536/0.712 (m = 25/50/100/200), and residual |$a$| fell from 0.44 (naive) to 0.26.
 >
-> **(d)** Shrinkage parameters estimated once from eICU transfer to a different database: MIMIC-IV treated as a single new centre; $\bar a$ = +0.030 and $\tau^2$ = 0.131 fixed from eICU, never re-estimated; the offset to recover, $a^*$ = +0.221. EB shrinkage outperformed naive recalibration at every $m$ (at $m$ = 25: 47.0% vs 23.5%, +23.5 percentage points, Wilcoxon P = 6.3×10⁻⁷); the small dip at $m$ = 50 (47.0% → 46.0%) is within Monte-Carlo error (200-draw SE ≈ 3.5 pp); **25 patients with shrinkage matched the success rate naive recalibration reached only with ≈150 patients — a six-fold smaller local requirement.**
+> **(d)** Shrinkage parameters estimated once from eICU transfer to a different database: MIMIC-IV treated as a single new centre; $\bar a$ = +0.030 and $\tau^2$ = 0.131 fixed from eICU, never re-estimated; the offset to recover, *â* = +0.221. EB shrinkage outperformed naive recalibration at every $m$ (at $m$ = 25: 47.0% vs 23.5%, +23.5 percentage points, Wilcoxon P = 6.3×10⁻⁷); the small dip at $m$ = 50 (47.0% → 46.0%) is within Monte-Carlo error (200-draw SE ≈ 3.5 pp); **25 patients with shrinkage matched the success rate naive recalibration reached only with ≈150 patients — a six-fold smaller local requirement.**
 >
-> **Notes.** The contributing-centre set shrinks with $m$; the S0 line is the *within-m* benchmark — the no-recalibration rate at that same $m$ (not a learning effect). Panels a–b use 100 resampling attempts (15.3% at $m$ = 25), panels c–d 200 paired attempts (15.5%); both are correct independent draws — comparisons are within, not between, panels. MIMIC-IV is a single-centre database: panel d tests whether the shrinkage parameters transfer across databases and does not constitute multicentre external validation, which can only be evaluated within eICU itself (panel c).
+> **Notes.** The contributing-centre set shrinks with $m$; the S0 line is the within-m benchmark — the no-recalibration rate at that same $m$ (not a learning effect). Panels a–b use 100 resampling attempts (15.3% at $m$ = 25), panels c–d 200 paired attempts (15.5%); both are correct independent draws — comparisons are within, not between, panels. MIMIC-IV is a single-centre database: panel d tests whether the shrinkage parameters transfer across databases and does not constitute multicentre external validation, which can only be evaluated within eICU itself (panel c).
 
 ### 中文对照
 

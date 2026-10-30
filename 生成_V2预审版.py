@@ -66,26 +66,37 @@ def clean(t):
     return mathify(_tex(t))
 
 
+def _emit_runs(p, txt, size, color, bold=False, italic=False, mono=False, bold_all=False):
+    """给段落追加 run；嵌套标记（粗体包斜体等）递归处理。"""
+    for sub in re.split(r"(\*.*?\*)", txt):
+        if not sub:
+            continue
+        inner_ital = italic
+        if len(sub) > 2 and sub.startswith("*") and sub.endswith("*") and not sub.startswith("**"):
+            sub, inner_ital = sub[1:-1], True
+        r = p.add_run(sub)
+        r.bold = bold or bold_all
+        r.italic = italic or inner_ital
+        if mono:
+            r.font.name = "Consolas"
+        if size:
+            r.font.size = Pt(size)
+        if color:
+            r.font.color.rgb = color
+
+
 def add_md(p, s, size=10.5, color=None, bold_all=False):
     for tok in re.split(r"(\*\*.*?\*\*|\*.*?\*|`.*?`)", s):
         if not tok:
             continue
         if tok.startswith("**") and tok.endswith("**") and len(tok) > 4:
-            r = p.add_run(tok[2:-2])
-            r.bold = True
+            _emit_runs(p, tok[2:-2], size, color, bold=True, bold_all=bold_all)
         elif tok.startswith("*") and tok.endswith("*") and len(tok) > 2:
-            r = p.add_run(tok[1:-1])
-            r.italic = True
+            _emit_runs(p, tok[1:-1], size, color, italic=True, bold_all=bold_all)
         elif tok.startswith("`") and tok.endswith("`") and len(tok) > 2:
-            r = p.add_run(tok[1:-1])
-            r.font.name = "Consolas"
+            _emit_runs(p, tok[1:-1], size, color, mono=True, bold_all=bold_all)
         else:
-            r = p.add_run(tok)
-        r.bold = r.bold or bold_all
-        if size:
-            r.font.size = Pt(size)
-        if color:
-            r.font.color.rgb = color
+            _emit_runs(p, tok, size, color, bold_all=bold_all)
 
 
 def para(text="", size=10.5, color=DARK, space_before=0, space_after=4, bold=False):
@@ -104,8 +115,9 @@ def heading(text, size=13, space_before=10, space_after=5):
 def emit_block(block, size=10.5):
     """一个 \n\n 段块 → docx 段落（含小节标题/列表识别）。"""
     lines = [l.rstrip() for l in block.split("\n")]
-    if lines and lines[0].strip().startswith("## "):
-        heading(lines[0].strip()[3:], size=11.5, space_before=10)
+    if lines and (lines[0].strip().startswith("## ") or lines[0].strip().startswith("### ")):
+        htxt = re.sub(r"^#+\s*", "", lines[0].strip())
+        heading(htxt, size=11.5, space_before=10)
         lines = lines[1:]
     if not lines:
         return

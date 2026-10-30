@@ -137,10 +137,10 @@ REFS = {
                       "**125**, 102256 (2022).",
     "ZHANG_TRANSPORT": "Zhang, Z. et al. Clinical transportability, calibration drift, and local "
                        "updating of a B-mode ultrasound radiomics-clinical prediction model. "
-                       "*Gland Surg.* **15**, 1274 (2026).",
+                       "*Gland Surg.* **15**, 1274 (2026). doi:10.21037/gs-2026-0217",
     "YAMAMOTO": "Yamamoto, R. et al. Observation-process features are associated with larger domain "
                 "shift in sepsis mortality prediction: a cross-database evaluation using MIMIC-IV "
-                "and eICU-CRD. *medRxiv* 2026.04.05.26350209 (2026).",
+                "and eICU-CRD. *medRxiv* 2026.04.05.26350209 (2026). doi:10.64898/2026.04.05.26350209",
     "GEHRINGER": "Gehringer, C. K., Martin, G. P., Sperrin, M., Welch, C. & Riley, R. D. How to "
                  "develop, validate, and update clinical prediction models using multinomial "
                  "logistic regression. *J. Clin. Epidemiol.* **170**, 114–126 (2024).",
@@ -153,16 +153,17 @@ REFS = {
               "models in a changing environment. *Diagn. Progn. Res.* **7**, 14 (2023).",
     "ICU_REGISTRY": "Salluh, J. I. F., Quintairos, A., Dongelmans, D. A., Fujii, T. et al. How to "
                     "establish and run a national ICU benchmarking registry. *Curr. Opin. Crit. "
-                    "Care* **32**, 523–530 (2026).",
+                    "Care* **32**, 523–530 (2026). doi:10.1097/mcc.0000000000001411",
     "MOSER": "Moser, A., Reinikainen, M., Jakob, S. M., Selander, T. A. et al. Mortality prediction "
              "in intensive care units including premorbid functional status improved performance "
              "and internal validity. *J. Clin. Epidemiol.* **142**, 55–63 (2022).",
     "RILEY_SS": "Riley, R. D., Debray, T. P. A., Collins, G. S., Archer, L. et al. Minimum sample "
                 "size for external validation of a clinical prediction model with a binary "
                 "outcome. *Stat. Med.* **40**, 4230–4251 (2021).",
-    "VAN_GELOVEN": "van Geloven, N. et al. Beyond model development in healthcare AI: "
-                   "post-development robustness, post-deployment monitoring, and lifecycle "
-                   "governance. *Healthcare* **14**, 1459 (2026).",
+    "VAN_GELOVEN": "El Arab, R. A., Mustafa, M. H., Almagharbeh, W. T., Saleem, N. H. et al. Beyond "
+                   "model development in healthcare AI: post-development robustness, post-deployment "
+                   "monitoring, and lifecycle governance. *Healthcare* **14**, 1459 (2026). "
+                   "doi:10.3390/healthcare14111459",
     "TRIPOD_CLUSTER": "Riley, R. D. et al. Transparent reporting of multivariable prediction models "
                       "developed or validated using clustered data (TRIPOD-Cluster): explanation "
                       "and elaboration. *BMJ* **380**, e071058 (2023).",

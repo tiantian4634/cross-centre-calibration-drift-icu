@@ -875,16 +875,16 @@ All database access during this study was read-only, and no script written for t
 [10] Riley, R. D. et al. External validation of prognostic models: what, why, how, when and where? *Clin. Kidney J.* **15**, 469–472 (2022).
 [11] Moreno, R. P., Metnitz, P. G. H., Almeida, E., Jordan, B. et al. SAPS 3—From evaluation of the patient to evaluation of the intensive care unit. Part 2: Development of a prognostic model for hospital mortality at ICU admission. *Intensive Care Med.* **31**, 1345–1355 (2005).
 [12] Zhang, Z. et al. A novel lifelong machine learning-based method to eliminate calibration drift in clinical prediction models. *Artif. Intell. Med.* **125**, 102256 (2022).
-[13] Zhang, Z. et al. Clinical transportability, calibration drift, and local updating of a B-mode ultrasound radiomics-clinical prediction model. *Gland Surg.* **15**, 1274 (2026).
-[14] Yamamoto, R. et al. Observation-process features are associated with larger domain shift in sepsis mortality prediction: a cross-database evaluation using MIMIC-IV and eICU-CRD. *medRxiv* 2026.04.05.26350209 (2026).
+[13] Zhang, Z. et al. Clinical transportability, calibration drift, and local updating of a B-mode ultrasound radiomics-clinical prediction model. *Gland Surg.* **15**, 1274 (2026). doi:10.21037/gs-2026-0217
+[14] Yamamoto, R. et al. Observation-process features are associated with larger domain shift in sepsis mortality prediction: a cross-database evaluation using MIMIC-IV and eICU-CRD. *medRxiv* 2026.04.05.26350209 (2026). doi:10.64898/2026.04.05.26350209
 [15] Gehringer, C. K., Martin, G. P., Sperrin, M., Welch, C. & Riley, R. D. How to develop, validate, and update clinical prediction models using multinomial logistic regression. *J. Clin. Epidemiol.* **170**, 114–126 (2024).
 [16] Ogero, M. et al. Recalibrating prognostic models to improve predictions of in-hospital child mortality in resource-limited settings. *Paediatr. Perinat. Epidemiol.* **37**, 257–269 (2023).
 [17] Schnellinger, E. M. & Yang, W. Comparison of dynamic updating strategies for clinical prediction models. *Diagn. Progn. Res.* **5**, 20 (2021).
 [18] Tanner, K. T. & Keogh, R. H. Dynamic updating of clinical survival prediction models in a changing environment. *Diagn. Progn. Res.* **7**, 14 (2023).
 [19] Riley, R. D., Debray, T. P. A., Collins, G. S., Archer, L. et al. Minimum sample size for external validation of a clinical prediction model with a binary outcome. *Stat. Med.* **40**, 4230–4251 (2021).
-[20] Salluh, J. I. F., Quintairos, A., Dongelmans, D. A., Fujii, T. et al. How to establish and run a national ICU benchmarking registry. *Curr. Opin. Crit. Care* **32**, 523–530 (2026).
+[20] Salluh, J. I. F., Quintairos, A., Dongelmans, D. A., Fujii, T. et al. How to establish and run a national ICU benchmarking registry. *Curr. Opin. Crit. Care* **32**, 523–530 (2026). doi:10.1097/mcc.0000000000001411
 [21] Moser, A., Reinikainen, M., Jakob, S. M., Selander, T. A. et al. Mortality prediction in intensive care units including premorbid functional status improved performance and internal validity. *J. Clin. Epidemiol.* **142**, 55–63 (2022).
-[22] van Geloven, N. et al. Beyond model development in healthcare AI: post-development robustness, post-deployment monitoring, and lifecycle governance. *Healthcare* **14**, 1459 (2026).
+[22] El Arab, R. A., Mustafa, M. H., Almagharbeh, W. T., Saleem, N. H. et al. Beyond model development in healthcare AI: post-development robustness, post-deployment monitoring, and lifecycle governance. *Healthcare* **14**, 1459 (2026). doi:10.3390/healthcare14111459
 [23] Riley, R. D. et al. Transparent reporting of multivariable prediction models developed or validated using clustered data (TRIPOD-Cluster): explanation and elaboration. *BMJ* **380**, e071058 (2023).
 [24] Collins, G. S. et al. TRIPOD+AI statement: updated guidance for reporting clinical prediction models that use regression or machine learning methods. *BMJ* **385**, e078378 (2024).
 [25] von Elm, E., Altman, D. G., Egger, M., Pocock, S. J., Gøtzsche, P. C. & Vandenbroucke, J. P. The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) statement: guidelines for reporting observational studies. *Ann. Intern. Med.* **147**, 573–577 (2007).
@@ -923,14 +923,16 @@ the authors' institution.
 **Flow of participants from eICU-CRD and MIMIC-IV into the analysis.**
 **Left, estimation cohort (eICU-CRD v2.0, 208 hospitals).** 200,859 unit stays → first ICU stay per
 patient (139,367) → age ≥65 years (71,734; ages >89 recorded as 90) → ICU length of stay ≥24 h (50,138)
-→ medical or medical–surgical ICU (31,307) → exclusion of deaths within 24 h of ICU admission (7)
-and of missing hospital outcome status (363) → **analysis cohort of 30,796 patients from 187 hospitals
+→ medical or medical–surgical ICU (31,307) → exclusion of deaths within 24 h of ICU admission (7) and
+of missing hospital outcome status (363) and of missing albumin, height and weight (141) →
+**analysis cohort of 30,796 patients from 187 hospitals
 (3,901 in-hospital deaths, 12.7%)**. A centre was eligible for the between-centre analyses if it
 contributed ≥100 patients and ≥10 deaths, leaving **k = 103 centres**.
 **Right, external application (MIMIC-IV v3.1).** 94,458 ICU stays → first ICU stay per patient (65,366)
-→ age ≥65 years (35,499, age corrected by the difference between admission and anchor year)
+→ age ≥65 years (35,499; age at admission = anchor_age + (admission year − anchor year))
 → ICU length of stay ≥24 h (28,607) → first stay in a medical or medical–surgical ICU (8,629)
-→ exclusion of deaths within 24 h of ICU admission (35) → **analysis cohort of 8,579 patients
+→ exclusion of deaths within 24 h of ICU admission (35) and of missing albumin, height and
+weight (15) → **analysis cohort of 8,579 patients
 (1,654 in-hospital deaths, 19.3%)**. MIMIC-IV comprises a **single centre** (Beth Israel Deaconess
 Medical Center); the eICU-derived model was applied to it **without refitting**.
 **Notes.** (i) The exclusion of patients missing all of albumin, height and weight (n = 141 in eICU,
@@ -990,8 +992,8 @@ i.e. in up to one in five centres the model performed worse than treating everyo
 **(a)** Learning-curve analysis: for each $m$, $m$ patients per centre were drawn for local recalibration and the remainder for evaluation ($n\ge 2m$; 100 repeats per centre-$m$ cell). y axis: proportion of attempts with residual O/E within ±10% for S1 (intercept only) and S2 (intercept + slope); dotted line, no recalibration; dashed line, the 50% target; k, the number of contributing centres. **With 25 local patients, naive recalibration was worse than no recalibration at all (21.4% → 15.3%); the 50% target was never reached.**
 **(b)** Residual miscalibration |$a$| (median; band → P90).
 **(c)** Empirical-Bayes (EB) shrinkage removes the penalty: 103 centres; 200 paired resamples per centre-$m$ cell; $\bar a$ and per-centre SEs were leave-one-centre-out cross-fitted, so no centre's evaluation data entered its own shrinkage parameters. S0, no recalibration; S1/S2, naive; S3, EB shrinkage, $\hat a_{\mathrm{EB}}=\bar a+\lambda(\hat a_{\mathrm{ML}}-\bar a)$, $\lambda=\tau^2/(\tau^2+\mathrm{SE}^2)$. At $m$ = 25 the success rate rose from 15.5% to 24.3% (paired difference +9.05 percentage points, Wilcoxon P = 3.7×10⁻¹¹²), surpassing no recalibration (21.4%); median $\lambda$ 0.234/0.374/0.536/0.712 (m = 25/50/100/200), and residual |$a$| fell from 0.44 (naive) to 0.26.
-**(d)** Shrinkage parameters estimated once from eICU transfer to a different database: MIMIC-IV treated as a single new centre; $\bar a$ = +0.030 and $\tau^2$ = 0.131 fixed from eICU, never re-estimated; the offset to recover, $a^*$ = +0.221. EB shrinkage outperformed naive recalibration at every $m$ (at $m$ = 25: 47.0% vs 23.5%, +23.5 percentage points, Wilcoxon P = 6.3×10⁻⁷); the small dip at $m$ = 50 (47.0% → 46.0%) is within Monte-Carlo error (200-draw SE ≈ 3.5 pp); **25 patients with shrinkage matched the success rate naive recalibration reached only with ≈150 patients — a six-fold smaller local requirement.**
-**Notes.** The contributing-centre set shrinks with $m$; the S0 line is the *within-m* benchmark — the no-recalibration rate at that same $m$ (not a learning effect). Panels a–b use 100 resampling attempts (15.3% at $m$ = 25), panels c–d 200 paired attempts (15.5%); both are correct independent draws — comparisons are within, not between, panels. MIMIC-IV is a single-centre database: panel d tests whether the shrinkage parameters transfer across databases and does not constitute multicentre external validation, which can only be evaluated within eICU itself (panel c).
+**(d)** Shrinkage parameters estimated once from eICU transfer to a different database: MIMIC-IV treated as a single new centre; $\bar a$ = +0.030 and $\tau^2$ = 0.131 fixed from eICU, never re-estimated; the offset to recover, *â* = +0.221. EB shrinkage outperformed naive recalibration at every $m$ (at $m$ = 25: 47.0% vs 23.5%, +23.5 percentage points, Wilcoxon P = 6.3×10⁻⁷); the small dip at $m$ = 50 (47.0% → 46.0%) is within Monte-Carlo error (200-draw SE ≈ 3.5 pp); **25 patients with shrinkage matched the success rate naive recalibration reached only with ≈150 patients — a six-fold smaller local requirement.**
+**Notes.** The contributing-centre set shrinks with $m$; the S0 line is the within-m benchmark — the no-recalibration rate at that same $m$ (not a learning effect). Panels a–b use 100 resampling attempts (15.3% at $m$ = 25), panels c–d 200 paired attempts (15.5%); both are correct independent draws — comparisons are within, not between, panels. MIMIC-IV is a single-centre database: panel d tests whether the shrinkage parameters transfer across databases and does not constitute multicentre external validation, which can only be evaluated within eICU itself (panel c).
 
 ---
 
