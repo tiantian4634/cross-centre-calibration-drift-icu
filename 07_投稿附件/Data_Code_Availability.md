@@ -29,7 +29,8 @@ agreement; typical turnaround is several weeks. Neither database can be redistri
    scores. **This table contains no patient identifiers, no dates and no free text**, and is deposited at
    the repository DOI below. It is the minimal object required to reproduce Figures 3 and 4.
 3. **All derived result files** (per-centre tables, bootstrap and resampling outputs, heterogeneity
-   estimates under all four estimation frameworks, sensitivity analyses).
+   estimates under all four estimation frameworks, sensitivity analyses). Variable definitions and
+   coding are consolidated in Supplementary Table S6.
 
 ### What we do not share
 Patient-level rows from either database are **not** redistributed, consistent with the terms of both data

@@ -183,6 +183,7 @@ CONT = [
     ("Supplementary Table S3", "Sensitivity of the empirical-Bayes result to the choice of variance"),
     ("Supplementary Table S4", "Characteristics of eligible versus excluded centres (post-hoc, exploratory)"),
     ("Supplementary Table S5", "Success rates under the prespecified ±20% band (secondary measure)"),
+    ("Supplementary Table S6", "Variable definitions and coding"),
     ("Supplementary Note", "Prespecified analysis plans: index, chronology and disclosures"),
 ]
 add_table([["Item", "Title"]] + [[a, b] for a, b in CONT], widths=[4.6, CW - 4.6], font_pt=9)
@@ -267,6 +268,9 @@ SPECS = [
     ("## Supplementary Table S5",
      "Supplementary Table S5. Success rates under the prespecified ±20% band (|O/E − 1| ≤ 0.20), secondary measure.",
      [4.6, 2.2, 2.0, 2.0, 2.0, 2.4, CW - 15.2]),
+    ("## Supplementary Table S6",
+     "Supplementary Table S6. Variable definitions and coding.",
+     [3.0, 3.4, 5.6, CW - 12.0]),
 ]
 for fname, label, widths in SPECS:
     rows, _ = md_rows(tab, fname)
@@ -289,7 +293,7 @@ for fname, label, widths in SPECS:
         add_md(p, _leg, size=8.5, color=GREY)
     else:
         para("(legend missing)", size=8.5, color=RGBColor(0x8B, 0, 0))
-print("  [2] 三张补充表已入册")
+print("  [2] 六张补充表已入册 (S1–S6)")
 
 # ── 4. Supplementary Note ────────────────────────────────
 note = open(os.path.join(B, "07_投稿附件", "S1_分析计划汇总与披露.md"), encoding="utf-8").read()

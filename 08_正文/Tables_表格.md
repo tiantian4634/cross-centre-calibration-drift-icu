@@ -177,6 +177,34 @@ centre-level residual and is independent of *m*: 21.4% (±10%) and 41.7% (±20%)
 
 ---
 
+## Supplementary Table S6 —— 变量定义与编码（Variable definitions and coding）
+
+**Supplementary Table S6. Variable definitions and coding**
+
+| Variable | Source | Definition (units) | Coding |
+|---|---|---|---|
+| stay identifier | eICU-CRD / MIMIC-IV native | database stay/patient identifier, used only for pairing and first-stay logic | identifier (no clinical meaning) |
+| hospital | eICU-CRD native (de-identified) | contributing hospital of the unit stay; drives the centre-level analyses | identifier |
+| age | eICU native record; MIMIC-IV derived | age at ICU admission, years | numeric; eICU records ages >89 as 90, MIMIC-IV censors them (91 at anchor year) |
+| sex | both native | recorded sex | male = 1, female = 0 |
+| SOFA | derived per published score | Sequential Organ Failure Assessment from native physiology/laboratory items; components per the published definition | integer 0–24; standardised (z-score) in pooled models |
+| OASIS | derived per published score | Oxford Acute Severity of Illness Score from admission variables | integer in published range; standardised |
+| SAPS-II | derived per published score | Simplified Acute Physiology Score II | integer in published range; standardised |
+| invasive ventilation | eICU-CRD / MIMIC-IV native as supplied | recorded invasive ventilation during the stay | 1 = yes, 0 = no |
+| hospital death | eICU-CRD (hospital discharge outcome); MIMIC-IV native | death before hospital discharge of the index admission | 1 = died, 0 = survived |
+| ICU death | eICU-CRD (unit discharge outcome); MIMIC-IV native | death before ICU discharge | 1 = died, 0 = survived |
+| Charlson index | derived from coded diagnoses (published weights) | comorbidity burden | numeric; missing in 11.6% (eICU-CRD) and 0.04% (MIMIC-IV); complete cases in model M3 |
+| albumin, height, weight | eICU-CRD / MIMIC-IV native | used only for the extraction rule (excluded when all three are missing: 141 eICU-CRD, 15 MIMIC-IV; Figure 1) | not analysed in this study |
+
+**Supplementary Table S6 legend.** All variables are taken or derived from the two source databases and
+were used as supplied except where a derived definition is given in Methods (the calibration offset,
+its standard error, the calibration slope, and age at admission for MIMIC-IV). Derived scores follow
+the published component definitions of the respective scores. Coding is repeated here for reader
+convenience; this table changes no reported result, and patient-level values are not redistributed
+(Data Availability statement).
+
+---
+
 ## 装配时的核对
 
 - [ ] 三张表均在 Word 中为**可编辑表格**（非图片）

@@ -311,7 +311,7 @@ ROUND3 = [
     ("R3-17", "medRxiv 引用格式与首页版式", "NO CHANGE; rebutted as a review-build property",
      "The DOI form 'doi:10.64898/2026.04.05.26350209' is the journal-standard medRxiv citation. The 'supplementary S1-3 all integrated / internal note' line is the top-page banner of the integrated REVIEW build used for this pre-review; it does not exist in the submission files (00_投稿包 quality control page-order verified)."),
     ("R3-extension", "给作者非强制建议 (SOFA=8 床旁图 / 随机效应排名)", "NOTE + one discussion move",
-     "Both are worthwhile for the revision round: the SOFA=8 cross-centre prediction-mortality figure is computable from the same per-centre offsets already on file; and the residual-variation benchmarking operational suggestion (report O/E intervals / random-effects ranking) is folded into the benchmarking paragraph in spirit via the 'quantity to be monitored' framing. Center-level variable listing for Data Availability is already in the repository README and is quoted in theresponse."),
+     "Both are worthwhile for the revision round: the SOFA=8 cross-centre prediction-mortality figure is computable from the same per-centre offsets already on file; and the residual-variation benchmarking operational suggestion (report O/E intervals / random-effects ranking) is folded into the benchmarking paragraph in spirit via the 'quantity to be monitored' framing. Center-level variable listing: the Data Availability statement already enumerates the centre-level table columns (n, deaths, observed and expected rates, O/E, calibration offset and standard error, per-centre AUC and calibration slope, one row per eligible centre per score), and variable definitions and coding are now consolidated in Supplementary Table S6."),
 ]
 EVIDENCE = EVIDENCE  # 保留两轮截图
 

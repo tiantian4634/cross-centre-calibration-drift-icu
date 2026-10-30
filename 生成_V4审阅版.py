@@ -419,6 +419,9 @@ SPECS = [
     ("## Supplementary Table S5",
      "Supplementary Table S5. Success rates under the prespecified ±20% band (|O/E − 1| ≤ 0.20), secondary measure.",
      [4.6, 2.2, 2.0, 2.0, 2.0, 2.4, CW - 15.2]),
+    ("## Supplementary Table S6",
+     "Supplementary Table S6. Variable definitions and coding.",
+     [3.0, 3.4, 5.6, CW - 12.0]),
 ]
 for fname, label, widths in SPECS:
     rows = md_rows(tab_src, fname)
