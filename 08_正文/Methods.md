@@ -56,7 +56,9 @@ cohort entering any analysis nor any reported result. It is reported here for tr
 extraction pipeline.
 
 **MIMIC-IV.** Of 94,458 ICU stays, we retained the first ICU stay per patient (65,366), restricted to
-patients aged ≥ 65 years (35,499; age at admission = `anchor_age` + (admission year − anchor year)),
+patients aged ≥ 65 years (35,499; age at admission = `anchor_age` + (admission year − anchor year);
+ages above 89 are recorded as 91 at the anchor year in MIMIC-IV, so very old ages are censored
+similarly in the two databases),
 with ICU length of stay ≥ 24 h (28,607), whose first ICU stay was in a medical ICU or
 medical–surgical ICU (8,629). Deaths within 24 h of ICU admission (n = 35) and stays in which albumin,
 height and weight were all missing (n = 15) were excluded. The resulting cohort comprised **8,579
@@ -92,8 +94,8 @@ disease spectrum, referral patterns and pre-ICU course could each produce the ob
 
 ## Study size and missing data
 
-**No sample size calculation was performed.** This is a secondary analysis of two existing databases,
-and the analysis used all patients meeting the eligibility criteria described above. The number of
+**No sample size calculation was performed.** This secondary analysis used all patients meeting the
+eligibility criteria described above. The number of
 hospitals entering the centre-level analyses was therefore a property of the data rather than of a
 design decision; the pre-specified eligibility threshold (≥ 100 patients and ≥ 10 in-hospital deaths
 per hospital) was fixed before any analysis was run and is reported for every cell.
@@ -104,10 +106,9 @@ missing), so no imputation was performed. Charlson comorbidity index was missing
 patients (11.6%) in eICU-CRD (2,807 of 26,436, 10.6%, within the 103-centre analysis subset) and in
 3 of 8,579 patients (0.04%) in MIMIC-IV. Comorbidity index enters only the descriptive case-mix
 ladder (model M3), which therefore uses complete cases: *n* = 27,236 and 97 hospitals, against
-*n* = 30,796 and 103 hospitals for M1 and M2. Because that analysis is descriptive and no
-confirmatory conclusion rests on M3, we did not impute. All analyses other than the case-mix ladder
-use the complete-case set defined by the cohort eligibility criteria, and that set has no missing
-values on any analysis variable.
+*n* = 30,796 and 103 hospitals for M1 and M2. Because that analysis is descriptive and no confirmatory conclusion rests on it, we did not impute. All analyses other than the case-mix ladder
+use the complete-case set defined by the eligibility criteria; that set has no missing values on any
+analysis variable.
 
 *Note on the exclusion step.* The exclusion of stays in which albumin, height and weight were all
 missing (141 patients in eICU-CRD, 15 in MIMIC-IV) is a cohort-eligibility filter inherited from
@@ -158,8 +159,10 @@ over [−12, 12] to a tolerance of 10⁻⁴. *a_h* = 0 indicates that the hospit
 the model's expectation; *a_h* > 0 indicates higher observed than predicted mortality. This is a
 calibration-in-the-large (intercept) measure with the calibration slope fixed at 1.
 
-The standard error of *a_h* was obtained by the delta method as
-`sqrt(max(ŷ(1 − ŷ), 10⁻⁹)/n_h) / max(mean(p(1 − p)), 10⁻⁹)`, where *n_h* is the hospital's sample size.
+The standard error of *a_h* follows the delta method on the calibration-in-the-large
+definition: *a_h* enters through ȳ, the hospital's observed mortality rate, whose derivative is
+dȳ/da_h = *w̄* (the mean of p(1 − p)); se(a_h) = `sqrt(ȳ(1 − ȳ)/n_h) / w̄`, with a numerical floor of
+10⁻⁹ inside both factors and *n_h* the hospital's sample size.
 
 **Calibration slope (b_h).** Within each hospital we fitted `logit(y) = α_h + β_h logit(p̂)` with a
 free intercept and retained β_h. All 103 slopes per score
@@ -169,7 +172,7 @@ gradient than the pooled model implies, below 1 a compressed one.
 **Quantitative variables and cut-points.** All three scores, age and comorbidity burden were
 analysed as continuous variables and standardised before fitting; they were not categorised. Cut-points
 used in this study were fixed in advance and are not data-driven: the four decision thresholds (0.10,
-0.20, 0.30, 0.40) and the hospital-eligibility threshold (≥ 100 patients and ≥ 10 in-hospital deaths).
+0.20, 0.30, 0.40), chosen to span the operating range of usual risk-stratification decisions, and the hospital-eligibility threshold (≥ 100 patients and ≥ 10 in-hospital deaths).
 
 The remaining cut-points were likewise fixed in the analysis plans written before execution
 (Supplementary Note, *Prespecified analysis plans*): the local recalibration sample sizes
@@ -336,11 +339,10 @@ bounds in the descriptive tier as measures of precision, not as tests.
 Every reported *P* value is accompanied by the name of the test used to produce it, the number of
 observations entering that test, whether the test was one- or two-sided, and the comparison being made.
 Where two groups are compared on identical resampling draws, the comparison is paired and the two-sided
-Wilcoxon signed-rank test is used; normality of the paired differences was not assumed, and a
-non-parametric test was selected for that reason. The pre-specified α level was 0.05 and all reported
-tests are two-sided. Group sizes are given for every analysis. Descriptive statistics are reported as the
-median with the 10th and 90th percentiles for skewed quantities (because these distributions are markedly
-asymmetric and small-sample), and ± indicates a standard error where stated. Analyses A–H report prespecified descriptive estimates, and the bounds reported are 10th and 90th
+Wilcoxon signed-rank test is used because the paired differences are not assumed normal. The
+pre-specified α level was 0.05 and all reported
+tests are two-sided. Group sizes are given for every analysis. Descriptive statistics are medians with the
+10th and 90th percentiles for skewed quantities, and ± indicates a standard error where stated. Analyses A–H report prespecified descriptive estimates, and the bounds reported are 10th and 90th
 percentiles rather than confidence intervals. Analysis K applied a prespecified agreement criterion to
 point estimates rather than a formal hypothesis test; the criterion is reported as met or not met. No *P* value in this manuscript is reported only as
 "significant"; each is given as a number.
@@ -356,8 +358,8 @@ variation, and not variation in the scale of the predictor, enters the interval.
 replicates were used with the pre-specified random seed (20261019), and the reported interval is the
 2.5th to 97.5th percentile of the replicate distribution.
 
-Percentile ranges reported elsewhere in this manuscript — for example the 10th and 90th percentiles
-of the per-hospital AUC, observed-to-expected ratio and calibration slope — are **spreads across
+Percentile ranges reported elsewhere (the 10th and 90th percentiles
+of the per-hospital AUC, observed-to-expected ratio and calibration slope) are **spreads across
 hospitals, not confidence intervals**, and are not presented as tests of any hypothesis.
 
 ## Software, seed and reproducibility

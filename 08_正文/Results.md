@@ -30,7 +30,7 @@
 The eICU-CRD cohort comprised 30,796 patients from 187 hospitals, of whom 3,901 (12.7%) died in
 hospital; 103 hospitals met the pre-specified centre-level eligibility criterion of ≥ 100 patients and
 ≥ 10 in-hospital deaths and entered the centre-level analyses (Fig. 1). The MIMIC-IV cohort comprised
-8,579 patients from a single academic medical centre, of whom 1,654 (19.3%) died (Table 1;
+8,579 patients from one academic centre, of whom 1,654 (19.3%) died (Table 1;
 Supplementary Table S1).
 
 ### Calibration varies widely across centres while discrimination does not
@@ -49,12 +49,12 @@ with the same pipeline, this consistency indicates that between-centre calibrati
 property of the setting rather than of any single instrument.
 
 Drift was not confined to a systematic offset. The per-hospital calibration slope, estimated with the
-intercept free, ranged from 0.720 to 1.639 (10th to 90th percentile; median 1.088), indicating that the
+intercept free, ranged from 0.720 to 1.639 (10th to 90th percentile; median 1.088): the
 **risk gradient itself** differs between hospitals and not merely the baseline event rate.
 
 For the descriptive analyses in this section and the four that follow, the reported quantities are
-estimates rather than tests. No hypothesis test was performed on the between-centre variation, the
-differences between scores, or the case-mix comparisons; ranges given are 10th and 90th percentiles
+estimates, not tests: **no hypothesis test was performed on the between-centre variation, the
+differences between scores, or the case-mix comparisons**; ranges are 10th and 90th percentiles
 across hospitals, not confidence intervals.
 
 ### Measured case-mix does not explain the drift
@@ -67,7 +67,7 @@ each step (Supplementary Fig. S1). Adding age and sex raised the pooled AUC by o
 ventilation raised the AUC by a further 0.011 (to 0.752) and lowered I² to 70.1%, a reduction of
 5.2 percentage points; τ² fell from 0.131 to 0.106.
 
-Because M3 also carries a smaller analysis set (27,236 patients and 97 hospitals, against 30,796 and 103 for M1 and M2), we separated the two contributions directly: refitting the M1 model (the score alone) on exactly the patients and hospitals used by M3 gave I² = 73.49%. Of the 5.2-percentage-point fall from M1 to M3, 1.9 points were therefore attributable to the change in analysis set and 3.4 points to the addition of the covariates themselves. The reduction reflects the covariates; the change in analysis set is the smaller contributor (Supplementary Fig. S1).
+Because M3 also carries a smaller analysis set (27,236 patients, 97 hospitals, against 30,796 and 103 for M1 and M2), refitting the M1 model on exactly those patients and hospitals gave I² = 73.49%: of the 5.2-percentage-point fall from M1 to M3, 1.9 points are attributable to the analysis set and 3.4 to the covariates (Supplementary Fig. S1).
 
 Measured case-mix therefore accounts for only a small share of the between-centre variation: four
 clinically relevant covariates, added together, explain around 5 percentage points of I² against a
@@ -84,11 +84,10 @@ within eICU), but calibration shifted: observed mortality was 19.3% against a mo
 MIMIC-IV's higher recorded Charlson index (3.5 vs 0.9) reflects more complete ICD coding, not
 case-mix difference; the model has no comorbidity term.
 
-That offset placed MIMIC-IV at the **66th percentile** of the distribution of the 103 eICU hospitals. A
-single-centre development cohort is therefore not an outlier in this setting; it sits well inside the
-multicentre distribution. This is consistent with the general observation that a model developed in one
-centre will systematically mis-estimate risk in another, without any centre being unusual; the variation
-being sampled is a property of the set of centres.
+That offset placed MIMIC-IV at the **66th percentile** of the 103 eICU hospitals: a single-centre
+development cohort is no outlier here, it sits inside the multicentre distribution — consistent with
+the general observation that a model developed in one centre systematically mis-estimates risk in
+another, without any centre being unusual.
 
 ### Drift strengthens rather than shrinks with centre size
 
@@ -100,7 +99,8 @@ from 56.7% in the smallest tertile (36 centres; median 145 patients) to 69.8% in
 absolute between-centre variance followed the same pattern, rising from τ² = 0.093 to 0.117 to 0.143.
 
 The variation is therefore a genuine between-hospital difference rather than an artefact of imprecise
-estimation in small samples.
+estimation in small samples. The 84 hospitals below the centre-level threshold are smaller and less
+severely ill (median 47 patients and 9.0% mortality versus 224 and 12.7%; Supplementary Table S4), so the eligible set over-represents larger, more acute hospitals.
 
 ### Calibration offset is not a stable attribute of a hospital
 
@@ -122,16 +122,17 @@ does not support any statement about a long-term temporal trend.**
 
 ### Drift changes what a risk threshold means at the bedside
 
-We next quantified the consequence of the observed drift for threshold-based decisions. For each
+We next quantified the drift's consequence for
+threshold-based decisions. For each
 hospital and each of four decision thresholds, we computed net benefit and the observed mortality among
 patients whose predicted risk exceeded the threshold (Fig. 4b; Supplementary Table S1).
 
 At a decision threshold of 0.20, the median proportion of patients flagged as high-risk was 12.8%, and
 the **observed mortality among those patients ranged from 15% to 52%** (10th to 90th percentile;
 median 33.3%); a 3.5-fold spread for the same model and the same threshold. Net benefit was positive
-in the median hospital (+0.021) but was **negative in 17.0% of centres**, meaning that acting on the
-model would have been worse than treating everyone as high-risk in those hospitals. The proportion of
-centres with negative net benefit rose from 6.2% at threshold 0.10 to 21.4% at 0.30 and 22.3% at 0.40.
+in the median hospital (+0.021) but was **negative in 17.0% of centres** (positive in the remainder),
+meaning acting on the
+model would have been worse than treating everyone as high-risk. Negative net benefit rose from 6.2% at threshold 0.10 to 21.4% at 0.30 and 22.3% at 0.40.
 
 ### Naive local recalibration carries a small-sample penalty
 
@@ -144,9 +145,11 @@ The answer was counter-intuitive. Re-estimating the intercept on 25 local patien
 worse than not recalibrating at all**: the proportion of resampling attempts landing within ±10% of
 perfect O/E fell from 21.4% (no recalibration) to 15.3%, and the median residual |*a*| rose from 0.308
 to 0.448 (Fig. 5b). Naive recalibration injects estimation noise that outweighs the signal at small
-sample sizes. Performance improved gradually with *m* (20.0% at 50 patients, 25.5% at 100, and 34.3%
+sample sizes. Success improved gradually with *m* (20.0% at 50 patients, 25.5% at 100, and 34.3%
 at 200), but **the pre-specified criterion of a 50% success rate was never reached within 200 local
-patients**, which is reported here as a negative finding.
+patients**, which is reported here as a negative finding. Under the prespecified ±20% band the same
+strategies rose steeply (S1: 30.6% at 25 and 62.8% at 200) while the penalty
+against no recalibration (41.7%) persisted at 25 (Supplementary Table S5).
 
 Estimating a second parameter did not help. Re-estimating both intercept and calibration slope was
 worse than intercept-only at every sample size; at *m* = 25 the success rate was 13.7% and the median
@@ -158,16 +161,16 @@ The number of hospitals contributing to each cell is reported throughout, becaus
 
 ### Empirical-Bayes shrinkage removes the small-sample penalty
 
-We then tested whether shrinking each hospital's estimated offset toward the pooled mean could recover
-the small-sample performance (Fig. 5c). Four strategies were compared on identical draws: no
+We then tested whether shrinking each offset toward the pooled mean recovers small-sample performance
+(Fig. 5c). Four strategies were compared on identical draws: no
 recalibration (S0), naive intercept-only (S1), naive intercept plus slope (S2), and empirical-Bayes
 shrinkage of the intercept (S3), with the shrinkage target and between-centre variance estimated by
 leave-one-centre-out cross-fitting. The shrinkage weight *λ* is a reliability weight: when *SE*²
 dominates *τ*², λ→0 and the local estimate collapses to the pooled mean; when *τ*² dominates, λ→1
 and it is retained.
 
-At 25 local patients, shrinkage achieved a ±10% success rate of **24.3%** against 15.5% for naive
-recalibration and 21.4% for no recalibration: the strategy outperformed both alternatives at the sample
+At 25 local patients, shrinkage achieved a ±10% success rate of **24.3%** against 15.5% (naive
+recalibration) and 21.4% (no recalibration), outperforming both at the sample
 size at which naive recalibration is harmful (Fig. 5c). Paired on identical draws, the difference
 between S3 and S1 at *m* = 25 was **+9.05 percentage points** (19,678 paired (hospital, replicate)
 observations; two-sided Wilcoxon signed-rank test, P = 3.7 × 10⁻¹¹²). At *m* = 100 the paired difference
@@ -196,10 +199,9 @@ naive recalibration at every sample size: +19.0 points at 50 patients (P = 4.1 �
 α = 0.05, two-sided).
 
 Expressed in terms of local data requirement, **25 local patients combined with shrinkage reached the
-success rate that naive recalibration attained only with roughly 150 local patients** (naive
-recalibration reached 40.5% at 100 patients and 53.0% at 200; linear interpolation gives approximately
-152); an approximately six-fold reduction. That comparison crosses resampling schemes (Fig. 5c vs 5d) and is illustrative. As expected, the advantage narrowed as the local sample
-grew, since naive estimators become adequate once enough data are available.
+success rate that naive recalibration attained only with roughly 150 local patients** (naive: 40.5% at
+100 and 53.0% at 200; interpolation ≈ 152); an approximately six-fold reduction. That comparison crosses resampling schemes (Fig. 5c vs 5d) and is illustrative. The advantage narrows as the local sample
+grows, since naive estimators become adequate with more data.
 
 **The pre-specified criterion for this analysis was met** (at *m* = 25, S3 exceeded both S1 and S0).
 

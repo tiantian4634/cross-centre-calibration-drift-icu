@@ -63,107 +63,117 @@ with an empirical-Bayes shrinkage alternative.
 
 In 103 hospitals using the same scores and the same pipeline, a SOFA-based model discriminated
 consistently (per-centre AUC 0.649–0.812) while its calibration varied by more than twofold
-(observed-to-expected mortality 0.69–1.54; between-centre I² = 75.4%). Measured case-mix explained
-little of that variation, the variation grew rather than shrank in the largest and therefore most
-precisely estimated centres, a hospital's offset in one year explained only about a third of its
+(observed-to-expected mortality 0.69–1.54; between-centre I² = 75.4%). Measured case-mix explains
+little of it, the variation grew in the most precisely estimated centres, a hospital's offset in one year explained a third of its
 offset in the next, and at a decision threshold of 0.20 the observed mortality among patients
-flagged high-risk ranged from 15% to 52% across centres, with net benefit negative in 17.0% of them.
+flagged high-risk ranged from 15% to 52%, with net benefit negative in 17.0% of centres.
 The response that follows most naturally from these findings — recalibrate locally — turned out to
 carry a penalty: recalibrating on 25 local patients was worse than not recalibrating at all.
 Shrinking the local estimate toward the pooled mean removed that penalty, and the parameters needed
 to do so could be estimated once and used in a second database without refitting.
 
-**Relation to prior work on calibration drift.** The closest antecedents to the present study
-treat calibration drift as a *temporal* phenomenon within one environment: Han et al. detected
-increasing miscalibration over time using online stochastic gradient descent and adaptive windows
-[[HAN]], and Zhang et al. proposed lifelong machine learning to counter it across four tumour datasets
-[[ZHANG_LIFELONG]]. Both are well-suited to their question and neither is contradicted here. The present study
-addresses the orthogonal question — the *spatial* component — and does so at a scale rarely
-attempted: rather than one environment followed over time or one transfer from centre to centre
-[[RILEY_EXT,ZHANG_TRANSPORT]], we observed 103 centres simultaneously and were able to partition the resulting variance. Work
-in the opposite direction reaches the same verdict from a different angle: models developed in
-MIMIC-IV and applied to 208 eICU-CRD hospitals without recalibration lost external calibration
-faster than discrimination as feature complexity grew; the external calibration slope fell from
-1.007 to 0.417 while a single aggregate score stayed essentially intact [[YAMAMOTO]]. A
-clinically important corollary is that the two sources are not interchangeable. A hospital offset of
-which 41.6% of the variance is temporal cannot be fully corrected by a permanent recalibration, however
+**Relation to prior work on calibration drift.** The closest antecedents treat calibration
+drift as a *temporal* phenomenon within one environment: Han et al. detected increasing
+miscalibration over time with online stochastic gradients and adaptive windows [[HAN]], and Zhang
+et al. countered it with lifelong machine learning across four tumour datasets [[ZHANG_LIFELONG]]. Both suit their question and neither is contradicted here. The present study
+addresses the orthogonal *spatial* question at a rarely attempted scale: 103 centres observed
+simultaneously, allowing variance partitioning [[RILEY_EXT,ZHANG_TRANSPORT]]. From
+the opposite direction the same verdict emerges: a MIMIC-IV-developed model applied without
+recalibration to 208 eICU hospitals lost external calibration faster than discrimination as feature
+complexity grew (calibration slope 1.007 → 0.417), while a single aggregate score stayed intact
+[[YAMAMOTO]]. A clinical corollary: the two sources are not
+interchangeable. A hospital offset of
+which 41.6% of the variance is temporal in those two consecutive years cannot be fully corrected by a permanent recalibration, however
 large the sample used to fit it, and a hospital-to-hospital difference that persists after case-mix adjustment
-cannot be explained by improvement over time. Decomposing them would require a database spanning
-several years, which eICU-CRD does not.
+cannot be explained by improvement over time. Separating them would need multi-year data, which
+eICU-CRD does not provide.
 
 **Relation to the model-updating literature.** A mature methodological literature describes how to
 evaluate and update a prediction model, including when recalibration is appropriate [[BINUYA,ENSOR,GEHRINGER,OGERO]], and
-empirical comparisons of update strategies exist [[SCHNELLINGER,TANNER]]. Those recommendations are generally
-presented as unqualified: if calibration in the target setting is poor, recalibrate. Our findings
-qualify rather than contradict them. The literature assumes a local sample large enough for the recalibration to be estimated
-reliably. Formal minimum sample sizes exist for external validation [[RILEY_SS]], but they address the
+empirical comparisons of update strategies exist [[SCHNELLINGER,TANNER]]. Those recommendations read: if calibration in the target setting is
+poor, recalibrate — assuming a local sample large enough for the estimate to be reliable. Our findings
+qualify rather than contradict them. Formal minimum sample sizes exist for external validation [[RILEY_SS]] but address the
 precision of the calibration estimate rather than whether recalibration improves decisions. We
 found that with 25 local patients naive recalibration lowered the proportion of resamples reaching
 ±10% accuracy from 21.4% to 15.3%, that estimating a second parameter (the calibration slope) made it
 worse still, and that a 50% success rate was not reached even at 200 patients. That missing quantity — how many local patients are needed before recalibration helps rather
-than harms — appears to govern whether the recommendation helps.
+than harms — appears to govern its value.
 
-**The shrinkage result and its limits.** Empirical-Bayes shrinkage of the local offset toward the
+**The shrinkage result and its limits.** Empirical-Bayes shrinkage toward the
 pooled mean recovered small-sample performance (24.3% versus 15.5% at 25 patients) and transferred to
-MIMIC-IV with parameters fixed from eICU. Two qualifications belong with that result. First, the
-advantage is a property of small local samples: at 200 local patients it fell to between +0.2 and
-+2.0 percentage points depending on the estimator of the between-centre variance, and was no longer
-statistically detectable for the smaller of those. Second, its magnitude depends on τ², the
-between-centre variance, which itself was not agreed across estimation frameworks: our pre-specified
-criterion for agreement was only partly met, with the one-stage multilevel estimate falling 50.1%
-below the two-stage values. A plausible explanation is that two-stage calibration offsets are
-computed with the slope fixed at 1 while observed slopes ranged from 0.720 to 1.639, so that slope
-variation is absorbed into the intercept; we present this as a possible mechanism rather than a
-finding.
+MIMIC-IV with parameters fixed from eICU. Two qualifications stand. First, the
+advantage belongs to small local samples: at 200 patients it fell to between +0.2 and
++2.0 points depending on the estimator of the between-centre variance, and was no longer
+statistically detectable for the smaller of those. Second, its magnitude depends on τ², on which
+the estimation frameworks disagree: the one-stage multilevel estimate fell 50.1% below the two-stage
+values (analysis K). A plausible
+mechanism, presented as such rather than as a finding: two-stage offsets are computed with the slope
+fixed at 1, so slope variation (observed range 0.720–1.639) is absorbed into the intercept. The
+framework uncertainty also bounds the scope: with the one-stage τ²
+= 0.0648 the 25-patient gain narrows from +9.1 to +6.5 points and is undetectable at 200 (Supplementary
+Table S3) — the guidance for small local samples under any plausible τ². Transfer also shows why
+shrinkage survives imperfect targets: the MIMIC-IV target (+0.030) sat ≈ 1.5 τ below
+the true offset (+0.221), yet with a raw local SE of ~0.5 at 25 patients (λ ≈ 0.33)
+variance reduction outweighed target bias.
 
 **Consequences for benchmarking.** Benchmarking systems for ICU care are expanding internationally
-[[ICU_REGISTRY,MOSER]], and such systems presume that observed-to-expected ratios are comparable between
-institutions. Our results indicate that this premise requires active verification: an observed-to-
-expected ratio of 0.69 in one hospital and 1.54 in another, under the same model, is not a
-difference in performance that a benchmark can safely interpret. Because the variation is only
-partly temporal and not explained by measured case-mix, neither a stable unit-level adjustment nor a
-one-off recalibration resolves it. The emerging focus on post-deployment monitoring and lifecycle
-governance of clinical models [[VAN_GELOVEN]] would be strengthened by treating centre-specific calibration as
-a quantity to be monitored rather than assumed.
+[[ICU_REGISTRY,MOSER]]. The premise that observed-to-expected ratios are comparable requires active
+verification: 0.69 in one hospital and 1.54 in another under the same model is not a difference a
+benchmark can safely interpret. The variation is only partly
+temporal and unexplained by measured case-mix, so neither a stable unit-level adjustment nor one-off
+recalibration resolves it. Post-deployment monitoring and lifecycle
+governance of clinical models [[VAN_GELOVEN]] gains from treating centre-specific calibration as a
+quantity to be monitored rather than assumed. Negative net benefit speaks only to the
+treat-all comparator at that threshold, not to clinical worth in general: the same model may be
+beneficial at another threshold or decision.
 
-**Reporting standards.** The data are clustered by hospital, the structure that TRIPOD-Cluster
-[[TRIPOD_CLUSTER]] addresses and that TRIPOD+AI [[TRIPOD_AI]] extends to prediction models. We report
-with STROBE [[STROBE]] and its RECORD extension for routinely collected health data [[RECORD]],
-because no prediction model was developed or deployed for patient-level decisions here: the pooled
+**Centre selection and among-centre variation.** The eligibility screen over-represents larger, more
+acute hospitals — the exclusion removes the smaller and less severely ill centres (Supplementary Table S4) —
+so variation across all 187 cannot be settled within the prespecified design; plausibly it is larger,
+since small centres drift more and are detected less. Why the largest centres show the most
+heterogeneity also remains unresolved: care-practice diversity and detection limits are candidates,
+while similar SOFA dispersion across tertiles (SD 2.7/3.2/3.1) argues against case-mix width alone.
+
+**Reporting standards.** The data are clustered by hospital — the structure TRIPOD-Cluster
+[[TRIPOD_CLUSTER]] addresses and TRIPOD+AI [[TRIPOD_AI]] extends — and are reported with STROBE
+[[STROBE]] and its RECORD extension for routinely collected data [[RECORD]], because no
+prediction model was developed or deployed for patient-level decisions: the pooled model served
 model served as a measurement instrument for quantifying drift, and the object of study is the
-between-centre variation itself. The clustered-data elements (clustering level, centres per estimate,
-resampling design) are reported throughout.
+between-centre variation itself. The elements TRIPOD-Cluster emphasises — the clustering level, the
+centres per estimate, the centre-level eligibility and the resampling design — are all reported here;
+we chose the reporting standards matched to the study object rather than avoiding them.
 
-**Limitations.** First, both databases were collected for purposes other than this study, as is inherent in the
-secondary-use design. Two consequences follow, and both are limitations of that design rather than of the analysis. Misclassification in the underlying records (in the severity scores, in comorbidity coding and in the recorded discharge status) cannot be detected here, and its
-direction and magnitude could not be quantified. And because eICU-CRD covers only 2014 and
-2015, we could not assess how eligibility for the cohort, or the coding practices behind it,
-changed over time. The year-to-year analysis reported here addresses stability across two
-consecutive years and nothing more, and the study therefore quantifies the spatial component of
-drift while providing no evidence about longer-term temporal trends. The 41.6% temporal share is
+**Limitations.** First, both databases were collected for other purposes, as is inherent in the
+secondary-use design. Two consequences follow, both of the design rather than of the analysis. Misclassification in the underlying records (severity
+scores, comorbidity coding, recorded discharge status) cannot be detected here, and its
+direction and magnitude could not be quantified. And because eICU-CRD covers only 2014–2015, we could not assess how cohort eligibility or
+coding practices changed over time. The year-to-year analysis addresses stability across two consecutive
+years only; the study quantifies the spatial component of drift and provides no evidence on longer-term
+temporal trends. The 41.6% temporal share is
 specific to those two years, not a portable constant. Second, MIMIC-IV is a single centre, so the external analysis tests whether the shrinkage
 parameters transfer across databases; it is not multicentre external validation of the strategy,
-which can only be evaluated within eICU itself. Third, the variation not explained by measured
-case-mix is described here as residual between-hospital variation. Unmeasured differences in
-disease spectrum, referral patterns and pre-ICU course would produce the same pattern, and this
-study is not designed to attribute the variation to any of them; no conclusion about quality of
-care is drawn. Fourth, the two databases record comorbidity differently. The mean Charlson index in
-MIMIC-IV (3.5) is far higher than in eICU-CRD (0.9), reflecting more complete inpatient ICD coding
-in MIMIC-IV rather than a difference in case-mix. Because the external analysis uses a single-score
-SOFA model that contains no comorbidity term, this does not affect any result reported here, but it
-limits how far the two cohorts can be compared on measured case-mix. The case-mix ladder uses only
+which can only be evaluated within eICU itself. Third, the variation unexplained by measured
+case-mix is described as residual between-hospital variation. Unmeasured differences in
+disease spectrum, referral patterns and pre-ICU course would produce the same pattern; this study
+cannot attribute the variation to any of them, and no quality-of-care conclusion is drawn. Fourth, the
+two databases record comorbidity differently: the mean Charlson index in
+MIMIC-IV (3.5) far exceeds eICU-CRD (0.9) through more complete ICD coding rather than case-mix. This
+systematic difference in recording practice may extend to other unmeasured dimensions (disease
+spectrum, referral pattern, pre-ICU course), so the MIMIC-IV offset cannot be attributed wholly to
+either. Because the external
+SOFA model contains no comorbidity term, this does not affect any result here, but it
+limits how far the cohorts can be compared on measured case-mix. The case-mix ladder uses only
 complete cases (comorbidity missing in 11.6% of eICU patients); the direction of bias is unknown.
 Fifth, we studied three
-established scores and one pooled model specification; other specifications, and scores not
-evaluated here, may behave differently. Sixth, the empirical-Bayes parameters were estimated in a
-single database, and although they transferred to a second, the extent to which they generalise to
-other health systems and other score families remains open. Seventh, the cohort is restricted to
+scores and one pooled specification; others may behave differently. Sixth, the empirical-Bayes
+parameters were estimated in one database and transferred to a second; generalisation to other
+systems and score families remains open. Seventh, the cohort is restricted to
 patients aged ≥ 65 years in medical or medical–surgical ICUs, so the estimates describe an elderly
 medical-ICU population and may not transport to younger or surgical populations.
 
 **Conclusion.** Discrimination transports; calibration does not, and the difference is large enough
-to change what a risk threshold means in different hospitals. Local recalibration is not the
-remedy it is usually assumed to be unless a centre has several hundred of its own patients, and
-shrinking the local estimate toward the pooled mean makes it useful far sooner. What this study
+to change what a risk threshold means in different hospitals. Local recalibration is not the assumed
+remedy unless a centre has several hundred of its own patients, and shrinkage toward the pooled mean
+makes it useful far sooner. What this study
 offers is a statistical recalibration strategy and a measurement of how much local data it needs —
 not a clinical recommendation.

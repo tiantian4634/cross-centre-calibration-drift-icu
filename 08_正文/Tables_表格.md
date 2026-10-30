@@ -137,6 +137,46 @@ replacement for naive estimation.
 
 ---
 
+## Supplementary Table S4 —— 中心级资格标准的中心构成比较（post-hoc，exploratory）
+
+**Supplementary Table S4. Characteristics of the eligible (103) and excluded (84) centres, all 187 hospitals**
+
+| Centre group | Centres, *k* | Patients per centre, median (IQR) | Mortality, median | SOFA, mean | Ventilated, % |
+|---|---|---|---|---|---|
+| Eligible (≥100 patients and ≥10 deaths) | 103 | 224 (166–306) | 12.7% | 4.39 | 23.2 |
+| Excluded (below that threshold) | 84 | 47 (19–78) | 9.0% | 3.48 | 12.6 |
+
+**Supplementary Table S4 legend.** All 187 hospitals that contribute patients to the pooled model were
+characterised from the analysis cohort; means are patient-weighted within each group of centres. The
+excluded 44.9% of centres are smaller and less severely ill on average; how their calibration offsets
+behave cannot be estimated within the prespecified centre-level framework, and the direction of any
+resulting difference in the between-centre variance is discussed in the main text.
+
+---
+
+## Supplementary Table S5 —— ±20% 宽松带下的成功率（预注册口径的次要指标；post-hoc 补报）
+
+**Supplementary Table S5. Success rates under the prespecified ±20% band (|O/E − 1| ≤ 0.20), secondary measure**
+
+| Analysis | Strategy | *m* = 25 | *m* = 50 | *m* = 100 | *m* = 200 | *m* = 400 |
+|---|---|---|---|---|---|---|
+| E (learning curve, naive) | S1 | 30.6% | 39.3% | 48.9% | 62.8% | — |
+| E (learning curve, naive) | S2 | 30.2% | 38.7% | 48.8% | 62.1% | — |
+| I (shrinkage, eICU) | S1 | 31.0% | 38.3% | 48.4% | 59.9% | — |
+| I (shrinkage, eICU) | S2 | 30.4% | 38.2% | 48.2% | 59.8% | — |
+| I (shrinkage, eICU) | S3 | 47.9% | 51.0% | 56.4% | 61.4% | — |
+| J (transfer, MIMIC-IV) | S1 | 42.0% | 49.5% | 71.5% | 84.5% | 97.0% |
+| J (transfer, MIMIC-IV) | S3 | 82.0% | 80.0% | 85.0% | 89.0% | 98.0% |
+
+**Supplementary Table S5 legend.** The prespecified 50% target applies only to the ±10% band; this
+table reports the ±20% secondary band named in the prespecified analysis plan and Methods. Under
+±20%, naive recalibration at 25 patients remains worse than no recalibration on eICU (30.6% versus
+41.7%), the empirical-Bayes advantage is undiminished (47.9% versus 31.0%; transfer 82.0% versus
+42.0%), and rates converge at larger *m* as in the primary band. The no-recalibration benchmark is a
+centre-level residual and is independent of *m*: 21.4% (±10%) and 41.7% (±20%).
+
+---
+
 ## 装配时的核对
 
 - [ ] 三张表均在 Word 中为**可编辑表格**（非图片）

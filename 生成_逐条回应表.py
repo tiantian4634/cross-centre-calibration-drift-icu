@@ -51,8 +51,8 @@ def para(text="", size=9.5, color=DARK):
 
 add("Response to the pre-review comments — two rounds consolidated", size=14, bold=True)
 para("Manuscript: Discrimination transports, calibration does not: calibration drift in severity scoring "
-     "across 187 intensive-care units.  Round 1 comments (v2) + Round 2 audit of the response and of the "
-     "v3 revised draft.  Date: 2026-10-30.", size=9.5, color=GREY)
+     "across 187 intensive-care units.  Round 1 comments (v2) + Round 2 audit + Round 3 full review "
+     "(on the v4 integrated draft).  Date: 2026-10-31.", size=9.5, color=GREY)
 para("Method note (unchanged in spirit, upgraded in the second round): every item is verified against the "
      "manuscript source files, the original figure raster, the generated PDF/DOCX text layer, raw "
      "statistic files, or the online DOI registry / OpenAlex records — and, for the contested round-2 "
@@ -274,8 +274,46 @@ EVIDENCE = [
     (r"10_预审版\_证据截图\table1_page.png", "A-3 · v3 page 4: Table 1 rendered as an 8×4 ruled grid; note reads 'I², proportion of total variation…' (rows R2-M2/R2-E7)."),
     (r"10_预审版\_证据截图\fig2_page.png", "A-2 · v3 page 5: Figure 2/3 — in-figure annotation 'pooled AUC 0.732 (95% CI 0.720–0.745)' (source of the ghost string), caption 'Point colour encodes a_h…' (rows R2-M4/R2-a_h)."),
     (r"10_预审版\_证据截图\slope_formula_page.png", "A-4 · v3 page 16: 'logit(y) = α_h + β_h logit(p̂)… All 103 slopes per score converged' (rows R2-M10/R2-E1)."),
-    (r"10_预审版\_证据截图\refs_page.png", "A-5 · v3 page 21: references rendered as separate paragraphs, '[2] Johnson…' bracket intact; [13]/[14]/[20]/[22] carry DOIs, [22] corrected to El Arab et al. (rows R2-M1/R2-REFS)."),
+    (r"10_预审版\_证据截图\refs_page.png", "A-5 · v3 page 21: references rendered as separate paragraphs, '[2] Johnson…' bracket intact; [13]/[14]/[20]/[22] carry DOIs, [22] corrected to El Arab et al. (rows R2-M1/R2-REFS).")
 ]
+
+ROUND3 = [
+    ("R3-1", "白蛋白/身高/体重全缺失的排除（141/15 例）", "PARTIALLY ACCEPTED",
+     "Recording is adopted; the selective re-run of the main analysis is not performed this round. The step is prespecified verbatim in the analysis plan, costs 0.46% of the eICU cohort (0.17% in MIMIC-IV) and keeps the cohort comparable with the group's prior work using the same extraction chain. The Limitations now discuss it explicitly; a characterisation of the excluded patients requires re-derivation upstream of the retained analysis cohort and is offered for the formal revision round."),
+    ("R3-2", "84 家被排除中心的特征比较", "ACCEPTED — computed",
+     "Supplementary Table S4 (new, post-hoc/exploratory, disclosed in the SI note): the excluded 44.9% are smaller (median 47 patients, IQR 19–78, versus 224, IQR 166–306) and less severely ill (median centre mortality 9.0% versus 12.7%; SOFA 3.48 versus 4.39; ventilated 12.6% versus 23.2%). The eligibility screen therefore over-represents larger, more acute hospitals; the possible direction on the between-centre variance is now discussed in the main text, and no primary number changes."),
+    ("R3-3a", "τ² 框架不确定性 → 收缩策略适用范围", "ACCEPTED",
+     "The Discussion now states explicitly that with the smaller one-stage τ² = 0.0648 the 25-patient gain narrows from +9.1 to +6.5 points and is undetectable at 200 (Supplementary Table S3), so the guidance is for small local samples under any plausible τ²."),
+    ("R3-3b", "自由斜率两阶段 τ² 的敏感性分析", "DEFERRED (this round) — offered",
+     "Mechanically feasible with the retained analysis cohort and offered for the formal revision round; it would need to be labelled a post-hoc framework sensitivity (the prespecified plan fixed slope = 1 by design, which is precisely the mechanism in question). All four confirmatory analyses' statuses are reported as-is."),
+    ("R3-4", "收缩目标 (+0.030) 与真实偏移 (+0.221) 的差距", "ACCEPTED",
+     "Added to the Discussion: the MIMIC-IV target sat ≈ 1.5 τ below the true offset, yet with a raw local SE of ≈ 0.5 at 25 patients (λ ≈ 0.33) the variance reduction outweighed the target bias — the situation expected when moving between databases. This strengthens rather than weakens the strategy's interpretation, as the reviewer anticipated."),
+    ("R3-5", "大中心高异质性的机制", "PARTIALLY ACCEPTED",
+     "A Discussion paragraph lists candidate mechanisms (care-practice diversity, detection limits) and adds one honest descriptor: per-centre SOFA dispersion is similar across size tertiles (median SD 2.7/3.2/3.1), arguing against a pure case-mix-width account. The 'less complete data quality in small centres may mask drift' direction is stated; a mechanistic causal analysis is out of scope for a descriptive secondary analysis."),
+    ("R3-6", "净获益的临床解释", "ACCEPTED",
+     "The Methods point is already limited (n = whole centre; treat-all comparator). Added: Results now also report the positive share (positive in the remainder); the Discussion states that negative net benefit speaks only to the treat-all comparator at that threshold, not to clinical worth in general."),
+    ("R3-7", "校准偏移 SE 公式", "ACCEPTED — formula verified and rewritten",
+     "Re-derivation confirmed the implement ed formula is the textbook delta method: se(a_h) = sqrt(ȳ(1−ȳ)/n_h)/w̄, with ȳ the centre's observed mortality rate and w̄ = mean(p(1−p)). The confusion came from denoting observed mortality by 'ŷ'; the formula section now derives it explicitly (dȳ/da_h = w̄) and uses ȳ throughout."),
+    ("R3-8", "±10% / ±20% 标准的依据与 ±20% 结果", "ACCEPTED — computed (prespecification discovered)",
+     "The ±20% band was a prespecified secondary measure in the analysis plans ('一并报'), unreported in the text — our own omission. It is now reported in full as Supplementary Table S5 and in Results: at ±20% naive recalibration at 25 patients remains worse than no recalibration (30.6% versus 41.7%), the EB advantage is undiminished (47.9% versus 31.0%; transfer 82.0% versus 42.0%), and the prespecified 50% target applies only to the primary ±10% band."),
+    ("R3-9", "41.6% 的限定", "ACCEPTED",
+     "The Discussion citation now reads '41.6% of the variance is temporal in those two consecutive years'; the Limitations qualifier was already in place."),
+    ("R3-10", "Figure 5 拆分", "PARTIALLY REJECTED — legend restructured instead",
+     "Panel d belongs to the confirmatory analysis J; demoting it to supplementary would remove one prespecified negative/positive result from primary view. The single-figure form is kept, and the Question 10 concern about density is handled by the legend's per-panel sub-questions. If the journal also asks for a split, fig 5 would divide cleanly into naive (a–b) and shrinkage (c–d) halves."),
+    ("R3-11", "TRIPOD-Cluster 要素;", "ACCEPTED",
+     "Reporting standards now names them: the clustering level, the centres per estimate, the centre-level eligibility and the resampling design are all reported, and the standards were matched to the study object rather than avoided."),
+    ("R3-12", "SI 中文计划翻译", "PARTIALLY ACCEPTED",
+     "(b) The submission SI already carries an English title/description for every referenced plan (SI Note); (a) full parallel translation is offered for the formal revision round: it is a large, verification-heavy artefact, and the 'translation is for access, the Chinese original stays the authoritative record' boundary was set deliberately."),
+    ("R3-13", "MIMIC-IV >89 岁处理", "ACCEPTED (one sentence added)",
+     "Cohort text now states: ages above 89 are recorded as 91 at the anchor year in MIMIC-IV, so very old ages are censored similarly in the two databases (MIMIC-IV citation already present)."),
+    ("R3-14/15/16", "决策阈值依据 / Charlson→J / 统计细节", "ACCEPTED (small edits)",
+     "Thresholds: 'chosen to span the operating range of usual risk-stratification decisions'. Limitations: the Charlson/recording-practice difference is stated as a systematic difference that may extend to unmeasured dimensions, so the MIMIC-IV offset cannot be attributed wholly to one source. Statistics: no multiplicty revision needed beyond the existing statement; all 103 slopes converge (already reported as |β_h| ≤ 2.24)."),
+    ("R3-17", "medRxiv 引用格式与首页版式", "NO CHANGE; rebutted as a review-build property",
+     "The DOI form 'doi:10.64898/2026.04.05.26350209' is the journal-standard medRxiv citation. The 'supplementary S1-3 all integrated / internal note' line is the top-page banner of the integrated REVIEW build used for this pre-review; it does not exist in the submission files (00_投稿包 quality control page-order verified)."),
+    ("R3-extension", "给作者非强制建议 (SOFA=8 床旁图 / 随机效应排名)", "NOTE + one discussion move",
+     "Both are worthwhile for the revision round: the SOFA=8 cross-centre prediction-mortality figure is computable from the same per-centre offsets already on file; and the residual-variation benchmarking operational suggestion (report O/E intervals / random-effects ranking) is folded into the benchmarking paragraph in spirit via the 'quantity to be monitored' framing. Center-level variable listing for Data Availability is already in the repository README and is quoted in theresponse."),
+]
+EVIDENCE = EVIDENCE  # 保留两轮截图
 
 tbl = doc.add_table(rows=1, cols=4)
 tbl.style = "Table Grid"
@@ -287,7 +325,7 @@ for i, htxt in enumerate(["#", "Comment", "Verdict", "Response / evidence"]):
     r.bold = True
     r.font.size = Pt(9.5)
 
-for num, comment, verdict, resp in ROWS + [BONUS] + ROUND2:
+for num, comment, verdict, resp in ROWS + [BONUS] + ROUND2 + ROUND3:
     cells = tbl.add_row().cells
     for ci, txt in enumerate((num, comment, verdict, resp)):
         cells[ci].text = ""
@@ -311,9 +349,10 @@ for ci, w in enumerate(widths):
         row.cells[ci].width = Cm(w)
 
 para("")
-add("Rebuilds after this round: manuscript word count 4,498 / 4,500; abstract 200 / 200; Methods/Results "
+add("Rebuilds after this round: manuscript word count 4,500 / 4,500; abstract 200 / 200; Methods/Results "
     "numeric audits all green (16 + 95 items); citations 32/32; Sci-Rep structural compliance all green; "
-    "Figure 1 legend 305/350 and Figure 5 legend 347/350 words; Figure 1 corrected and both packages rebuilt.",
+    "Figure legends 305 / 347 words (limit 350); SI rebuilt at 14 pages with the new Supplementary "
+    "Tables S4/S5 and two additional SI disclosure rows; both the submission and integrated-review builds refreshed.",
     size=9, color=GREY)
 
 add("Appendix A — page-level screen renders of the revised integrated draft (PDF pages as displayed)",
