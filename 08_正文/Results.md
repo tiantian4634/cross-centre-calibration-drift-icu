@@ -48,9 +48,9 @@ magnitude (Table 1, Fig. 3). Because all three scores are established, widely us
 with the same pipeline, this consistency indicates that between-centre calibration drift is a
 property of the setting rather than of any single instrument.
 
-Drift was not confined to a systematic offset. The per-hospital calibration slope, estimated with the
-intercept free, ranged from 0.720 to 1.639 (10th to 90th percentile; median 1.088): the
-**risk gradient itself** differs between hospitals and not merely the baseline event rate.
+Drift was not confined to a systematic offset. The per-hospital calibration slope (intercept free)
+ranged from 0.720 to 1.639 (10th–90th percentile; median 1.088): the
+**risk gradient itself** differs between hospitals, not merely the baseline event rate.
 
 For the descriptive analyses in this section and the four that follow, the reported quantities are
 estimates, not tests: **no hypothesis test was performed on the between-centre variation, the
@@ -100,7 +100,7 @@ absolute between-centre variance followed the same pattern, rising from τ² = 0
 
 The variation is therefore a genuine between-hospital difference rather than an artefact of imprecise
 estimation in small samples. The 84 hospitals below the centre-level threshold are smaller and less
-severely ill (median 47 patients and 9.0% mortality versus 224 and 12.7%; Supplementary Table S4), so the eligible set over-represents larger, more acute hospitals.
+severely ill (median 47 patients, 9.0% mortality versus 224 and 12.7%; Supplementary Table S4).
 
 ### Calibration offset is not a stable attribute of a hospital
 

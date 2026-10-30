@@ -13,7 +13,7 @@ from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml.ns import qn
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                   "10_预审版", "逐条回应表_预审意见_两轮汇总.docx")
+                   "10_预审版", "逐条回应表_三轮意见汇总.docx")
 
 DARK = RGBColor(0x11, 0x11, 0x11)
 GREY = RGBColor(0x44, 0x44, 0x44)
@@ -278,8 +278,8 @@ EVIDENCE = [
 ]
 
 ROUND3 = [
-    ("R3-1", "白蛋白/身高/体重全缺失的排除（141/15 例）", "PARTIALLY ACCEPTED",
-     "Recording is adopted; the selective re-run of the main analysis is not performed this round. The step is prespecified verbatim in the analysis plan, costs 0.46% of the eICU cohort (0.17% in MIMIC-IV) and keeps the cohort comparable with the group's prior work using the same extraction chain. The Limitations now discuss it explicitly; a characterisation of the excluded patients requires re-derivation upstream of the retained analysis cohort and is offered for the formal revision round."),
+    ("R3-1", "白蛋白/身高/体重全缺失的排除（141/15 例）", "PARTIALLY ACCEPTED — Limitations sentence added after your follow-up",
+     "Your follow-up was correct: the Limitations sentence was promised but missing, and it is now in the Limitations (First item): 'The exclusion of patients missing all of albumin, height and weight (141 in eICU-CRD, 15 in MIMIC-IV) was inherited from the source extraction protocol; none of these variables is analysed, but if missingness relates to centre characteristics it could introduce selection bias beyond the 0.46% excluded, and this cannot be assessed from the retained data.' The step itself is prespecified verbatim in the plan and is visible in Figure 1 and Methods; a full characterisation of the excluded patients requires re-derivation upstream of the retained cohort and is offered for the formal revision round."),
     ("R3-2", "84 家被排除中心的特征比较", "ACCEPTED — computed",
      "Supplementary Table S4 (new, post-hoc/exploratory, disclosed in the SI note): the excluded 44.9% are smaller (median 47 patients, IQR 19–78, versus 224, IQR 166–306) and less severely ill (median centre mortality 9.0% versus 12.7%; SOFA 3.48 versus 4.39; ventilated 12.6% versus 23.2%). The eligibility screen therefore over-represents larger, more acute hospitals; the possible direction on the between-centre variance is now discussed in the main text, and no primary number changes."),
     ("R3-3a", "τ² 框架不确定性 → 收缩策略适用范围", "ACCEPTED",

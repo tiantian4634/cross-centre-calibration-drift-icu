@@ -57,8 +57,7 @@ extraction pipeline.
 
 **MIMIC-IV.** Of 94,458 ICU stays, we retained the first ICU stay per patient (65,366), restricted to
 patients aged ≥ 65 years (35,499; age at admission = `anchor_age` + (admission year − anchor year);
-ages above 89 are recorded as 91 at the anchor year in MIMIC-IV, so very old ages are censored
-similarly in the two databases),
+ages above 89 are censored similarly in both databases (recorded as 91 in MIMIC-IV)),
 with ICU length of stay ≥ 24 h (28,607), whose first ICU stay was in a medical ICU or
 medical–surgical ICU (8,629). Deaths within 24 h of ICU admission (n = 35) and stays in which albumin,
 height and weight were all missing (n = 15) were excluded. The resulting cohort comprised **8,579
@@ -178,8 +177,8 @@ The remaining cut-points were likewise fixed in the analysis plans written befor
 (Supplementary Note, *Prespecified analysis plans*): the local recalibration sample sizes
 (*m* ∈ {0, 25, 50, 100, 200} and, for the external analysis, {0, 25, 50, 100, 200, 400}), the
 resampling attempt counts (100 for the learning-curve analysis, 200 for the shrinkage analyses), and
-the centre-size tertile boundaries (hospitals split by sample size into three groups of 36, 33 and 34
-hospitals, with ranges 100–181, 184–280 and 289–987 patients respectively).
+the centre-size tertile boundaries (hospitals split into three groups of 36, 33 and 34 hospitals,
+ranges 100–181, 184–280 and 289–987 patients).
 
 ## Between-centre heterogeneity
 
