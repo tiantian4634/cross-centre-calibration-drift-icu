@@ -49,7 +49,7 @@ def para(text="", size=9.5, color=DARK):
     return add(text, size=size, color=color)
 
 
-add("Response to the pre-review comments — two rounds consolidated", size=14, bold=True)
+add("Response to the pre-review comments — three rounds consolidated", size=14, bold=True)
 para("Manuscript: Discrimination transports, calibration does not: calibration drift in severity scoring "
      "across 187 intensive-care units.  Round 1 comments (v2) + Round 2 audit + Round 3 full review "
      "(on the v4 integrated draft).  Date: 2026-10-31.", size=9.5, color=GREY)
