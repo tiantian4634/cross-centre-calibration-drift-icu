@@ -23,7 +23,7 @@ units, by severity score**
 | Pooled model AUC (95% CI) | 0.732 (0.720–0.745) | 0.728 (0.715–0.741) | 0.761 (0.751–0.771) |
 | Per-centre AUC, 10th / median / 90th percentile | 0.649 / 0.738 / 0.812 | 0.666 / 0.729 / 0.813 | 0.683 / 0.762 / 0.844 |
 | Between-centre variance (τ²) | 0.131 | 0.165 | 0.109 |
-| Between-centre heterogeneity (I²), % | 75.4 | 79.8 | 70.4 |
+| Between-centre heterogeneity, I² (%) | 75.4 | 79.8 | 70.4 |
 | Observed-to-expected mortality ratio, 10th / median / 90th percentile | 0.69 / 0.96 / 1.54 | 0.71 / 1.03 / 1.57 | 0.69 / 1.02 / 1.49 |
 | Calibration slope, 10th / median / 90th percentile | 0.720 / 1.088 / 1.639 | 0.734 / 1.104 / 1.681 | 0.753 / 1.039 / 1.509 |
 

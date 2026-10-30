@@ -145,6 +145,8 @@ this study is not designed to distinguish them.
 Applying the eICU-fitted SOFA model to MIMIC-IV, discrimination was preserved (AUC 0.722 versus 0.732
 within eICU), but calibration shifted: observed mortality was 19.3% against a model prediction of
 16.5%, giving an O/E ratio of 1.17 and a calibration offset of *a* = +0.221 (Supplementary Fig. S2).
+MIMIC-IV's higher recorded Charlson index (3.5 vs 0.9) reflects more complete ICD coding, not
+case-mix difference; the model has no comorbidity term.
 
 That offset placed MIMIC-IV at the **66th percentile** of the distribution of the 103 eICU hospitals. A
 single-centre development cohort is therefore not an outlier in this setting; it sits well inside the
@@ -224,7 +226,9 @@ We then tested whether shrinking each hospital's estimated offset toward the poo
 the small-sample performance (Fig. 5c). Four strategies were compared on identical draws: no
 recalibration (S0), naive intercept-only (S1), naive intercept plus slope (S2), and empirical-Bayes
 shrinkage of the intercept (S3), with the shrinkage target and between-centre variance estimated by
-leave-one-centre-out cross-fitting.
+leave-one-centre-out cross-fitting. The shrinkage weight *λ* is a reliability weight: when *SE*²
+dominates *τ*², λ→0 and the local estimate collapses to the pooled mean; when *τ*² dominates, λ→1
+and it is retained.
 
 At 25 local patients, shrinkage achieved a ±10% success rate of **24.3%** against 15.5% for naive
 recalibration and 21.4% for no recalibration: the strategy outperformed both alternatives at the sample
@@ -238,7 +242,8 @@ hardest precisely where the local estimate is least reliable.
 **The pre-specified criterion for this analysis was met** (at *m* = 25, S3 exceeded S1; at *m* ≥ 100, S3
 was not worse than S1 by more than 5 percentage points).
 
-*Note on the two success rates for naive recalibration.* The learning-curve analysis reports 15.3% at *m* = 25, whereas the shrinkage analyses report 15.5%. Both are correct: the first uses 100 resampling attempts per cell and the second 200 with a paired design, so they are independent draws. Comparisons are made within, not between, panels.
+The learning-curve and shrinkage analyses use independent resampling schemes (100 attempts per cell
+vs 200 paired draws); comparisons are made within, not between, panels.
 
 ### Shrinkage parameters transfer across databases
 
@@ -257,7 +262,7 @@ naive recalibration at every sample size: +19.0 points at 50 patients (P = 4.1 �
 Expressed in terms of local data requirement, **25 local patients combined with shrinkage reached the
 success rate that naive recalibration attained only with roughly 150 local patients** (naive
 recalibration reached 40.5% at 100 patients and 53.0% at 200; linear interpolation gives approximately
-152); an approximately six-fold reduction. As expected, the advantage narrowed as the local sample
+152); an approximately six-fold reduction. That comparison crosses resampling schemes (Fig. 5c vs 5d) and is illustrative. As expected, the advantage narrowed as the local sample
 grew, since naive estimators become adequate once enough data are available.
 
 **The pre-specified criterion for this analysis was met** (at *m* = 25, S3 exceeded both S1 and S0).
@@ -350,9 +355,9 @@ in the opposite direction reaches the same verdict from a different angle: model
 MIMIC-IV and applied to 208 eICU-CRD hospitals without recalibration lost external calibration
 faster than discrimination as feature complexity grew; the external calibration slope fell from
 1.007 to 0.417 while a single aggregate score stayed essentially intact [14]. A
-clinically important corollary is that the two sources are not interchangeable. A hospital offset
-that is 41.6% temporal in origin cannot be fixed by a permanent recalibration, however large the
-sample used to fit it, and a hospital-to-hospital difference that persists after case-mix adjustment
+clinically important corollary is that the two sources are not interchangeable. A hospital offset of
+which 41.6% of the variance is temporal cannot be fully corrected by a permanent recalibration, however
+large the sample used to fit it, and a hospital-to-hospital difference that persists after case-mix adjustment
 cannot be explained by improvement over time. Decomposing them would require a database spanning
 several years, which eICU-CRD does not.
 
@@ -391,15 +396,13 @@ one-off recalibration resolves it. The emerging focus on post-deployment monitor
 governance of clinical models [22] would be strengthened by treating centre-specific calibration as
 a quantity to be monitored rather than assumed.
 
-**Why STROBE rather than TRIPOD.** The data are clustered by hospital, which is the structure the
-TRIPOD-Cluster statement was written to address [23], and reporting standards for prediction models
-have continued to develop with TRIPOD+AI [24]. We report using STROBE [25] with the RECORD extension for routinely collected health
-data [26], because no prediction model
-was developed or deployed for clinical use in this study: the pooled model served as a measurement
-instrument for quantifying drift, and the object of the study is the between-centre variation
-itself, not the performance of a model intended for patient-level decisions. We have nonetheless
-reported the elements that matter for clustered data: the clustering level, the number of centres
-per estimate, and the resampling design.
+**Reporting standards.** The data are clustered by hospital, the structure that TRIPOD-Cluster
+[23] addresses and that TRIPOD+AI [24] extends to prediction models. We report
+with STROBE [25] and its RECORD extension for routinely collected health data [26],
+because no prediction model was developed or deployed for patient-level decisions here: the pooled
+model served as a measurement instrument for quantifying drift, and the object of study is the
+between-centre variation itself. The clustered-data elements (clustering level, centres per estimate,
+resampling design) are reported throughout.
 
 **Limitations.** First, both databases were collected for purposes other than this study, as is inherent in the
 secondary-use design. Two consequences follow, and both are limitations of that design rather than of the analysis. Misclassification in the underlying records (in the severity scores, in comorbidity coding and in the recorded discharge status) cannot be detected here, and its
@@ -407,7 +410,8 @@ direction and magnitude could not be quantified. And because eICU-CRD covers onl
 2015, we could not assess how eligibility for the cohort, or the coding practices behind it,
 changed over time. The year-to-year analysis reported here addresses stability across two
 consecutive years and nothing more, and the study therefore quantifies the spatial component of
-drift while providing no evidence about longer-term temporal trends. Second, MIMIC-IV is a single centre, so the external analysis tests whether the shrinkage
+drift while providing no evidence about longer-term temporal trends. The 41.6% temporal share is
+specific to those two years, not a portable constant. Second, MIMIC-IV is a single centre, so the external analysis tests whether the shrinkage
 parameters transfer across databases; it is not multicentre external validation of the strategy,
 which can only be evaluated within eICU itself. Third, the variation not explained by measured
 case-mix is described here as residual between-hospital variation. Unmeasured differences in
@@ -417,7 +421,9 @@ care is drawn. Fourth, the two databases record comorbidity differently. The mea
 MIMIC-IV (3.5) is far higher than in eICU-CRD (0.9), reflecting more complete inpatient ICD coding
 in MIMIC-IV rather than a difference in case-mix. Because the external analysis uses a single-score
 SOFA model that contains no comorbidity term, this does not affect any result reported here, but it
-limits how far the two cohorts can be compared on measured case-mix. Fifth, we studied three
+limits how far the two cohorts can be compared on measured case-mix. The case-mix ladder uses only
+complete cases (comorbidity missing in 11.6% of eICU patients); the direction of bias is unknown.
+Fifth, we studied three
 established scores and one pooled model specification; other specifications, and scores not
 evaluated here, may behave differently. Sixth, the empirical-Bayes parameters were estimated in a
 single database, and although they transferred to a second, the extent to which they generalise to
@@ -482,8 +488,8 @@ cohort entering any analysis nor any reported result. It is reported here for tr
 extraction pipeline.
 
 **MIMIC-IV.** Of 94,458 ICU stays, we retained the first ICU stay per patient (65,366), restricted to
-patients aged ≥ 65 years (35,499; `anchor_age`, corrected by the difference between admission year and
-anchor year), with ICU length of stay ≥ 24 h (28,607), whose first ICU stay was in a medical ICU or
+patients aged ≥ 65 years (35,499; age at admission = `anchor_age` + (admission year − anchor year)),
+with ICU length of stay ≥ 24 h (28,607), whose first ICU stay was in a medical ICU or
 medical–surgical ICU (8,629). Deaths within 24 h of ICU admission (n = 35) and stays in which albumin,
 height and weight were all missing (n = 15) were excluded. The resulting cohort comprised **8,579
 patients, of whom 1,654 (19.3%) died**.
@@ -587,9 +593,10 @@ calibration-in-the-large (intercept) measure with the calibration slope fixed at
 The standard error of *a_h* was obtained by the delta method as
 `sqrt(max(ŷ(1 − ŷ), 10⁻⁹)/n_h) / max(mean(p(1 − p)), 10⁻⁹)`, where *n_h* is the hospital's sample size.
 
-**Calibration slope (b_h).** We additionally fitted, within each hospital, a logistic regression of the
-outcome on the logit of the pooled model's predicted probability with a free intercept, and retained the
-slope.
+**Calibration slope (b_h).** Within each hospital we fitted `logit(y) = α_h + β_h logit(p̂)` with a
+free intercept and retained β_h. All 103 slopes per score
+converged; none exceeded |β_h| = 5 (largest 2.24, SOFA). Slopes above 1 indicate a steeper risk
+gradient than the pooled model implies, below 1 a compressed one.
 
 **Quantitative variables and cut-points.** All three scores, age and comorbidity burden were
 analysed as continuous variables and standardised before fitting; they were not categorised. Cut-points
@@ -643,7 +650,8 @@ the least precise estimates (smallest hospitals) should show the *highest* appar
 
 **Clinical impact.** For decision thresholds 0.10, 0.20, 0.30 and 0.40, each hospital's net benefit was
 computed as `TP/n − (FP/n) × (p_t/(1 − p_t))` together with the observed mortality among patients
-flagged above the threshold (positive predictive value).
+flagged above the threshold (positive predictive value). *n* is the centre's entire cohort, not only
+flagged patients; the implicit comparator is treat-all at the same threshold.
 
 ## Local recalibration learning curve (analysis E)
 
@@ -694,7 +702,8 @@ pre-existing field exactly.
 `numpy.random.Generator` instances (`20261019 + replicate × 9973 + hospital_index × 131`).
 
 **Comparison.** Strategies were compared by paired differences in success rate on identical draws, using
-the **two-sided Wilcoxon signed-rank test** across paired (hospital, replicate) observations.
+the **two-sided Wilcoxon signed-rank test** across paired (hospital, replicate) observations (normal
+approximation).
 
 ## Transfer of the shrinkage parameters to a second database (analysis J)
 
@@ -724,7 +733,7 @@ thresholds were estimated without pre-specified hypothesis tests. These are repo
 interval bounds**, not as tests of a hypothesis, and no claim of statistical significance is attached to
 them.
 
-**Confirmatory tier (pre-specified criterion).** Four analyses were each planned with an explicit
+**Confirmatory tier (pre-specified criterion).** Four analyses (E, I, J, K) were each planned with an explicit
 criterion *and* with an explicit instruction for the case in which that criterion was not met:
 
 - **Analysis E — local recalibration learning curve.** Criterion: report the smallest local sample
@@ -760,9 +769,9 @@ Wilcoxon signed-rank test is used; normality of the paired differences was not a
 non-parametric test was selected for that reason. The pre-specified α level was 0.05 and all reported
 tests are two-sided. Group sizes are given for every analysis. Descriptive statistics are reported as the
 median with the 10th and 90th percentiles for skewed quantities (because these distributions are markedly
-asymmetric and small-sample), and ± indicates a standard error where stated. Analyses A–H and K contain
-no hypothesis tests; the values reported for them are estimates, and the bounds reported are 10th and 90th
-percentiles rather than confidence intervals. No *P* value in this manuscript is reported only as
+asymmetric and small-sample), and ± indicates a standard error where stated. Analyses A–H report prespecified descriptive estimates, and the bounds reported are 10th and 90th
+percentiles rather than confidence intervals. Analysis K applied a prespecified agreement criterion to
+point estimates rather than a formal hypothesis test; the criterion is reported as met or not met. No *P* value in this manuscript is reported only as
 "significant"; each is given as a number.
 
 ## Uncertainty in pooled performance estimates
@@ -968,7 +977,9 @@ noise, the least precisely estimated (small) centres would have shown the greate
 the opposite was observed, indicating that the between-centre variation is real.
 **(b)** Clinical impact of the same decision threshold in different centres. For each threshold
 $p_t$, points are the median and bars the P10–P90 range of the observed mortality among patients
-the model classified as high risk (112 centres with ≥100 patients); the red dashed line is the
+the model classified as high risk (112 centres with ≥100 patients — the net-benefit calculation is
+defined for all of them, including the 9 centres below the ≥10-death criterion used for the primary
+between-centre analyses); the red dashed line is the
 overall cohort mortality (12.7%). At $p_t$ = 0.20 the observed mortality among flagged patients
 ranged from **15% to 52% (3.5-fold)**. Model-guided escalation yielded **negative net benefit in
 6.2%, 17.0%, 21.4% and 22.3% of centres** at $p_t$ = 0.10, 0.20, 0.30 and 0.40 respectively —
@@ -979,8 +990,8 @@ i.e. in up to one in five centres the model performed worse than treating everyo
 **(a)** Learning-curve analysis: for each $m$, $m$ patients per centre were drawn for local recalibration and the remainder for evaluation ($n\ge 2m$; 100 repeats per centre-$m$ cell). y axis: proportion of attempts with residual O/E within ±10% for S1 (intercept only) and S2 (intercept + slope); dotted line, no recalibration; dashed line, the 50% target; k, the number of contributing centres. **With 25 local patients, naive recalibration was worse than no recalibration at all (21.4% → 15.3%); the 50% target was never reached.**
 **(b)** Residual miscalibration |$a$| (median; band → P90).
 **(c)** Empirical-Bayes (EB) shrinkage removes the penalty: 103 centres; 200 paired resamples per centre-$m$ cell; $\bar a$ and per-centre SEs were leave-one-centre-out cross-fitted, so no centre's evaluation data entered its own shrinkage parameters. S0, no recalibration; S1/S2, naive; S3, EB shrinkage, $\hat a_{\mathrm{EB}}=\bar a+\lambda(\hat a_{\mathrm{ML}}-\bar a)$, $\lambda=\tau^2/(\tau^2+\mathrm{SE}^2)$. At $m$ = 25 the success rate rose from 15.5% to 24.3% (paired difference +9.05 percentage points, Wilcoxon P = 3.7×10⁻¹¹²), surpassing no recalibration (21.4%); median $\lambda$ 0.234/0.374/0.536/0.712 (m = 25/50/100/200), and residual |$a$| fell from 0.44 (naive) to 0.26.
-**(d)** Shrinkage parameters estimated once from eICU transfer to a different database: MIMIC-IV treated as a single new centre; $\bar a$ = +0.030 and $\tau^2$ = 0.131 fixed from eICU, never re-estimated; the offset to recover, $a^*$ = +0.221. EB shrinkage outperformed naive recalibration at every $m$ (at $m$ = 25: 47.0% vs 23.5%, +23.5 percentage points, Wilcoxon P = 6.3×10⁻⁷); **25 patients with shrinkage matched the success rate naive recalibration reached only with roughly 150 patients — a six-fold smaller local sample requirement.**
-**Notes.** The contributing-centre set shrinks with $m$; the S0 line is the *within-m* benchmark (not a learning effect). Panels a–b use 100 resampling attempts (15.3% at $m$ = 25), panels c–d 200 paired attempts (15.5%); both are correct independent draws — comparisons are within, not between, panels. MIMIC-IV is a single-centre database: panel d tests whether the shrinkage parameters transfer across databases and does not constitute multicentre external validation, which can only be evaluated within eICU itself (panel c). The dip at $m$ = 50 (panel d) is Monte-Carlo variation across the 200 attempts; read the trend across the panel.
+**(d)** Shrinkage parameters estimated once from eICU transfer to a different database: MIMIC-IV treated as a single new centre; $\bar a$ = +0.030 and $\tau^2$ = 0.131 fixed from eICU, never re-estimated; the offset to recover, $a^*$ = +0.221. EB shrinkage outperformed naive recalibration at every $m$ (at $m$ = 25: 47.0% vs 23.5%, +23.5 percentage points, Wilcoxon P = 6.3×10⁻⁷); the small dip at $m$ = 50 (47.0% → 46.0%) is within Monte-Carlo error (200-draw SE ≈ 3.5 pp); **25 patients with shrinkage matched the success rate naive recalibration reached only with ≈150 patients — a six-fold smaller local requirement.**
+**Notes.** The contributing-centre set shrinks with $m$; the S0 line is the *within-m* benchmark — the no-recalibration rate at that same $m$ (not a learning effect). Panels a–b use 100 resampling attempts (15.3% at $m$ = 25), panels c–d 200 paired attempts (15.5%); both are correct independent draws — comparisons are within, not between, panels. MIMIC-IV is a single-centre database: panel d tests whether the shrinkage parameters transfer across databases and does not constitute multicentre external validation, which can only be evaluated within eICU itself (panel c).
 
 ---
 
@@ -995,7 +1006,7 @@ units, by severity score**
 | Pooled model AUC (95% CI) | 0.732 (0.720–0.745) | 0.728 (0.715–0.741) | 0.761 (0.751–0.771) |
 | Per-centre AUC, 10th / median / 90th percentile | 0.649 / 0.738 / 0.812 | 0.666 / 0.729 / 0.813 | 0.683 / 0.762 / 0.844 |
 | Between-centre variance (τ²) | 0.131 | 0.165 | 0.109 |
-| Between-centre heterogeneity (I²), % | 75.4 | 79.8 | 70.4 |
+| Between-centre heterogeneity, I² (%) | 75.4 | 79.8 | 70.4 |
 | Observed-to-expected mortality ratio, 10th / median / 90th percentile | 0.69 / 0.96 / 1.54 | 0.71 / 1.03 / 1.57 | 0.69 / 1.02 / 1.49 |
 | Calibration slope, 10th / median / 90th percentile | 0.720 / 1.088 / 1.639 | 0.734 / 1.104 / 1.681 | 0.753 / 1.039 / 1.509 |
 

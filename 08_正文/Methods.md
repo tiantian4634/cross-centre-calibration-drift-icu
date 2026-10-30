@@ -56,8 +56,8 @@ cohort entering any analysis nor any reported result. It is reported here for tr
 extraction pipeline.
 
 **MIMIC-IV.** Of 94,458 ICU stays, we retained the first ICU stay per patient (65,366), restricted to
-patients aged ≥ 65 years (35,499; `anchor_age`, corrected by the difference between admission year and
-anchor year), with ICU length of stay ≥ 24 h (28,607), whose first ICU stay was in a medical ICU or
+patients aged ≥ 65 years (35,499; age at admission = `anchor_age` + (admission year − anchor year)),
+with ICU length of stay ≥ 24 h (28,607), whose first ICU stay was in a medical ICU or
 medical–surgical ICU (8,629). Deaths within 24 h of ICU admission (n = 35) and stays in which albumin,
 height and weight were all missing (n = 15) were excluded. The resulting cohort comprised **8,579
 patients, of whom 1,654 (19.3%) died**.
@@ -161,9 +161,10 @@ calibration-in-the-large (intercept) measure with the calibration slope fixed at
 The standard error of *a_h* was obtained by the delta method as
 `sqrt(max(ŷ(1 − ŷ), 10⁻⁹)/n_h) / max(mean(p(1 − p)), 10⁻⁹)`, where *n_h* is the hospital's sample size.
 
-**Calibration slope (b_h).** We additionally fitted, within each hospital, a logistic regression of the
-outcome on the logit of the pooled model's predicted probability with a free intercept, and retained the
-slope.
+**Calibration slope (b_h).** Within each hospital we fitted `logit(y) = α_h + β_h logit(p̂)` with a
+free intercept and retained β_h. All 103 slopes per score
+converged; none exceeded |β_h| = 5 (largest 2.24, SOFA). Slopes above 1 indicate a steeper risk
+gradient than the pooled model implies, below 1 a compressed one.
 
 **Quantitative variables and cut-points.** All three scores, age and comorbidity burden were
 analysed as continuous variables and standardised before fitting; they were not categorised. Cut-points
@@ -217,7 +218,8 @@ the least precise estimates (smallest hospitals) should show the *highest* appar
 
 **Clinical impact.** For decision thresholds 0.10, 0.20, 0.30 and 0.40, each hospital's net benefit was
 computed as `TP/n − (FP/n) × (p_t/(1 − p_t))` together with the observed mortality among patients
-flagged above the threshold (positive predictive value).
+flagged above the threshold (positive predictive value). *n* is the centre's entire cohort, not only
+flagged patients; the implicit comparator is treat-all at the same threshold.
 
 ## Local recalibration learning curve (analysis E)
 
@@ -268,7 +270,8 @@ pre-existing field exactly.
 `numpy.random.Generator` instances (`20261019 + replicate × 9973 + hospital_index × 131`).
 
 **Comparison.** Strategies were compared by paired differences in success rate on identical draws, using
-the **two-sided Wilcoxon signed-rank test** across paired (hospital, replicate) observations.
+the **two-sided Wilcoxon signed-rank test** across paired (hospital, replicate) observations (normal
+approximation).
 
 ## Transfer of the shrinkage parameters to a second database (analysis J)
 
@@ -301,7 +304,7 @@ thresholds were estimated without pre-specified hypothesis tests. These are repo
 interval bounds**, not as tests of a hypothesis, and no claim of statistical significance is attached to
 them.
 
-**Confirmatory tier (pre-specified criterion).** Four analyses were each planned with an explicit
+**Confirmatory tier (pre-specified criterion).** Four analyses (E, I, J, K) were each planned with an explicit
 criterion *and* with an explicit instruction for the case in which that criterion was not met:
 
 - **Analysis E — local recalibration learning curve.** Criterion: report the smallest local sample
@@ -337,9 +340,9 @@ Wilcoxon signed-rank test is used; normality of the paired differences was not a
 non-parametric test was selected for that reason. The pre-specified α level was 0.05 and all reported
 tests are two-sided. Group sizes are given for every analysis. Descriptive statistics are reported as the
 median with the 10th and 90th percentiles for skewed quantities (because these distributions are markedly
-asymmetric and small-sample), and ± indicates a standard error where stated. Analyses A–H and K contain
-no hypothesis tests; the values reported for them are estimates, and the bounds reported are 10th and 90th
-percentiles rather than confidence intervals. No *P* value in this manuscript is reported only as
+asymmetric and small-sample), and ± indicates a standard error where stated. Analyses A–H report prespecified descriptive estimates, and the bounds reported are 10th and 90th
+percentiles rather than confidence intervals. Analysis K applied a prespecified agreement criterion to
+point estimates rather than a formal hypothesis test; the criterion is reported as met or not met. No *P* value in this manuscript is reported only as
 "significant"; each is given as a number.
 
 ## Uncertainty in pooled performance estimates

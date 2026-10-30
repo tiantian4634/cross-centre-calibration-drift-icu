@@ -61,9 +61,9 @@ def box(x, y, w, h, text, fc, fs=7.8, ec=EDGE):
 
 for col_x, head, steps in [(0.2, "eICU-CRD  \u2010  estimation cohort", EICU),
                            (15.0, "MIMIC-IV  \u2010  external application", MIMIC)]:
-    ax.text(col_x + MAIN_W / 2, 28.6, head, ha="center", va="center",
+    ax.text(col_x + MAIN_W / 2, 29.2, head, ha="center", va="center",
             fontsize=12.5, fontweight="bold", color=TXT)
-    ys = np.linspace(27.0, 1.0, len(steps))
+    ys = np.linspace(25.7, 1.0, len(steps))
     hh = 2.40
     last_incl = None                                   # 最近一个"纳入"框（主链节点）
     for i, ((txt, fc), yy) in enumerate(zip(steps, ys)):

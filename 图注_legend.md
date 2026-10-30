@@ -175,9 +175,9 @@
 >
 > **(c)** Empirical-Bayes (EB) shrinkage removes the penalty: 103 centres; 200 paired resamples per centre-$m$ cell; $\bar a$ and per-centre SEs were leave-one-centre-out cross-fitted, so no centre's evaluation data entered its own shrinkage parameters. S0, no recalibration; S1/S2, naive; S3, EB shrinkage, $\hat a_{\mathrm{EB}}=\bar a+\lambda(\hat a_{\mathrm{ML}}-\bar a)$, $\lambda=\tau^2/(\tau^2+\mathrm{SE}^2)$. At $m$ = 25 the success rate rose from 15.5% to 24.3% (paired difference +9.05 percentage points, Wilcoxon P = 3.7×10⁻¹¹²), surpassing no recalibration (21.4%); median $\lambda$ 0.234/0.374/0.536/0.712 (m = 25/50/100/200), and residual |$a$| fell from 0.44 (naive) to 0.26.
 >
-> **(d)** Shrinkage parameters estimated once from eICU transfer to a different database: MIMIC-IV treated as a single new centre; $\bar a$ = +0.030 and $\tau^2$ = 0.131 fixed from eICU, never re-estimated; the offset to recover, $a^*$ = +0.221. EB shrinkage outperformed naive recalibration at every $m$ (at $m$ = 25: 47.0% vs 23.5%, +23.5 percentage points, Wilcoxon P = 6.3×10⁻⁷); **25 patients with shrinkage matched the success rate naive recalibration reached only with roughly 150 patients — a six-fold smaller local sample requirement.**
+> **(d)** Shrinkage parameters estimated once from eICU transfer to a different database: MIMIC-IV treated as a single new centre; $\bar a$ = +0.030 and $\tau^2$ = 0.131 fixed from eICU, never re-estimated; the offset to recover, $a^*$ = +0.221. EB shrinkage outperformed naive recalibration at every $m$ (at $m$ = 25: 47.0% vs 23.5%, +23.5 percentage points, Wilcoxon P = 6.3×10⁻⁷); the small dip at $m$ = 50 (47.0% → 46.0%) is within Monte-Carlo error (200-draw SE ≈ 3.5 pp); **25 patients with shrinkage matched the success rate naive recalibration reached only with ≈150 patients — a six-fold smaller local requirement.**
 >
-> **Notes.** The contributing-centre set shrinks with $m$; the S0 line is the *within-m* benchmark (not a learning effect). Panels a–b use 100 resampling attempts (15.3% at $m$ = 25), panels c–d 200 paired attempts (15.5%); both are correct independent draws — comparisons are within, not between, panels. MIMIC-IV is a single-centre database: panel d tests whether the shrinkage parameters transfer across databases and does not constitute multicentre external validation, which can only be evaluated within eICU itself (panel c). The dip at $m$ = 50 (panel d) is Monte-Carlo variation across the 200 attempts; read the trend across the panel.
+> **Notes.** The contributing-centre set shrinks with $m$; the S0 line is the *within-m* benchmark — the no-recalibration rate at that same $m$ (not a learning effect). Panels a–b use 100 resampling attempts (15.3% at $m$ = 25), panels c–d 200 paired attempts (15.5%); both are correct independent draws — comparisons are within, not between, panels. MIMIC-IV is a single-centre database: panel d tests whether the shrinkage parameters transfer across databases and does not constitute multicentre external validation, which can only be evaluated within eICU itself (panel c).
 
 ### 中文对照
 
@@ -224,7 +224,9 @@
 >
 > **(b)** Clinical impact of the same decision threshold in different centres. For each threshold
 > $p_t$, points are the median and bars the P10–P90 range of the observed mortality among patients
-> the model classified as high risk (112 centres with ≥100 patients); the red dashed line is the
+> the model classified as high risk (112 centres with ≥100 patients — the net-benefit calculation is
+> defined for all of them, including the 9 centres below the ≥10-death criterion used for the primary
+> between-centre analyses); the red dashed line is the
 > overall cohort mortality (12.7%). At $p_t$ = 0.20 the observed mortality among flagged patients
 > ranged from **15% to 52% (3.5-fold)**. Model-guided escalation yielded **negative net benefit in
 > 6.2%, 17.0%, 21.4% and 22.3% of centres** at $p_t$ = 0.10, 0.20, 0.30 and 0.40 respectively —

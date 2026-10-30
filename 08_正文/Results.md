@@ -81,6 +81,8 @@ this study is not designed to distinguish them.
 Applying the eICU-fitted SOFA model to MIMIC-IV, discrimination was preserved (AUC 0.722 versus 0.732
 within eICU), but calibration shifted: observed mortality was 19.3% against a model prediction of
 16.5%, giving an O/E ratio of 1.17 and a calibration offset of *a* = +0.221 (Supplementary Fig. S2).
+MIMIC-IV's higher recorded Charlson index (3.5 vs 0.9) reflects more complete ICD coding, not
+case-mix difference; the model has no comorbidity term.
 
 That offset placed MIMIC-IV at the **66th percentile** of the distribution of the 103 eICU hospitals. A
 single-centre development cohort is therefore not an outlier in this setting; it sits well inside the
@@ -160,7 +162,9 @@ We then tested whether shrinking each hospital's estimated offset toward the poo
 the small-sample performance (Fig. 5c). Four strategies were compared on identical draws: no
 recalibration (S0), naive intercept-only (S1), naive intercept plus slope (S2), and empirical-Bayes
 shrinkage of the intercept (S3), with the shrinkage target and between-centre variance estimated by
-leave-one-centre-out cross-fitting.
+leave-one-centre-out cross-fitting. The shrinkage weight *λ* is a reliability weight: when *SE*²
+dominates *τ*², λ→0 and the local estimate collapses to the pooled mean; when *τ*² dominates, λ→1
+and it is retained.
 
 At 25 local patients, shrinkage achieved a ±10% success rate of **24.3%** against 15.5% for naive
 recalibration and 21.4% for no recalibration: the strategy outperformed both alternatives at the sample
@@ -174,7 +178,8 @@ hardest precisely where the local estimate is least reliable.
 **The pre-specified criterion for this analysis was met** (at *m* = 25, S3 exceeded S1; at *m* ≥ 100, S3
 was not worse than S1 by more than 5 percentage points).
 
-*Note on the two success rates for naive recalibration.* The learning-curve analysis reports 15.3% at *m* = 25, whereas the shrinkage analyses report 15.5%. Both are correct: the first uses 100 resampling attempts per cell and the second 200 with a paired design, so they are independent draws. Comparisons are made within, not between, panels.
+The learning-curve and shrinkage analyses use independent resampling schemes (100 attempts per cell
+vs 200 paired draws); comparisons are made within, not between, panels.
 
 ### Shrinkage parameters transfer across databases
 
@@ -193,7 +198,7 @@ naive recalibration at every sample size: +19.0 points at 50 patients (P = 4.1 �
 Expressed in terms of local data requirement, **25 local patients combined with shrinkage reached the
 success rate that naive recalibration attained only with roughly 150 local patients** (naive
 recalibration reached 40.5% at 100 patients and 53.0% at 200; linear interpolation gives approximately
-152); an approximately six-fold reduction. As expected, the advantage narrowed as the local sample
+152); an approximately six-fold reduction. That comparison crosses resampling schemes (Fig. 5c vs 5d) and is illustrative. As expected, the advantage narrowed as the local sample
 grew, since naive estimators become adequate once enough data are available.
 
 **The pre-specified criterion for this analysis was met** (at *m* = 25, S3 exceeded both S1 and S0).

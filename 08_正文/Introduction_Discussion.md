@@ -85,9 +85,9 @@ in the opposite direction reaches the same verdict from a different angle: model
 MIMIC-IV and applied to 208 eICU-CRD hospitals without recalibration lost external calibration
 faster than discrimination as feature complexity grew; the external calibration slope fell from
 1.007 to 0.417 while a single aggregate score stayed essentially intact [[YAMAMOTO]]. A
-clinically important corollary is that the two sources are not interchangeable. A hospital offset
-that is 41.6% temporal in origin cannot be fixed by a permanent recalibration, however large the
-sample used to fit it, and a hospital-to-hospital difference that persists after case-mix adjustment
+clinically important corollary is that the two sources are not interchangeable. A hospital offset of
+which 41.6% of the variance is temporal cannot be fully corrected by a permanent recalibration, however
+large the sample used to fit it, and a hospital-to-hospital difference that persists after case-mix adjustment
 cannot be explained by improvement over time. Decomposing them would require a database spanning
 several years, which eICU-CRD does not.
 
@@ -126,15 +126,13 @@ one-off recalibration resolves it. The emerging focus on post-deployment monitor
 governance of clinical models [[VAN_GELOVEN]] would be strengthened by treating centre-specific calibration as
 a quantity to be monitored rather than assumed.
 
-**Why STROBE rather than TRIPOD.** The data are clustered by hospital, which is the structure the
-TRIPOD-Cluster statement was written to address [[TRIPOD_CLUSTER]], and reporting standards for prediction models
-have continued to develop with TRIPOD+AI [[TRIPOD_AI]]. We report using STROBE [[STROBE]] with the RECORD extension for routinely collected health
-data [[RECORD]], because no prediction model
-was developed or deployed for clinical use in this study: the pooled model served as a measurement
-instrument for quantifying drift, and the object of the study is the between-centre variation
-itself, not the performance of a model intended for patient-level decisions. We have nonetheless
-reported the elements that matter for clustered data: the clustering level, the number of centres
-per estimate, and the resampling design.
+**Reporting standards.** The data are clustered by hospital, the structure that TRIPOD-Cluster
+[[TRIPOD_CLUSTER]] addresses and that TRIPOD+AI [[TRIPOD_AI]] extends to prediction models. We report
+with STROBE [[STROBE]] and its RECORD extension for routinely collected health data [[RECORD]],
+because no prediction model was developed or deployed for patient-level decisions here: the pooled
+model served as a measurement instrument for quantifying drift, and the object of study is the
+between-centre variation itself. The clustered-data elements (clustering level, centres per estimate,
+resampling design) are reported throughout.
 
 **Limitations.** First, both databases were collected for purposes other than this study, as is inherent in the
 secondary-use design. Two consequences follow, and both are limitations of that design rather than of the analysis. Misclassification in the underlying records (in the severity scores, in comorbidity coding and in the recorded discharge status) cannot be detected here, and its
@@ -142,7 +140,8 @@ direction and magnitude could not be quantified. And because eICU-CRD covers onl
 2015, we could not assess how eligibility for the cohort, or the coding practices behind it,
 changed over time. The year-to-year analysis reported here addresses stability across two
 consecutive years and nothing more, and the study therefore quantifies the spatial component of
-drift while providing no evidence about longer-term temporal trends. Second, MIMIC-IV is a single centre, so the external analysis tests whether the shrinkage
+drift while providing no evidence about longer-term temporal trends. The 41.6% temporal share is
+specific to those two years, not a portable constant. Second, MIMIC-IV is a single centre, so the external analysis tests whether the shrinkage
 parameters transfer across databases; it is not multicentre external validation of the strategy,
 which can only be evaluated within eICU itself. Third, the variation not explained by measured
 case-mix is described here as residual between-hospital variation. Unmeasured differences in
@@ -152,7 +151,9 @@ care is drawn. Fourth, the two databases record comorbidity differently. The mea
 MIMIC-IV (3.5) is far higher than in eICU-CRD (0.9), reflecting more complete inpatient ICD coding
 in MIMIC-IV rather than a difference in case-mix. Because the external analysis uses a single-score
 SOFA model that contains no comorbidity term, this does not affect any result reported here, but it
-limits how far the two cohorts can be compared on measured case-mix. Fifth, we studied three
+limits how far the two cohorts can be compared on measured case-mix. The case-mix ladder uses only
+complete cases (comorbidity missing in 11.6% of eICU patients); the direction of bias is unknown.
+Fifth, we studied three
 established scores and one pooled model specification; other specifications, and scores not
 evaluated here, may behave differently. Sixth, the empirical-Bayes parameters were estimated in a
 single database, and although they transferred to a second, the extent to which they generalise to

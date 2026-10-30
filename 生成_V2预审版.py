@@ -19,8 +19,8 @@ B = os.path.dirname(os.path.abspath(__file__))
 FG = os.path.join(B, "04_图表")
 SRC = os.path.join(B, "08_正文", "Manuscript.md")
 OUT_DIR = os.path.join(B, "10_预审版")
-OUT_DOCX = os.path.join(OUT_DIR, "正文初稿_v2_预审版.docx")
-OUT_PDF = os.path.join(OUT_DIR, "正文初稿_v2_预审版.pdf")
+OUT_DOCX = os.path.join(OUT_DIR, "正文初稿_v3_预审修订版.docx")
+OUT_PDF = os.path.join(OUT_DIR, "正文初稿_v3_预审修订版.pdf")
 os.makedirs(OUT_DIR, exist_ok=True)
 
 CW = 16.0
@@ -52,8 +52,18 @@ def _tex(s):
     return s.replace("\\|", "|").replace("\\", "")
 
 
+def mathify(s):
+    """$...$ LaTeX 残留 → 可读文本（I² / τ² / ā / â_EB / ≥ …）。"""
+    def sub(m):
+        x = m.group(1)
+        x = x.replace("^2", "²").replace("^*", "*")
+        return x.replace("{", "").replace("}", "")
+    s = re.sub(r"\$([^$]*)\$", sub, s)
+    return s.replace("$", "")
+
+
 def clean(t):
-    return _tex(t)
+    return mathify(_tex(t))
 
 
 def add_md(p, s, size=10.5, color=None, bold_all=False):
@@ -247,9 +257,9 @@ def render_section(name, content, embed=True):
 
 
 # ── 组装 DOCX ────────────────────────────────────────────
-para("INTERNAL PRE-REVIEW DRAFT · v2 integrated (figures & tables embedded) · 2026-10-30",
+para("INTERNAL PRE-REVIEW DRAFT · v3 revised (figures & tables embedded) · 2026-10-30",
      size=9.5, color=RED, bold=True, space_after=2)
-para("正文初稿 V2 · 预审用集成版：Figure 1–5 与 Table 1 已按正文首次引用位置嵌入。"
+para("正文初稿 V3 · 预审修订版（已吸收预审稿意见 v2）：Figure 1–5 与 Table 1 已按正文首次引用位置嵌入。"
      "投稿版请以 00_投稿包 为准。", size=9, color=GREY, space_after=14)
 
 heading("Title and authors", size=12.5, space_before=0)
@@ -270,9 +280,9 @@ for name, content, embed in [("Introduction", intro, False), ("Results", results
     render_section(name, content, embed)
 
 heading("References", size=13, space_before=16)
-for b in refs.split("\n\n"):
-    b = " ".join(l.strip() for l in b.split("\n") if l.strip())
-    if re.match(r"^\d+\.", b.strip()):
+for b in refs.split("\n"):
+    b = b.strip()
+    if re.match(r"^\[\d+\]", b):
         para(b, size=9.5, space_after=3)
 
 heading("Author contributions", size=12.5, space_before=14)
